@@ -3,18 +3,10 @@ layout: default
 permalink: /publications/
 ---
 
-## Publications
-
-### Conference Papers
-
 <div class="publication-item" markdown="1">
-
-### A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration
-
+## A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration
 Nima Payandeh, **Farhad Mehrabi**, Rasul Fesharakifard, and Younes AlizadehVaghasloo
-
 *2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.*
-
 [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10025185) · DOI: 10.1109/ICRoM57054.2022.10025185 
 
 #### Project Overview
