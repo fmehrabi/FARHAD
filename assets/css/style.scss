@@ -232,20 +232,84 @@ header img {
    ABOUT ME
 ========================= */
 
-.about-text {
-  text-align: justify;
 
+/* Main About Card */
+.about-text {
+  margin-top: 18px;
+  margin-bottom: 34px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Subtle About Card Hover */
+.about-text:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* About Paragraphs */
+.about-text p {
+  margin-top: 0;
+  margin-bottom: 14px;
+
+  font-size: 14px;
+  line-height: 1.75;
+
+  color: #555;
+
+  text-align: justify;
   text-justify: inter-word;
 }
 
-.about-text p {
-  text-align: justify;
 
-  text-justify: inter-word;
+/* Remove Extra Space After Last Paragraph */
+.about-text p:last-child {
+  margin-bottom: 0;
+}
 
-  line-height: 1.7;
 
-  margin-bottom: 16px;
+/* Links inside About */
+.about-text a {
+  color: #278ca8;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.about-text a:hover {
+  color: #1f7188;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+
+/* Highlighted Text inside About */
+.about-text strong {
+  font-weight: 600;
+
+  color: #333;
 }
 
 
@@ -518,12 +582,31 @@ header img {
 
 
   /* =========================
-     ABOUT TEXT
+     ABOUT ME
   ========================= */
 
-  .about-text,
-  .about-text p {
+  .about-text {
+    padding: 18px 17px;
+
+    margin-top: 16px;
+    margin-bottom: 28px;
+
     text-align: left;
+  }
+
+
+  .about-text p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  /* Remove Hover Movement on Mobile */
+  .about-text:hover {
+    transform: none;
   }
 
 
@@ -602,6 +685,12 @@ header img {
     line-height: 1.7;
 
     text-align: left;
+  }
+
+
+  /* Remove Card Movement on Mobile */
+  .publication-item:hover {
+    transform: none;
   }
 
 }
