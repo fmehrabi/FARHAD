@@ -15,14 +15,14 @@ header h1 {
 }
 
 header h1 a {
-  color: #1fb9db;
+  color: #278ca8;
   text-decoration: none;
 
   transition: color 0.2s ease;
 }
 
 header h1 a:hover {
-  color: #1795b0;
+  color: #1f7188;
   text-decoration: none;
 }
 
@@ -49,7 +49,6 @@ header img {
    ACADEMIC POSITION
 ========================= */
 
-/* Prospective PhD Student */
 .profile-description {
   margin: 0 0 4px 0;
 
@@ -124,7 +123,7 @@ header img {
 
 /* Icon Hover */
 .social-links a:hover {
-  color: #1fb9db;
+  color: #278ca8;
 
   text-decoration: none;
 
@@ -165,9 +164,15 @@ header img {
 
 /* Navigation Hover */
 .site-nav a:hover {
-  color: #1fb9db;
+  color: #278ca8;
 
   text-decoration: none;
+}
+
+
+/* Active Navigation Item */
+.site-nav a.active {
+  color: #278ca8;
 }
 
 
