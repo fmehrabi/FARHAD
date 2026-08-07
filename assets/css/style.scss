@@ -177,6 +177,25 @@ header img {
 
 
 /* =========================
+   ABOUT ME
+========================= */
+
+.about-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.about-text p {
+  text-align: justify;
+  text-justify: inter-word;
+
+  line-height: 1.7;
+
+  margin-bottom: 16px;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -212,6 +231,16 @@ header img {
 
   .site-nav a {
     font-size: 13px;
+  }
+
+
+  /*
+   About text on narrow screens
+   Left alignment is more readable than justification on mobile
+  */
+  .about-text,
+  .about-text p {
+    text-align: left;
   }
 
 }
