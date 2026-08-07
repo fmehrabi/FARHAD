@@ -102,6 +102,34 @@ header img {
     margin-bottom: 18px;
   }
 
+   /* =========================
+   MAIN NAVIGATION
+========================= */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.site-nav a {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #555;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: #267CB9;
+}
   .social-links a {
     font-size: 27px;
   }
