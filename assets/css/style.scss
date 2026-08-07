@@ -59,7 +59,7 @@ header img {
 }
 
 
-/* Icon beside Prospective PhD Student */
+/* Graduation Cap */
 .profile-icon {
   margin-right: 7px;
 
@@ -121,13 +121,47 @@ header img {
 }
 
 
-/* Icon Hover */
+/* General Hover Movement */
 .social-links a:hover {
-  color: #278ca8;
-
   text-decoration: none;
 
   transform: translateY(-3px);
+}
+
+
+/* Email / Gmail */
+.social-links a[title="Email"]:hover {
+  color: #EA4335;
+}
+
+
+/* Google Scholar */
+.social-links a[title="Google Scholar"]:hover {
+  color: #4285F4;
+}
+
+
+/* ResearchGate */
+.social-links a[title="ResearchGate"]:hover {
+  color: #00CCBB;
+}
+
+
+/* ORCID */
+.social-links a[title="ORCID"]:hover {
+  color: #A6CE39;
+}
+
+
+/* LinkedIn */
+.social-links a[title="LinkedIn"]:hover {
+  color: #0A66C2;
+}
+
+
+/* GitHub */
+.social-links a[title="GitHub"]:hover {
+  color: #181717;
 }
 
 
@@ -234,10 +268,7 @@ header img {
   }
 
 
-  /*
-   About text on narrow screens
-   Left alignment is more readable than justification on mobile
-  */
+  /* About Text */
   .about-text,
   .about-text p {
     text-align: left;
