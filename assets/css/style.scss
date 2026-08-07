@@ -8,34 +8,46 @@
    PROFILE / LEFT SIDEBAR
 ========================= */
 
+
 /* Name */
 header h1 {
   margin-bottom: 18px;
 }
 
 header h1 a {
-  color: #1f2937;
+  color: #285c61;
   text-decoration: none;
+
+  transition: color 0.2s ease;
 }
 
 header h1 a:hover {
-  color: #1f2937;
+  color: #1f484c;
   text-decoration: none;
 }
 
 
-/* Profile Photo */
+/* =========================
+   PROFILE PHOTO
+========================= */
+
 header img {
   width: 220px;
   height: 220px;
+
   object-fit: cover;
 
   border-radius: 50%;
 
   display: block;
+
   margin-bottom: 18px;
 }
 
+
+/* =========================
+   ACADEMIC POSITION
+========================= */
 
 /* Prospective PhD Student */
 .profile-description {
@@ -53,11 +65,15 @@ header img {
   margin-right: 7px;
 
   font-size: 14px;
+
   color: #555;
 }
 
 
-/* Research Interests */
+/* =========================
+   RESEARCH INTERESTS
+========================= */
+
 .research-focus {
   margin: 0 0 18px 0;
 
@@ -91,6 +107,7 @@ header img {
 /* Individual Icons */
 .social-links a {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -105,9 +122,10 @@ header img {
 }
 
 
-/* Hover Effect */
+/* Icon Hover */
 .social-links a:hover {
-  color: #267CB9;
+  color: #285c61;
+
   text-decoration: none;
 
   transform: translateY(-3px);
@@ -122,12 +140,13 @@ header img {
   display: flex;
   align-items: center;
 
-  gap: 24px;
+  gap: 38px;
 
-  margin-bottom: 30px;
-  padding-bottom: 10px;
+  margin-bottom: 32px;
 
-  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+
+  border: none;
 }
 
 
@@ -137,6 +156,7 @@ header img {
   font-weight: 600;
 
   color: #555;
+
   text-decoration: none;
 
   transition: color 0.2s ease;
@@ -145,7 +165,8 @@ header img {
 
 /* Navigation Hover */
 .site-nav a:hover {
-  color: #267CB9;
+  color: #285c61;
+
   text-decoration: none;
 }
 
@@ -166,6 +187,7 @@ header img {
   /* Social Icons */
   .social-links {
     gap: 13px;
+
     margin-bottom: 18px;
   }
 
@@ -176,10 +198,9 @@ header img {
 
   /* Navigation */
   .site-nav {
-    gap: 16px;
+    gap: 22px;
 
     margin-bottom: 24px;
-    padding-bottom: 9px;
 
     flex-wrap: wrap;
   }
