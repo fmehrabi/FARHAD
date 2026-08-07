@@ -2,3 +2,28 @@
 ---
 
 @import "jekyll-theme-minimal";
+{% if site.logo %}
+
+<img src="{{site.logo | relative_url}}" alt="Farhad Mehrabi" />
+
+{% endif %}
+
+<p>
+  <em>{{ site.description | default: site.github.project_tagline }}</em>
+</p>
+
+<div class="social-links">
+
+  <a href="{{ site.linkedin_url }}" target="_blank" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+
+  <a href="{{ site.github_url }}" target="_blank" aria-label="GitHub">
+    <i class="fa-brands fa-github"></i>
+  </a>
+
+  <a href="{{ site.researchgate_url }}" target="_blank" aria-label="ResearchGate">
+    <i class="fa-brands fa-researchgate"></i>
+  </a>
+
+</div>
