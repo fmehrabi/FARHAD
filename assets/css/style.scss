@@ -8,8 +8,19 @@
    PROFILE / LEFT SIDEBAR
 ========================= */
 
+/* Name */
 header h1 {
   margin-bottom: 18px;
+}
+
+header h1 a {
+  color: #1f2937;
+  text-decoration: none;
+}
+
+header h1 a:hover {
+  color: #1f2937;
+  text-decoration: none;
 }
 
 
@@ -28,9 +39,20 @@ header img {
 
 /* Prospective PhD Student */
 .profile-description {
-  margin: 0;
+  margin: 0 0 4px 0;
+
   font-size: 16px;
   line-height: 1.7;
+
+  color: #555;
+}
+
+
+/* Icon beside Prospective PhD Student */
+.profile-icon {
+  margin-right: 7px;
+
+  font-size: 14px;
   color: #555;
 }
 
@@ -38,8 +60,10 @@ header img {
 /* Research Interests */
 .research-focus {
   margin: 0 0 18px 0;
+
   font-size: 13px;
   line-height: 1.7;
+
   color: #666;
 }
 
@@ -48,6 +72,7 @@ header img {
   padding: 0;
 }
 
+
 /* =========================
    SOCIAL & ACADEMIC ICONS
 ========================= */
@@ -55,6 +80,7 @@ header img {
 .social-links {
   display: flex;
   align-items: center;
+
   gap: 14px;
 
   margin-top: 12px;
@@ -82,33 +108,20 @@ header img {
 /* Hover Effect */
 .social-links a:hover {
   color: #267CB9;
+  text-decoration: none;
+
   transform: translateY(-3px);
 }
 
 
 /* =========================
-   MOBILE
-========================= */
-
-@media print, screen and (max-width: 720px) {
-
-  header img {
-    width: 150px;
-    height: 150px;
-  }
-
-  .social-links {
-    gap: 13px;
-    margin-bottom: 18px;
-  }
-
-   /* =========================
    MAIN NAVIGATION
 ========================= */
 
 .site-nav {
   display: flex;
   align-items: center;
+
   gap: 24px;
 
   margin-bottom: 30px;
@@ -117,6 +130,8 @@ header img {
   border-bottom: 1px solid #e5e5e5;
 }
 
+
+/* Navigation Links */
 .site-nav a {
   font-size: 14px;
   font-weight: 600;
@@ -127,11 +142,50 @@ header img {
   transition: color 0.2s ease;
 }
 
+
+/* Navigation Hover */
 .site-nav a:hover {
   color: #267CB9;
+  text-decoration: none;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media print, screen and (max-width: 720px) {
+
+  /* Profile Photo */
+  header img {
+    width: 150px;
+    height: 150px;
+  }
+
+
+  /* Social Icons */
+  .social-links {
+    gap: 13px;
+    margin-bottom: 18px;
+  }
+
   .social-links a {
     font-size: 27px;
+  }
+
+
+  /* Navigation */
+  .site-nav {
+    gap: 16px;
+
+    margin-bottom: 24px;
+    padding-bottom: 9px;
+
+    flex-wrap: wrap;
+  }
+
+  .site-nav a {
+    font-size: 13px;
   }
 
 }
