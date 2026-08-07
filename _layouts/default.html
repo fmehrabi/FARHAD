@@ -1,241 +1,343 @@
 <!DOCTYPE html>
+
 <html lang="{{ site.lang | default: 'en-US' }}">
 
-  <head>
+<head>
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ site.title }}</title>
-    {% seo title=false %}
-    
-    <!-- Main Theme Stylesheet -->
-    <link
-      rel="stylesheet"
-      href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"
+
+  <!-- Browser Tab Title -->
+  <title>{{ site.title }}</title>
+
+  {% seo title=false %}
+
+
+  <!-- Main Theme Stylesheet -->
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"
+  >
+
+
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+
+  <!-- Support for Older Internet Explorer Versions -->
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+
+
+  {% include head-custom.html %}
+
+</head>
+
+
+<body>
+
+
+<div class="wrapper">
+
+
+  <!-- =========================
+       LEFT SIDEBAR / PROFILE
+  ========================== -->
+
+  <header>
+
+
+    <!-- Name / Website Title -->
+    <h1>
+
+      <a href="{{ '/' | relative_url }}">
+
+        {{ site.title | default: site.github.repository_name }}
+
+      </a>
+
+    </h1>
+
+
+
+    <!-- Profile Photo -->
+    {% if site.logo %}
+
+    <img
+      src="{{ site.logo | relative_url }}"
+      alt="Farhad Mehrabi"
     >
 
-    <!-- Font Awesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
-
-    <!-- Support for older Internet Explorer versions -->
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-
-    {% include head-custom.html %}
-
-  </head>
+    {% endif %}
 
 
-  <body>
 
-    <div class="wrapper">
+    <!-- Academic Position -->
+    <p class="profile-description">
 
+      <i
+        class="fa-solid fa-graduation-cap profile-icon"
+        aria-hidden="true">
+      </i>
 
-      <!-- =========================
-           LEFT SIDEBAR / PROFILE
-      ========================== -->
+      <em>
+        {{ site.description | default: site.github.project_tagline }}
+      </em>
 
-      <header>
-
-        <!-- Name / Website Title -->
-        <h1>
-          <a href="{{ '/' | absolute_url }}">
-            {{ site.title | default: site.github.repository_name }}
-          </a>
-        </h1>
+    </p>
 
 
-        <!-- Profile Photo -->
-        {% if site.logo %}
 
-        <img
-          src="{{ site.logo | relative_url }}"
-          alt="Farhad Mehrabi"
-        >
+    <!-- Research Interests -->
+    {% if site.research_interests %}
 
-        {% endif %}
+    <div class="research-focus">
 
+      {% for interest in site.research_interests %}
 
-        <!-- Academic Position -->
-        <p class="profile-description">
-          <em>
-            {{ site.description | default: site.github.project_tagline }}
-          </em>
-        </p>
-
-
-        {% if site.research_interests %}
-        <div class="research-focus">
-        
-          {% for interest in site.research_interests %}
-            <div>{{ interest }}</div>
-          {% endfor %}
-        
-        </div>
-        {% endif %}
-
-        
-
-        <!-- Academic & Social Profiles -->
-        <div class="social-links">
-        <!-- Email -->
-        <a
-          href="mailto:FarhaadMehrabi@gmail.com"
-          aria-label="Email"
-          title="Email"
-        >
-          <i
-            class="fa-solid fa-envelope"
-            aria-hidden="true">
-          </i>
-        </a>
-
-          <!-- Google Scholar -->
-          <a
-            href="https://scholar.google.com/citations?user=sMO1fjQAAAAJ&hl=en"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Google Scholar"
-            title="Google Scholar"
-          >
-            <i
-              class="fa-brands fa-google-scholar"
-              aria-hidden="true">
-            </i>
-          </a>
-
-
-          <!-- ResearchGate -->
-          <a
-            href="https://www.researchgate.net/profile/Farhad-Mehrabi-4"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="ResearchGate"
-            title="ResearchGate"
-          >
-            <i
-              class="fa-brands fa-researchgate"
-              aria-hidden="true">
-            </i>
-          </a>
-
-
-          <!-- ORCID -->
-          <a
-            href="https://orcid.org/0009-0009-6995-3292"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="ORCID"
-            title="ORCID"
-          >
-            <i
-              class="fa-brands fa-orcid"
-              aria-hidden="true">
-            </i>
-          </a>
-
-
-          <!-- LinkedIn -->
-          <a
-            href="https://linkedin.com/in/mehrabii"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            title="LinkedIn"
-          >
-            <i
-              class="fa-brands fa-linkedin"
-              aria-hidden="true">
-            </i>
-          </a>
-
-
-          <!-- GitHub -->
-          <a
-            href="https://github.com/fmehrabi"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <i
-              class="fa-brands fa-github"
-              aria-hidden="true">
-            </i>
-          </a>
-
-
+        <div>
+          {{ interest }}
         </div>
 
-      </header>
+      {% endfor %}
+
+    </div>
+
+    {% endif %}
 
 
-      <!-- =========================
-           MAIN WEBSITE CONTENT
-      ========================== -->
 
-      <section>
-    
-        <!-- Main Navigation -->
-        <nav class="site-nav">
-      
-          <a href="{{ '/' | relative_url }}">
-            About
-          </a>
-      
-          <a href="{{ '/research/' | relative_url }}">
-            Research
-          </a>
-      
-          <a href="{{ '/publications/' | relative_url }}">
-            Publications
-          </a>
-      
-          <a href="{{ '/experience/' | relative_url }}">
-            Experience
-          </a>
-          
-        </nav>
-           
-      </section>
+    <!-- =========================
+         ACADEMIC & SOCIAL LINKS
+    ========================== -->
 
-      <!-- =========================
-           FOOTER
-      ========================== -->
+    <div class="social-links">
 
-      <footer>
 
-        <p>
-          <small>
-            Hosted on GitHub Pages
-            &mdash;
-            Theme by
-            <a
-              href="https://github.com/orderedlist"
-              target="_blank"
-              rel="noopener noreferrer">
-              orderedlist
-            </a>
-          </small>
-        </p>
+      <!-- Email -->
+      <a
+        href="mailto:FarhaadMehrabi@gmail.com"
+        aria-label="Email"
+        title="Email"
+      >
 
-      </footer>
+        <i
+          class="fa-solid fa-envelope"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+
+
+      <!-- Google Scholar -->
+      <a
+        href="https://scholar.google.com/citations?user=sMO1fjQAAAAJ&hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Google Scholar"
+        title="Google Scholar"
+      >
+
+        <i
+          class="fa-brands fa-google-scholar"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+
+
+      <!-- ResearchGate -->
+      <a
+        href="https://www.researchgate.net/profile/Farhad-Mehrabi-4"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="ResearchGate"
+        title="ResearchGate"
+      >
+
+        <i
+          class="fa-brands fa-researchgate"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+
+
+      <!-- ORCID -->
+      <a
+        href="https://orcid.org/0009-0009-6995-3292"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="ORCID"
+        title="ORCID"
+      >
+
+        <i
+          class="fa-brands fa-orcid"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+
+
+      <!-- LinkedIn -->
+      <a
+        href="https://linkedin.com/in/mehrabii"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+      >
+
+        <i
+          class="fa-brands fa-linkedin"
+          aria-hidden="true">
+        </i>
+
+      </a>
+
+
+
+      <!-- GitHub -->
+      <a
+        href="https://github.com/fmehrabi"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+      >
+
+        <i
+          class="fa-brands fa-github"
+          aria-hidden="true">
+        </i>
+
+      </a>
 
 
     </div>
 
 
-    <!-- Theme Responsive Scaling Script -->
-    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+  </header>
 
-  </body>
+
+
+  <!-- =========================
+       MAIN WEBSITE CONTENT
+  ========================== -->
+
+  <section>
+
+
+    <!-- =========================
+         MAIN NAVIGATION
+    ========================== -->
+
+    <nav class="site-nav">
+
+
+      <!-- About -->
+      <a
+        href="{{ '/' | relative_url }}"
+        {% if page.url == '/' %}class="active"{% endif %}
+      >
+        About
+      </a>
+
+
+      <!-- Research -->
+      <a
+        href="{{ '/research/' | relative_url }}"
+        {% if page.url == '/research/' %}class="active"{% endif %}
+      >
+        Research
+      </a>
+
+
+      <!-- Publications -->
+      <a
+        href="{{ '/publications/' | relative_url }}"
+        {% if page.url == '/publications/' %}class="active"{% endif %}
+      >
+        Publications
+      </a>
+
+
+      <!-- Experience -->
+      <a
+        href="{{ '/experience/' | relative_url }}"
+        {% if page.url == '/experience/' %}class="active"{% endif %}
+      >
+        Experience
+      </a>
+
+
+    </nav>
+
+
+
+    <!-- =========================
+         PAGE CONTENT
+    ========================== -->
+
+    {{ content }}
+
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+
+      <small>
+
+        Hosted on GitHub Pages
+
+        &mdash;
+
+        Theme by
+
+        <a
+          href="https://github.com/orderedlist"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          orderedlist
+        </a>
+
+      </small>
+
+    </p>
+
+  </footer>
+
+
+</div>
+
+
+
+<!-- Theme Responsive Scaling Script -->
+<script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+
+
+</body>
 
 </html>
