@@ -16,9 +16,3 @@ Coming soon.
 
 ### Publications
 Coming soon.
-
-### CV
-Coming soon.
-
-### Contact
-Coming soon.
