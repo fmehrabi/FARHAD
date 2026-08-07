@@ -15,7 +15,7 @@ Nima Payandeh, **Farhad Mehrabi**, Rasul Fesharakifard, and Younes AlizadehVagha
 
 *2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.*
 
-[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10025185) · DOI: 10.1109/ICRoM57054.2022.10025185
+[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10025185) · DOI: 10.1109/ICRoM57054.2022.10025185 
 
 #### Project Overview
 
