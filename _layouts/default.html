@@ -71,6 +71,18 @@
         </p>
 
 
+        {% if site.research_interests %}
+        <div class="research-focus">
+        
+          {% for interest in site.research_interests %}
+            <div>{{ interest }}</div>
+          {% endfor %}
+        
+        </div>
+        {% endif %}
+
+        
+
         <!-- Academic & Social Profiles -->
         <div class="social-links">
 
