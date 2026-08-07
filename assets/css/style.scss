@@ -16,6 +16,7 @@ header h1 {
 
 header h1 a {
   color: #278ca8;
+
   text-decoration: none;
 
   transition: color 0.2s ease;
@@ -23,6 +24,7 @@ header h1 a {
 
 header h1 a:hover {
   color: #1f7188;
+
   text-decoration: none;
 }
 
@@ -62,7 +64,7 @@ header img {
 }
 
 
-/* Force normal text even if old <em> remains somewhere */
+/* Force Normal Text */
 .profile-description em {
   font-style: normal;
 }
@@ -95,6 +97,7 @@ header img {
 
 .research-focus div {
   margin: 0;
+
   padding: 0;
 }
 
@@ -105,6 +108,7 @@ header img {
 
 .social-links {
   display: flex;
+
   align-items: center;
 
   gap: 14px;
@@ -124,6 +128,7 @@ header img {
   font-size: 29px;
 
   color: #555;
+
   text-decoration: none;
 
   transition:
@@ -182,6 +187,7 @@ header img {
 
 .site-nav {
   display: flex;
+
   align-items: center;
 
   gap: 38px;
@@ -197,6 +203,7 @@ header img {
 /* Navigation Links */
 .site-nav a {
   font-size: 14px;
+
   font-weight: 600;
 
   color: #555;
@@ -227,11 +234,13 @@ header img {
 
 .about-text {
   text-align: justify;
+
   text-justify: inter-word;
 }
 
 .about-text p {
   text-align: justify;
+
   text-justify: inter-word;
 
   line-height: 1.7;
@@ -241,20 +250,52 @@ header img {
 
 
 /* =========================
-   PUBLICATIONS
+   PUBLICATION SECTIONS
+========================= */
+
+.publication-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+/* Journal Articles / Conference Papers */
+.publication-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   PUBLICATION CARD
 ========================= */
 
 .publication-item {
-  margin-top: 18px;
-  margin-bottom: 34px;
+  margin-top: 16px;
+
+  margin-bottom: 32px;
 
   padding: 22px 24px;
+
+  background: #fafafa;
 
   border-left: 3px solid #278ca8;
 
   border-radius: 0 8px 8px 0;
-
-  background: #fafafa;
 
   transition:
     transform 0.2s ease,
@@ -262,7 +303,7 @@ header img {
 }
 
 
-/* Subtle Publication Hover */
+/* Subtle Card Hover */
 .publication-item:hover {
   transform: translateY(-2px);
 
@@ -270,73 +311,159 @@ header img {
 }
 
 
-/* Publication Title */
-.publication-item h3 {
+/* =========================
+   PAPER TITLE
+========================= */
+
+.publication-title {
   margin-top: 0;
+
   margin-bottom: 10px;
 
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 16px;
 
-  color: #278ca8;
+  font-weight: 600;
+
+  line-height: 1.55;
 }
 
 
-/* Section Titles inside Publication */
-.publication-item h4 {
-  margin-top: 24px;
-  margin-bottom: 8px;
+/* Clickable Paper Title */
+.publication-title a {
+  color: #278ca8;
 
-  font-size: 14px;
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+
+/* Paper Title Hover */
+.publication-title a:hover {
+  color: #1f7188;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 3px;
+}
+
+
+/* =========================
+   AUTHORS
+========================= */
+
+.publication-authors {
+  margin-top: 0;
+
+  margin-bottom: 5px !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.65 !important;
+
+  color: #555 !important;
+
+  text-align: left !important;
+}
+
+
+/* Highlight My Name */
+.publication-authors strong {
   font-weight: 600;
 
   color: #333;
 }
 
 
-/* Publication Text */
+/* =========================
+   CONFERENCE / JOURNAL
+========================= */
+
+.publication-venue {
+  margin-top: 0;
+
+  margin-bottom: 21px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* =========================
+   PROJECT SUBHEADINGS
+========================= */
+
+/*
+   Project Overview
+   Research & Practical Significance
+*/
+
+.publication-subheading {
+  position: relative;
+
+  margin-top: 23px;
+
+  margin-bottom: 9px;
+
+  padding-left: 18px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+
+/* Small Academic Arrow / Bullet */
+.publication-subheading::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   PUBLICATION BODY TEXT
+========================= */
+
 .publication-item p {
+  margin-top: 0;
+
   margin-bottom: 14px;
 
   font-size: 14px;
+
   line-height: 1.75;
 
-  text-align: justify;
-  text-justify: inter-word;
-
   color: #555;
-}
 
+  text-align: justify;
 
-/* Publication Links */
-.publication-item a {
-  color: #278ca8;
-
-  font-weight: 600;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease;
-}
-
-.publication-item a:hover {
-  color: #1f7188;
-
-  text-decoration: none;
-}
-
-
-/* Highlight Author Name */
-.publication-item strong {
-  font-weight: 600;
-
-  color: #333;
-}
-
-
-/* Conference / Journal Information */
-.publication-item em {
-  color: #666;
+  text-justify: inter-word;
 }
 
 
@@ -347,14 +474,21 @@ header img {
 @media print, screen and (max-width: 720px) {
 
 
-  /* Profile Photo */
+  /* =========================
+     PROFILE PHOTO
+  ========================= */
+
   header img {
     width: 150px;
+
     height: 150px;
   }
 
 
-  /* Social Icons */
+  /* =========================
+     SOCIAL ICONS
+  ========================= */
+
   .social-links {
     gap: 13px;
 
@@ -366,7 +500,10 @@ header img {
   }
 
 
-  /* Navigation */
+  /* =========================
+     NAVIGATION
+  ========================= */
+
   .site-nav {
     gap: 22px;
 
@@ -380,27 +517,89 @@ header img {
   }
 
 
-  /* About Text */
+  /* =========================
+     ABOUT TEXT
+  ========================= */
+
   .about-text,
   .about-text p {
     text-align: left;
   }
 
 
-  /* Publications */
+  /* =========================
+     PUBLICATION SECTIONS
+  ========================= */
+
+  .publication-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .publication-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  /* =========================
+     PUBLICATION CARD
+  ========================= */
+
   .publication-item {
     padding: 18px 17px;
 
-    margin-top: 16px;
-    margin-bottom: 28px;
+    margin-top: 14px;
+
+    margin-bottom: 26px;
   }
 
-  .publication-item h3 {
-    font-size: 16px;
+
+  /* Paper Title */
+  .publication-title {
+    font-size: 15px;
+
+    line-height: 1.5;
   }
 
+
+  /* Authors */
+  .publication-authors {
+    font-size: 12.5px !important;
+  }
+
+
+  /* Conference / Journal */
+  .publication-venue {
+    font-size: 12px !important;
+
+    margin-bottom: 18px !important;
+  }
+
+
+  /* Project Subheadings */
+  .publication-subheading {
+    margin-top: 20px;
+
+    padding-left: 16px;
+
+    font-size: 15px;
+  }
+
+
+  .publication-subheading::before {
+    font-size: 14px;
+  }
+
+
+  /* Publication Body */
   .publication-item p {
     font-size: 13px;
+
+    line-height: 1.7;
 
     text-align: left;
   }
