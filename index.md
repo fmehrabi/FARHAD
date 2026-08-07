@@ -2,30 +2,30 @@
 layout: default
 ---
 
-# About Me
+## About Me
 
 Welcome to my personal website.
 
-## Research Interests
+### Research Interests
 
 Coming soon.
 
-## Education
+### Education
 
 Coming soon.
 
-## Selected Projects
+### Selected Projects
 
 Coming soon.
 
-## Publications
+### Publications
 
 Coming soon.
 
-## CV
+### CV
 
 Coming soon.
 
-## Contact
+### Contact
 
 Coming soon.
