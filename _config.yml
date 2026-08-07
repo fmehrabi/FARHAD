@@ -1,12 +1,22 @@
 title: Farhad MEHRABI
+
 logo: /assets/img/farhad.jpg
+
 description: Prospective PhD Student
-description: AI Strategy & Governance
-description: Digital Strategy & Transformation
-description: Technology & Innovation Management
+
+research_interests:
+  - AI Strategy & Governance
+  - Digital Strategy & Transformation
+  - Technology & Innovation Management
+
 show_downloads: false
+
 google_analytics:
+
 theme: jekyll-theme-minimal
-github_url: https://github.com/fmehrabi
+
+google_scholar_url: https://scholar.google.com/citations?user=sMO1fjQAAAAJ&hl=en
+researchgate_url: https://www.researchgate.net/profile/Farhad-Mehrabi-4
+orcid_url: https://orcid.org/0009-0009-6995-3292
 linkedin_url: https://www.linkedin.com/in/mehrabii/
-researchgate_url: https://www.researchgate.net
+github_url: https://github.com/fmehrabi
