@@ -55,7 +55,16 @@ header img {
   font-size: 16px;
   line-height: 1.7;
 
+  font-style: normal;
+  font-weight: 400;
+
   color: #555;
+}
+
+
+/* Force normal text even if old <em> remains somewhere */
+.profile-description em {
+  font-style: normal;
 }
 
 
@@ -64,6 +73,8 @@ header img {
   margin-right: 7px;
 
   font-size: 14px;
+
+  font-style: normal;
 
   color: #555;
 }
@@ -129,7 +140,7 @@ header img {
 }
 
 
-/* Email / Gmail */
+/* Email */
 .social-links a[title="Email"]:hover {
   color: #EA4335;
 }
@@ -230,10 +241,111 @@ header img {
 
 
 /* =========================
+   PUBLICATIONS
+========================= */
+
+.publication-item {
+  margin-top: 18px;
+  margin-bottom: 34px;
+
+  padding: 22px 24px;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  background: #fafafa;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Subtle Publication Hover */
+.publication-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Publication Title */
+.publication-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  font-size: 18px;
+  line-height: 1.5;
+
+  color: #278ca8;
+}
+
+
+/* Section Titles inside Publication */
+.publication-item h4 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* Publication Text */
+.publication-item p {
+  margin-bottom: 14px;
+
+  font-size: 14px;
+  line-height: 1.75;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  color: #555;
+}
+
+
+/* Publication Links */
+.publication-item a {
+  color: #278ca8;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.publication-item a:hover {
+  color: #1f7188;
+
+  text-decoration: none;
+}
+
+
+/* Highlight Author Name */
+.publication-item strong {
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* Conference / Journal Information */
+.publication-item em {
+  color: #666;
+}
+
+
+/* =========================
    MOBILE
 ========================= */
 
 @media print, screen and (max-width: 720px) {
+
 
   /* Profile Photo */
   header img {
@@ -271,6 +383,25 @@ header img {
   /* About Text */
   .about-text,
   .about-text p {
+    text-align: left;
+  }
+
+
+  /* Publications */
+  .publication-item {
+    padding: 18px 17px;
+
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .publication-item h3 {
+    font-size: 16px;
+  }
+
+  .publication-item p {
+    font-size: 13px;
+
     text-align: left;
   }
 
