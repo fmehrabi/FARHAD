@@ -28,12 +28,25 @@ header img {
 
 /* Prospective PhD Student */
 .profile-description {
-  margin-top: 0;
-  margin-bottom: 14px;
+  margin: 0;
   font-size: 15px;
+  line-height: 1.7;
   color: #555;
 }
 
+
+/* Research Interests */
+.research-focus {
+  margin: 0 0 18px 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.research-focus div {
+  margin: 0;
+  padding: 0;
+}
 
 /* =========================
    SOCIAL & ACADEMIC ICONS
