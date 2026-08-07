@@ -2,8 +2,6 @@
 layout: default
 ---
 
-## About Me
---
 I am a researcher with an interdisciplinary background in management and mechanical engineering, with research interests at the intersection of digital strategy, artificial intelligence, technology and innovation management, and organizational transformation.
 
 My current research focuses on understanding how emerging digital technologies—particularly AI—reshape organizational decision-making, capabilities, and value creation. I am particularly interested in investigating complex organizational and strategic phenomena through rigorous, theory-driven, and context-appropriate research approaches.
