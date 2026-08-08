@@ -127,6 +127,45 @@ footer a:hover {
 
 
 /* =========================
+   DESKTOP CONTENT WIDTH
+
+   Left sidebar remains unchanged.
+   Only the right content column
+   becomes wider.
+========================= */
+
+@media screen and (min-width: 961px) {
+
+  /*
+     Minimal theme default wrapper:
+     approximately 860px
+
+     New wrapper:
+     920px
+
+     Left sidebar:
+     unchanged
+
+     Right content:
+     500px -> 560px
+
+     Gap between columns:
+     remains approximately unchanged
+  */
+
+  .wrapper {
+    width: 920px;
+  }
+
+
+  section.main-content {
+    width: 560px;
+  }
+
+}
+
+
+/* =========================
    PROFILE / LEFT SIDEBAR
 ========================= */
 
@@ -1742,6 +1781,20 @@ html[data-theme="dark"]
     line-height: 1.7;
 
     text-align: left;
+  }
+
+}
+
+تغییر اصلی فقط این قسمت جدید است:
+
+@media screen and (min-width: 961px) {
+
+  .wrapper {
+    width: 920px;
+  }
+
+  section.main-content {
+    width: 560px;
   }
 
 }
