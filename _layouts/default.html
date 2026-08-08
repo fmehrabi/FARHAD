@@ -243,13 +243,19 @@
          MAIN NAVIGATION
     ========================== -->
 
-    <nav class="site-nav">
+    <nav
+      class="site-nav"
+      aria-label="Primary navigation"
+    >
 
 
       <!-- About -->
       <a
         href="{{ '/' | relative_url }}"
-        {% if page.url == '/' %}class="active"{% endif %}
+        {% if page.url == '/' %}
+          class="active"
+          aria-current="page"
+        {% endif %}
       >
         About
       </a>
@@ -258,7 +264,10 @@
       <!-- Research -->
       <a
         href="{{ '/research/' | relative_url }}"
-        {% if page.url == '/research/' %}class="active"{% endif %}
+        {% if page.url == '/research/' %}
+          class="active"
+          aria-current="page"
+        {% endif %}
       >
         Research
       </a>
@@ -267,7 +276,10 @@
       <!-- Publications -->
       <a
         href="{{ '/publications/' | relative_url }}"
-        {% if page.url == '/publications/' %}class="active"{% endif %}
+        {% if page.url == '/publications/' %}
+          class="active"
+          aria-current="page"
+        {% endif %}
       >
         Publications
       </a>
@@ -276,7 +288,10 @@
       <!-- Experience -->
       <a
         href="{{ '/experience/' | relative_url }}"
-        {% if page.url == '/experience/' %}class="active"{% endif %}
+        {% if page.url == '/experience/' %}
+          class="active"
+          aria-current="page"
+        {% endif %}
       >
         Experience
       </a>
