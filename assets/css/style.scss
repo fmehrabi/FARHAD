@@ -179,7 +179,7 @@ header img {
 
   align-items: center;
 
-  gap: 38px;
+  gap: 10px;
 
   margin-bottom: 32px;
 
@@ -189,28 +189,131 @@ header img {
 }
 
 
+/* Navigation Links */
 .site-nav a {
+  position: relative;
+
+  display: inline-block;
+
+  padding: 8px 12px 10px;
+
   font-size: 14px;
 
   font-weight: 600;
 
+  line-height: 1.4;
+
   color: #555;
+
+  background: transparent;
+
+  border-radius: 7px;
 
   text-decoration: none;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 
+/* Animated Underline */
+.site-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 12px;
+  right: 12px;
+
+  bottom: 3px;
+
+  height: 2px;
+
+  background: #278ca8;
+
+  border-radius: 999px;
+
+  transform: scaleX(0);
+
+  transform-origin: center;
+
+  transition:
+    transform 0.22s ease,
+    opacity 0.22s ease;
+}
+
+
+/* Navigation Hover */
 .site-nav a:hover {
   color: #278ca8;
 
+  background: #f2f8f9;
+
   text-decoration: none;
+
+  transform: translateY(-1px);
 }
 
 
+/* Short Underline on Hover */
+.site-nav a:hover::after {
+  transform: scaleX(0.45);
+}
+
+
+/* Active Navigation Item */
 .site-nav a.active {
   color: #278ca8;
+
+  background: transparent;
+}
+
+
+/* Full Underline for Active Tab */
+.site-nav a.active::after {
+  transform: scaleX(1);
+
+  animation: activeNavUnderline 0.38s ease both;
+}
+
+
+/* Active Tab Hover */
+.site-nav a.active:hover {
+  color: #278ca8;
+
+  background: #f2f8f9;
+}
+
+
+/* Active Underline Entrance */
+@keyframes activeNavUnderline {
+
+  from {
+    opacity: 0;
+
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scaleX(1);
+  }
+
+}
+
+
+/* Keyboard Navigation */
+.site-nav a:focus-visible {
+  color: #278ca8;
+
+  background: #f2f8f9;
+
+  outline: 2px solid rgba(39, 140, 168, 0.35);
+
+  outline-offset: 2px;
 }
 
 
@@ -238,9 +341,24 @@ header img {
 }
 
 
+/* =========================
+   REDUCED MOTION
+========================= */
+
 @media (prefers-reduced-motion: reduce) {
 
   .page-content {
+    animation: none;
+  }
+
+
+  .site-nav a,
+  .site-nav a::after {
+    transition: none;
+  }
+
+
+  .site-nav a.active::after {
     animation: none;
   }
 
@@ -997,17 +1115,38 @@ header img {
   }
 
 
-  /* Navigation */
+  /* =========================
+     NAVIGATION
+  ========================= */
+
   .site-nav {
-    gap: 22px;
+    gap: 6px;
 
     margin-bottom: 24px;
 
     flex-wrap: wrap;
   }
 
+
   .site-nav a {
+    padding: 7px 9px 9px;
+
     font-size: 13px;
+
+    border-radius: 6px;
+  }
+
+
+  .site-nav a::after {
+    left: 9px;
+    right: 9px;
+
+    bottom: 2px;
+  }
+
+
+  .site-nav a:hover {
+    transform: none;
   }
 
 
