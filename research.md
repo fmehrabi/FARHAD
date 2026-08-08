@@ -8,7 +8,7 @@ permalink: /research/
      CURRENT RESEARCH
 ========================= -->
 
-<section class="research-section">
+<div class="research-section">
 
   <h3 class="research-section-title">
     Current Research
@@ -39,7 +39,7 @@ permalink: /research/
 
   </article>
 
-</section>
+</div>
 
 
 
@@ -47,12 +47,11 @@ permalink: /research/
      SELECTED PROJECTS
 ========================= -->
 
-<section class="research-section">
+<div class="research-section">
 
   <h3 class="research-section-title">
     Selected Projects
   </h3>
-
 
 
   <!-- =========================
@@ -73,7 +72,6 @@ permalink: /research/
     <p class="research-project-summary">
       This project investigated how digital transformation policies influence organizational performance and value creation at Digikala, a major Iranian e-commerce company.
     </p>
-
 
     <ul class="research-project-details">
 
@@ -114,7 +112,6 @@ permalink: /research/
       This project examined the complex and interconnected factors that shape startup success by combining expert perspectives with cognitive mapping.
     </p>
 
-
     <ul class="research-project-details">
 
       <li>
@@ -153,7 +150,6 @@ permalink: /research/
     <p class="research-project-summary">
       This project analyzed the strategic evolution of Snapp as a multi-sided digital platform and examined its expansion from ride-hailing into adjacent markets.
     </p>
-
 
     <ul class="research-project-details">
 
@@ -194,7 +190,6 @@ permalink: /research/
       This project examined how technology-enabled process redesign could improve warehouse operations at Digikala through automation and organizational adaptation.
     </p>
 
-
     <ul class="research-project-details">
 
       <li>
@@ -213,5 +208,4 @@ permalink: /research/
 
   </article>
 
-
-</section>
+</div>
