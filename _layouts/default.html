@@ -22,6 +22,7 @@
   ========================== -->
 
   <script>
+
     (function () {
 
       const storageKey = "farhad-theme";
@@ -64,6 +65,7 @@
         initialTheme;
 
     })();
+
   </script>
 
 
@@ -286,7 +288,33 @@
        MAIN WEBSITE CONTENT
   ========================== -->
 
-  <section>
+  <section class="main-content">
+
+
+    <!-- =========================
+         THEME CONTROL
+         TOP RIGHT
+    ========================== -->
+
+    <div class="content-toolbar">
+
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch theme"
+        title="Switch theme"
+      >
+
+        <i
+          class="fa-solid fa-moon"
+          aria-hidden="true">
+        </i>
+
+      </button>
+
+    </div>
+
 
 
     <!-- =========================
@@ -298,8 +326,6 @@
       aria-label="Primary navigation"
     >
 
-
-      <!-- Navigation Links -->
       <div class="nav-links">
 
 
@@ -352,28 +378,6 @@
 
 
       </div>
-
-
-
-      <!-- =========================
-           THEME TOGGLE
-      ========================== -->
-
-      <button
-        id="theme-toggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="Switch theme"
-        title="Switch theme"
-      >
-
-        <i
-          class="fa-solid fa-moon"
-          aria-hidden="true">
-        </i>
-
-      </button>
-
 
     </nav>
 
