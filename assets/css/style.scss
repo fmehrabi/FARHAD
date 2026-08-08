@@ -127,21 +127,41 @@ footer a:hover {
 
 
 /* =========================
-   DESKTOP CONTENT WIDTH
+   DESKTOP LAYOUT WIDTH
 
    Left sidebar stays unchanged.
-   Right content becomes wider.
+
+   Left sidebar: 270px
+   Gap:          90px
+   Right side:   616px
+
+   Total:        976px
 ========================= */
 
 @media screen and (min-width: 961px) {
 
   .wrapper {
-    width: 920px;
+    width: 976px !important;
   }
 
 
-  .wrapper > section {
-    width: 560px;
+  .wrapper > section.main-content {
+    width: 616px !important;
+    float: right;
+  }
+
+
+  /*
+     Safety rule for any possible
+     inner section elements.
+  */
+
+  .main-content .page-content > section {
+    width: 100% !important;
+
+    float: none !important;
+
+    padding-bottom: 0 !important;
   }
 
 }
@@ -602,6 +622,8 @@ html[data-theme="dark"]
 ========================= */
 
 .page-content {
+  width: 100%;
+
   animation:
     pageFadeIn 0.9s ease both;
 }
