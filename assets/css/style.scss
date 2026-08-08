@@ -308,10 +308,102 @@ header img {
 }
 
 
-/* GitHub Hover in Dark Mode */
+/* GitHub in Dark Mode */
 html[data-theme="dark"]
 .social-links a[title="GitHub"]:hover {
   color: #f0f3f4;
+}
+
+
+/* =========================
+   CONTENT TOOLBAR
+   THEME BUTTON
+========================= */
+
+.content-toolbar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  width: 100%;
+
+  height: 36px;
+
+  margin: 0 0 -2px 0;
+}
+
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+.theme-toggle {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 36px;
+
+  height: 36px;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: var(--nav-text);
+
+  font-size: 15px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.theme-toggle:hover {
+  color: var(--accent);
+
+  background: var(--surface-hover);
+
+  transform: translateY(-1px);
+}
+
+
+.theme-toggle:focus-visible {
+  color: var(--accent);
+
+  background: var(--surface-hover);
+
+  outline:
+    2px solid var(--focus-ring);
+
+  outline-offset: 2px;
+}
+
+
+.theme-toggle i {
+  transition:
+    transform 0.25s ease;
+}
+
+
+.theme-toggle:hover i {
+  transform: rotate(12deg);
 }
 
 
@@ -320,12 +412,11 @@ html[data-theme="dark"]
 ========================= */
 
 .site-nav {
-  display: grid;
-
-  grid-template-columns:
-    44px minmax(0, 1fr) 44px;
+  display: flex;
 
   align-items: center;
+
+  justify-content: center;
 
   width: 100%;
 
@@ -337,21 +428,11 @@ html[data-theme="dark"]
 }
 
 
-/* Symmetrical Spacer */
-.site-nav::before {
-  content: "";
-
-  grid-column: 1;
-}
-
-
 /* =========================
    NAVIGATION LINK GROUP
 ========================= */
 
 .nav-links {
-  grid-column: 2;
-
   display: flex;
 
   align-items: center;
@@ -359,8 +440,6 @@ html[data-theme="dark"]
   justify-content: center;
 
   gap: 8px;
-
-  min-width: 0;
 }
 
 
@@ -494,82 +573,6 @@ html[data-theme="dark"]
     2px solid var(--focus-ring);
 
   outline-offset: 2px;
-}
-
-
-/* =========================
-   THEME TOGGLE
-========================= */
-
-.theme-toggle {
-  grid-column: 3;
-
-  justify-self: end;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 36px;
-
-  height: 36px;
-
-  margin: 0;
-
-  padding: 0;
-
-  border: none;
-
-  border-radius: 7px;
-
-  background: transparent;
-
-  color: var(--nav-text);
-
-  font-size: 15px;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-.theme-toggle:hover {
-  color: var(--accent);
-
-  background: var(--surface-hover);
-
-  transform: translateY(-1px);
-}
-
-
-.theme-toggle:focus-visible {
-  color: var(--accent);
-
-  background: var(--surface-hover);
-
-  outline:
-    2px solid var(--focus-ring);
-
-  outline-offset: 2px;
-}
-
-
-.theme-toggle i {
-  transition:
-    transform 0.25s ease;
-}
-
-
-.theme-toggle:hover i {
-  transform: rotate(12deg);
 }
 
 
@@ -1423,27 +1426,40 @@ html[data-theme="dark"]
 
 
   /* =========================
+     THEME CONTROL
+  ========================= */
+
+  .content-toolbar {
+    height: 34px;
+
+    margin-bottom: 1px;
+  }
+
+
+  .theme-toggle {
+    width: 34px;
+
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+
+  .theme-toggle:hover {
+    transform: none;
+  }
+
+
+  /* =========================
      NAVIGATION
   ========================= */
 
   .site-nav {
-    grid-template-columns:
-      minmax(0, 1fr) 36px;
-
-    column-gap: 7px;
-
     margin-bottom: 26px;
   }
 
 
-  .site-nav::before {
-    display: none;
-  }
-
-
   .nav-links {
-    grid-column: 1;
-
     flex-wrap: wrap;
 
     justify-content: center;
@@ -1472,24 +1488,6 @@ html[data-theme="dark"]
 
 
   .nav-links a:hover {
-    transform: none;
-  }
-
-
-  .theme-toggle {
-    grid-column: 2;
-
-    width: 34px;
-
-    height: 34px;
-
-    font-size: 14px;
-
-    border-radius: 6px;
-  }
-
-
-  .theme-toggle:hover {
     transform: none;
   }
 
