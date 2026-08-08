@@ -17,6 +17,51 @@
   {% seo title=false %}
 
 
+  <!-- =========================
+       INITIAL THEME DETECTION
+       Runs before page rendering
+  ========================== -->
+
+  <script>
+    (function () {
+
+      const storageKey = "farhad-theme";
+
+      let savedTheme = null;
+
+      try {
+        savedTheme = localStorage.getItem(storageKey);
+      } catch (error) {
+        savedTheme = null;
+      }
+
+
+      const systemPrefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+
+      const initialTheme =
+        savedTheme === "dark" || savedTheme === "light"
+          ? savedTheme
+          : systemPrefersDark
+            ? "dark"
+            : "light";
+
+
+      document.documentElement.setAttribute(
+        "data-theme",
+        initialTheme
+      );
+
+
+      document.documentElement.style.colorScheme =
+        initialTheme;
+
+    })();
+  </script>
+
+
   <!-- Main Theme Stylesheet -->
   <link
     rel="stylesheet"
@@ -297,6 +342,27 @@
       </a>
 
 
+
+      <!-- =========================
+           THEME TOGGLE
+      ========================== -->
+
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch theme"
+        title="Switch theme"
+      >
+
+        <i
+          class="fa-solid fa-moon"
+          aria-hidden="true">
+        </i>
+
+      </button>
+
+
     </nav>
 
 
@@ -353,6 +419,205 @@
 
 <!-- Theme Responsive Scaling Script -->
 <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+
+
+
+<!-- =========================
+     LIGHT / DARK THEME SCRIPT
+========================= -->
+
+<script>
+
+  (function () {
+
+
+    const storageKey = "farhad-theme";
+
+    const root =
+      document.documentElement;
+
+    const toggle =
+      document.getElementById("theme-toggle");
+
+    const icon =
+      toggle.querySelector("i");
+
+    const systemTheme =
+      window.matchMedia("(prefers-color-scheme: dark)");
+
+
+
+    /* =========================
+       GET SAVED PREFERENCE
+    ========================== */
+
+    function getSavedTheme() {
+
+      try {
+
+        const saved =
+          localStorage.getItem(storageKey);
+
+        if (
+          saved === "light" ||
+          saved === "dark"
+        ) {
+          return saved;
+        }
+
+      } catch (error) {
+        return null;
+      }
+
+
+      return null;
+
+    }
+
+
+
+    /* =========================
+       APPLY THEME
+    ========================== */
+
+    function applyTheme(theme) {
+
+      root.setAttribute(
+        "data-theme",
+        theme
+      );
+
+
+      root.style.colorScheme =
+        theme;
+
+
+      if (theme === "dark") {
+
+        icon.className =
+          "fa-solid fa-sun";
+
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to light mode"
+        );
+
+        toggle.setAttribute(
+          "title",
+          "Switch to light mode"
+        );
+
+      } else {
+
+        icon.className =
+          "fa-solid fa-moon";
+
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to dark mode"
+        );
+
+        toggle.setAttribute(
+          "title",
+          "Switch to dark mode"
+        );
+
+      }
+
+    }
+
+
+
+    /* =========================
+       INITIAL BUTTON STATE
+    ========================== */
+
+    const currentTheme =
+      root.getAttribute("data-theme") || "light";
+
+
+    applyTheme(currentTheme);
+
+
+
+    /* =========================
+       USER TOGGLE
+    ========================== */
+
+    toggle.addEventListener(
+      "click",
+      function () {
+
+        const current =
+          root.getAttribute("data-theme");
+
+
+        const nextTheme =
+          current === "dark"
+            ? "light"
+            : "dark";
+
+
+        try {
+
+          localStorage.setItem(
+            storageKey,
+            nextTheme
+          );
+
+        } catch (error) {
+          /* Continue without persistence */
+        }
+
+
+        applyTheme(nextTheme);
+
+      }
+    );
+
+
+
+    /* =========================
+       FOLLOW SYSTEM THEME
+       Only if user has not
+       manually selected a theme
+    ========================== */
+
+    function handleSystemThemeChange(event) {
+
+      if (getSavedTheme()) {
+        return;
+      }
+
+
+      applyTheme(
+        event.matches
+          ? "dark"
+          : "light"
+      );
+
+    }
+
+
+    if (systemTheme.addEventListener) {
+
+      systemTheme.addEventListener(
+        "change",
+        handleSystemThemeChange
+      );
+
+    } else if (systemTheme.addListener) {
+
+      systemTheme.addListener(
+        handleSystemThemeChange
+      );
+
+    }
+
+
+  })();
+
+</script>
 
 
 </body>
