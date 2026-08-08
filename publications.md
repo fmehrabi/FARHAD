@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /publication/
+permalink: /publications/
 ---
 
 <section class="publication-section">
@@ -8,6 +8,7 @@ permalink: /publication/
   <h3 class="publication-section-title">
     Conference Paper
   </h3>
+
 
   <article class="publication-item">
 
@@ -58,3 +59,8 @@ permalink: /publication/
     <p>
       This work provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions. From a practical perspective, reducing exploration time and traveled distance can improve the operational efficiency of autonomous mobile robots, particularly in applications where battery capacity, navigation time, and environmental complexity are important constraints.
     </p>
+
+
+  </article>
+
+</section>
