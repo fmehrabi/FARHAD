@@ -8,7 +8,7 @@ permalink: /experience/
      RESEARCH EXPERIENCE
 ========================= -->
 
-<section class="experience-section">
+<div class="experience-section">
 
   <h3 class="experience-section-title">
     Research Experience
@@ -103,7 +103,7 @@ permalink: /experience/
 
   </article>
 
-</section>
+</div>
 
 
 
@@ -111,7 +111,7 @@ permalink: /experience/
      TEACHING EXPERIENCE
 ========================= -->
 
-<section class="experience-section">
+<div class="experience-section">
 
   <h3 class="experience-section-title">
     Teaching Experience
@@ -198,7 +198,7 @@ permalink: /experience/
 
   </article>
 
-</section>
+</div>
 
 
 
@@ -206,7 +206,7 @@ permalink: /experience/
      PROFESSIONAL EXPERIENCE
 ========================= -->
 
-<section class="experience-section">
+<div class="experience-section">
 
   <h3 class="experience-section-title">
     Professional Experience
@@ -256,4 +256,4 @@ permalink: /experience/
 
   </article>
 
-</section>
+</div>
