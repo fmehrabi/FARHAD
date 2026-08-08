@@ -19,7 +19,6 @@
 
   <!-- =========================
        INITIAL THEME DETECTION
-       Runs before page rendering
   ========================== -->
 
   <script>
@@ -29,10 +28,16 @@
 
       let savedTheme = null;
 
+
       try {
-        savedTheme = localStorage.getItem(storageKey);
+
+        savedTheme =
+          localStorage.getItem(storageKey);
+
       } catch (error) {
+
         savedTheme = null;
+
       }
 
 
@@ -237,7 +242,7 @@
 
       <!-- LinkedIn -->
       <a
-        href="https://linkedin.com/in/mehrabii"
+        href="https://www.linkedin.com/in/mehrabii/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
@@ -294,52 +299,59 @@
     >
 
 
-      <!-- About -->
-      <a
-        href="{{ '/' | relative_url }}"
-        {% if page.url == '/' %}
-          class="active"
-          aria-current="page"
-        {% endif %}
-      >
-        About
-      </a>
+      <!-- Navigation Links -->
+      <div class="nav-links">
 
 
-      <!-- Research -->
-      <a
-        href="{{ '/research/' | relative_url }}"
-        {% if page.url == '/research/' %}
-          class="active"
-          aria-current="page"
-        {% endif %}
-      >
-        Research
-      </a>
+        <!-- About -->
+        <a
+          href="{{ '/' | relative_url }}"
+          {% if page.url == '/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          About
+        </a>
 
 
-      <!-- Publication -->
-      <a
-        href="{{ '/publications/' | relative_url }}"
-        {% if page.url == '/publications/' %}
-          class="active"
-          aria-current="page"
-        {% endif %}
-      >
-        Publication
-      </a>
+        <!-- Research -->
+        <a
+          href="{{ '/research/' | relative_url }}"
+          {% if page.url == '/research/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Research
+        </a>
 
 
-      <!-- Experience -->
-      <a
-        href="{{ '/experience/' | relative_url }}"
-        {% if page.url == '/experience/' %}
-          class="active"
-          aria-current="page"
-        {% endif %}
-      >
-        Experience
-      </a>
+        <!-- Publication -->
+        <a
+          href="{{ '/publications/' | relative_url }}"
+          {% if page.url == '/publications/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Publication
+        </a>
+
+
+        <!-- Experience -->
+        <a
+          href="{{ '/experience/' | relative_url }}"
+          {% if page.url == '/experience/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Experience
+        </a>
+
+
+      </div>
 
 
 
@@ -431,16 +443,21 @@
   (function () {
 
 
-    const storageKey = "farhad-theme";
+    const storageKey =
+      "farhad-theme";
+
 
     const root =
       document.documentElement;
 
+
     const toggle =
       document.getElementById("theme-toggle");
 
+
     const icon =
       toggle.querySelector("i");
+
 
     const systemTheme =
       window.matchMedia("(prefers-color-scheme: dark)");
@@ -458,15 +475,20 @@
         const saved =
           localStorage.getItem(storageKey);
 
+
         if (
           saved === "light" ||
           saved === "dark"
         ) {
+
           return saved;
+
         }
 
       } catch (error) {
+
         return null;
+
       }
 
 
@@ -482,6 +504,7 @@
 
     function applyTheme(theme) {
 
+
       root.setAttribute(
         "data-theme",
         theme
@@ -494,33 +517,41 @@
 
       if (theme === "dark") {
 
+
         icon.className =
           "fa-solid fa-sun";
+
 
         toggle.setAttribute(
           "aria-label",
           "Switch to light mode"
         );
 
+
         toggle.setAttribute(
           "title",
           "Switch to light mode"
         );
 
+
       } else {
+
 
         icon.className =
           "fa-solid fa-moon";
 
+
         toggle.setAttribute(
           "aria-label",
           "Switch to dark mode"
         );
 
+
         toggle.setAttribute(
           "title",
           "Switch to dark mode"
         );
+
 
       }
 
@@ -548,6 +579,7 @@
       "click",
       function () {
 
+
         const current =
           root.getAttribute("data-theme");
 
@@ -566,7 +598,9 @@
           );
 
         } catch (error) {
+
           /* Continue without persistence */
+
         }
 
 
@@ -579,14 +613,16 @@
 
     /* =========================
        FOLLOW SYSTEM THEME
-       Only if user has not
-       manually selected a theme
+       ONLY WITHOUT USER CHOICE
     ========================== */
 
     function handleSystemThemeChange(event) {
 
+
       if (getSavedTheme()) {
+
         return;
+
       }
 
 
@@ -599,18 +635,23 @@
     }
 
 
+
     if (systemTheme.addEventListener) {
+
 
       systemTheme.addEventListener(
         "change",
         handleSystemThemeChange
       );
 
+
     } else if (systemTheme.addListener) {
+
 
       systemTheme.addListener(
         handleSystemThemeChange
       );
+
 
     }
 
