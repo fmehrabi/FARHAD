@@ -1,1795 +1,675 @@
----
----
+<!DOCTYPE html>
 
-@import "jekyll-theme-minimal";
+<html lang="{{ site.lang | default: 'en-US' }}">
 
+<head>
 
-/* =========================
-   COLOR SYSTEM
-   LIGHT THEME
-========================= */
+  <meta charset="UTF-8">
 
-:root {
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  --page-bg: #ffffff;
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  --surface: #fafafa;
-  --surface-hover: #f2f8f9;
-  --surface-accent: #eef6f8;
 
-  --heading: #333;
-  --heading-strong: #222;
+  <!-- Browser Tab Title -->
+  <title>{{ site.title }}</title>
 
-  --text: #555;
-  --text-soft: #666;
-  --text-muted: #777;
+  {% seo title=false %}
 
-  --border: #e8e8e8;
 
-  --accent: #278ca8;
-  --accent-hover: #1f7188;
+  <!-- =========================
+       INITIAL THEME DETECTION
+  ========================== -->
 
-  --nav-text: #555;
+  <script>
 
-  --icon-color: #555;
+    (function () {
 
-  --focus-ring: rgba(39, 140, 168, 0.35);
+      const storageKey = "farhad-theme";
 
-  --card-shadow: rgba(0, 0, 0, 0.06);
+      let savedTheme = null;
 
-}
 
+      try {
 
-/* =========================
-   DARK THEME
-========================= */
+        savedTheme =
+          localStorage.getItem(storageKey);
 
-html[data-theme="dark"] {
+      } catch (error) {
 
-  --page-bg: #111416;
+        savedTheme = null;
 
-  --surface: #181c1f;
-  --surface-hover: #1d292e;
-  --surface-accent: #183038;
+      }
 
-  --heading: #e6eaec;
-  --heading-strong: #f0f3f4;
 
-  --text: #c6ced2;
-  --text-soft: #aeb8bd;
-  --text-muted: #8f9aa0;
+      const systemPrefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  --border: #2b3338;
 
-  --accent: #45a7c2;
-  --accent-hover: #68bdd2;
+      const initialTheme =
+        savedTheme === "dark" || savedTheme === "light"
+          ? savedTheme
+          : systemPrefersDark
+            ? "dark"
+            : "light";
 
-  --nav-text: #bcc5c9;
 
-  --icon-color: #b9c2c6;
+      document.documentElement.setAttribute(
+        "data-theme",
+        initialTheme
+      );
 
-  --focus-ring: rgba(69, 167, 194, 0.45);
 
-  --card-shadow: rgba(0, 0, 0, 0.28);
+      document.documentElement.style.colorScheme =
+        initialTheme;
 
-}
+    })();
 
+  </script>
 
-/* =========================
-   GLOBAL THEME
-========================= */
 
-html {
-  background: var(--page-bg);
-}
+  <!-- Main Theme Stylesheet -->
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"
+  >
 
 
-body {
-  background: var(--page-bg);
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
 
-  color: var(--text);
 
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
-}
+  <!-- Support for Older Internet Explorer Versions -->
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
 
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--heading);
-}
+  {% include head-custom.html %}
 
+</head>
 
-p,
-li {
-  color: var(--text);
-}
 
+<body>
 
-footer {
-  color: var(--text-muted);
-}
 
+<div class="wrapper">
 
-footer a {
-  color: var(--accent);
-}
 
+  <!-- =========================
+       LEFT SIDEBAR / PROFILE
+  ========================== -->
 
-footer a:hover {
-  color: var(--accent-hover);
-}
+  <header>
 
 
-/* =========================
-   DESKTOP LAYOUT WIDTH
+    <!-- Name / Website Title -->
+    <h1>
 
-   Left sidebar stays unchanged.
+      <a href="{{ '/' | relative_url }}">
 
-   Left sidebar: 270px
-   Gap:          90px
-   Right side:   560px
+        {{ site.title | default: site.github.repository_name }}
 
-   Total:        920px
-========================= */
+      </a>
 
-@media screen and (min-width: 961px) {
+    </h1>
 
-  .wrapper {
-    width: 920px !important;
-  }
 
 
-  .wrapper > section.main-content {
-    width: 560px !important;
-    float: right;
-  }
+    <!-- Profile Photo -->
+    {% if site.logo %}
 
+    <img
+      src="{{ site.logo | relative_url }}"
+      alt="Farhad Mehrabi"
+    >
 
-  /*
-     IMPORTANT:
-     Minimal Theme applies
-     width: 500px and float: right
-     to every section.
+    {% endif %}
 
-     These inner page sections must
-     use the full 560px content width.
-  */
 
-  .main-content .page-content > section {
-    width: 100% !important;
 
-    float: none !important;
+    <!-- Academic Position -->
+    <p class="profile-description">
 
-    padding-bottom: 0 !important;
-  }
+      <i
+        class="fa-solid fa-graduation-cap profile-icon"
+        aria-hidden="true">
+      </i>
 
-}
+      {{ site.description | default: site.github.project_tagline }}
 
+    </p>
 
-/* =========================
-   PROFILE / LEFT SIDEBAR
-========================= */
 
-header h1 {
-  margin-bottom: 18px;
-}
 
+    <!-- Research Interests in Sidebar -->
+    {% if site.research_interests %}
 
-header h1 a {
-  color: var(--accent);
+    <div class="research-focus">
 
-  text-decoration: none;
+      {% for interest in site.research_interests %}
 
-  transition: color 0.2s ease;
-}
+        <div>
+          {{ interest }}
+        </div>
 
+      {% endfor %}
 
-header h1 a:hover {
-  color: var(--accent-hover);
+    </div>
 
-  text-decoration: none;
-}
+    {% endif %}
 
 
-/* =========================
-   PROFILE PHOTO
-========================= */
 
-header img {
-  width: 220px;
-  height: 220px;
+    <!-- =========================
+         ACADEMIC & SOCIAL LINKS
+    ========================== -->
 
-  object-fit: cover;
+    <div class="social-links">
 
-  border-radius: 50%;
 
-  display: block;
+      <!-- Email -->
+      <a
+        href="mailto:FarhaadMehrabi@gmail.com"
+        aria-label="Email"
+        title="Email"
+      >
 
-  margin-bottom: 18px;
-}
+        <i
+          class="fa-solid fa-envelope"
+          aria-hidden="true">
+        </i>
 
+      </a>
 
-/* =========================
-   ACADEMIC POSITION
-========================= */
 
-.profile-description {
-  margin: 0 0 4px 0;
 
-  font-size: 16px;
+      <!-- Google Scholar -->
+      <a
+        href="https://scholar.google.com/citations?user=sMO1fjQAAAAJ&hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Google Scholar"
+        title="Google Scholar"
+      >
 
-  line-height: 1.7;
+        <i
+          class="fa-brands fa-google-scholar"
+          aria-hidden="true">
+        </i>
 
-  font-style: normal;
+      </a>
 
-  font-weight: 400;
 
-  color: var(--text);
-}
 
+      <!-- ResearchGate -->
+      <a
+        href="https://www.researchgate.net/profile/Farhad-Mehrabi-4"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="ResearchGate"
+        title="ResearchGate"
+      >
 
-.profile-description em {
-  font-style: normal;
-}
+        <i
+          class="fa-brands fa-researchgate"
+          aria-hidden="true">
+        </i>
 
+      </a>
 
-.profile-icon {
-  margin-right: 7px;
 
-  font-size: 14px;
 
-  font-style: normal;
+      <!-- ORCID -->
+      <a
+        href="https://orcid.org/0009-0009-6995-3292"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="ORCID"
+        title="ORCID"
+      >
 
-  color: var(--icon-color);
-}
+        <i
+          class="fa-brands fa-orcid"
+          aria-hidden="true">
+        </i>
 
+      </a>
 
-/* =========================
-   RESEARCH INTERESTS
-   LEFT SIDEBAR
-========================= */
 
-.research-focus {
-  margin: 0 0 18px 0;
 
-  font-size: 13px;
+      <!-- LinkedIn -->
+      <a
+        href="https://www.linkedin.com/in/mehrabii/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        title="LinkedIn"
+      >
 
-  line-height: 1.7;
+        <i
+          class="fa-brands fa-linkedin"
+          aria-hidden="true">
+        </i>
 
-  color: var(--text-soft);
-}
+      </a>
 
 
-.research-focus div {
-  margin: 0;
 
-  padding: 0;
+      <!-- GitHub -->
+      <a
+        href="https://github.com/fmehrabi"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+      >
 
-  color: var(--text-soft);
-}
+        <i
+          class="fa-brands fa-github"
+          aria-hidden="true">
+        </i>
 
+      </a>
 
-/* =========================
-   SOCIAL & ACADEMIC ICONS
-========================= */
 
-.social-links {
-  display: flex;
+    </div>
 
-  align-items: center;
 
-  gap: 14px;
+  </header>
 
-  margin-top: 12px;
 
-  margin-bottom: 24px;
-}
 
+  <!-- =========================
+       MAIN WEBSITE CONTENT
+  ========================== -->
 
-.social-links a {
-  display: inline-flex;
+  <section class="main-content">
 
-  align-items: center;
 
-  justify-content: center;
+    <!-- =========================
+         THEME CONTROL
+         TOP RIGHT
+    ========================== -->
 
-  font-size: 29px;
+    <div class="content-toolbar">
 
-  color: var(--icon-color);
+      <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch theme"
+        title="Switch theme"
+      >
 
-  text-decoration: none;
+        <i
+          class="fa-solid fa-moon"
+          aria-hidden="true">
+        </i>
 
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
+      </button>
 
+    </div>
 
-.social-links a:hover {
-  text-decoration: none;
 
-  transform: translateY(-3px);
-}
 
+    <!-- =========================
+         MAIN NAVIGATION
+    ========================== -->
 
-/* Email */
-.social-links a[title="Email"]:hover {
-  color: #EA4335;
-}
+    <nav
+      class="site-nav"
+      aria-label="Primary navigation"
+    >
 
+      <div class="nav-links">
 
-/* Google Scholar */
-.social-links a[title="Google Scholar"]:hover {
-  color: #4285F4;
-}
 
+        <!-- About -->
+        <a
+          href="{{ '/' | relative_url }}"
+          {% if page.url == '/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          About
+        </a>
 
-/* ResearchGate */
-.social-links a[title="ResearchGate"]:hover {
-  color: #00CCBB;
-}
 
+        <!-- Research -->
+        <a
+          href="{{ '/research/' | relative_url }}"
+          {% if page.url == '/research/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Research
+        </a>
 
-/* ORCID */
-.social-links a[title="ORCID"]:hover {
-  color: #A6CE39;
-}
 
+        <!-- Publication -->
+        <a
+          href="{{ '/publications/' | relative_url }}"
+          {% if page.url == '/publications/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Publication
+        </a>
 
-/* LinkedIn */
-.social-links a[title="LinkedIn"]:hover {
-  color: #0A66C2;
-}
 
+        <!-- Experience -->
+        <a
+          href="{{ '/experience/' | relative_url }}"
+          {% if page.url == '/experience/' %}
+            class="active"
+            aria-current="page"
+          {% endif %}
+        >
+          Experience
+        </a>
 
-/* GitHub */
-.social-links a[title="GitHub"]:hover {
-  color: #181717;
-}
 
+      </div>
 
-/* GitHub in Dark Mode */
-html[data-theme="dark"]
-.social-links a[title="GitHub"]:hover {
-  color: #f0f3f4;
-}
+    </nav>
 
 
-/* =========================
-   CONTENT TOOLBAR
-   THEME BUTTON
-========================= */
 
-.content-toolbar {
-  display: flex;
+    <!-- =========================
+         PAGE CONTENT + FADE
+    ========================== -->
 
-  align-items: center;
+    <div class="page-content">
 
-  justify-content: flex-end;
+      {{ content }}
 
-  width: 100%;
+    </div>
 
-  height: 36px;
 
-  margin: 0 0 -2px 0;
-}
+  </section>
 
 
-/* =========================
-   THEME TOGGLE
-========================= */
 
-.theme-toggle {
-  display: inline-flex;
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
-  align-items: center;
+  <footer>
 
-  justify-content: center;
+    <p>
 
-  width: 36px;
+      <small>
 
-  height: 36px;
+        Hosted on GitHub Pages
 
-  margin: 0;
+        &mdash;
 
-  padding: 0;
+        Theme by
 
-  border: none;
+        <a
+          href="https://github.com/orderedlist"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          orderedlist
+        </a>
 
-  border-radius: 50%;
+      </small>
 
-  background: transparent;
+    </p>
 
-  color: var(--nav-text);
+  </footer>
 
-  font-size: 15px;
 
-  line-height: 1;
+</div>
 
-  cursor: pointer;
 
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
 
+<!-- Theme Responsive Scaling Script -->
+<script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
-.theme-toggle:hover {
-  color: var(--accent);
 
-  background: var(--surface-hover);
 
-  transform: translateY(-1px);
-}
+<!-- =========================
+     LIGHT / DARK THEME SCRIPT
+========================= -->
 
+<script>
 
-.theme-toggle:focus-visible {
-  color: var(--accent);
+  (function () {
 
-  background: var(--surface-hover);
 
-  outline:
-    2px solid var(--focus-ring);
+    const storageKey =
+      "farhad-theme";
 
-  outline-offset: 2px;
-}
 
+    const root =
+      document.documentElement;
 
-.theme-toggle i {
-  transition:
-    transform 0.25s ease;
-}
 
+    const toggle =
+      document.getElementById("theme-toggle");
 
-.theme-toggle:hover i {
-  transform: rotate(12deg);
-}
 
+    if (!toggle) {
+      return;
+    }
 
-/* =========================
-   MAIN NAVIGATION
-========================= */
 
-.site-nav {
-  display: flex;
+    const icon =
+      toggle.querySelector("i");
 
-  align-items: center;
 
-  justify-content: center;
+    const systemTheme =
+      window.matchMedia("(prefers-color-scheme: dark)");
 
-  width: 100%;
 
-  margin-bottom: 34px;
 
-  padding: 0;
+    /* =========================
+       GET SAVED PREFERENCE
+    ========================== */
 
-  border: none;
-}
+    function getSavedTheme() {
 
+      try {
 
-/* =========================
-   NAVIGATION LINK GROUP
-========================= */
+        const saved =
+          localStorage.getItem(storageKey);
 
-.nav-links {
-  display: flex;
 
-  align-items: center;
+        if (
+          saved === "light" ||
+          saved === "dark"
+        ) {
 
-  justify-content: center;
+          return saved;
 
-  gap: 8px;
-}
+        }
 
+      } catch (error) {
 
-/* Navigation Links */
-.nav-links a {
-  position: relative;
+        return null;
 
-  display: inline-block;
+      }
 
-  padding: 9px 11px 11px;
 
-  font-size: 16px;
+      return null;
 
-  font-weight: 600;
+    }
 
-  line-height: 1.4;
 
-  color: var(--nav-text);
 
-  background: transparent;
+    /* =========================
+       APPLY THEME
+    ========================== */
 
-  border-radius: 7px;
+    function applyTheme(theme) {
 
-  text-decoration: none;
 
-  white-space: nowrap;
+      root.setAttribute(
+        "data-theme",
+        theme
+      );
 
-  transition:
-    color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
 
+      root.style.colorScheme =
+        theme;
 
-/* Animated Underline */
-.nav-links a::after {
-  content: "";
 
-  position: absolute;
+      if (theme === "dark") {
 
-  left: 11px;
 
-  right: 11px;
+        icon.className =
+          "fa-solid fa-sun";
 
-  bottom: 3px;
 
-  height: 2px;
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to light mode"
+        );
 
-  background: var(--accent);
 
-  border-radius: 999px;
+        toggle.setAttribute(
+          "title",
+          "Switch to light mode"
+        );
 
-  transform: scaleX(0);
 
-  transform-origin: center;
+      } else {
 
-  transition:
-    transform 0.22s ease,
-    opacity 0.22s ease;
-}
 
+        icon.className =
+          "fa-solid fa-moon";
 
-/* Navigation Hover */
-.nav-links a:hover {
-  color: var(--accent);
 
-  background: var(--surface-hover);
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to dark mode"
+        );
 
-  text-decoration: none;
 
-  transform: translateY(-1px);
-}
+        toggle.setAttribute(
+          "title",
+          "Switch to dark mode"
+        );
 
 
-/* Short Underline on Hover */
-.nav-links a:hover::after {
-  transform: scaleX(0.45);
-}
+      }
 
+    }
 
-/* Active Navigation Item */
-.nav-links a.active {
-  color: var(--accent);
 
-  background: transparent;
-}
 
+    /* =========================
+       INITIAL BUTTON STATE
+    ========================== */
 
-/* Full Underline for Active Tab */
-.nav-links a.active::after {
-  transform: scaleX(1);
+    const currentTheme =
+      root.getAttribute("data-theme") || "light";
 
-  animation:
-    activeNavUnderline 0.38s ease both;
-}
 
+    applyTheme(currentTheme);
 
-/* Active Tab Hover */
-.nav-links a.active:hover {
-  color: var(--accent);
 
-  background: var(--surface-hover);
-}
 
+    /* =========================
+       USER TOGGLE
+    ========================== */
 
-/* Active Underline Entrance */
-@keyframes activeNavUnderline {
+    toggle.addEventListener(
+      "click",
+      function () {
 
-  from {
-    opacity: 0;
 
-    transform: scaleX(0);
-  }
+        const current =
+          root.getAttribute("data-theme");
 
-  to {
-    opacity: 1;
 
-    transform: scaleX(1);
-  }
+        const nextTheme =
+          current === "dark"
+            ? "light"
+            : "dark";
 
-}
 
+        try {
 
-/* Keyboard Navigation */
-.nav-links a:focus-visible {
-  color: var(--accent);
+          localStorage.setItem(
+            storageKey,
+            nextTheme
+          );
 
-  background: var(--surface-hover);
+        } catch (error) {
 
-  outline:
-    2px solid var(--focus-ring);
+          /* Continue without persistence */
 
-  outline-offset: 2px;
-}
+        }
 
 
-/* =========================
-   PAGE FADE TRANSITION
-========================= */
+        applyTheme(nextTheme);
 
-.page-content {
-  width: 100%;
+      }
+    );
 
-  animation:
-    pageFadeIn 0.9s ease both;
-}
 
 
-@keyframes pageFadeIn {
+    /* =========================
+       FOLLOW SYSTEM THEME
+       ONLY WITHOUT USER CHOICE
+    ========================== */
 
-  from {
-    opacity: 0;
+    function handleSystemThemeChange(event) {
 
-    transform: translateY(6px);
-  }
 
-  to {
-    opacity: 1;
+      if (getSavedTheme()) {
 
-    transform: translateY(0);
-  }
+        return;
 
-}
+      }
 
 
-/* =========================
-   REDUCED MOTION
-========================= */
+      applyTheme(
+        event.matches
+          ? "dark"
+          : "light"
+      );
 
-@media (prefers-reduced-motion: reduce) {
+    }
 
-  .page-content {
-    animation: none;
-  }
 
 
-  .nav-links a,
-  .nav-links a::after,
-  .theme-toggle,
-  .theme-toggle i {
-    transition: none;
-  }
+    if (systemTheme.addEventListener) {
 
 
-  .nav-links a.active::after {
-    animation: none;
-  }
+      systemTheme.addEventListener(
+        "change",
+        handleSystemThemeChange
+      );
 
-}
 
+    } else if (systemTheme.addListener) {
 
-/* =========================
-   ABOUT ME
-========================= */
 
-.about-text {
-  margin-top: 18px;
+      systemTheme.addListener(
+        handleSystemThemeChange
+      );
 
-  margin-bottom: 34px;
 
-  padding: 22px 24px;
+    }
 
-  background: var(--surface);
 
-  border-left:
-    3px solid var(--accent);
+  })();
 
-  border-radius:
-    0 8px 8px 0;
+</script>
 
-  text-align: justify;
 
-  text-justify: inter-word;
+</body>
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.25s ease;
-}
-
-
-.about-text:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 4px 14px var(--card-shadow);
-}
-
-
-.about-text p {
-  margin-top: 0;
-
-  margin-bottom: 14px;
-
-  font-size: 14px;
-
-  line-height: 1.75;
-
-  color: var(--text);
-
-  text-align: justify;
-
-  text-justify: inter-word;
-}
-
-
-.about-text p:last-child {
-  margin-bottom: 0;
-}
-
-
-.about-text a {
-  color: var(--accent);
-
-  font-weight: 500;
-
-  text-decoration: none;
-
-  transition:
-    color 0.2s ease;
-}
-
-
-.about-text a:hover {
-  color: var(--accent-hover);
-
-  text-decoration: underline;
-
-  text-decoration-thickness: 1px;
-
-  text-underline-offset: 3px;
-}
-
-
-.about-text strong {
-  font-weight: 600;
-
-  color: var(--heading);
-}
-
-
-/* =========================
-   RESEARCH PAGE
-========================= */
-
-.research-section {
-  margin-top: 24px;
-
-  margin-bottom: 38px;
-}
-
-
-.research-section-title {
-  margin-top: 0;
-
-  margin-bottom: 16px;
-
-  padding-bottom: 7px;
-
-  font-size: 18px;
-
-  font-weight: 600;
-
-  line-height: 1.4;
-
-  color: var(--heading);
-
-  border-bottom:
-    1px solid var(--border);
-}
-
-
-/* =========================
-   RESEARCH PROJECT CARD
-========================= */
-
-.research-project {
-  margin-top: 16px;
-
-  margin-bottom: 28px;
-
-  padding: 22px 24px;
-
-  background: var(--surface);
-
-  border-left:
-    3px solid var(--accent);
-
-  border-radius:
-    0 8px 8px 0;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.25s ease;
-}
-
-
-.research-project:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 4px 14px var(--card-shadow);
-}
-
-
-/* Project Title */
-.research-project-title {
-  margin-top: 0;
-
-  margin-bottom: 7px;
-
-  font-size: 16px;
-
-  font-weight: 600;
-
-  line-height: 1.5;
-
-  color: var(--accent);
-}
-
-
-/* Project Type / Institution / Year */
-.research-project-meta {
-  margin-top: 0 !important;
-
-  margin-bottom: 14px !important;
-
-  font-size: 12.5px !important;
-
-  line-height: 1.6 !important;
-
-  color:
-    var(--text-muted) !important;
-
-  text-align: left !important;
-
-  font-style: italic;
-}
-
-
-/* Project Summary */
-.research-project-summary {
-  margin-top: 0 !important;
-
-  margin-bottom: 16px !important;
-
-  font-size: 14px !important;
-
-  line-height: 1.75 !important;
-
-  color:
-    var(--text) !important;
-
-  text-align:
-    justify !important;
-
-  text-justify: inter-word;
-}
-
-
-/* Other Project Paragraphs */
-.research-project p {
-  margin-top: 0;
-
-  margin-bottom: 14px;
-
-  font-size: 14px;
-
-  line-height: 1.75;
-
-  color: var(--text);
-
-  text-align: justify;
-
-  text-justify: inter-word;
-}
-
-
-.research-project p:last-child {
-  margin-bottom: 0;
-}
-
-
-/* =========================
-   RESEARCH PROJECT SUBHEADING
-========================= */
-
-.research-project-subheading {
-  position: relative;
-
-  margin-top: 21px;
-
-  margin-bottom: 8px;
-
-  padding-left: 18px;
-
-  font-size: 15px;
-
-  font-weight: 600;
-
-  line-height: 1.45;
-
-  color: var(--heading);
-}
-
-
-.research-project-subheading::before {
-  content: "▸";
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--accent);
-
-  font-size: 14px;
-
-  font-weight: 700;
-}
-
-
-/* =========================
-   RESEARCH PROJECT DETAILS
-========================= */
-
-.research-project-details {
-  margin: 4px 0 0 0;
-
-  padding: 0;
-
-  list-style: none;
-}
-
-
-.research-project-details li {
-  position: relative;
-
-  margin: 0 0 9px 0;
-
-  padding-left: 18px;
-
-  font-size: 13.5px;
-
-  line-height: 1.72;
-
-  color: var(--text);
-
-  text-align: justify;
-
-  text-justify: inter-word;
-}
-
-
-.research-project-details li:last-child {
-  margin-bottom: 0;
-}
-
-
-.research-project-details li::before {
-  content: "▸";
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--accent);
-
-  font-size: 13px;
-
-  font-weight: 700;
-}
-
-
-/* =========================
-   PUBLICATION SECTIONS
-========================= */
-
-.publication-section {
-  margin-top: 24px;
-
-  margin-bottom: 38px;
-}
-
-
-.publication-section-title {
-  margin-top: 0;
-
-  margin-bottom: 16px;
-
-  padding-bottom: 7px;
-
-  font-size: 18px;
-
-  font-weight: 600;
-
-  line-height: 1.4;
-
-  color: var(--heading);
-
-  border-bottom:
-    1px solid var(--border);
-}
-
-
-/* =========================
-   PUBLICATION CARD
-========================= */
-
-.publication-item {
-  margin-top: 16px;
-
-  margin-bottom: 32px;
-
-  padding: 22px 24px;
-
-  background: var(--surface);
-
-  border-left:
-    3px solid var(--accent);
-
-  border-radius:
-    0 8px 8px 0;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.25s ease;
-}
-
-
-.publication-item:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 4px 14px var(--card-shadow);
-}
-
-
-/* =========================
-   PAPER TITLE
-========================= */
-
-.publication-title {
-  margin-top: 0;
-
-  margin-bottom: 10px;
-
-  font-size: 16px;
-
-  font-weight: 600;
-
-  line-height: 1.55;
-}
-
-
-.publication-title a {
-  color: var(--accent);
-
-  text-decoration: none;
-
-  transition:
-    color 0.2s ease,
-    text-decoration-color 0.2s ease;
-}
-
-
-.publication-title a:hover {
-  color: var(--accent-hover);
-
-  text-decoration: underline;
-
-  text-decoration-thickness: 1px;
-
-  text-underline-offset: 3px;
-}
-
-
-/* =========================
-   AUTHORS
-========================= */
-
-.publication-authors {
-  margin-top: 0;
-
-  margin-bottom: 5px !important;
-
-  font-size: 13px !important;
-
-  line-height: 1.65 !important;
-
-  color:
-    var(--text) !important;
-
-  text-align: left !important;
-}
-
-
-.publication-authors strong {
-  font-weight: 600;
-
-  color: var(--heading);
-}
-
-
-/* =========================
-   CONFERENCE / JOURNAL
-========================= */
-
-.publication-venue {
-  margin-top: 0;
-
-  margin-bottom: 21px !important;
-
-  font-size: 12.5px !important;
-
-  line-height: 1.6 !important;
-
-  color:
-    var(--text-muted) !important;
-
-  text-align: left !important;
-
-  font-style: italic;
-}
-
-
-/* =========================
-   PUBLICATION SUBHEADINGS
-========================= */
-
-.publication-subheading {
-  position: relative;
-
-  margin-top: 23px;
-
-  margin-bottom: 9px;
-
-  padding-left: 18px;
-
-  font-size: 16px;
-
-  font-weight: 600;
-
-  line-height: 1.45;
-
-  color: var(--heading);
-}
-
-
-.publication-subheading::before {
-  content: "▸";
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--accent);
-
-  font-size: 15px;
-
-  font-weight: 700;
-}
-
-
-.publication-item p {
-  margin-top: 0;
-
-  margin-bottom: 14px;
-
-  font-size: 14px;
-
-  line-height: 1.75;
-
-  color: var(--text);
-
-  text-align: justify;
-
-  text-justify: inter-word;
-}
-
-
-/* =========================
-   EXPERIENCE PAGE
-========================= */
-
-.experience-section {
-  margin-top: 24px;
-
-  margin-bottom: 38px;
-}
-
-
-.experience-section-title {
-  margin-top: 0;
-
-  margin-bottom: 16px;
-
-  padding-bottom: 7px;
-
-  font-size: 18px;
-
-  font-weight: 600;
-
-  line-height: 1.4;
-
-  color: var(--heading);
-
-  border-bottom:
-    1px solid var(--border);
-}
-
-
-/* =========================
-   EXPERIENCE CARD
-========================= */
-
-.experience-item {
-  margin-top: 16px;
-
-  margin-bottom: 26px;
-
-  padding: 22px 24px;
-
-  background: var(--surface);
-
-  border-left:
-    3px solid var(--accent);
-
-  border-radius:
-    0 8px 8px 0;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.25s ease;
-}
-
-
-.experience-item:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 4px 14px var(--card-shadow);
-}
-
-
-/* =========================
-   EXPERIENCE HEADER
-========================= */
-
-.experience-header {
-  display: flex;
-
-  align-items: flex-start;
-
-  justify-content: space-between;
-
-  gap: 18px;
-
-  margin-bottom: 5px;
-}
-
-
-.experience-role {
-  margin: 0;
-
-  font-size: 16px;
-
-  font-weight: 600;
-
-  line-height: 1.5;
-
-  color: var(--accent);
-}
-
-
-.experience-date {
-  flex-shrink: 0;
-
-  display: inline-block;
-
-  padding: 3px 8px;
-
-  font-size: 11.5px;
-
-  font-weight: 600;
-
-  line-height: 1.5;
-
-  color: var(--accent);
-
-  background:
-    var(--surface-accent);
-
-  border-radius: 5px;
-
-  white-space: nowrap;
-}
-
-
-/* =========================
-   EXPERIENCE ORGANIZATION
-========================= */
-
-.experience-organization {
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    3px !important;
-
-  font-size:
-    13.5px !important;
-
-  font-weight: 600;
-
-  line-height:
-    1.6 !important;
-
-  color:
-    var(--heading) !important;
-
-  text-align:
-    left !important;
-}
-
-
-.experience-meta {
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    14px !important;
-
-  font-size:
-    12.5px !important;
-
-  line-height:
-    1.6 !important;
-
-  color:
-    var(--text-muted) !important;
-
-  text-align:
-    left !important;
-
-  font-style: italic;
-}
-
-
-/* =========================
-   EXPERIENCE DETAILS
-========================= */
-
-.experience-details {
-  margin: 0;
-
-  padding: 0;
-
-  list-style: none;
-}
-
-
-.experience-details li {
-  position: relative;
-
-  margin:
-    0 0 9px 0;
-
-  padding-left: 18px;
-
-  font-size: 14px;
-
-  line-height: 1.72;
-
-  color: var(--text);
-
-  text-align: justify;
-
-  text-justify: inter-word;
-}
-
-
-.experience-details li:last-child {
-  margin-bottom: 0;
-}
-
-
-.experience-details li::before {
-  content: "▸";
-
-  position: absolute;
-
-  left: 0;
-
-  top: 0;
-
-  color: var(--accent);
-
-  font-size: 13px;
-
-  font-weight: 700;
-}
-
-
-.experience-details strong {
-  font-weight: 600;
-
-  color: var(--heading);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media print, screen and (max-width: 720px) {
-
-
-  /* Profile Photo */
-  header img {
-    width: 150px;
-
-    height: 150px;
-  }
-
-
-  /* Social Icons */
-  .social-links {
-    gap: 13px;
-
-    margin-bottom: 18px;
-  }
-
-
-  .social-links a {
-    font-size: 27px;
-  }
-
-
-  /* =========================
-     THEME CONTROL
-  ========================= */
-
-  .content-toolbar {
-    height: 34px;
-
-    margin-bottom: 1px;
-  }
-
-
-  .theme-toggle {
-    width: 34px;
-
-    height: 34px;
-
-    font-size: 14px;
-  }
-
-
-  .theme-toggle:hover {
-    transform: none;
-  }
-
-
-  /* =========================
-     NAVIGATION
-  ========================= */
-
-  .site-nav {
-    margin-bottom: 26px;
-  }
-
-
-  .nav-links {
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 5px;
-  }
-
-
-  .nav-links a {
-    padding:
-      7px 8px 9px;
-
-    font-size: 14px;
-
-    border-radius: 6px;
-  }
-
-
-  .nav-links a::after {
-    left: 8px;
-
-    right: 8px;
-
-    bottom: 2px;
-  }
-
-
-  .nav-links a:hover {
-    transform: none;
-  }
-
-
-  /* =========================
-     ABOUT
-  ========================= */
-
-  .about-text {
-    padding:
-      18px 17px;
-
-    margin-top: 16px;
-
-    margin-bottom: 28px;
-
-    text-align: left;
-  }
-
-
-  .about-text p {
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    text-align: left;
-  }
-
-
-  .about-text:hover {
-    transform: none;
-  }
-
-
-  /* =========================
-     RESEARCH
-  ========================= */
-
-  .research-section {
-    margin-top: 20px;
-
-    margin-bottom: 30px;
-  }
-
-
-  .research-section-title {
-    font-size: 17px;
-
-    margin-bottom: 14px;
-  }
-
-
-  .research-project {
-    padding:
-      18px 17px;
-
-    margin-top: 14px;
-
-    margin-bottom: 24px;
-  }
-
-
-  .research-project:hover {
-    transform: none;
-  }
-
-
-  .research-project-title {
-    font-size: 15px;
-  }
-
-
-  .research-project-meta {
-    font-size:
-      12px !important;
-  }
-
-
-  .research-project-summary,
-  .research-project p {
-    font-size:
-      13px !important;
-
-    line-height:
-      1.7 !important;
-
-    text-align:
-      left !important;
-  }
-
-
-  .research-project-details li {
-    padding-left: 16px;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    text-align: left;
-  }
-
-
-  .research-project-subheading {
-    margin-top: 18px;
-
-    padding-left: 16px;
-
-    font-size: 14px;
-  }
-
-
-  /* =========================
-     PUBLICATION
-  ========================= */
-
-  .publication-section {
-    margin-top: 20px;
-
-    margin-bottom: 30px;
-  }
-
-
-  .publication-section-title {
-    font-size: 17px;
-
-    margin-bottom: 14px;
-  }
-
-
-  .publication-item {
-    padding:
-      18px 17px;
-
-    margin-top: 14px;
-
-    margin-bottom: 26px;
-  }
-
-
-  .publication-title {
-    font-size: 15px;
-
-    line-height: 1.5;
-  }
-
-
-  .publication-authors {
-    font-size:
-      12.5px !important;
-  }
-
-
-  .publication-venue {
-    font-size:
-      12px !important;
-
-    margin-bottom:
-      18px !important;
-  }
-
-
-  .publication-subheading {
-    margin-top: 20px;
-
-    padding-left: 16px;
-
-    font-size: 15px;
-  }
-
-
-  .publication-item p {
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    text-align: left;
-  }
-
-
-  .publication-item:hover {
-    transform: none;
-  }
-
-
-  /* =========================
-     EXPERIENCE
-  ========================= */
-
-  .experience-section {
-    margin-top: 20px;
-
-    margin-bottom: 30px;
-  }
-
-
-  .experience-section-title {
-    font-size: 17px;
-
-    margin-bottom: 14px;
-  }
-
-
-  .experience-item {
-    padding:
-      18px 17px;
-
-    margin-top: 14px;
-
-    margin-bottom: 24px;
-  }
-
-
-  .experience-item:hover {
-    transform: none;
-  }
-
-
-  .experience-header {
-    flex-direction: column;
-
-    gap: 7px;
-  }
-
-
-  .experience-role {
-    font-size: 15px;
-  }
-
-
-  .experience-date {
-    font-size: 11px;
-  }
-
-
-  .experience-organization {
-    font-size:
-      13px !important;
-  }
-
-
-  .experience-meta {
-    font-size:
-      12px !important;
-  }
-
-
-  .experience-details li {
-    padding-left: 16px;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    text-align: left;
-  }
-
-}
+</html>
