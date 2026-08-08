@@ -3,89 +3,14 @@ layout: default
 permalink: /publications/
 ---
 
-<h2>Publications</h2>
-
-
-<!-- =========================
-     JOURNAL ARTICLES
-========================= -->
-
-<section class="publication-section">
-
-  <h3 class="publication-section-title">
-    Journal Articles & Manuscripts
-  </h3>
-
-
-  <!--
-  ============================================================
-  ADD JOURNAL / TECHNOVATION PAPER HERE LATER
-
-  Copy the template below and remove these comment markers:
-
-  <article class="publication-item">
-
-    <h4 class="publication-title">
-      <a
-        href="JOURNAL_URL"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        PAPER TITLE
-      </a>
-    </h4>
-
-    <p class="publication-authors">
-      Author One,
-      <strong>Farhad Mehrabi</strong>,
-      Author Three
-    </p>
-
-    <p class="publication-venue">
-      Journal Name · Status / Year
-    </p>
-
-    <h4 class="publication-subheading">
-      Project Overview
-    </h4>
-
-    <p>
-      PROJECT OVERVIEW TEXT
-    </p>
-
-    <h4 class="publication-subheading">
-      Research &amp; Practical Significance
-    </h4>
-
-    <p>
-      RESEARCH AND PRACTICAL SIGNIFICANCE TEXT
-    </p>
-
-  </article>
-
-  ============================================================
-  -->
-
-
-</section>
-
-
-
-<!-- =========================
-     CONFERENCE PAPERS
-========================= -->
-
 <section class="publication-section">
 
   <h3 class="publication-section-title">
     Conference Papers
   </h3>
 
-
   <article class="publication-item">
 
-
-    <!-- Paper Title -->
     <h4 class="publication-title">
 
       <a
@@ -100,7 +25,6 @@ permalink: /publications/
     </h4>
 
 
-    <!-- Authors -->
     <p class="publication-authors">
       Nima Payandeh,
       <strong>Farhad Mehrabi</strong>,
@@ -109,13 +33,11 @@ permalink: /publications/
     </p>
 
 
-    <!-- Venue -->
     <p class="publication-venue">
       2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.
     </p>
 
 
-    <!-- Project Overview -->
     <h4 class="publication-subheading">
       Project Overview
     </h4>
@@ -129,7 +51,6 @@ permalink: /publications/
     </p>
 
 
-    <!-- Research & Practical Significance -->
     <h4 class="publication-subheading">
       Research &amp; Practical Significance
     </h4>
@@ -137,8 +58,3 @@ permalink: /publications/
     <p>
       This work provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions. From a practical perspective, reducing exploration time and traveled distance can improve the operational efficiency of autonomous mobile robots, particularly in applications where battery capacity, navigation time, and environmental complexity are important constraints.
     </p>
-
-
-  </article>
-
-</section>
