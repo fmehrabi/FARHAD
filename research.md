@@ -25,8 +25,8 @@ permalink: /research/
       Ongoing Research
     </p>
 
-    <p>
-      This research examines how generative AI is reshaping organizational decision-making, strategic capabilities, and managerial processes. The project focuses on understanding how organizations can integrate AI into decision structures while addressing emerging questions related to governance, organizational adaptation, and value creation.
+    <p class="research-project-summary">
+      This research examines how generative AI is reshaping organizational decision-making, strategic capabilities, and managerial processes, with particular attention to AI governance, organizational adaptation, and value creation.
     </p>
 
     <h5 class="research-project-subheading">
@@ -34,7 +34,7 @@ permalink: /research/
     </h5>
 
     <p>
-      The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision quality, organizational capabilities, and long-term transformation.
+      The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision-making, organizational capabilities, and long-term transformation.
     </p>
 
   </article>
@@ -54,82 +54,162 @@ permalink: /research/
   </h3>
 
 
-  <!-- Project 1 -->
+
+  <!-- =========================
+       PROJECT 1
+       DIGITAL TRANSFORMATION
+  ========================== -->
+
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Digital Transformation and Value Creation in E-Commerce
+      Value Creation of Digital Transformation in Digikala: A System Dynamics Approach
     </h4>
 
     <p class="research-project-meta">
-      M.A. Thesis Project
+      M.A. Thesis · Allameh Tabataba’i University · 2025
     </p>
 
-    <p>
-      This project investigated how digital transformation creates value in e-commerce organizations by examining the interactions among digital capabilities, organizational processes, strategic decisions, and performance outcomes.
+    <p class="research-project-summary">
+      This project investigated how digital transformation policies influence organizational performance and value creation at Digikala, a major Iranian e-commerce company.
     </p>
 
-    <h5 class="research-project-subheading">
-      Project Focus
-    </h5>
 
-    <p>
-      The study aimed to develop a deeper understanding of the mechanisms through which digital transformation initiatives influence organizational value creation and how these effects evolve through interconnected organizational processes.
-    </p>
+    <ul class="research-project-details">
+
+      <li>
+        Developed a mixed-method system dynamics model to evaluate the effects of digital transformation policies on organizational performance.
+      </li>
+
+      <li>
+        Modeled five interrelated value-creation subsystems, captured nonlinear feedback structures, and conducted sensitivity analyses of key organizational drivers.
+      </li>
+
+      <li>
+        Derived theoretical and managerial implications for digital transformation strategy, organizational capability development, and value creation from the simulation results.
+      </li>
+
+    </ul>
 
   </article>
 
 
 
-  <!-- Project 2 -->
+  <!-- =========================
+       PROJECT 2
+       SODA / STARTUP SUCCESS
+  ========================== -->
+
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Autonomous Mobile Robot Exploration
+      Developing a Cognitive Map of Startup Success Factors Using Strategic Options Development and Analysis (SODA)
     </h4>
 
     <p class="research-project-meta">
-      Robotics Research Project
+      Course Project · Soft Operations Research · 2023
     </p>
 
-    <p>
-      This project compared Efficient Frontier Exploration and RRT-based exploration strategies for autonomous mobile robots operating in unknown environments. The algorithms were implemented and evaluated using ROS and Gazebo and subsequently tested on a TurtleBot3 in physical environments of increasing complexity.
+    <p class="research-project-summary">
+      This project examined the complex and interconnected factors that shape startup success by combining expert perspectives with cognitive mapping.
     </p>
 
-    <h5 class="research-project-subheading">
-      Project Outcome
-    </h5>
 
-    <p>
-      The experimental results showed that RRT-based exploration generally reduced both exploration time and total travel distance, with the performance advantage becoming more noticeable as environmental complexity increased.
-    </p>
+    <ul class="research-project-details">
+
+      <li>
+        Conducted semi-structured interviews with entrepreneurs and industry experts to elicit and structure perspectives on startup success factors.
+      </li>
+
+      <li>
+        Applied the Strategic Options Development and Analysis (SODA) methodology to develop cognitive maps representing causal relationships and ill-defined strategic problems.
+      </li>
+
+      <li>
+        Analyzed the resulting cognitive structures to identify strategic themes, leverage points, and key drivers of startup growth.
+      </li>
+
+    </ul>
 
   </article>
 
 
 
-  <!-- Project 3 -->
+  <!-- =========================
+       PROJECT 3
+       MULTI-SIDED PLATFORMS
+  ========================== -->
+
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Localization for Intelligent Transport Robots
+      Strategic Analysis of Multi-Sided Platforms: A Case Study of Snapp
     </h4>
 
     <p class="research-project-meta">
-      M.Sc. Thesis Project
+      Course Project · Advanced Strategic Management · 2022
     </p>
 
-    <p>
-      This research focused on localization methods for intelligent transport robots, investigating approaches for improving a mobile robot's ability to estimate its position reliably while operating in dynamic and uncertain environments.
+    <p class="research-project-summary">
+      This project analyzed the strategic evolution of Snapp as a multi-sided digital platform and examined its expansion from ride-hailing into adjacent markets.
     </p>
 
-    <h5 class="research-project-subheading">
-      Project Focus
-    </h5>
 
-    <p>
-      The project explored the integration and evaluation of localization techniques with the broader objective of improving navigation reliability and autonomous operation in intelligent robotic systems.
+    <ul class="research-project-details">
+
+      <li>
+        Applied the Platform Envelopment framework to analyze how Snapp leveraged its existing ride-hailing user base to expand into food delivery, fintech, and retail markets.
+      </li>
+
+      <li>
+        Examined ecosystem dynamics through cross-side network effects and multi-homing risks among supply-side users to assess platform retention challenges.
+      </li>
+
+      <li>
+        Developed strategic recommendations for transitioning from rapid growth toward sustainable profitability, including fintech-enabled mechanisms for increasing switching costs and strengthening platform retention.
+      </li>
+
+    </ul>
+
+  </article>
+
+
+
+  <!-- =========================
+       PROJECT 4
+       BUSINESS PROCESS REENGINEERING
+  ========================== -->
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Process Reengineering of Warehousing in Digikala
+    </h4>
+
+    <p class="research-project-meta">
+      Course Project · Business Process Reengineering (BPR) · 2022
     </p>
+
+    <p class="research-project-summary">
+      This project examined how technology-enabled process redesign could improve warehouse operations at Digikala through automation and organizational adaptation.
+    </p>
+
+
+    <ul class="research-project-details">
+
+      <li>
+        Analyzed Digikala’s as-is warehouse processes and identified operational bottlenecks, including delays in order allocation and parcel sorting.
+      </li>
+
+      <li>
+        Designed a to-be warehouse process integrating autonomous transport robots to automate repetitive activities and reduce order collection time and human error.
+      </li>
+
+      <li>
+        Developed managerial recommendations for technology-enabled process redesign, emphasizing workforce reskilling and the adaptation of organizational capabilities to automation.
+      </li>
+
+    </ul>
 
   </article>
 
