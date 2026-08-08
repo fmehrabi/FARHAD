@@ -84,6 +84,7 @@ header img {
 
 /* =========================
    RESEARCH INTERESTS
+   LEFT SIDEBAR
 ========================= */
 
 .research-focus {
@@ -229,6 +230,42 @@ header img {
 
 
 /* =========================
+   PAGE FADE TRANSITION
+========================= */
+
+.page-content {
+  animation: pageFadeIn 0.45s ease both;
+}
+
+
+@keyframes pageFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .page-content {
+    animation: none;
+  }
+
+}
+
+
+/* =========================
    ABOUT ME
 ========================= */
 
@@ -314,6 +351,166 @@ header img {
 
 
 /* =========================
+   RESEARCH PAGE SECTIONS
+========================= */
+
+.research-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+/* Current Research / Selected Projects */
+.research-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   RESEARCH PROJECT CARD
+========================= */
+
+.research-project {
+  margin-top: 16px;
+
+  margin-bottom: 26px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Project Hover */
+.research-project:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Research Project Title */
+.research-project-title {
+  margin-top: 0;
+
+  margin-bottom: 9px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+}
+
+
+/* Optional Project Status */
+.research-project-meta {
+  margin-top: -2px !important;
+
+  margin-bottom: 13px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* Research Project Text */
+.research-project p {
+  margin-top: 0;
+
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+/* Last Paragraph */
+.research-project p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   RESEARCH PROJECT SUBHEADING
+========================= */
+
+.research-project-subheading {
+  position: relative;
+
+  margin-top: 21px;
+
+  margin-bottom: 8px;
+
+  padding-left: 18px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+
+.research-project-subheading::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
    PUBLICATION SECTIONS
 ========================= */
 
@@ -324,7 +521,7 @@ header img {
 }
 
 
-/* Journal Articles / Conference Papers */
+/* Conference Papers */
 .publication-section-title {
   margin-top: 0;
 
@@ -468,11 +665,6 @@ header img {
    PROJECT SUBHEADINGS
 ========================= */
 
-/*
-   Project Overview
-   Research & Practical Significance
-*/
-
 .publication-subheading {
   position: relative;
 
@@ -492,7 +684,7 @@ header img {
 }
 
 
-/* Small Academic Arrow / Bullet */
+/* Small Academic Arrow */
 .publication-subheading::before {
   content: "▸";
 
@@ -538,10 +730,7 @@ header img {
 @media print, screen and (max-width: 720px) {
 
 
-  /* =========================
-     PROFILE PHOTO
-  ========================= */
-
+  /* Profile Photo */
   header img {
     width: 150px;
 
@@ -549,10 +738,7 @@ header img {
   }
 
 
-  /* =========================
-     SOCIAL ICONS
-  ========================= */
-
+  /* Social Icons */
   .social-links {
     gap: 13px;
 
@@ -564,10 +750,7 @@ header img {
   }
 
 
-  /* =========================
-     NAVIGATION
-  ========================= */
-
+  /* Navigation */
   .site-nav {
     gap: 22px;
 
@@ -582,7 +765,7 @@ header img {
 
 
   /* =========================
-     ABOUT ME
+     ABOUT
   ========================= */
 
   .about-text {
@@ -604,14 +787,78 @@ header img {
   }
 
 
-  /* Remove Hover Movement on Mobile */
   .about-text:hover {
     transform: none;
   }
 
 
   /* =========================
-     PUBLICATION SECTIONS
+     RESEARCH
+  ========================= */
+
+  .research-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .research-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  .research-project {
+    padding: 18px 17px;
+
+    margin-top: 14px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .research-project:hover {
+    transform: none;
+  }
+
+
+  .research-project-title {
+    font-size: 15px;
+  }
+
+
+  .research-project-meta {
+    font-size: 12px !important;
+  }
+
+
+  .research-project p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  .research-project-subheading {
+    margin-top: 18px;
+
+    padding-left: 16px;
+
+    font-size: 14px;
+  }
+
+
+  .research-project-subheading::before {
+    font-size: 13px;
+  }
+
+
+  /* =========================
+     PUBLICATIONS
   ========================= */
 
   .publication-section {
@@ -628,10 +875,6 @@ header img {
   }
 
 
-  /* =========================
-     PUBLICATION CARD
-  ========================= */
-
   .publication-item {
     padding: 18px 17px;
 
@@ -641,7 +884,6 @@ header img {
   }
 
 
-  /* Paper Title */
   .publication-title {
     font-size: 15px;
 
@@ -649,13 +891,11 @@ header img {
   }
 
 
-  /* Authors */
   .publication-authors {
     font-size: 12.5px !important;
   }
 
 
-  /* Conference / Journal */
   .publication-venue {
     font-size: 12px !important;
 
@@ -663,7 +903,6 @@ header img {
   }
 
 
-  /* Project Subheadings */
   .publication-subheading {
     margin-top: 20px;
 
@@ -678,7 +917,6 @@ header img {
   }
 
 
-  /* Publication Body */
   .publication-item p {
     font-size: 13px;
 
@@ -688,7 +926,6 @@ header img {
   }
 
 
-  /* Remove Card Movement on Mobile */
   .publication-item:hover {
     transform: none;
   }
