@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /publications/
+permalink: /publication/
 ---
 
 <section class="publication-section">
