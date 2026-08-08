@@ -1,217 +1,1252 @@
 ---
-layout: default
-permalink: /research/
 ---
 
+@import "jekyll-theme-minimal";
 
-<!-- =========================
-     CURRENT RESEARCH
-========================= -->
 
-<section class="research-section">
+/* =========================
+   PROFILE / LEFT SIDEBAR
+========================= */
 
-  <h3 class="research-section-title">
-    Current Research
-  </h3>
+header h1 {
+  margin-bottom: 18px;
+}
 
+header h1 a {
+  color: #278ca8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
 
-  <article class="research-project">
+header h1 a:hover {
+  color: #1f7188;
+  text-decoration: none;
+}
 
-    <h4 class="research-project-title">
-      Generative AI, Organizational Decision-Making, and Strategic Transformation
-    </h4>
 
-    <p class="research-project-meta">
-      Ongoing Research
-    </p>
+/* =========================
+   PROFILE PHOTO
+========================= */
 
-    <p class="research-project-summary">
-      This research examines how generative AI is reshaping organizational decision-making, strategic capabilities, and managerial processes, with particular attention to AI governance, organizational adaptation, and value creation.
-    </p>
+header img {
+  width: 220px;
+  height: 220px;
 
-    <h5 class="research-project-subheading">
-      Research Focus
-    </h5>
+  object-fit: cover;
 
-    <p>
-      The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision-making, organizational capabilities, and long-term transformation.
-    </p>
+  border-radius: 50%;
 
-  </article>
+  display: block;
 
-</section>
+  margin-bottom: 18px;
+}
 
 
+/* =========================
+   ACADEMIC POSITION
+========================= */
 
-<!-- =========================
-     SELECTED PROJECTS
-========================= -->
+.profile-description {
+  margin: 0 0 4px 0;
 
-<section class="research-section">
+  font-size: 16px;
+  line-height: 1.7;
 
-  <h3 class="research-section-title">
-    Selected Projects
-  </h3>
+  font-style: normal;
+  font-weight: 400;
 
+  color: #555;
+}
 
+.profile-description em {
+  font-style: normal;
+}
 
-  <!-- =========================
-       PROJECT 1
-       DIGITAL TRANSFORMATION
-  ========================== -->
+.profile-icon {
+  margin-right: 7px;
 
-  <article class="research-project">
+  font-size: 14px;
 
-    <h4 class="research-project-title">
-      Value Creation of Digital Transformation in Digikala: A System Dynamics Approach
-    </h4>
+  font-style: normal;
 
-    <p class="research-project-meta">
-      M.A. Thesis · Allameh Tabataba’i University · 2025
-    </p>
+  color: #555;
+}
 
-    <p class="research-project-summary">
-      This project investigated how digital transformation policies influence organizational performance and value creation at Digikala, a major Iranian e-commerce company.
-    </p>
 
+/* =========================
+   RESEARCH INTERESTS
+   LEFT SIDEBAR
+========================= */
 
-    <ul class="research-project-details">
+.research-focus {
+  margin: 0 0 18px 0;
 
-      <li>
-        Developed a mixed-method system dynamics model to evaluate the effects of digital transformation policies on organizational performance.
-      </li>
+  font-size: 13px;
+  line-height: 1.7;
 
-      <li>
-        Modeled five interrelated value-creation subsystems, captured nonlinear feedback structures, and conducted sensitivity analyses of key organizational drivers.
-      </li>
+  color: #666;
+}
 
-      <li>
-        Derived theoretical and managerial implications for digital transformation strategy, organizational capability development, and value creation from the simulation results.
-      </li>
+.research-focus div {
+  margin: 0;
+  padding: 0;
+}
 
-    </ul>
 
-  </article>
+/* =========================
+   SOCIAL & ACADEMIC ICONS
+========================= */
 
+.social-links {
+  display: flex;
 
+  align-items: center;
 
-  <!-- =========================
-       PROJECT 2
-       SODA / STARTUP SUCCESS
-  ========================== -->
+  gap: 14px;
 
-  <article class="research-project">
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
 
-    <h4 class="research-project-title">
-      Developing a Cognitive Map of Startup Success Factors Using Strategic Options Development and Analysis (SODA)
-    </h4>
 
-    <p class="research-project-meta">
-      Course Project · Soft Operations Research · 2023
-    </p>
+.social-links a {
+  display: inline-flex;
 
-    <p class="research-project-summary">
-      This project examined the complex and interconnected factors that shape startup success by combining expert perspectives with cognitive mapping.
-    </p>
+  align-items: center;
+  justify-content: center;
 
+  font-size: 29px;
 
-    <ul class="research-project-details">
+  color: #555;
 
-      <li>
-        Conducted semi-structured interviews with entrepreneurs and industry experts to elicit and structure perspectives on startup success factors.
-      </li>
+  text-decoration: none;
 
-      <li>
-        Applied the Strategic Options Development and Analysis (SODA) methodology to develop cognitive maps representing causal relationships and ill-defined strategic problems.
-      </li>
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
 
-      <li>
-        Analyzed the resulting cognitive structures to identify strategic themes, leverage points, and key drivers of startup growth.
-      </li>
 
-    </ul>
+.social-links a:hover {
+  text-decoration: none;
 
-  </article>
+  transform: translateY(-3px);
+}
 
 
+/* Email */
+.social-links a[title="Email"]:hover {
+  color: #EA4335;
+}
 
-  <!-- =========================
-       PROJECT 3
-       MULTI-SIDED PLATFORMS
-  ========================== -->
 
-  <article class="research-project">
+/* Google Scholar */
+.social-links a[title="Google Scholar"]:hover {
+  color: #4285F4;
+}
 
-    <h4 class="research-project-title">
-      Strategic Analysis of Multi-Sided Platforms: A Case Study of Snapp
-    </h4>
 
-    <p class="research-project-meta">
-      Course Project · Advanced Strategic Management · 2022
-    </p>
+/* ResearchGate */
+.social-links a[title="ResearchGate"]:hover {
+  color: #00CCBB;
+}
 
-    <p class="research-project-summary">
-      This project analyzed the strategic evolution of Snapp as a multi-sided digital platform and examined its expansion from ride-hailing into adjacent markets.
-    </p>
 
+/* ORCID */
+.social-links a[title="ORCID"]:hover {
+  color: #A6CE39;
+}
 
-    <ul class="research-project-details">
 
-      <li>
-        Applied the Platform Envelopment framework to analyze how Snapp leveraged its existing ride-hailing user base to expand into food delivery, fintech, and retail markets.
-      </li>
+/* LinkedIn */
+.social-links a[title="LinkedIn"]:hover {
+  color: #0A66C2;
+}
 
-      <li>
-        Examined ecosystem dynamics through cross-side network effects and multi-homing risks among supply-side users to assess platform retention challenges.
-      </li>
 
-      <li>
-        Developed strategic recommendations for transitioning from rapid growth toward sustainable profitability, including fintech-enabled mechanisms for increasing switching costs and strengthening platform retention.
-      </li>
+/* GitHub */
+.social-links a[title="GitHub"]:hover {
+  color: #181717;
+}
 
-    </ul>
 
-  </article>
+/* =========================
+   MAIN NAVIGATION
+========================= */
 
+.site-nav {
+  display: flex;
 
+  align-items: center;
 
-  <!-- =========================
-       PROJECT 4
-       BUSINESS PROCESS REENGINEERING
-  ========================== -->
+  gap: 38px;
 
-  <article class="research-project">
+  margin-bottom: 32px;
 
-    <h4 class="research-project-title">
-      Process Reengineering of Warehousing in Digikala
-    </h4>
+  padding: 0;
 
-    <p class="research-project-meta">
-      Course Project · Business Process Reengineering (BPR) · 2022
-    </p>
+  border: none;
+}
 
-    <p class="research-project-summary">
-      This project examined how technology-enabled process redesign could improve warehouse operations at Digikala through automation and organizational adaptation.
-    </p>
 
+.site-nav a {
+  font-size: 14px;
 
-    <ul class="research-project-details">
+  font-weight: 600;
 
-      <li>
-        Analyzed Digikala’s as-is warehouse processes and identified operational bottlenecks, including delays in order allocation and parcel sorting.
-      </li>
+  color: #555;
 
-      <li>
-        Designed a to-be warehouse process integrating autonomous transport robots to automate repetitive activities and reduce order collection time and human error.
-      </li>
+  text-decoration: none;
 
-      <li>
-        Developed managerial recommendations for technology-enabled process redesign, emphasizing workforce reskilling and the adaptation of organizational capabilities to automation.
-      </li>
+  transition: color 0.2s ease;
+}
 
-    </ul>
 
-  </article>
+.site-nav a:hover {
+  color: #278ca8;
 
+  text-decoration: none;
+}
 
-</section>
+
+.site-nav a.active {
+  color: #278ca8;
+}
+
+
+/* =========================
+   PAGE FADE TRANSITION
+========================= */
+
+.page-content {
+  animation: pageFadeIn 0.45s ease both;
+}
+
+
+@keyframes pageFadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page-content {
+    animation: none;
+  }
+
+}
+
+
+/* =========================
+   ABOUT ME
+========================= */
+
+.about-text {
+  margin-top: 18px;
+  margin-bottom: 34px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.about-text:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+.about-text p {
+  margin-top: 0;
+  margin-bottom: 14px;
+
+  font-size: 14px;
+  line-height: 1.75;
+
+  color: #555;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+
+.about-text a {
+  color: #278ca8;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+
+.about-text a:hover {
+  color: #1f7188;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+
+.about-text strong {
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================
+   RESEARCH PAGE
+========================= */
+
+.research-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+.research-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   RESEARCH PROJECT CARD
+========================= */
+
+.research-project {
+  margin-top: 16px;
+
+  margin-bottom: 28px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.research-project:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Project Title */
+.research-project-title {
+  margin-top: 0;
+
+  margin-bottom: 7px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+}
+
+
+/* Project Type / Institution / Year */
+.research-project-meta {
+  margin-top: 0 !important;
+
+  margin-bottom: 14px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* Project Summary */
+.research-project-summary {
+  margin-top: 0 !important;
+
+  margin-bottom: 16px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.75 !important;
+
+  color: #555 !important;
+
+  text-align: justify !important;
+
+  text-justify: inter-word;
+}
+
+
+/* Other Project Paragraphs */
+.research-project p {
+  margin-top: 0;
+
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+.research-project p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   RESEARCH PROJECT SUBHEADING
+========================= */
+
+.research-project-subheading {
+  position: relative;
+
+  margin-top: 21px;
+
+  margin-bottom: 8px;
+
+  padding-left: 18px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+
+.research-project-subheading::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   RESEARCH PROJECT DETAILS
+========================= */
+
+.research-project-details {
+  margin: 4px 0 0 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.research-project-details li {
+  position: relative;
+
+  margin: 0 0 9px 0;
+
+  padding-left: 18px;
+
+  font-size: 13.5px;
+
+  line-height: 1.72;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+.research-project-details li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Custom Research Bullet */
+.research-project-details li::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   PUBLICATION SECTIONS
+========================= */
+
+.publication-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+.publication-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   PUBLICATION CARD
+========================= */
+
+.publication-item {
+  margin-top: 16px;
+
+  margin-bottom: 32px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.publication-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   PAPER TITLE
+========================= */
+
+.publication-title {
+  margin-top: 0;
+
+  margin-bottom: 10px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.55;
+}
+
+
+.publication-title a {
+  color: #278ca8;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+
+.publication-title a:hover {
+  color: #1f7188;
+
+  text-decoration: underline;
+
+  text-decoration-thickness: 1px;
+
+  text-underline-offset: 3px;
+}
+
+
+/* =========================
+   AUTHORS
+========================= */
+
+.publication-authors {
+  margin-top: 0;
+
+  margin-bottom: 5px !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.65 !important;
+
+  color: #555 !important;
+
+  text-align: left !important;
+}
+
+
+.publication-authors strong {
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================
+   CONFERENCE / JOURNAL
+========================= */
+
+.publication-venue {
+  margin-top: 0;
+
+  margin-bottom: 21px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* =========================
+   PUBLICATION SUBHEADINGS
+========================= */
+
+.publication-subheading {
+  position: relative;
+
+  margin-top: 23px;
+
+  margin-bottom: 9px;
+
+  padding-left: 18px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.45;
+
+  color: #333;
+}
+
+
+.publication-subheading::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.publication-item p {
+  margin-top: 0;
+
+  margin-bottom: 14px;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+/* =========================
+   EXPERIENCE PAGE
+========================= */
+
+.experience-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+.experience-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   EXPERIENCE CARD
+========================= */
+
+.experience-item {
+  margin-top: 16px;
+
+  margin-bottom: 26px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.experience-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   EXPERIENCE HEADER
+========================= */
+
+.experience-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 5px;
+}
+
+
+.experience-role {
+  margin: 0;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+}
+
+
+.experience-date {
+  flex-shrink: 0;
+
+  display: inline-block;
+
+  padding: 3px 8px;
+
+  font-size: 11.5px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+
+  background: #eef6f8;
+
+  border-radius: 5px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   EXPERIENCE ORGANIZATION
+========================= */
+
+.experience-organization {
+  margin-top: 0 !important;
+
+  margin-bottom: 3px !important;
+
+  font-size: 13.5px !important;
+
+  font-weight: 600;
+
+  line-height: 1.6 !important;
+
+  color: #444 !important;
+
+  text-align: left !important;
+}
+
+
+.experience-meta {
+  margin-top: 0 !important;
+
+  margin-bottom: 14px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* =========================
+   EXPERIENCE DETAILS
+========================= */
+
+.experience-details {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.experience-details li {
+  position: relative;
+
+  margin: 0 0 9px 0;
+
+  padding-left: 18px;
+
+  font-size: 14px;
+
+  line-height: 1.72;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+.experience-details li:last-child {
+  margin-bottom: 0;
+}
+
+
+.experience-details li::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.experience-details strong {
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media print, screen and (max-width: 720px) {
+
+
+  /* Profile Photo */
+  header img {
+    width: 150px;
+    height: 150px;
+  }
+
+
+  /* Social Icons */
+  .social-links {
+    gap: 13px;
+
+    margin-bottom: 18px;
+  }
+
+  .social-links a {
+    font-size: 27px;
+  }
+
+
+  /* Navigation */
+  .site-nav {
+    gap: 22px;
+
+    margin-bottom: 24px;
+
+    flex-wrap: wrap;
+  }
+
+  .site-nav a {
+    font-size: 13px;
+  }
+
+
+  /* =========================
+     ABOUT
+  ========================= */
+
+  .about-text {
+    padding: 18px 17px;
+
+    margin-top: 16px;
+    margin-bottom: 28px;
+
+    text-align: left;
+  }
+
+
+  .about-text p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  .about-text:hover {
+    transform: none;
+  }
+
+
+  /* =========================
+     RESEARCH
+  ========================= */
+
+  .research-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .research-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  .research-project {
+    padding: 18px 17px;
+
+    margin-top: 14px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .research-project:hover {
+    transform: none;
+  }
+
+
+  .research-project-title {
+    font-size: 15px;
+  }
+
+
+  .research-project-meta {
+    font-size: 12px !important;
+  }
+
+
+  .research-project-summary,
+  .research-project p {
+    font-size: 13px !important;
+
+    line-height: 1.7 !important;
+
+    text-align: left !important;
+  }
+
+
+  .research-project-details li {
+    padding-left: 16px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  .research-project-subheading {
+    margin-top: 18px;
+
+    padding-left: 16px;
+
+    font-size: 14px;
+  }
+
+
+  /* =========================
+     PUBLICATIONS
+  ========================= */
+
+  .publication-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .publication-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  .publication-item {
+    padding: 18px 17px;
+
+    margin-top: 14px;
+
+    margin-bottom: 26px;
+  }
+
+
+  .publication-title {
+    font-size: 15px;
+
+    line-height: 1.5;
+  }
+
+
+  .publication-authors {
+    font-size: 12.5px !important;
+  }
+
+
+  .publication-venue {
+    font-size: 12px !important;
+
+    margin-bottom: 18px !important;
+  }
+
+
+  .publication-subheading {
+    margin-top: 20px;
+
+    padding-left: 16px;
+
+    font-size: 15px;
+  }
+
+
+  .publication-item p {
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+
+  .publication-item:hover {
+    transform: none;
+  }
+
+
+  /* =========================
+     EXPERIENCE
+  ========================= */
+
+  .experience-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .experience-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  .experience-item {
+    padding: 18px 17px;
+
+    margin-top: 14px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .experience-item:hover {
+    transform: none;
+  }
+
+
+  .experience-header {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+
+  .experience-role {
+    font-size: 15px;
+  }
+
+
+  .experience-date {
+    font-size: 11px;
+  }
+
+
+  .experience-organization {
+    font-size: 13px !important;
+  }
+
+
+  .experience-meta {
+    font-size: 12px !important;
+  }
+
+
+  .experience-details li {
+    padding-left: 16px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
+  }
+
+}
