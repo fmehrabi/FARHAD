@@ -3,17 +3,15 @@ layout: default
 permalink: /publications/
 ---
 
-<section class="publication-section">
+<div class="publication-section">
 
   <h3 class="publication-section-title">
     Conference Paper
   </h3>
 
-
   <article class="publication-item">
 
     <h4 class="publication-title">
-
       <a
         href="https://ieeexplore.ieee.org/abstract/document/10025185"
         target="_blank"
@@ -22,9 +20,7 @@ permalink: /publications/
       >
         A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration
       </a>
-
     </h4>
-
 
     <p class="publication-authors">
       Nima Payandeh,
@@ -33,11 +29,9 @@ permalink: /publications/
       and Younes AlizadehVaghasloo
     </p>
 
-
     <p class="publication-venue">
       2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.
     </p>
-
 
     <h4 class="publication-subheading">
       Project Overview
@@ -51,7 +45,6 @@ permalink: /publications/
       The two methods were evaluated primarily in terms of exploration time and total travel distance. Across both simulation and real-world experiments, RRT-based exploration generally required less travel distance and completed the exploration task faster than the Efficient Frontier approach. The performance difference became more noticeable as the environment became more complex, suggesting that intelligent target selection based on navigation cost and information gain can improve autonomous exploration efficiency.
     </p>
 
-
     <h4 class="publication-subheading">
       Research &amp; Practical Significance
     </h4>
@@ -60,7 +53,6 @@ permalink: /publications/
       This work provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions. From a practical perspective, reducing exploration time and traveled distance can improve the operational efficiency of autonomous mobile robots, particularly in applications where battery capacity, navigation time, and environmental complexity are important constraints.
     </p>
 
-
   </article>
 
-</section>
+</div>
