@@ -6,7 +6,7 @@ permalink: /publications/
 <section class="publication-section">
 
   <h3 class="publication-section-title">
-    Conference Papers
+    Conference Paper
   </h3>
 
   <article class="publication-item">
