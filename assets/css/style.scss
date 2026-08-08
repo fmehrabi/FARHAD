@@ -64,7 +64,6 @@ header img {
 }
 
 
-/* Force Normal Text */
 .profile-description em {
   font-style: normal;
 }
@@ -119,7 +118,6 @@ header img {
 }
 
 
-/* Individual Icons */
 .social-links a {
   display: inline-flex;
 
@@ -138,7 +136,6 @@ header img {
 }
 
 
-/* General Hover Movement */
 .social-links a:hover {
   text-decoration: none;
 
@@ -201,7 +198,6 @@ header img {
 }
 
 
-/* Navigation Links */
 .site-nav a {
   font-size: 14px;
 
@@ -215,7 +211,6 @@ header img {
 }
 
 
-/* Navigation Hover */
 .site-nav a:hover {
   color: #278ca8;
 
@@ -223,7 +218,6 @@ header img {
 }
 
 
-/* Active Navigation Item */
 .site-nav a.active {
   color: #278ca8;
 }
@@ -255,7 +249,6 @@ header img {
 }
 
 
-/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
 
   .page-content {
@@ -269,8 +262,6 @@ header img {
    ABOUT ME
 ========================= */
 
-
-/* Main About Card */
 .about-text {
   margin-top: 18px;
   margin-bottom: 34px;
@@ -292,7 +283,6 @@ header img {
 }
 
 
-/* Subtle About Card Hover */
 .about-text:hover {
   transform: translateY(-2px);
 
@@ -300,7 +290,6 @@ header img {
 }
 
 
-/* About Paragraphs */
 .about-text p {
   margin-top: 0;
   margin-bottom: 14px;
@@ -315,13 +304,11 @@ header img {
 }
 
 
-/* Remove Extra Space After Last Paragraph */
 .about-text p:last-child {
   margin-bottom: 0;
 }
 
 
-/* Links inside About */
 .about-text a {
   color: #278ca8;
 
@@ -331,6 +318,7 @@ header img {
 
   transition: color 0.2s ease;
 }
+
 
 .about-text a:hover {
   color: #1f7188;
@@ -342,7 +330,6 @@ header img {
 }
 
 
-/* Highlighted Text inside About */
 .about-text strong {
   font-weight: 600;
 
@@ -351,7 +338,7 @@ header img {
 
 
 /* =========================
-   RESEARCH PAGE SECTIONS
+   RESEARCH PAGE
 ========================= */
 
 .research-section {
@@ -361,7 +348,6 @@ header img {
 }
 
 
-/* Current Research / Selected Projects */
 .research-section-title {
   margin-top: 0;
 
@@ -404,7 +390,6 @@ header img {
 }
 
 
-/* Project Hover */
 .research-project:hover {
   transform: translateY(-2px);
 
@@ -412,7 +397,6 @@ header img {
 }
 
 
-/* Research Project Title */
 .research-project-title {
   margin-top: 0;
 
@@ -428,7 +412,6 @@ header img {
 }
 
 
-/* Optional Project Status */
 .research-project-meta {
   margin-top: -2px !important;
 
@@ -446,7 +429,6 @@ header img {
 }
 
 
-/* Research Project Text */
 .research-project p {
   margin-top: 0;
 
@@ -464,15 +446,10 @@ header img {
 }
 
 
-/* Last Paragraph */
 .research-project p:last-child {
   margin-bottom: 0;
 }
 
-
-/* =========================
-   RESEARCH PROJECT SUBHEADING
-========================= */
 
 .research-project-subheading {
   position: relative;
@@ -521,7 +498,6 @@ header img {
 }
 
 
-/* Conference Papers */
 .publication-section-title {
   margin-top: 0;
 
@@ -564,7 +540,6 @@ header img {
 }
 
 
-/* Subtle Card Hover */
 .publication-item:hover {
   transform: translateY(-2px);
 
@@ -589,7 +564,6 @@ header img {
 }
 
 
-/* Clickable Paper Title */
 .publication-title a {
   color: #278ca8;
 
@@ -601,7 +575,6 @@ header img {
 }
 
 
-/* Paper Title Hover */
 .publication-title a:hover {
   color: #1f7188;
 
@@ -632,7 +605,6 @@ header img {
 }
 
 
-/* Highlight My Name */
 .publication-authors strong {
   font-weight: 600;
 
@@ -662,7 +634,7 @@ header img {
 
 
 /* =========================
-   PROJECT SUBHEADINGS
+   PUBLICATION SUBHEADINGS
 ========================= */
 
 .publication-subheading {
@@ -684,7 +656,6 @@ header img {
 }
 
 
-/* Small Academic Arrow */
 .publication-subheading::before {
   content: "▸";
 
@@ -702,10 +673,6 @@ header img {
 }
 
 
-/* =========================
-   PUBLICATION BODY TEXT
-========================= */
-
 .publication-item p {
   margin-top: 0;
 
@@ -720,6 +687,224 @@ header img {
   text-align: justify;
 
   text-justify: inter-word;
+}
+
+
+/* =========================
+   EXPERIENCE PAGE
+========================= */
+
+.experience-section {
+  margin-top: 24px;
+
+  margin-bottom: 38px;
+}
+
+
+/* Section Titles */
+.experience-section-title {
+  margin-top: 0;
+
+  margin-bottom: 16px;
+
+  padding-bottom: 7px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  color: #333;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+
+/* =========================
+   EXPERIENCE CARD
+========================= */
+
+.experience-item {
+  margin-top: 16px;
+
+  margin-bottom: 26px;
+
+  padding: 22px 24px;
+
+  background: #fafafa;
+
+  border-left: 3px solid #278ca8;
+
+  border-radius: 0 8px 8px 0;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.experience-item:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   EXPERIENCE HEADER
+========================= */
+
+.experience-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  margin-bottom: 5px;
+}
+
+
+/* Role */
+.experience-role {
+  margin: 0;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+}
+
+
+/* Date */
+.experience-date {
+  flex-shrink: 0;
+
+  display: inline-block;
+
+  padding: 3px 8px;
+
+  font-size: 11.5px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: #278ca8;
+
+  background: #eef6f8;
+
+  border-radius: 5px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   ORGANIZATION
+========================= */
+
+.experience-organization {
+  margin-top: 0 !important;
+
+  margin-bottom: 3px !important;
+
+  font-size: 13.5px !important;
+
+  font-weight: 600;
+
+  line-height: 1.6 !important;
+
+  color: #444 !important;
+
+  text-align: left !important;
+}
+
+
+/* Department / Supervisor / Course */
+.experience-meta {
+  margin-top: 0 !important;
+
+  margin-bottom: 14px !important;
+
+  font-size: 12.5px !important;
+
+  line-height: 1.6 !important;
+
+  color: #777 !important;
+
+  text-align: left !important;
+
+  font-style: italic;
+}
+
+
+/* =========================
+   EXPERIENCE DETAILS
+========================= */
+
+.experience-details {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.experience-details li {
+  position: relative;
+
+  margin: 0 0 9px 0;
+
+  padding-left: 18px;
+
+  font-size: 14px;
+
+  line-height: 1.72;
+
+  color: #555;
+
+  text-align: justify;
+
+  text-justify: inter-word;
+}
+
+
+.experience-details li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Custom Academic Bullet */
+.experience-details li::before {
+  content: "▸";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  color: #278ca8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+/* Strong Text */
+.experience-details strong {
+  font-weight: 600;
+
+  color: #333;
 }
 
 
@@ -852,11 +1037,6 @@ header img {
   }
 
 
-  .research-project-subheading::before {
-    font-size: 13px;
-  }
-
-
   /* =========================
      PUBLICATIONS
   ========================= */
@@ -912,11 +1092,6 @@ header img {
   }
 
 
-  .publication-subheading::before {
-    font-size: 14px;
-  }
-
-
   .publication-item p {
     font-size: 13px;
 
@@ -928,6 +1103,76 @@ header img {
 
   .publication-item:hover {
     transform: none;
+  }
+
+
+  /* =========================
+     EXPERIENCE
+  ========================= */
+
+  .experience-section {
+    margin-top: 20px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .experience-section-title {
+    font-size: 17px;
+
+    margin-bottom: 14px;
+  }
+
+
+  .experience-item {
+    padding: 18px 17px;
+
+    margin-top: 14px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .experience-item:hover {
+    transform: none;
+  }
+
+
+  .experience-header {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+
+  .experience-role {
+    font-size: 15px;
+  }
+
+
+  .experience-date {
+    font-size: 11px;
+  }
+
+
+  .experience-organization {
+    font-size: 13px !important;
+  }
+
+
+  .experience-meta {
+    font-size: 12px !important;
+  }
+
+
+  .experience-details li {
+    padding-left: 16px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    text-align: left;
   }
 
 }
