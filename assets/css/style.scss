@@ -145,6 +145,7 @@ footer a:hover {
 
   .wrapper > section.main-content {
     width: 616px !important;
+
     float: right;
   }
 
@@ -166,6 +167,8 @@ footer a:hover {
 
 header h1 {
   margin-bottom: 18px;
+
+  text-align: center;
 }
 
 
@@ -174,7 +177,8 @@ header h1 a {
 
   text-decoration: none;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 
@@ -190,14 +194,19 @@ header h1 a:hover {
 ========================= */
 
 header img {
-  width: 220px;
-  height: 220px;
+  width: 200px;
+
+  height: 200px;
 
   object-fit: cover;
 
   border-radius: 50%;
 
   display: block;
+
+  margin-left: auto;
+
+  margin-right: auto;
 
   margin-bottom: 18px;
 }
@@ -305,35 +314,49 @@ header img {
 }
 
 
+/* Email */
+
 .social-links a[title="Email"]:hover {
   color: #EA4335;
 }
 
+
+/* Google Scholar */
 
 .social-links a[title="Google Scholar"]:hover {
   color: #4285F4;
 }
 
 
+/* ResearchGate */
+
 .social-links a[title="ResearchGate"]:hover {
   color: #00CCBB;
 }
 
+
+/* ORCID */
 
 .social-links a[title="ORCID"]:hover {
   color: #A6CE39;
 }
 
 
+/* LinkedIn */
+
 .social-links a[title="LinkedIn"]:hover {
   color: #0A66C2;
 }
 
 
+/* GitHub */
+
 .social-links a[title="GitHub"]:hover {
   color: #181717;
 }
 
+
+/* GitHub in Dark Mode */
 
 html[data-theme="dark"]
 .social-links a[title="GitHub"]:hover {
@@ -671,6 +694,7 @@ html[data-theme="dark"]
 
 
 /* Chevron */
+
 .details-toggle::after {
   content: "▾";
 
@@ -691,6 +715,7 @@ html[data-theme="dark"]
 
 
 /* Open */
+
 .expandable-details[open]:not(.is-closing)
 .details-toggle::after {
   transform: rotate(180deg);
@@ -698,6 +723,7 @@ html[data-theme="dark"]
 
 
 /* Closing */
+
 .expandable-details.is-closing
 .details-toggle::after {
   transform: rotate(0deg);
@@ -721,12 +747,7 @@ html[data-theme="dark"]
 }
 
 
-/*
-   Height / opacity / movement
-   are animated by JavaScript
-   so both OPEN and CLOSE
-   can animate smoothly.
-*/
+/* Expanded Content */
 
 .details-content {
   margin-top: 8px;
@@ -1502,12 +1523,16 @@ html[data-theme="dark"]
 @media print, screen and (max-width: 720px) {
 
 
+  /* Profile Photo */
+
   header img {
     width: 150px;
 
     height: 150px;
   }
 
+
+  /* Social Icons */
 
   .social-links {
     gap: 13px;
@@ -1520,6 +1545,8 @@ html[data-theme="dark"]
     font-size: 27px;
   }
 
+
+  /* Theme */
 
   .content-toolbar {
     height: 34px;
@@ -1541,6 +1568,8 @@ html[data-theme="dark"]
     transform: none;
   }
 
+
+  /* Navigation */
 
   .site-nav {
     margin-bottom: 26px;
@@ -1581,6 +1610,7 @@ html[data-theme="dark"]
 
 
   /* Details */
+
   .details-toggle {
     font-size: 12.5px;
 
@@ -1595,6 +1625,7 @@ html[data-theme="dark"]
 
 
   /* About */
+
   .about-text {
     padding:
       18px 17px;
@@ -1622,6 +1653,7 @@ html[data-theme="dark"]
 
 
   /* Research */
+
   .research-section {
     margin-top: 20px;
 
@@ -1696,6 +1728,7 @@ html[data-theme="dark"]
 
 
   /* Publication */
+
   .publication-section {
     margin-top: 20px;
 
@@ -1766,6 +1799,7 @@ html[data-theme="dark"]
 
 
   /* Experience */
+
   .experience-section {
     margin-top: 20px;
 
