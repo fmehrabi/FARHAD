@@ -129,8 +129,6 @@ footer a:hover {
 /* =========================
    DESKTOP LAYOUT WIDTH
 
-   Left sidebar stays unchanged.
-
    Left sidebar: 270px
    Gap:          90px
    Right side:   616px
@@ -242,7 +240,6 @@ header img {
 
 /* =========================
    RESEARCH INTERESTS
-   LEFT SIDEBAR
 ========================= */
 
 .research-focus {
@@ -308,43 +305,36 @@ header img {
 }
 
 
-/* Email */
 .social-links a[title="Email"]:hover {
   color: #EA4335;
 }
 
 
-/* Google Scholar */
 .social-links a[title="Google Scholar"]:hover {
   color: #4285F4;
 }
 
 
-/* ResearchGate */
 .social-links a[title="ResearchGate"]:hover {
   color: #00CCBB;
 }
 
 
-/* ORCID */
 .social-links a[title="ORCID"]:hover {
   color: #A6CE39;
 }
 
 
-/* LinkedIn */
 .social-links a[title="LinkedIn"]:hover {
   color: #0A66C2;
 }
 
 
-/* GitHub */
 .social-links a[title="GitHub"]:hover {
   color: #181717;
 }
 
 
-/* GitHub in Dark Mode */
 html[data-theme="dark"]
 .social-links a[title="GitHub"]:hover {
   color: #f0f3f4;
@@ -353,7 +343,6 @@ html[data-theme="dark"]
 
 /* =========================
    CONTENT TOOLBAR
-   THEME BUTTON
 ========================= */
 
 .content-toolbar {
@@ -464,10 +453,6 @@ html[data-theme="dark"]
 }
 
 
-/* =========================
-   NAVIGATION LINK GROUP
-========================= */
-
 .nav-links {
   display: flex;
 
@@ -479,7 +464,6 @@ html[data-theme="dark"]
 }
 
 
-/* Navigation Links */
 .nav-links a {
   position: relative;
 
@@ -510,7 +494,6 @@ html[data-theme="dark"]
 }
 
 
-/* Animated Underline */
 .nav-links a::after {
   content: "";
 
@@ -538,7 +521,6 @@ html[data-theme="dark"]
 }
 
 
-/* Navigation Hover */
 .nav-links a:hover {
   color: var(--accent);
 
@@ -550,13 +532,11 @@ html[data-theme="dark"]
 }
 
 
-/* Short Underline on Hover */
 .nav-links a:hover::after {
   transform: scaleX(0.45);
 }
 
 
-/* Active Navigation Item */
 .nav-links a.active {
   color: var(--accent);
 
@@ -564,7 +544,6 @@ html[data-theme="dark"]
 }
 
 
-/* Full Underline for Active Tab */
 .nav-links a.active::after {
   transform: scaleX(1);
 
@@ -573,7 +552,6 @@ html[data-theme="dark"]
 }
 
 
-/* Active Tab Hover */
 .nav-links a.active:hover {
   color: var(--accent);
 
@@ -581,7 +559,6 @@ html[data-theme="dark"]
 }
 
 
-/* Active Underline Entrance */
 @keyframes activeNavUnderline {
 
   from {
@@ -599,7 +576,6 @@ html[data-theme="dark"]
 }
 
 
-/* Keyboard Navigation */
 .nav-links a:focus-visible {
   color: var(--accent);
 
@@ -643,8 +619,6 @@ html[data-theme="dark"]
 
 /* =========================
    EXPANDABLE DETAILS
-   RESEARCH / PUBLICATION /
-   EXPERIENCE
 ========================= */
 
 .expandable-details {
@@ -656,7 +630,6 @@ html[data-theme="dark"]
 }
 
 
-/* Remove Default Marker */
 .details-toggle {
   display: inline-flex;
 
@@ -693,8 +666,6 @@ html[data-theme="dark"]
 
 
 .details-toggle::marker {
-  display: none;
-
   content: "";
 }
 
@@ -714,24 +685,30 @@ html[data-theme="dark"]
   transform-origin: center;
 
   transition:
-    transform 0.22s ease;
+    transform 1s
+    cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
-/* Open State */
-.expandable-details[open]
+/* Open */
+.expandable-details[open]:not(.is-closing)
 .details-toggle::after {
   transform: rotate(180deg);
 }
 
 
-/* Hover */
+/* Closing */
+.expandable-details.is-closing
+.details-toggle::after {
+  transform: rotate(0deg);
+}
+
+
 .details-toggle:hover {
   color: var(--accent-hover);
 }
 
 
-/* Keyboard Focus */
 .details-toggle:focus-visible {
   color: var(--accent);
 
@@ -744,35 +721,21 @@ html[data-theme="dark"]
 }
 
 
-/* Expanded Content */
+/*
+   Height / opacity / movement
+   are animated by JavaScript
+   so both OPEN and CLOSE
+   can animate smoothly.
+*/
+
 .details-content {
   margin-top: 8px;
 
   padding-top: 2px;
-}
 
+  transform-origin: top;
 
-.expandable-details[open]
-.details-content {
-  animation:
-    detailsFadeIn 0.3s ease both;
-}
-
-
-@keyframes detailsFadeIn {
-
-  from {
-    opacity: 0;
-
-    transform: translateY(-4px);
-  }
-
-  to {
-    opacity: 1;
-
-    transform: translateY(0);
-  }
-
+  overflow: visible;
 }
 
 
@@ -784,11 +747,6 @@ html[data-theme="dark"]
 
   .page-content {
     animation: none;
-  }
-
-
-  .details-content {
-    animation: none !important;
   }
 
 
@@ -964,7 +922,6 @@ html[data-theme="dark"]
 }
 
 
-/* Project Title */
 .research-project-title {
   margin-top: 0;
 
@@ -980,7 +937,6 @@ html[data-theme="dark"]
 }
 
 
-/* Project Type / Institution / Year */
 .research-project-meta {
   margin-top: 0 !important;
 
@@ -999,7 +955,6 @@ html[data-theme="dark"]
 }
 
 
-/* Project Summary */
 .research-project-summary {
   margin-top: 0 !important;
 
@@ -1019,7 +974,6 @@ html[data-theme="dark"]
 }
 
 
-/* Other Project Paragraphs */
 .research-project p {
   margin-top: 0;
 
@@ -1043,7 +997,7 @@ html[data-theme="dark"]
 
 
 /* =========================
-   RESEARCH PROJECT SUBHEADING
+   RESEARCH SUBHEADING
 ========================= */
 
 .research-project-subheading {
@@ -1083,7 +1037,7 @@ html[data-theme="dark"]
 
 
 /* =========================
-   RESEARCH PROJECT DETAILS
+   RESEARCH DETAILS
 ========================= */
 
 .research-project-details {
@@ -1137,7 +1091,7 @@ html[data-theme="dark"]
 
 
 /* =========================
-   PUBLICATION SECTIONS
+   PUBLICATION PAGE
 ========================= */
 
 .publication-section {
@@ -1166,10 +1120,6 @@ html[data-theme="dark"]
     1px solid var(--border);
 }
 
-
-/* =========================
-   PUBLICATION CARD
-========================= */
 
 .publication-item {
   margin-top: 16px;
@@ -1200,10 +1150,6 @@ html[data-theme="dark"]
     0 4px 14px var(--card-shadow);
 }
 
-
-/* =========================
-   PAPER TITLE
-========================= */
 
 .publication-title {
   margin-top: 0;
@@ -1240,10 +1186,6 @@ html[data-theme="dark"]
 }
 
 
-/* =========================
-   AUTHORS
-========================= */
-
 .publication-authors {
   margin-top: 0;
 
@@ -1267,10 +1209,6 @@ html[data-theme="dark"]
 }
 
 
-/* =========================
-   CONFERENCE / JOURNAL
-========================= */
-
 .publication-venue {
   margin-top: 0;
 
@@ -1288,10 +1226,6 @@ html[data-theme="dark"]
   font-style: italic;
 }
 
-
-/* =========================
-   PUBLICATION SUBHEADINGS
-========================= */
 
 .publication-subheading {
   position: relative;
@@ -1377,10 +1311,6 @@ html[data-theme="dark"]
 }
 
 
-/* =========================
-   EXPERIENCE CARD
-========================= */
-
 .experience-item {
   margin-top: 16px;
 
@@ -1410,10 +1340,6 @@ html[data-theme="dark"]
     0 4px 14px var(--card-shadow);
 }
 
-
-/* =========================
-   EXPERIENCE HEADER
-========================= */
 
 .experience-header {
   display: flex;
@@ -1465,10 +1391,6 @@ html[data-theme="dark"]
 }
 
 
-/* =========================
-   EXPERIENCE ORGANIZATION
-========================= */
-
 .experience-organization {
   margin-top:
     0 !important;
@@ -1514,10 +1436,6 @@ html[data-theme="dark"]
   font-style: italic;
 }
 
-
-/* =========================
-   EXPERIENCE DETAILS
-========================= */
 
 .experience-details {
   margin: 8px 0 0 0;
@@ -1584,7 +1502,6 @@ html[data-theme="dark"]
 @media print, screen and (max-width: 720px) {
 
 
-  /* Profile Photo */
   header img {
     width: 150px;
 
@@ -1592,7 +1509,6 @@ html[data-theme="dark"]
   }
 
 
-  /* Social Icons */
   .social-links {
     gap: 13px;
 
@@ -1604,10 +1520,6 @@ html[data-theme="dark"]
     font-size: 27px;
   }
 
-
-  /* =========================
-     THEME CONTROL
-  ========================= */
 
   .content-toolbar {
     height: 34px;
@@ -1629,10 +1541,6 @@ html[data-theme="dark"]
     transform: none;
   }
 
-
-  /* =========================
-     NAVIGATION
-  ========================= */
 
   .site-nav {
     margin-bottom: 26px;
@@ -1672,10 +1580,7 @@ html[data-theme="dark"]
   }
 
 
-  /* =========================
-     DETAILS TOGGLE
-  ========================= */
-
+  /* Details */
   .details-toggle {
     font-size: 12.5px;
 
@@ -1689,10 +1594,7 @@ html[data-theme="dark"]
   }
 
 
-  /* =========================
-     ABOUT
-  ========================= */
-
+  /* About */
   .about-text {
     padding:
       18px 17px;
@@ -1719,10 +1621,7 @@ html[data-theme="dark"]
   }
 
 
-  /* =========================
-     RESEARCH
-  ========================= */
-
+  /* Research */
   .research-section {
     margin-top: 20px;
 
@@ -1796,10 +1695,7 @@ html[data-theme="dark"]
   }
 
 
-  /* =========================
-     PUBLICATION
-  ========================= */
-
+  /* Publication */
   .publication-section {
     margin-top: 20px;
 
@@ -1869,10 +1765,7 @@ html[data-theme="dark"]
   }
 
 
-  /* =========================
-     EXPERIENCE
-  ========================= */
-
+  /* Experience */
   .experience-section {
     margin-top: 20px;
 
