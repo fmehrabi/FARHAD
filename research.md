@@ -29,13 +29,27 @@ permalink: /research/
       This research examines how generative AI is reshaping organizational decision-making, strategic capabilities, and managerial processes, with particular attention to AI governance, organizational adaptation, and value creation.
     </p>
 
-    <h5 class="research-project-subheading">
-      Research Focus
-    </h5>
 
-    <p>
-      The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision-making, organizational capabilities, and long-term transformation.
-    </p>
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+
+      <div class="details-content">
+
+        <h5 class="research-project-subheading">
+          Research Focus
+        </h5>
+
+        <p>
+          The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision-making, organizational capabilities, and long-term transformation.
+        </p>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -73,21 +87,35 @@ permalink: /research/
       This project investigated how digital transformation policies influence organizational performance and value creation at Digikala, a major Iranian e-commerce company.
     </p>
 
-    <ul class="research-project-details">
 
-      <li>
-        Developed a mixed-method system dynamics model to evaluate the effects of digital transformation policies on organizational performance.
-      </li>
+    <details class="expandable-details">
 
-      <li>
-        Modeled five interrelated value-creation subsystems, captured nonlinear feedback structures, and conducted sensitivity analyses of key organizational drivers.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Derived theoretical and managerial implications for digital transformation strategy, organizational capability development, and value creation from the simulation results.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="research-project-details">
+
+          <li>
+            Developed a mixed-method system dynamics model to evaluate the effects of digital transformation policies on organizational performance.
+          </li>
+
+          <li>
+            Modeled five interrelated value-creation subsystems, captured nonlinear feedback structures, and conducted sensitivity analyses of key organizational drivers.
+          </li>
+
+          <li>
+            Derived theoretical and managerial implications for digital transformation strategy, organizational capability development, and value creation from the simulation results.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -112,21 +140,35 @@ permalink: /research/
       This project examined the complex and interconnected factors that shape startup success by combining expert perspectives with cognitive mapping.
     </p>
 
-    <ul class="research-project-details">
 
-      <li>
-        Conducted semi-structured interviews with entrepreneurs and industry experts to elicit and structure perspectives on startup success factors.
-      </li>
+    <details class="expandable-details">
 
-      <li>
-        Applied the Strategic Options Development and Analysis (SODA) methodology to develop cognitive maps representing causal relationships and ill-defined strategic problems.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Analyzed the resulting cognitive structures to identify strategic themes, leverage points, and key drivers of startup growth.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="research-project-details">
+
+          <li>
+            Conducted semi-structured interviews with entrepreneurs and industry experts to elicit and structure perspectives on startup success factors.
+          </li>
+
+          <li>
+            Applied the Strategic Options Development and Analysis (SODA) methodology to develop cognitive maps representing causal relationships and ill-defined strategic problems.
+          </li>
+
+          <li>
+            Analyzed the resulting cognitive structures to identify strategic themes, leverage points, and key drivers of startup growth.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -151,21 +193,35 @@ permalink: /research/
       This project analyzed the strategic evolution of Snapp as a multi-sided digital platform and examined its expansion from ride-hailing into adjacent markets.
     </p>
 
-    <ul class="research-project-details">
 
-      <li>
-        Applied the Platform Envelopment framework to analyze how Snapp leveraged its existing ride-hailing user base to expand into food delivery, fintech, and retail markets.
-      </li>
+    <details class="expandable-details">
 
-      <li>
-        Examined ecosystem dynamics through cross-side network effects and multi-homing risks among supply-side users to assess platform retention challenges.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Developed strategic recommendations for transitioning from rapid growth toward sustainable profitability, including fintech-enabled mechanisms for increasing switching costs and strengthening platform retention.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="research-project-details">
+
+          <li>
+            Applied the Platform Envelopment framework to analyze how Snapp leveraged its existing ride-hailing user base to expand into food delivery, fintech, and retail markets.
+          </li>
+
+          <li>
+            Examined ecosystem dynamics through cross-side network effects and multi-homing risks among supply-side users to assess platform retention challenges.
+          </li>
+
+          <li>
+            Developed strategic recommendations for transitioning from rapid growth toward sustainable profitability, including fintech-enabled mechanisms for increasing switching costs and strengthening platform retention.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -190,21 +246,35 @@ permalink: /research/
       This project examined how technology-enabled process redesign could improve warehouse operations at Digikala through automation and organizational adaptation.
     </p>
 
-    <ul class="research-project-details">
 
-      <li>
-        Analyzed Digikala’s as-is warehouse processes and identified operational bottlenecks, including delays in order allocation and parcel sorting.
-      </li>
+    <details class="expandable-details">
 
-      <li>
-        Designed a to-be warehouse process integrating autonomous transport robots to automate repetitive activities and reduce order collection time and human error.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Developed managerial recommendations for technology-enabled process redesign, emphasizing workforce reskilling and the adaptation of organizational capabilities to automation.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="research-project-details">
+
+          <li>
+            Analyzed Digikala’s as-is warehouse processes and identified operational bottlenecks, including delays in order allocation and parcel sorting.
+          </li>
+
+          <li>
+            Designed a to-be warehouse process integrating autonomous transport robots to automate repetitive activities and reduce order collection time and human error.
+          </li>
+
+          <li>
+            Developed managerial recommendations for technology-enabled process redesign, emphasizing workforce reskilling and the adaptation of organizational capabilities to automation.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
