@@ -81,6 +81,14 @@ html[data-theme="dark"] {
 
 html {
   background: var(--page-bg);
+
+  /*
+     Keeps scrollbar space reserved
+     between pages of different heights.
+     Prevents horizontal layout shifting
+     when navigating between tabs.
+  */
+  scrollbar-gutter: stable;
 }
 
 
@@ -195,6 +203,7 @@ header h1 a:hover {
 
 header img {
   width: 200px;
+
   height: 200px;
 
   object-fit: cover;
@@ -204,9 +213,16 @@ header img {
   display: block;
 
   margin-left: auto;
+
   margin-right: auto;
+
   margin-bottom: 18px;
 
+  /*
+     Slight horizontal adjustment:
+     negative = left
+     positive = right
+  */
   transform: translateX(-1mm);
 }
 
@@ -612,6 +628,9 @@ html[data-theme="dark"]
 
 /* =========================
    PAGE FADE TRANSITION
+
+   Opacity only.
+   No translate / scale movement.
 ========================= */
 
 .page-content {
@@ -626,14 +645,10 @@ html[data-theme="dark"]
 
   from {
     opacity: 0;
-
-    transform: translateY(6px);
   }
 
   to {
     opacity: 1;
-
-    transform: translateY(0);
   }
 
 }
@@ -1528,6 +1543,11 @@ html[data-theme="dark"]
     width: 150px;
 
     height: 150px;
+
+    /*
+       Keep photo centered on mobile.
+    */
+    transform: none;
   }
 
 
