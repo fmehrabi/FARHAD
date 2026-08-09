@@ -293,7 +293,6 @@
 
     <!-- =========================
          THEME CONTROL
-         TOP RIGHT
     ========================== -->
 
     <div class="content-toolbar">
@@ -329,7 +328,6 @@
       <div class="nav-links">
 
 
-        <!-- About -->
         <a
           href="{{ '/' | relative_url }}"
           {% if page.url == '/' %}
@@ -341,7 +339,6 @@
         </a>
 
 
-        <!-- Research -->
         <a
           href="{{ '/research/' | relative_url }}"
           {% if page.url == '/research/' %}
@@ -353,7 +350,6 @@
         </a>
 
 
-        <!-- Publication -->
         <a
           href="{{ '/publications/' | relative_url }}"
           {% if page.url == '/publications/' %}
@@ -365,7 +361,6 @@
         </a>
 
 
-        <!-- Experience -->
         <a
           href="{{ '/experience/' | relative_url }}"
           {% if page.url == '/experience/' %}
@@ -384,7 +379,7 @@
 
 
     <!-- =========================
-         PAGE CONTENT + FADE
+         PAGE CONTENT
     ========================== -->
 
     <div class="page-content">
@@ -433,7 +428,6 @@
 
 
 
-<!-- Theme Responsive Scaling Script -->
 <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
 
@@ -473,10 +467,6 @@
 
 
 
-    /* =========================
-       GET SAVED PREFERENCE
-    ========================== */
-
     function getSavedTheme() {
 
       try {
@@ -506,10 +496,6 @@
     }
 
 
-
-    /* =========================
-       APPLY THEME
-    ========================== */
 
     function applyTheme(theme) {
 
@@ -568,10 +554,6 @@
 
 
 
-    /* =========================
-       INITIAL BUTTON STATE
-    ========================== */
-
     const currentTheme =
       root.getAttribute("data-theme") || "light";
 
@@ -579,10 +561,6 @@
     applyTheme(currentTheme);
 
 
-
-    /* =========================
-       USER TOGGLE
-    ========================== */
 
     toggle.addEventListener(
       "click",
@@ -619,11 +597,6 @@
     );
 
 
-
-    /* =========================
-       FOLLOW SYSTEM THEME
-       ONLY WITHOUT USER CHOICE
-    ========================== */
 
     function handleSystemThemeChange(event) {
 
@@ -663,6 +636,285 @@
 
 
     }
+
+
+  })();
+
+</script>
+
+
+
+<!-- =========================
+     SMOOTH EXPAND / COLLAPSE
+     RESEARCH / PUBLICATION /
+     EXPERIENCE
+========================= -->
+
+<script>
+
+  (function () {
+
+
+    const detailsElements =
+      document.querySelectorAll(".expandable-details");
+
+
+    if (!detailsElements.length) {
+      return;
+    }
+
+
+    const animationDuration =
+      1000;
+
+
+    const animationEasing =
+      "cubic-bezier(0.4, 0, 0.2, 1)";
+
+
+    const reduceMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+
+
+    detailsElements.forEach(function (details) {
+
+
+      const summary =
+        details.querySelector(".details-toggle");
+
+
+      const content =
+        details.querySelector(".details-content");
+
+
+      if (!summary || !content) {
+        return;
+      }
+
+
+      let currentAnimation =
+        null;
+
+
+
+      function clearAnimationStyles() {
+
+        content.style.height = "";
+
+        content.style.opacity = "";
+
+        content.style.transform = "";
+
+        content.style.overflow = "";
+
+        content.style.willChange = "";
+
+      }
+
+
+
+      function finishAnimation() {
+
+        if (currentAnimation) {
+
+          currentAnimation.cancel();
+
+          currentAnimation = null;
+
+        }
+
+      }
+
+
+
+      function openDetails() {
+
+
+        finishAnimation();
+
+
+        details.classList.remove(
+          "is-closing"
+        );
+
+
+        details.open = true;
+
+
+        content.style.overflow =
+          "hidden";
+
+
+        content.style.willChange =
+          "height, opacity, transform";
+
+
+        const targetHeight =
+          content.scrollHeight;
+
+
+        currentAnimation =
+          content.animate(
+
+            [
+              {
+                height: "0px",
+                opacity: 0,
+                transform: "translateY(-6px)"
+              },
+
+              {
+                height: targetHeight + "px",
+                opacity: 1,
+                transform: "translateY(0)"
+              }
+            ],
+
+            {
+              duration: animationDuration,
+              easing: animationEasing,
+              fill: "both"
+            }
+
+          );
+
+
+        currentAnimation.onfinish =
+          function () {
+
+            clearAnimationStyles();
+
+            currentAnimation = null;
+
+          };
+
+
+        currentAnimation.oncancel =
+          function () {
+
+            currentAnimation = null;
+
+          };
+
+      }
+
+
+
+      function closeDetails() {
+
+
+        finishAnimation();
+
+
+        details.classList.add(
+          "is-closing"
+        );
+
+
+        const startHeight =
+          content.getBoundingClientRect().height;
+
+
+        content.style.overflow =
+          "hidden";
+
+
+        content.style.willChange =
+          "height, opacity, transform";
+
+
+        currentAnimation =
+          content.animate(
+
+            [
+              {
+                height: startHeight + "px",
+                opacity: 1,
+                transform: "translateY(0)"
+              },
+
+              {
+                height: "0px",
+                opacity: 0,
+                transform: "translateY(-6px)"
+              }
+            ],
+
+            {
+              duration: animationDuration,
+              easing: animationEasing,
+              fill: "both"
+            }
+
+          );
+
+
+        currentAnimation.onfinish =
+          function () {
+
+            details.open = false;
+
+
+            details.classList.remove(
+              "is-closing"
+            );
+
+
+            clearAnimationStyles();
+
+
+            currentAnimation = null;
+
+          };
+
+
+        currentAnimation.oncancel =
+          function () {
+
+            currentAnimation = null;
+
+          };
+
+      }
+
+
+
+      summary.addEventListener(
+        "click",
+        function (event) {
+
+
+          if (reduceMotion.matches) {
+
+            return;
+
+          }
+
+
+          event.preventDefault();
+
+
+          if (
+            details.open &&
+            !details.classList.contains("is-closing")
+          ) {
+
+            closeDetails();
+
+          } else {
+
+            openDetails();
+
+          }
+
+        }
+      );
+
+
+    });
 
 
   })();
