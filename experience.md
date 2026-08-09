@@ -15,7 +15,11 @@ permalink: /experience/
   </h3>
 
 
-  <!-- Allameh Tabataba'i University -->
+  <!-- =========================
+       ALLAMEH TABATABA'I
+       RESEARCH ASSISTANT
+  ========================== -->
+
   <article class="experience-item">
 
     <div class="experience-header">
@@ -40,27 +44,44 @@ permalink: /experience/
     </p>
 
 
-    <ul class="experience-details">
+    <details class="expandable-details">
 
-      <li>
-        Designed research frameworks and methodological strategies for graduate projects in strategic management, information systems, and technology-enabled organizational phenomena.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Conducted mixed-method research involving literature reviews, qualitative analysis, quantitative data analysis, and system dynamics modeling.
-      </li>
 
-      <li>
-        Contributed to manuscript development and working papers on human–AI co-governance, strategic management, and digital transformation, while supporting graduate students in research design and proposal development.
-      </li>
+      <div class="details-content">
 
-    </ul>
+        <ul class="experience-details">
+
+          <li>
+            Designed research frameworks and methodological strategies for graduate projects in strategic management, information systems, and technology-enabled organizational phenomena.
+          </li>
+
+          <li>
+            Conducted mixed-method research involving literature reviews, qualitative analysis, quantitative data analysis, and system dynamics modeling.
+          </li>
+
+          <li>
+            Contributed to manuscript development and working papers on human–AI co-governance, strategic management, and digital transformation, while supporting graduate students in research design and proposal development.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
 
 
-  <!-- Amirkabir University of Technology -->
+  <!-- =========================
+       AMIRKABIR UNIVERSITY
+       RESEARCH ASSISTANT
+  ========================== -->
+
   <article class="experience-item">
 
     <div class="experience-header">
@@ -85,21 +106,34 @@ permalink: /experience/
     </p>
 
 
-    <ul class="experience-details">
+    <details class="expandable-details">
 
-      <li>
-        Designed and developed intelligent ground autonomous mobile robot platforms and conducted research on improving robot navigation in complex environments.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Developed and optimized localization and path-planning algorithms and integrated sensors, actuators, and software components to support reliable autonomous operation across different tasks and environments.
-      </li>
 
-      <li>
-        Coordinated multidisciplinary research projects by managing timelines, resources, and team activities; mentored undergraduate researchers, provided technical guidance to student projects, and presented weekly progress reports to laboratory supervisors and research center leadership.
-      </li>
+      <div class="details-content">
 
-    </ul>
+        <ul class="experience-details">
+
+          <li>
+            Designed and developed intelligent ground autonomous mobile robot platforms and conducted research on improving robot navigation in complex environments.
+          </li>
+
+          <li>
+            Developed and optimized localization and path-planning algorithms and integrated sensors, actuators, and software components to support reliable autonomous operation across different tasks and environments.
+          </li>
+
+          <li>
+            Coordinated multidisciplinary research projects by managing timelines, resources, and team activities; mentored undergraduate researchers, provided technical guidance to student projects, and presented weekly progress reports to laboratory supervisors and research center leadership.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -118,7 +152,10 @@ permalink: /experience/
   </h3>
 
 
-  <!-- Business Process Management -->
+  <!-- =========================
+       BUSINESS PROCESS MANAGEMENT
+  ========================== -->
+
   <article class="experience-item">
 
     <div class="experience-header">
@@ -143,23 +180,39 @@ permalink: /experience/
     </p>
 
 
-    <ul class="experience-details">
+    <details class="expandable-details">
 
-      <li>
-        Assisted graduate students with business process management concepts through review sessions, problem-solving exercises, and instruction in process modeling and automation tools, including Visual Paradigm, Microsoft Visio, Camunda, and Bizagi.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Supported workshops and course activities by teaching business process standards, frameworks, and modeling techniques and providing academic guidance on course assignments and projects.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="experience-details">
+
+          <li>
+            Assisted graduate students with business process management concepts through review sessions, problem-solving exercises, and instruction in process modeling and automation tools, including Visual Paradigm, Microsoft Visio, Camunda, and Bizagi.
+          </li>
+
+          <li>
+            Supported workshops and course activities by teaching business process standards, frameworks, and modeling techniques and providing academic guidance on course assignments and projects.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
 
 
-  <!-- System Dynamics -->
+  <!-- =========================
+       SYSTEM DYNAMICS
+  ========================== -->
+
   <article class="experience-item">
 
     <div class="experience-header">
@@ -184,17 +237,30 @@ permalink: /experience/
     </p>
 
 
-    <ul class="experience-details">
+    <details class="expandable-details">
 
-      <li>
-        Mentored graduate students in system dynamics concepts, Vensim modeling, and course projects through problem-solving sessions, software instruction, and individualized academic support.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Facilitated review sessions and taught selected system dynamics archetypes while evaluating student projects and providing feedback on modeling and simulation assignments.
-      </li>
 
-    </ul>
+      <div class="details-content">
+
+        <ul class="experience-details">
+
+          <li>
+            Mentored graduate students in system dynamics concepts, Vensim modeling, and course projects through problem-solving sessions, software instruction, and individualized academic support.
+          </li>
+
+          <li>
+            Facilitated review sessions and taught selected system dynamics archetypes while evaluating student projects and providing feedback on modeling and simulation assignments.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
@@ -213,7 +279,10 @@ permalink: /experience/
   </h3>
 
 
-  <!-- SYNTECH -->
+  <!-- =========================
+       SYNTECH
+  ========================== -->
+
   <article class="experience-item">
 
     <div class="experience-header">
@@ -238,21 +307,34 @@ permalink: /experience/
     </p>
 
 
-    <ul class="experience-details">
+    <details class="expandable-details">
 
-      <li>
-        Served as a member of the mechanical design team for <strong>Yooz</strong>, the company’s first two-seat electric microcar product based on the Renault-Twizy open-source platform.
-      </li>
+      <summary class="details-toggle">
+        View details
+      </summary>
 
-      <li>
-        Contributed to the development, evaluation, and improvement of methods and procedures for mechanical design and production processes.
-      </li>
 
-      <li>
-        Conducted regular audits and inspections to identify design and production problems, proposed improvement solutions, and trained and supervised new members of the production and design teams.
-      </li>
+      <div class="details-content">
 
-    </ul>
+        <ul class="experience-details">
+
+          <li>
+            Served as a member of the mechanical design team for <strong>Yooz</strong>, the company’s first two-seat electric microcar product based on the Renault-Twizy open-source platform.
+          </li>
+
+          <li>
+            Contributed to the development, evaluation, and improvement of methods and procedures for mechanical design and production processes.
+          </li>
+
+          <li>
+            Conducted regular audits and inspections to identify design and production problems, proposed improvement solutions, and trained and supervised new members of the production and design teams.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
 
   </article>
 
