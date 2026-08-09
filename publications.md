@@ -1,108 +1,41 @@
 ---
 layout: default
-permalink: /experience/
+permalink: /publications/
 ---
 
+<div class="publication-section">
 
-<!-- =========================
-     RESEARCH EXPERIENCE
-========================= -->
-
-<div class="experience-section">
-
-  <h3 class="experience-section-title">
-    Research Experience
+  <h3 class="publication-section-title">
+    Conference Paper
   </h3>
 
 
-  <!-- =========================
-       ALLAMEH TABATABA'I
-       RESEARCH ASSISTANT
-  ========================== -->
+  <article class="publication-item">
 
-  <article class="experience-item">
+    <h4 class="publication-title">
 
-    <div class="experience-header">
+      <a
+        href="https://ieeexplore.ieee.org/abstract/document/10025185"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="View publication on IEEE Xplore"
+      >
+        A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration
+      </a>
 
-      <h4 class="experience-role">
-        Research Assistant
-      </h4>
-
-      <span class="experience-date">
-        2024 – Present
-      </span>
-
-    </div>
+    </h4>
 
 
-    <p class="experience-organization">
-      Allameh Tabataba’i University
-    </p>
-
-    <p class="experience-meta">
-      Department of IT and Operations Management · Supervisor: Dr. Mojtaba HajianHeidary
+    <p class="publication-authors">
+      Nima Payandeh,
+      <strong>Farhad Mehrabi</strong>,
+      Rasul Fesharakifard,
+      and Younes AlizadehVaghasloo
     </p>
 
 
-    <details class="expandable-details">
-
-      <summary class="details-toggle">
-        View details
-      </summary>
-
-
-      <div class="details-content">
-
-        <ul class="experience-details">
-
-          <li>
-            Designed research frameworks and methodological strategies for graduate projects in strategic management, information systems, and technology-enabled organizational phenomena.
-          </li>
-
-          <li>
-            Conducted mixed-method research involving literature reviews, qualitative analysis, quantitative data analysis, and system dynamics modeling.
-          </li>
-
-          <li>
-            Contributed to manuscript development and working papers on human–AI co-governance, strategic management, and digital transformation, while supporting graduate students in research design and proposal development.
-          </li>
-
-        </ul>
-
-      </div>
-
-    </details>
-
-  </article>
-
-
-
-  <!-- =========================
-       AMIRKABIR
-       RESEARCH ASSISTANT
-  ========================== -->
-
-  <article class="experience-item">
-
-    <div class="experience-header">
-
-      <h4 class="experience-role">
-        Research Assistant
-      </h4>
-
-      <span class="experience-date">
-        2019 – 2022
-      </span>
-
-    </div>
-
-
-    <p class="experience-organization">
-      Amirkabir University of Technology
-    </p>
-
-    <p class="experience-meta">
-      New Technologies Research Centre (NTRC) · Robotics &amp; Industrial Automation Lab
+    <p class="publication-venue">
+      2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.
     </p>
 
 
@@ -115,226 +48,33 @@ permalink: /experience/
 
       <div class="details-content">
 
-        <ul class="experience-details">
 
-          <li>
-            Designed and developed intelligent ground autonomous mobile robot platforms and conducted research on improving robot navigation in complex environments.
-          </li>
+        <h4 class="publication-subheading">
+          Project Overview
+        </h4>
 
-          <li>
-            Developed and optimized localization and path-planning algorithms and integrated sensors, actuators, and software components to support reliable autonomous operation across different tasks and environments.
-          </li>
+        <p>
+          In this project, we investigated autonomous exploration strategies for mobile robots operating in previously unknown environments. We implemented and compared Efficient Frontier Exploration and RRT-based exploration using ROS and Gazebo, and subsequently evaluated both approaches on a TurtleBot3 in physical environments of increasing complexity.
+        </p>
 
-          <li>
-            Coordinated multidisciplinary research projects by managing timelines, resources, and team activities; mentored undergraduate researchers, provided technical guidance to student projects, and presented weekly progress reports to laboratory supervisors and research center leadership.
-          </li>
+        <p>
+          The two methods were evaluated primarily in terms of exploration time and total travel distance. Across both simulation and real-world experiments, RRT-based exploration generally required less travel distance and completed the exploration task faster than the Efficient Frontier approach. The performance difference became more noticeable as the environment became more complex, suggesting that intelligent target selection based on navigation cost and information gain can improve autonomous exploration efficiency.
+        </p>
 
-        </ul>
+
+        <h4 class="publication-subheading">
+          Research &amp; Practical Significance
+        </h4>
+
+        <p>
+          This work provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions. From a practical perspective, reducing exploration time and traveled distance can improve the operational efficiency of autonomous mobile robots, particularly in applications where battery capacity, navigation time, and environmental complexity are important constraints.
+        </p>
+
 
       </div>
 
     </details>
 
-  </article>
-
-</div>
-
-
-
-<!-- =========================
-     TEACHING EXPERIENCE
-========================= -->
-
-<div class="experience-section">
-
-  <h3 class="experience-section-title">
-    Teaching Experience
-  </h3>
-
-
-  <!-- =========================
-       BUSINESS PROCESS MANAGEMENT
-  ========================== -->
-
-  <article class="experience-item">
-
-    <div class="experience-header">
-
-      <h4 class="experience-role">
-        Graduate Teaching Assistant — Business Process Management
-      </h4>
-
-      <span class="experience-date">
-        2025 – Present
-      </span>
-
-    </div>
-
-
-    <p class="experience-organization">
-      Allameh Tabataba’i University
-    </p>
-
-    <p class="experience-meta">
-      Graduate Course · Instructor: Dr. MohammadTaghi Taghavifard
-    </p>
-
-
-    <details class="expandable-details">
-
-      <summary class="details-toggle">
-        View details
-      </summary>
-
-
-      <div class="details-content">
-
-        <ul class="experience-details">
-
-          <li>
-            Assisted graduate students with business process management concepts through review sessions, problem-solving exercises, and instruction in process modeling and automation tools, including Visual Paradigm, Microsoft Visio, Camunda, and Bizagi.
-          </li>
-
-          <li>
-            Supported workshops and course activities by teaching business process standards, frameworks, and modeling techniques and providing academic guidance on course assignments and projects.
-          </li>
-
-        </ul>
-
-      </div>
-
-    </details>
-
-  </article>
-
-
-
-  <!-- =========================
-       SYSTEM DYNAMICS
-  ========================== -->
-
-  <article class="experience-item">
-
-    <div class="experience-header">
-
-      <h4 class="experience-role">
-        Graduate Teaching Assistant — System Dynamics
-      </h4>
-
-      <span class="experience-date">
-        2024 – Present
-      </span>
-
-    </div>
-
-
-    <p class="experience-organization">
-      Allameh Tabataba’i University
-    </p>
-
-    <p class="experience-meta">
-      Graduate Course · Instructor: Dr. Mojtaba HajianHeidary
-    </p>
-
-
-    <details class="expandable-details">
-
-      <summary class="details-toggle">
-        View details
-      </summary>
-
-
-      <div class="details-content">
-
-        <ul class="experience-details">
-
-          <li>
-            Mentored graduate students in system dynamics concepts, Vensim modeling, and course projects through problem-solving sessions, software instruction, and individualized academic support.
-          </li>
-
-          <li>
-            Facilitated review sessions and taught selected system dynamics archetypes while evaluating student projects and providing feedback on modeling and simulation assignments.
-          </li>
-
-        </ul>
-
-      </div>
-
-    </details>
-
-  </article>
-
-</div>
-
-
-
-<!-- =========================
-     PROFESSIONAL EXPERIENCE
-========================= -->
-
-<div class="experience-section">
-
-  <h3 class="experience-section-title">
-    Professional Experience
-  </h3>
-
-
-  <!-- =========================
-       SYNTECH
-  ========================== -->
-
-  <article class="experience-item">
-
-    <div class="experience-header">
-
-      <h4 class="experience-role">
-        Manufacturing &amp; Mechanical Design Engineer
-      </h4>
-
-      <span class="experience-date">
-        2015 – 2018
-      </span>
-
-    </div>
-
-
-    <p class="experience-organization">
-      SYNTECH Technology and Innovation Center
-    </p>
-
-    <p class="experience-meta">
-      Qazvin Azad University
-    </p>
-
-
-    <details class="expandable-details">
-
-      <summary class="details-toggle">
-        View details
-      </summary>
-
-
-      <div class="details-content">
-
-        <ul class="experience-details">
-
-          <li>
-            Served as a member of the mechanical design team for <strong>Yooz</strong>, the company’s first two-seat electric microcar product based on the Renault-Twizy open-source platform.
-          </li>
-
-          <li>
-            Contributed to the development, evaluation, and improvement of methods and procedures for mechanical design and production processes.
-          </li>
-
-          <li>
-            Conducted regular audits and inspections to identify design and production problems, proposed improvement solutions, and trained and supervised new members of the production and design teams.
-          </li>
-
-        </ul>
-
-      </div>
-
-    </details>
 
   </article>
 
