@@ -151,11 +151,6 @@ footer a:hover {
   }
 
 
-  /*
-     Safety rule for any possible
-     inner section elements.
-  */
-
   .main-content .page-content > section {
     width: 100% !important;
 
@@ -647,6 +642,141 @@ html[data-theme="dark"]
 
 
 /* =========================
+   EXPANDABLE DETAILS
+   RESEARCH / PUBLICATION /
+   EXPERIENCE
+========================= */
+
+.expandable-details {
+  margin-top: 7px;
+
+  padding: 0;
+
+  border: none;
+}
+
+
+/* Remove Default Marker */
+.details-toggle {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin: 0;
+
+  padding: 5px 0;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+
+  color: var(--accent);
+
+  cursor: pointer;
+
+  list-style: none;
+
+  user-select: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.details-toggle::-webkit-details-marker {
+  display: none;
+}
+
+
+.details-toggle::marker {
+  display: none;
+
+  content: "";
+}
+
+
+/* Chevron */
+.details-toggle::after {
+  content: "▾";
+
+  display: inline-block;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  transform: rotate(0deg);
+
+  transform-origin: center;
+
+  transition:
+    transform 0.22s ease;
+}
+
+
+/* Open State */
+.expandable-details[open]
+.details-toggle::after {
+  transform: rotate(180deg);
+}
+
+
+/* Hover */
+.details-toggle:hover {
+  color: var(--accent-hover);
+}
+
+
+/* Keyboard Focus */
+.details-toggle:focus-visible {
+  color: var(--accent);
+
+  outline:
+    2px solid var(--focus-ring);
+
+  outline-offset: 3px;
+
+  border-radius: 3px;
+}
+
+
+/* Expanded Content */
+.details-content {
+  margin-top: 8px;
+
+  padding-top: 2px;
+}
+
+
+.expandable-details[open]
+.details-content {
+  animation:
+    detailsFadeIn 0.3s ease both;
+}
+
+
+@keyframes detailsFadeIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================
    REDUCED MOTION
 ========================= */
 
@@ -657,10 +787,17 @@ html[data-theme="dark"]
   }
 
 
+  .details-content {
+    animation: none !important;
+  }
+
+
   .nav-links a,
   .nav-links a::after,
   .theme-toggle,
-  .theme-toggle i {
+  .theme-toggle i,
+  .details-toggle,
+  .details-toggle::after {
     transition: none;
   }
 
@@ -866,7 +1003,7 @@ html[data-theme="dark"]
 .research-project-summary {
   margin-top: 0 !important;
 
-  margin-bottom: 16px !important;
+  margin-bottom: 7px !important;
 
   font-size: 14px !important;
 
@@ -912,7 +1049,7 @@ html[data-theme="dark"]
 .research-project-subheading {
   position: relative;
 
-  margin-top: 21px;
+  margin-top: 13px;
 
   margin-bottom: 8px;
 
@@ -950,7 +1087,7 @@ html[data-theme="dark"]
 ========================= */
 
 .research-project-details {
-  margin: 4px 0 0 0;
+  margin: 8px 0 0 0;
 
   padding: 0;
 
@@ -1137,7 +1274,7 @@ html[data-theme="dark"]
 .publication-venue {
   margin-top: 0;
 
-  margin-bottom: 21px !important;
+  margin-bottom: 7px !important;
 
   font-size: 12.5px !important;
 
@@ -1159,7 +1296,7 @@ html[data-theme="dark"]
 .publication-subheading {
   position: relative;
 
-  margin-top: 23px;
+  margin-top: 15px;
 
   margin-bottom: 9px;
 
@@ -1360,7 +1497,7 @@ html[data-theme="dark"]
     0 !important;
 
   margin-bottom:
-    14px !important;
+    7px !important;
 
   font-size:
     12.5px !important;
@@ -1383,7 +1520,7 @@ html[data-theme="dark"]
 ========================= */
 
 .experience-details {
-  margin: 0;
+  margin: 8px 0 0 0;
 
   padding: 0;
 
@@ -1536,6 +1673,23 @@ html[data-theme="dark"]
 
 
   /* =========================
+     DETAILS TOGGLE
+  ========================= */
+
+  .details-toggle {
+    font-size: 12.5px;
+
+    padding:
+      5px 0;
+  }
+
+
+  .details-content {
+    margin-top: 7px;
+  }
+
+
+  /* =========================
      ABOUT
   ========================= */
 
@@ -1634,7 +1788,7 @@ html[data-theme="dark"]
 
 
   .research-project-subheading {
-    margin-top: 18px;
+    margin-top: 12px;
 
     padding-left: 16px;
 
@@ -1688,12 +1842,12 @@ html[data-theme="dark"]
       12px !important;
 
     margin-bottom:
-      18px !important;
+      7px !important;
   }
 
 
   .publication-subheading {
-    margin-top: 20px;
+    margin-top: 14px;
 
     padding-left: 16px;
 
@@ -1774,6 +1928,9 @@ html[data-theme="dark"]
   .experience-meta {
     font-size:
       12px !important;
+
+    margin-bottom:
+      7px !important;
   }
 
 
