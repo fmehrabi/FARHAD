@@ -2590,29 +2590,29 @@ screen and (max-width: 720px) {
      MOBILE SECTION BANDS
   ========================= */
 
-  .research-section-title,
-  .publication-section-title,
-  .experience-section-title {
+.research-section-title,
+.publication-section-title,
+.experience-section-title {
 
-    margin-bottom:
-      15px;
+  margin-bottom:
+    15px;
 
-    padding:
-      9px 11px 9px 12px;
+  padding:
+    9px 11px 9px 12px;
 
-    font-size:
-      16px;
+  font-size:
+    16px;
 
-    line-height:
-      1.4;
+  line-height:
+    1.4;
 
-    border-left-width:
-      3px;
+  border-left-width:
+    3px;
 
-    border-radius:
-      0 6px 6px 0;
+  border-radius:
+    0 6px 6px 0;
 
-  }
+}
 
 
   /* Research */
@@ -2902,31 +2902,4 @@ screen and (max-width: 720px) {
 
   }
 
-}
-
-تغییر اصلی در این قسمت جدید است:
-
-.research-section-title,
-.publication-section-title,
-.experience-section-title {
-
-  width: 100%;
-
-  padding: 10px 14px 10px 15px;
-
-  font-size: 17px;
-
-  font-weight: 600;
-
-  color: var(--heading);
-
-  background: var(--surface-accent);
-
-  border: 1px solid var(--border);
-
-  border-left: 4px solid var(--accent);
-
-  border-radius: 0 7px 7px 0;
-
-  box-shadow: none;
 }
