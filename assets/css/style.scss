@@ -44,6 +44,30 @@
   --accent-shadow-soft:
     rgba(39, 140, 168, 0.10);
 
+  /*
+     Low-saturation spectrum tints.
+     These are intentionally subtle:
+     cyan → blue → teal, not rainbow.
+  */
+
+  --spectrum-cyan:
+    rgba(39, 140, 168, 0.075);
+
+  --spectrum-blue:
+    rgba(76, 112, 178, 0.060);
+
+  --spectrum-teal:
+    rgba(47, 151, 127, 0.060);
+
+  --spectrum-cyan-hover:
+    rgba(39, 140, 168, 0.135);
+
+  --spectrum-blue-hover:
+    rgba(76, 112, 178, 0.110);
+
+  --spectrum-teal-hover:
+    rgba(47, 151, 127, 0.110);
+
 }
 
 
@@ -86,6 +110,24 @@ html[data-theme="dark"] {
 
   --accent-shadow-soft:
     rgba(69, 167, 194, 0.13);
+
+  --spectrum-cyan:
+    rgba(69, 167, 194, 0.105);
+
+  --spectrum-blue:
+    rgba(105, 132, 205, 0.085);
+
+  --spectrum-teal:
+    rgba(75, 178, 150, 0.085);
+
+  --spectrum-cyan-hover:
+    rgba(69, 167, 194, 0.175);
+
+  --spectrum-blue-hover:
+    rgba(105, 132, 205, 0.145);
+
+  --spectrum-teal-hover:
+    rgba(75, 178, 150, 0.145);
 
 }
 
@@ -1042,6 +1084,12 @@ html.stagger-preload
 .experience-section >
 .experience-item {
 
+  --card-spectrum:
+    var(--spectrum-cyan);
+
+  --card-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
   position:
     relative;
 
@@ -1055,7 +1103,12 @@ html.stagger-preload
     22px 24px;
 
   background:
-    var(--surface);
+    linear-gradient(
+      135deg,
+      var(--surface) 0%,
+      var(--surface) 58%,
+      var(--card-spectrum) 100%
+    );
 
   border:
     1px solid
@@ -1070,7 +1123,7 @@ html.stagger-preload
 
   transition:
     border-color 0.22s ease,
-    background-color 0.22s ease,
+    background 0.22s ease,
     box-shadow 0.22s ease;
 
 }
@@ -1316,9 +1369,24 @@ html.stagger-preload
 
 /* =========================
    ABOUT
+   UNIFIED PROFILE CARD
+
+   Uses the same card language
+   as Research / Publication /
+   Experience, without a fake
+   hierarchy rail.
 ========================= */
 
 .about-text {
+
+  --about-spectrum:
+    var(--spectrum-cyan);
+
+  --about-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
+  position:
+    relative;
 
   margin-top:
     18px;
@@ -1330,14 +1398,23 @@ html.stagger-preload
     22px 24px;
 
   background:
-    var(--surface);
+    linear-gradient(
+      135deg,
+      var(--surface) 0%,
+      var(--surface) 58%,
+      var(--about-spectrum) 100%
+    );
 
-  border-left:
-    3px solid
-    var(--accent);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:
-    0 8px 8px 0;
+    10px;
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
 
   text-align:
     justify;
@@ -1346,21 +1423,31 @@ html.stagger-preload
     inter-word;
 
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.25s ease;
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
 
 .about-text:hover {
 
-  transform:
-    translateY(-2px);
+  background:
+    linear-gradient(
+      135deg,
+      var(--surface-hover) 0%,
+      var(--surface-hover) 52%,
+      var(--about-spectrum-hover) 100%
+    );
+
+  border-color:
+    var(--accent);
 
   box-shadow:
-    0 4px 14px
-    var(--card-shadow);
+    0 10px 26px
+      var(--accent-shadow),
+    0 0 0 1px
+      var(--accent-shadow-soft);
 
 }
 
@@ -1929,6 +2016,12 @@ html.stagger-preload
 
 .research-project {
 
+  --card-spectrum:
+    var(--spectrum-cyan);
+
+  --card-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
   position:
     relative;
 
@@ -1942,7 +2035,12 @@ html.stagger-preload
     22px 24px;
 
   background:
-    var(--surface);
+    linear-gradient(
+      135deg,
+      var(--surface) 0%,
+      var(--surface) 58%,
+      var(--card-spectrum) 100%
+    );
 
   border:
     1px solid
@@ -1957,7 +2055,7 @@ html.stagger-preload
 
   transition:
     border-color 0.22s ease,
-    background-color 0.22s ease,
+    background 0.22s ease,
     box-shadow 0.22s ease;
 
 }
@@ -1966,7 +2064,12 @@ html.stagger-preload
 .research-project:hover {
 
   background:
-    var(--surface-hover);
+    linear-gradient(
+      135deg,
+      var(--surface-hover) 0%,
+      var(--surface-hover) 50%,
+      var(--card-spectrum-hover) 100%
+    );
 
   border-color:
     var(--accent);
@@ -2222,6 +2325,54 @@ html.stagger-preload
 
 
 /* =========================
+   PROFESSIONAL CARD SPECTRUM
+
+   A restrained cyan / blue /
+   teal cycle makes sibling cards
+   easier to distinguish without
+   turning the page into a rainbow.
+========================= */
+
+.research-project:nth-of-type(3n + 1),
+.publication-item:nth-of-type(3n + 1),
+.experience-item:nth-of-type(3n + 1) {
+
+  --card-spectrum:
+    var(--spectrum-cyan);
+
+  --card-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
+}
+
+
+.research-project:nth-of-type(3n + 2),
+.publication-item:nth-of-type(3n + 2),
+.experience-item:nth-of-type(3n + 2) {
+
+  --card-spectrum:
+    var(--spectrum-blue);
+
+  --card-spectrum-hover:
+    var(--spectrum-blue-hover);
+
+}
+
+
+.research-project:nth-of-type(3n),
+.publication-item:nth-of-type(3n),
+.experience-item:nth-of-type(3n) {
+
+  --card-spectrum:
+    var(--spectrum-teal);
+
+  --card-spectrum-hover:
+    var(--spectrum-teal-hover);
+
+}
+
+
+/* =========================
    PUBLICATION
 ========================= */
 
@@ -2238,6 +2389,12 @@ html.stagger-preload
 
 .publication-item {
 
+  --card-spectrum:
+    var(--spectrum-cyan);
+
+  --card-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
   position:
     relative;
 
@@ -2251,7 +2408,12 @@ html.stagger-preload
     22px 24px;
 
   background:
-    var(--surface);
+    linear-gradient(
+      135deg,
+      var(--surface) 0%,
+      var(--surface) 58%,
+      var(--card-spectrum) 100%
+    );
 
   border:
     1px solid
@@ -2266,7 +2428,7 @@ html.stagger-preload
 
   transition:
     border-color 0.22s ease,
-    background-color 0.22s ease,
+    background 0.22s ease,
     box-shadow 0.22s ease;
 
 }
@@ -2275,7 +2437,12 @@ html.stagger-preload
 .publication-item:hover {
 
   background:
-    var(--surface-hover);
+    linear-gradient(
+      135deg,
+      var(--surface-hover) 0%,
+      var(--surface-hover) 50%,
+      var(--card-spectrum-hover) 100%
+    );
 
   border-color:
     var(--accent);
@@ -2536,7 +2703,12 @@ html.stagger-preload
 .experience-item:hover {
 
   background:
-    var(--surface-hover);
+    linear-gradient(
+      135deg,
+      var(--surface-hover) 0%,
+      var(--surface-hover) 50%,
+      var(--card-spectrum-hover) 100%
+    );
 
   border-color:
     var(--accent);
@@ -3027,6 +3199,9 @@ screen and (max-width: 720px) {
     margin-bottom:
       28px;
 
+    border-radius:
+      8px;
+
     text-align:
       left;
 
@@ -3043,14 +3218,6 @@ screen and (max-width: 720px) {
 
     text-align:
       left;
-
-  }
-
-
-  .about-text:hover {
-
-    transform:
-      none;
 
   }
 
@@ -3511,6 +3678,7 @@ screen and (max-width: 720px) {
   }
 
 
+  .about-text:hover,
   .research-project:hover,
   .publication-item:hover,
   .experience-item:hover {
