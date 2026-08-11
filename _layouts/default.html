@@ -21,27 +21,43 @@
 
   <!-- =========================
        INITIAL THEME
-       Prevents light flash
-       before dark mode loads
+       + STAGGER PRELOAD
   ========================== -->
 
   <script>
 
     (function () {
 
-      const storageKey = "farhad-theme";
+      /*
+         Prevents a brief flash of the
+         staggered content before its
+         entrance animation starts.
+      */
 
-      let savedTheme = null;
+      document.documentElement.classList.add(
+        "stagger-preload"
+      );
+
+
+      const storageKey =
+        "farhad-theme";
+
+
+      let savedTheme =
+        null;
 
 
       try {
 
         savedTheme =
-          localStorage.getItem(storageKey);
+          localStorage.getItem(
+            storageKey
+          );
 
       } catch (error) {
 
-        savedTheme = null;
+        savedTheme =
+          null;
 
       }
 
@@ -325,13 +341,6 @@
       <div class="nav-links">
 
 
-        <!--
-          This is the moving active pill.
-
-          JavaScript automatically moves it
-          behind the selected navigation link.
-        -->
-
         <span
           class="nav-indicator"
           aria-hidden="true">
@@ -457,6 +466,153 @@
 
 
 <!-- =========================
+     CASCADING PAGE REVEAL
+========================= -->
+
+<script>
+
+  (function () {
+
+
+    const root =
+      document.documentElement;
+
+
+    const pageContent =
+      document.querySelector(
+        ".page-content"
+      );
+
+
+    /*
+       These are deliberately only
+       the major visible content blocks.
+
+       Paragraphs and individual bullets
+       are NOT animated separately.
+    */
+
+    const staggerSelector = [
+
+      ".about-text",
+
+      ".research-section > .research-section-title",
+
+      ".research-section > .research-project",
+
+      ".publication-section > .publication-section-title",
+
+      ".publication-section > .publication-item",
+
+      ".experience-section > .experience-section-title",
+
+      ".experience-section > .experience-item"
+
+    ].join(",");
+
+
+    const reduceMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+
+    if (!pageContent) {
+
+      root.classList.remove(
+        "stagger-preload"
+      );
+
+      return;
+
+    }
+
+
+    const items =
+      Array.from(
+        pageContent.querySelectorAll(
+          staggerSelector
+        )
+      );
+
+
+    /*
+       Reduced motion:
+       show everything instantly.
+    */
+
+    if (
+      reduceMotion.matches ||
+      !items.length
+    ) {
+
+      root.classList.remove(
+        "stagger-preload"
+      );
+
+      return;
+
+    }
+
+
+    /*
+       Give each content block
+       its sequential animation index.
+    */
+
+    items.forEach(
+      function (item, index) {
+
+        item.classList.add(
+          "stagger-item"
+        );
+
+
+        item.style.setProperty(
+          "--stagger-index",
+          index
+        );
+
+      }
+    );
+
+
+    /*
+       Two animation frames make sure
+       the browser has registered the
+       initial hidden state before the
+       reveal starts.
+    */
+
+    requestAnimationFrame(
+      function () {
+
+        requestAnimationFrame(
+          function () {
+
+            root.classList.remove(
+              "stagger-preload"
+            );
+
+
+            pageContent.classList.add(
+              "stagger-animate"
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+  })();
+
+</script>
+
+
+
+<!-- =========================
      DARK / LIGHT MODE
 ========================= -->
 
@@ -540,10 +696,12 @@
         icon.className =
           "fa-solid fa-sun";
 
+
         toggle.setAttribute(
           "aria-label",
           "Switch to light mode"
         );
+
 
         toggle.setAttribute(
           "title",
@@ -555,10 +713,12 @@
         icon.className =
           "fa-solid fa-moon";
 
+
         toggle.setAttribute(
           "aria-label",
           "Switch to dark mode"
         );
+
 
         toggle.setAttribute(
           "title",
@@ -587,7 +747,9 @@
         theme;
 
 
-      updateToggle(theme);
+      updateToggle(
+        theme
+      );
 
 
       if (savePreference) {
@@ -612,7 +774,9 @@
 
 
     const currentTheme =
-      root.getAttribute("data-theme") ||
+      root.getAttribute(
+        "data-theme"
+      ) ||
       getSavedTheme() ||
       getSystemTheme();
 
@@ -761,11 +925,6 @@
 
 
 
-    /* =========================
-       READ ANIMATION DURATION
-       FROM CSS
-    ========================== */
-
     function getSlideDuration() {
 
 
@@ -788,7 +947,9 @@
         value.endsWith("ms")
       ) {
 
-        return parseFloat(value);
+        return parseFloat(
+          value
+        );
 
       }
 
@@ -798,7 +959,8 @@
       ) {
 
         return (
-          parseFloat(value) * 1000
+          parseFloat(value) *
+          1000
         );
 
       }
@@ -809,10 +971,6 @@
     }
 
 
-
-    /* =========================
-       POSITION INDICATOR
-    ========================== */
 
     function moveIndicatorTo(link) {
 
@@ -843,11 +1001,13 @@
 
 
       indicator.style.width =
-        linkRect.width + "px";
+        linkRect.width +
+        "px";
 
 
       indicator.style.height =
-        linkRect.height + "px";
+        linkRect.height +
+        "px";
 
 
       indicator.style.transform =
@@ -860,11 +1020,6 @@
     }
 
 
-
-    /* =========================
-       INITIAL POSITION
-       WITHOUT ANIMATION
-    ========================== */
 
     function positionImmediately(link) {
 
@@ -881,7 +1036,9 @@
       );
 
 
-      moveIndicatorTo(link);
+      moveIndicatorTo(
+        link
+      );
 
 
       nav.classList.add(
@@ -909,10 +1066,6 @@
 
 
 
-    /* =========================
-       FIRST LOAD
-    ========================== */
-
     if (activeLink) {
 
       positionImmediately(
@@ -923,10 +1076,6 @@
 
 
 
-    /* =========================
-       CLICK NAVIGATION
-    ========================== */
-
     links.forEach(
       function (link) {
 
@@ -935,11 +1084,6 @@
           "click",
           function (event) {
 
-
-            /*
-              Preserve normal browser behavior
-              for Ctrl / Cmd / Shift / Alt clicks.
-            */
 
             if (
               event.ctrlKey ||
@@ -952,7 +1096,6 @@
               return;
 
             }
-
 
 
             const destination =
@@ -968,12 +1111,6 @@
               );
 
 
-
-            /*
-              Clicking the current tab
-              does not reload the page.
-            */
-
             if (
               destination.pathname ===
               current.pathname
@@ -986,12 +1123,6 @@
             }
 
 
-
-            /*
-              Reduced motion:
-              navigate normally.
-            */
-
             if (
               reduceMotion.matches
             ) {
@@ -1001,9 +1132,7 @@
             }
 
 
-
             event.preventDefault();
-
 
 
             if (
@@ -1017,7 +1146,6 @@
 
             navigationPending =
               true;
-
 
 
             links.forEach(
@@ -1036,28 +1164,14 @@
             );
 
 
-
-            /*
-              Slide the active pill
-              from the current tab
-              to the destination tab.
-            */
-
             moveIndicatorTo(
               link
             );
 
 
-
             const duration =
               getSlideDuration();
 
-
-
-            /*
-              Wait for the pill motion,
-              then navigate.
-            */
 
             window.setTimeout(
               function () {
@@ -1079,11 +1193,6 @@
     );
 
 
-
-    /* =========================
-       KEEP INDICATOR ALIGNED
-       AFTER WINDOW RESIZE
-    ========================== */
 
     function handleResize() {
 
@@ -1112,10 +1221,6 @@
     );
 
 
-
-    /* =========================
-       BACK/FORWARD CACHE
-    ========================== */
 
     window.addEventListener(
       "pageshow",
@@ -1155,11 +1260,6 @@
     );
 
 
-
-    /* =========================
-       FINAL POSITION AFTER
-       PAGE / FONT LOAD
-    ========================== */
 
     window.addEventListener(
       "load",
@@ -1326,7 +1426,8 @@
 
 
           const currentHeight =
-            content.getBoundingClientRect()
+            content
+              .getBoundingClientRect()
               .height;
 
 
