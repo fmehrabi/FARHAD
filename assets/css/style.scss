@@ -38,6 +38,12 @@
   --card-shadow:
     rgba(0, 0, 0, 0.06);
 
+  --accent-shadow:
+    rgba(39, 140, 168, 0.18);
+
+  --accent-shadow-soft:
+    rgba(39, 140, 168, 0.10);
+
 }
 
 
@@ -74,6 +80,12 @@ html[data-theme="dark"] {
 
   --card-shadow:
     rgba(0, 0, 0, 0.28);
+
+  --accent-shadow:
+    rgba(69, 167, 194, 0.24);
+
+  --accent-shadow-soft:
+    rgba(69, 167, 194, 0.13);
 
 }
 
@@ -1030,11 +1042,36 @@ html.stagger-preload
 .experience-section >
 .experience-item {
 
-  opacity:
-    0;
+  position:
+    relative;
 
-  transform:
-    translateY(5px);
+  margin-top:
+    14px;
+
+  margin-bottom:
+    22px;
+
+  padding:
+    22px 24px;
+
+  background:
+    var(--surface);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    10px;
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
+
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -1409,11 +1446,12 @@ html.stagger-preload
 
 /* =========================
    CONNECTED SECTION GROUPS
-   RAIL 2.0
+   RAIL 3.0
 
-   Stronger hierarchy:
-   section node + vertical rail
-   + child connectors + end cap.
+   Refined hierarchy:
+   slightly stronger default rail,
+   active tree-path emphasis on hover,
+   theme-tinted card border and shadow.
 ========================= */
 
 .research-section,
@@ -1445,7 +1483,7 @@ html.stagger-preload
     absolute;
 
   left:
-    4px;
+    3.75px;
 
   top:
     13px;
@@ -1454,7 +1492,7 @@ html.stagger-preload
     8px;
 
   width:
-    1px;
+    1.5px;
 
   background:
     var(--border);
@@ -1464,6 +1502,12 @@ html.stagger-preload
 
   pointer-events:
     none;
+
+  transition:
+    left 0.22s ease,
+    width 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -1481,16 +1525,16 @@ html.stagger-preload
     absolute;
 
   left:
-    4px;
+    3.75px;
 
   bottom:
     8px;
 
   width:
-    10px;
+    11px;
 
   height:
-    1px;
+    1.5px;
 
   background:
     var(--border);
@@ -1500,6 +1544,12 @@ html.stagger-preload
 
   pointer-events:
     none;
+
+  transition:
+    left 0.22s ease,
+    height 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -1609,6 +1659,10 @@ html.stagger-preload
   z-index:
     2;
 
+  transition:
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+
 }
 
 
@@ -1628,10 +1682,17 @@ html.stagger-preload
     24px;
 
   height:
-    1px;
+    1.25px;
 
   background:
     var(--border);
+
+  border-radius:
+    999px;
+
+  transition:
+    background-color 0.22s ease,
+    height 0.22s ease;
 
 }
 
@@ -1658,7 +1719,7 @@ html.stagger-preload
     24px;
 
   height:
-    1px;
+    1.5px;
 
   background:
     var(--border);
@@ -1670,7 +1731,9 @@ html.stagger-preload
     none;
 
   transition:
-    background-color 0.2s ease;
+    height 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -1713,22 +1776,138 @@ html.stagger-preload
     none;
 
   transition:
-    background-color 0.2s ease;
+    background-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
 
 }
 
 
-/* Subtle relational feedback on hover */
+/* =========================
+   ACTIVE TREE PATH
+   ON CARD HOVER
+========================= */
+
+/*
+   :has() lets the entire parent rail
+   react when one of its child cards
+   is being hovered.
+
+   Browsers without :has() still keep
+   the card + connector hover effect.
+*/
+
+.research-section:has(.research-project:hover)::before,
+.publication-section:has(.publication-item:hover)::before,
+.experience-section:has(.experience-item:hover)::before {
+
+  left:
+    3.5px;
+
+  width:
+    2px;
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 0 8px
+    var(--accent-shadow-soft);
+
+}
+
+
+.research-section:has(.research-project:hover)::after,
+.publication-section:has(.publication-item:hover)::after,
+.experience-section:has(.experience-item:hover)::after {
+
+  left:
+    3.5px;
+
+  height:
+    2px;
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 0 8px
+    var(--accent-shadow-soft);
+
+}
+
+
+.research-section:has(.research-project:hover)
+.research-section-title::before,
+.publication-section:has(.publication-item:hover)
+.publication-section-title::before,
+.experience-section:has(.experience-item:hover)
+.experience-section-title::before {
+
+  box-shadow:
+    0 0 0 3px
+      var(--page-bg),
+    0 0 0 5px
+      var(--accent),
+    0 0 12px
+      var(--accent-shadow);
+
+  transform:
+    translateY(-50%)
+    scale(1.04);
+
+}
+
+
+.research-section:has(.research-project:hover)
+.research-section-title::after,
+.publication-section:has(.publication-item:hover)
+.publication-section-title::after,
+.experience-section:has(.experience-item:hover)
+.experience-section-title::after {
+
+  background:
+    var(--accent);
+
+}
+
+
+/* Hovered branch connector */
 
 .research-project:hover::before,
-.research-project:hover::after,
 .publication-item:hover::before,
+.experience-item:hover::before {
+
+  height:
+    2px;
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 0 8px
+    var(--accent-shadow-soft);
+
+}
+
+
+/* Hovered child node */
+
+.research-project:hover::after,
 .publication-item:hover::after,
-.experience-item:hover::before,
 .experience-item:hover::after {
 
   background:
     var(--accent);
+
+  box-shadow:
+    0 0 0 2px
+      var(--page-bg),
+    0 0 8px
+      var(--accent-shadow);
+
+  transform:
+    scale(1.08);
 
 }
 
@@ -1777,18 +1956,26 @@ html.stagger-preload
     var(--card-shadow);
 
   transition:
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.25s ease;
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
 
 .research-project:hover {
 
+  background:
+    var(--surface-hover);
+
+  border-color:
+    var(--accent);
+
   box-shadow:
-    0 6px 18px
-    var(--card-shadow);
+    0 10px 26px
+      var(--accent-shadow),
+    0 0 0 1px
+      var(--accent-shadow-soft);
 
 }
 
@@ -2078,18 +2265,26 @@ html.stagger-preload
     var(--card-shadow);
 
   transition:
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.25s ease;
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
 
 .publication-item:hover {
 
+  background:
+    var(--surface-hover);
+
+  border-color:
+    var(--accent);
+
   box-shadow:
-    0 6px 18px
-    var(--card-shadow);
+    0 10px 26px
+      var(--accent-shadow),
+    0 0 0 1px
+      var(--accent-shadow-soft);
 
 }
 
@@ -2340,9 +2535,17 @@ html.stagger-preload
 
 .experience-item:hover {
 
+  background:
+    var(--surface-hover);
+
+  border-color:
+    var(--accent);
+
   box-shadow:
-    0 6px 18px
-    var(--card-shadow);
+    0 10px 26px
+      var(--accent-shadow),
+    0 0 0 1px
+      var(--accent-shadow-soft);
 
 }
 
@@ -2874,13 +3077,16 @@ screen and (max-width: 720px) {
   .experience-section::before {
 
     left:
-      3.5px;
+      3.25px;
 
     top:
       11px;
 
     bottom:
       6px;
+
+    width:
+      1.5px;
 
   }
 
@@ -2890,13 +3096,16 @@ screen and (max-width: 720px) {
   .experience-section::after {
 
     left:
-      3.5px;
+      3.25px;
 
     bottom:
       6px;
 
     width:
       8px;
+
+    height:
+      1.5px;
 
   }
 
@@ -2968,6 +3177,9 @@ screen and (max-width: 720px) {
     width:
       16.5px;
 
+    height:
+      1.5px;
+
   }
 
 
@@ -2986,6 +3198,42 @@ screen and (max-width: 720px) {
 
     height:
       5px;
+
+  }
+
+
+  .research-section:has(.research-project:hover)::before,
+  .publication-section:has(.publication-item:hover)::before,
+  .experience-section:has(.experience-item:hover)::before {
+
+    left:
+      3px;
+
+    width:
+      2px;
+
+  }
+
+
+  .research-section:has(.research-project:hover)::after,
+  .publication-section:has(.publication-item:hover)::after,
+  .experience-section:has(.experience-item:hover)::after {
+
+    left:
+      3px;
+
+    height:
+      2px;
+
+  }
+
+
+  .research-project:hover::before,
+  .publication-item:hover::before,
+  .experience-item:hover::before {
+
+    height:
+      2px;
 
   }
 
@@ -3261,5 +3509,19 @@ screen and (max-width: 720px) {
       left;
 
   }
+
+
+  .research-project:hover,
+  .publication-item:hover,
+  .experience-item:hover {
+
+    box-shadow:
+      0 7px 20px
+        var(--accent-shadow),
+      0 0 0 1px
+        var(--accent-shadow-soft);
+
+  }
+
 
 }
