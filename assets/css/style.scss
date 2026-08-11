@@ -1408,13 +1408,12 @@ html.stagger-preload
 
 
 /* =========================
-   SECTION GROUP / RAIL
-   COMMON STYLE
+   CONNECTED SECTION GROUPS
+   RAIL 2.0
 
-   Creates a clear visual
-   parent-child relationship
-   between each section title
-   and its cards.
+   Stronger hierarchy:
+   section node + vertical rail
+   + child connectors + end cap.
 ========================= */
 
 .research-section,
@@ -1425,12 +1424,15 @@ html.stagger-preload
     relative;
 
   padding-left:
-    24px;
+    28px;
+
+  padding-bottom:
+    12px;
 
 }
 
 
-/* Vertical group rail */
+/* Main vertical rail */
 
 .research-section::before,
 .publication-section::before,
@@ -1456,6 +1458,45 @@ html.stagger-preload
 
   background:
     var(--border);
+
+  border-radius:
+    999px;
+
+  pointer-events:
+    none;
+
+}
+
+
+/* Small termination cap at the end of each group */
+
+.research-section::after,
+.publication-section::after,
+.experience-section::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    4px;
+
+  bottom:
+    8px;
+
+  width:
+    10px;
+
+  height:
+    1px;
+
+  background:
+    var(--border);
+
+  border-radius:
+    999px;
 
   pointer-events:
     none;
@@ -1526,7 +1567,7 @@ html.stagger-preload
 }
 
 
-/* Accent dot aligned with the rail */
+/* Ringed section node */
 
 .research-section-title::before,
 .publication-section-title::before,
@@ -1539,7 +1580,7 @@ html.stagger-preload
     absolute;
 
   left:
-    -24px;
+    -28px;
 
   top:
     50%;
@@ -1557,14 +1598,16 @@ html.stagger-preload
     var(--accent);
 
   box-shadow:
-    0 0 0 5px
-    var(--page-bg);
+    0 0 0 3px
+      var(--page-bg),
+    0 0 0 4px
+      var(--accent);
 
   transform:
     translateY(-50%);
 
   z-index:
-    1;
+    2;
 
 }
 
@@ -1593,6 +1636,103 @@ html.stagger-preload
 }
 
 
+/* Child-card connector */
+
+.research-project::before,
+.publication-item::before,
+.experience-item::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    -24px;
+
+  top:
+    26px;
+
+  width:
+    24px;
+
+  height:
+    1px;
+
+  background:
+    var(--border);
+
+  border-radius:
+    999px;
+
+  pointer-events:
+    none;
+
+  transition:
+    background-color 0.2s ease;
+
+}
+
+
+/* Small child node on the rail */
+
+.research-project::after,
+.publication-item::after,
+.experience-item::after {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    -26px;
+
+  top:
+    24px;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--border);
+
+  box-shadow:
+    0 0 0 2px
+    var(--page-bg);
+
+  pointer-events:
+    none;
+
+  transition:
+    background-color 0.2s ease;
+
+}
+
+
+/* Subtle relational feedback on hover */
+
+.research-project:hover::before,
+.research-project:hover::after,
+.publication-item:hover::before,
+.publication-item:hover::after,
+.experience-item:hover::before,
+.experience-item:hover::after {
+
+  background:
+    var(--accent);
+
+}
+
+
 /* =========================
    RESEARCH
 ========================= */
@@ -1603,18 +1743,21 @@ html.stagger-preload
     24px;
 
   margin-bottom:
-    38px;
+    46px;
 
 }
 
 
 .research-project {
 
+  position:
+    relative;
+
   margin-top:
-    16px;
+    14px;
 
   margin-bottom:
-    28px;
+    24px;
 
   padding:
     22px 24px;
@@ -1622,16 +1765,20 @@ html.stagger-preload
   background:
     var(--surface);
 
-  border-left:
-    3px solid
-    var(--accent);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:
-    0 8px 8px 0;
+    10px;
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
 
   transition:
-    transform 0.2s ease,
     box-shadow 0.2s ease,
+    border-color 0.2s ease,
     background-color 0.25s ease;
 
 }
@@ -1639,11 +1786,8 @@ html.stagger-preload
 
 .research-project:hover {
 
-  transform:
-    translateY(-2px);
-
   box-shadow:
-    0 4px 14px
+    0 6px 18px
     var(--card-shadow);
 
 }
@@ -1900,18 +2044,21 @@ html.stagger-preload
     24px;
 
   margin-bottom:
-    38px;
+    46px;
 
 }
 
 
 .publication-item {
 
+  position:
+    relative;
+
   margin-top:
-    16px;
+    14px;
 
   margin-bottom:
-    32px;
+    28px;
 
   padding:
     22px 24px;
@@ -1919,16 +2066,20 @@ html.stagger-preload
   background:
     var(--surface);
 
-  border-left:
-    3px solid
-    var(--accent);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:
-    0 8px 8px 0;
+    10px;
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
 
   transition:
-    transform 0.2s ease,
     box-shadow 0.2s ease,
+    border-color 0.2s ease,
     background-color 0.25s ease;
 
 }
@@ -1936,11 +2087,8 @@ html.stagger-preload
 
 .publication-item:hover {
 
-  transform:
-    translateY(-2px);
-
   box-shadow:
-    0 4px 14px
+    0 6px 18px
     var(--card-shadow);
 
 }
@@ -2149,18 +2297,21 @@ html.stagger-preload
     24px;
 
   margin-bottom:
-    38px;
+    48px;
 
 }
 
 
 .experience-item {
 
+  position:
+    relative;
+
   margin-top:
-    16px;
+    14px;
 
   margin-bottom:
-    26px;
+    22px;
 
   padding:
     22px 24px;
@@ -2168,16 +2319,20 @@ html.stagger-preload
   background:
     var(--surface);
 
-  border-left:
-    3px solid
-    var(--accent);
+  border:
+    1px solid
+    var(--border);
 
   border-radius:
-    0 8px 8px 0;
+    10px;
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
 
   transition:
-    transform 0.2s ease,
     box-shadow 0.2s ease,
+    border-color 0.2s ease,
     background-color 0.25s ease;
 
 }
@@ -2185,11 +2340,8 @@ html.stagger-preload
 
 .experience-item:hover {
 
-  transform:
-    translateY(-2px);
-
   box-shadow:
-    0 4px 14px
+    0 6px 18px
     var(--card-shadow);
 
 }
@@ -2701,7 +2853,7 @@ screen and (max-width: 720px) {
 
 
   /* =========================
-     MOBILE SECTION GROUPS
+     MOBILE CONNECTED GROUPS
   ========================= */
 
   .research-section,
@@ -2709,7 +2861,10 @@ screen and (max-width: 720px) {
   .experience-section {
 
     padding-left:
-      18px;
+      20px;
+
+    padding-bottom:
+      10px;
 
   }
 
@@ -2719,13 +2874,29 @@ screen and (max-width: 720px) {
   .experience-section::before {
 
     left:
-      3px;
+      3.5px;
 
     top:
       11px;
 
     bottom:
       6px;
+
+  }
+
+
+  .research-section::after,
+  .publication-section::after,
+  .experience-section::after {
+
+    left:
+      3.5px;
+
+    bottom:
+      6px;
+
+    width:
+      8px;
 
   }
 
@@ -2757,7 +2928,7 @@ screen and (max-width: 720px) {
   .experience-section-title::before {
 
     left:
-      -18px;
+      -20px;
 
     width:
       7px;
@@ -2766,8 +2937,10 @@ screen and (max-width: 720px) {
       7px;
 
     box-shadow:
+      0 0 0 3px
+        var(--page-bg),
       0 0 0 4px
-      var(--page-bg);
+        var(--accent);
 
   }
 
@@ -2782,6 +2955,41 @@ screen and (max-width: 720px) {
   }
 
 
+  .research-project::before,
+  .publication-item::before,
+  .experience-item::before {
+
+    left:
+      -16.5px;
+
+    top:
+      23px;
+
+    width:
+      16.5px;
+
+  }
+
+
+  .research-project::after,
+  .publication-item::after,
+  .experience-item::after {
+
+    left:
+      -18.5px;
+
+    top:
+      21px;
+
+    width:
+      5px;
+
+    height:
+      5px;
+
+  }
+
+
   /* Research */
 
   .research-section {
@@ -2790,7 +2998,7 @@ screen and (max-width: 720px) {
       20px;
 
     margin-bottom:
-      30px;
+      36px;
 
   }
 
@@ -2801,18 +3009,13 @@ screen and (max-width: 720px) {
       18px 17px;
 
     margin-top:
-      14px;
+      12px;
 
     margin-bottom:
-      24px;
+      20px;
 
-  }
-
-
-  .research-project:hover {
-
-    transform:
-      none;
+    border-radius:
+      8px;
 
   }
 
@@ -2887,7 +3090,7 @@ screen and (max-width: 720px) {
       20px;
 
     margin-bottom:
-      30px;
+      36px;
 
   }
 
@@ -2898,10 +3101,13 @@ screen and (max-width: 720px) {
       18px 17px;
 
     margin-top:
-      14px;
+      12px;
 
     margin-bottom:
-      26px;
+      22px;
+
+    border-radius:
+      8px;
 
   }
 
@@ -2964,15 +3170,7 @@ screen and (max-width: 720px) {
   }
 
 
-  .publication-item:hover {
-
-    transform:
-      none;
-
-  }
-
-
-  /* Experience */
+    /* Experience */
 
   .experience-section {
 
@@ -2980,7 +3178,7 @@ screen and (max-width: 720px) {
       20px;
 
     margin-bottom:
-      30px;
+      38px;
 
   }
 
@@ -2991,18 +3189,13 @@ screen and (max-width: 720px) {
       18px 17px;
 
     margin-top:
-      14px;
+      12px;
 
     margin-bottom:
-      24px;
+      20px;
 
-  }
-
-
-  .experience-item:hover {
-
-    transform:
-      none;
+    border-radius:
+      8px;
 
   }
 
