@@ -1408,21 +1408,78 @@ html.stagger-preload
 
 
 /* =========================
-   SECTION TITLE BAND
+   SECTION GROUP / RAIL
    COMMON STYLE
 
-   Used by:
-   Current Research
-   Selected Projects
-   Conference Paper
-   Research Experience
-   Teaching Experience
-   Professional Experience
+   Creates a clear visual
+   parent-child relationship
+   between each section title
+   and its cards.
 ========================= */
+
+.research-section,
+.publication-section,
+.experience-section {
+
+  position:
+    relative;
+
+  padding-left:
+    24px;
+
+}
+
+
+/* Vertical group rail */
+
+.research-section::before,
+.publication-section::before,
+.experience-section::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    4px;
+
+  top:
+    13px;
+
+  bottom:
+    8px;
+
+  width:
+    1px;
+
+  background:
+    var(--border);
+
+  pointer-events:
+    none;
+
+}
+
+
+/* Section titles */
 
 .research-section-title,
 .publication-section-title,
 .experience-section-title {
+
+  position:
+    relative;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
 
   box-sizing:
     border-box;
@@ -1437,10 +1494,10 @@ html.stagger-preload
     18px;
 
   padding:
-    10px 14px 10px 15px;
+    0;
 
   font-size:
-    17px;
+    18px;
 
   font-weight:
     600;
@@ -1449,32 +1506,89 @@ html.stagger-preload
     1.45;
 
   letter-spacing:
-    0.01em;
+    0.005em;
 
   color:
     var(--heading);
 
   background:
-    var(--surface-accent);
+    transparent;
 
   border:
-    1px solid
-    var(--border);
-
-  border-left:
-    4px solid
-    var(--accent);
+    none;
 
   border-radius:
-    0 7px 7px 0;
+    0;
 
   box-shadow:
     none;
 
-  transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
+}
+
+
+/* Accent dot aligned with the rail */
+
+.research-section-title::before,
+.publication-section-title::before,
+.experience-section-title::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  left:
+    -24px;
+
+  top:
+    50%;
+
+  width:
+    8px;
+
+  height:
+    8px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--accent);
+
+  box-shadow:
+    0 0 0 5px
+    var(--page-bg);
+
+  transform:
+    translateY(-50%);
+
+  z-index:
+    1;
+
+}
+
+
+/* Subtle trailing divider */
+
+.research-section-title::after,
+.publication-section-title::after,
+.experience-section-title::after {
+
+  content:
+    "";
+
+  flex:
+    1 1 auto;
+
+  min-width:
+    24px;
+
+  height:
+    1px;
+
+  background:
+    var(--border);
 
 }
 
@@ -2587,32 +2701,85 @@ screen and (max-width: 720px) {
 
 
   /* =========================
-     MOBILE SECTION BANDS
+     MOBILE SECTION GROUPS
   ========================= */
 
-.research-section-title,
-.publication-section-title,
-.experience-section-title {
+  .research-section,
+  .publication-section,
+  .experience-section {
 
-  margin-bottom:
-    15px;
+    padding-left:
+      18px;
 
-  padding:
-    9px 11px 9px 12px;
+  }
 
-  font-size:
-    16px;
 
-  line-height:
-    1.4;
+  .research-section::before,
+  .publication-section::before,
+  .experience-section::before {
 
-  border-left-width:
-    3px;
+    left:
+      3px;
 
-  border-radius:
-    0 6px 6px 0;
+    top:
+      11px;
 
-}
+    bottom:
+      6px;
+
+  }
+
+
+  .research-section-title,
+  .publication-section-title,
+  .experience-section-title {
+
+    gap:
+      9px;
+
+    margin-bottom:
+      15px;
+
+    padding:
+      0;
+
+    font-size:
+      16px;
+
+    line-height:
+      1.4;
+
+  }
+
+
+  .research-section-title::before,
+  .publication-section-title::before,
+  .experience-section-title::before {
+
+    left:
+      -18px;
+
+    width:
+      7px;
+
+    height:
+      7px;
+
+    box-shadow:
+      0 0 0 4px
+      var(--page-bg);
+
+  }
+
+
+  .research-section-title::after,
+  .publication-section-title::after,
+  .experience-section-title::after {
+
+    min-width:
+      16px;
+
+  }
 
 
   /* Research */
