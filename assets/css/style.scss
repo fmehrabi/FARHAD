@@ -82,12 +82,6 @@ html[data-theme="dark"] {
 html {
   background: var(--page-bg);
 
-  /*
-     Keeps scrollbar space reserved
-     between pages of different heights.
-     Prevents horizontal layout shifting
-     when navigating between tabs.
-  */
   scrollbar-gutter: stable;
 }
 
@@ -218,11 +212,6 @@ header img {
 
   margin-bottom: 18px;
 
-  /*
-     Slight horizontal adjustment:
-     negative = left
-     positive = right
-  */
   transform: translateX(-1mm);
 }
 
@@ -472,6 +461,7 @@ html[data-theme="dark"]
 
 /* =========================
    MAIN NAVIGATION
+   SEGMENTED ACADEMIC STYLE
 ========================= */
 
 .site-nav {
@@ -491,23 +481,53 @@ html[data-theme="dark"]
 }
 
 
+/* =========================
+   SEGMENTED NAV CONTAINER
+========================= */
+
 .nav-links {
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
   justify-content: center;
 
-  gap: 8px;
+  gap: 4px;
+
+  padding: 4px;
+
+  background: var(--surface);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 1px 4px var(--card-shadow);
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
 
 .nav-links a {
   position: relative;
 
-  display: inline-block;
+  display: inline-flex;
 
-  padding: 9px 11px 11px;
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    9px 13px 11px;
 
   font-size: 16px;
 
@@ -526,22 +546,26 @@ html[data-theme="dark"]
   white-space: nowrap;
 
   transition:
-    color 0.2s ease,
-    background-color 0.2s ease,
-    transform 0.2s ease;
+    color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
+
+/* =========================
+   SMALL EDITORIAL INDICATOR
+========================= */
 
 .nav-links a::after {
   content: "";
 
   position: absolute;
 
-  left: 11px;
+  left: 28%;
 
-  right: 11px;
+  right: 28%;
 
-  bottom: 3px;
+  bottom: 4px;
 
   height: 2px;
 
@@ -549,15 +573,21 @@ html[data-theme="dark"]
 
   border-radius: 999px;
 
+  opacity: 0;
+
   transform: scaleX(0);
 
   transform-origin: center;
 
   transition:
-    transform 0.22s ease,
-    opacity 0.22s ease;
+    transform 0.28s ease,
+    opacity 0.28s ease;
 }
 
+
+/* =========================
+   NAVIGATION HOVER
+========================= */
 
 .nav-links a:hover {
   color: var(--accent);
@@ -565,44 +595,61 @@ html[data-theme="dark"]
   background: var(--surface-hover);
 
   text-decoration: none;
-
-  transform: translateY(-1px);
 }
 
 
 .nav-links a:hover::after {
-  transform: scaleX(0.45);
+  opacity: 0.45;
+
+  transform: scaleX(0.55);
 }
 
+
+/* =========================
+   ACTIVE NAVIGATION TAB
+========================= */
 
 .nav-links a.active {
   color: var(--accent);
 
-  background: transparent;
+  background: var(--surface-accent);
+
+  box-shadow:
+    0 1px 4px var(--card-shadow);
 }
 
 
+/* Active short underline */
+
 .nav-links a.active::after {
+  opacity: 1;
+
   transform: scaleX(1);
 
   animation:
-    activeNavUnderline 0.38s ease both;
+    activeNavUnderline 0.35s ease both;
 }
 
+
+/* Active Tab Hover */
 
 .nav-links a.active:hover {
   color: var(--accent);
 
-  background: var(--surface-hover);
+  background: var(--surface-accent);
 }
 
+
+/* =========================
+   ACTIVE INDICATOR ANIMATION
+========================= */
 
 @keyframes activeNavUnderline {
 
   from {
     opacity: 0;
 
-    transform: scaleX(0);
+    transform: scaleX(0.4);
   }
 
   to {
@@ -613,6 +660,10 @@ html[data-theme="dark"]
 
 }
 
+
+/* =========================
+   KEYBOARD NAVIGATION
+========================= */
 
 .nav-links a:focus-visible {
   color: var(--accent);
@@ -785,6 +836,7 @@ html[data-theme="dark"]
   }
 
 
+  .nav-links,
   .nav-links a,
   .nav-links a::after,
   .theme-toggle,
@@ -1537,21 +1589,22 @@ html[data-theme="dark"]
 @media print, screen and (max-width: 720px) {
 
 
-  /* Profile Photo */
+  /* =========================
+     PROFILE PHOTO
+  ========================= */
 
   header img {
     width: 150px;
 
     height: 150px;
 
-    /*
-       Keep photo centered on mobile.
-    */
     transform: none;
   }
 
 
-  /* Social Icons */
+  /* =========================
+     SOCIAL ICONS
+  ========================= */
 
   .social-links {
     gap: 13px;
@@ -1565,7 +1618,9 @@ html[data-theme="dark"]
   }
 
 
-  /* Theme */
+  /* =========================
+     THEME
+  ========================= */
 
   .content-toolbar {
     height: 34px;
@@ -1588,7 +1643,9 @@ html[data-theme="dark"]
   }
 
 
-  /* Navigation */
+  /* =========================
+     MOBILE NAVIGATION
+  ========================= */
 
   .site-nav {
     margin-bottom: 26px;
@@ -1596,39 +1653,47 @@ html[data-theme="dark"]
 
 
   .nav-links {
-    flex-wrap: wrap;
+    width: 100%;
 
-    justify-content: center;
+    box-sizing: border-box;
 
-    gap: 5px;
+    gap: 2px;
+
+    padding: 3px;
+
+    border-radius: 9px;
   }
 
 
   .nav-links a {
-    padding:
-      7px 8px 9px;
+    flex:
+      1 1 0;
 
-    font-size: 14px;
+    min-width: 0;
+
+    padding:
+      7px 3px 9px;
+
+    font-size: 12px;
 
     border-radius: 6px;
+
+    text-align: center;
   }
 
 
   .nav-links a::after {
-    left: 8px;
+    left: 30%;
 
-    right: 8px;
+    right: 30%;
 
-    bottom: 2px;
+    bottom: 3px;
   }
 
 
-  .nav-links a:hover {
-    transform: none;
-  }
-
-
-  /* Details */
+  /* =========================
+     DETAILS
+  ========================= */
 
   .details-toggle {
     font-size: 12.5px;
@@ -1643,7 +1708,9 @@ html[data-theme="dark"]
   }
 
 
-  /* About */
+  /* =========================
+     ABOUT
+  ========================= */
 
   .about-text {
     padding:
@@ -1671,7 +1738,9 @@ html[data-theme="dark"]
   }
 
 
-  /* Research */
+  /* =========================
+     RESEARCH
+  ========================= */
 
   .research-section {
     margin-top: 20px;
@@ -1746,7 +1815,9 @@ html[data-theme="dark"]
   }
 
 
-  /* Publication */
+  /* =========================
+     PUBLICATION
+  ========================= */
 
   .publication-section {
     margin-top: 20px;
@@ -1817,7 +1888,9 @@ html[data-theme="dark"]
   }
 
 
-  /* Experience */
+  /* =========================
+     EXPERIENCE
+  ========================= */
 
   .experience-section {
     margin-top: 20px;
