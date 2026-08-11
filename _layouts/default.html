@@ -8,17 +8,21 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
 
 
-  <!-- Browser Tab Title -->
   <title>{{ site.title }}</title>
 
   {% seo title=false %}
 
 
   <!-- =========================
-       INITIAL THEME DETECTION
+       INITIAL THEME
+       Prevents light flash
+       before dark mode loads
   ========================== -->
 
   <script>
@@ -44,12 +48,18 @@
 
       const systemPrefersDark =
         window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
+        window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
 
 
       const initialTheme =
-        savedTheme === "dark" || savedTheme === "light"
+
+        savedTheme === "dark" ||
+        savedTheme === "light"
+
           ? savedTheme
+
           : systemPrefersDark
             ? "dark"
             : "light";
@@ -69,29 +79,39 @@
   </script>
 
 
-  <!-- Main Theme Stylesheet -->
+  <!-- =========================
+       MAIN STYLESHEET
+  ========================== -->
+
   <link
     rel="stylesheet"
     href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}"
   >
 
 
-  <!-- Font Awesome Icons -->
+  <!-- =========================
+       FONT AWESOME
+  ========================== -->
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   >
 
 
-  <!-- Support for Older Internet Explorer Versions -->
   <!--[if lt IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+  </script>
+
   <![endif]-->
 
 
   {% include head-custom.html %}
 
 </head>
+
 
 
 <body>
@@ -101,13 +121,12 @@
 
 
   <!-- =========================
-       LEFT SIDEBAR / PROFILE
+       LEFT SIDEBAR
   ========================== -->
 
   <header>
 
 
-    <!-- Name / Website Title -->
     <h1>
 
       <a href="{{ '/' | relative_url }}">
@@ -119,8 +138,6 @@
     </h1>
 
 
-
-    <!-- Profile Photo -->
     {% if site.logo %}
 
     <img
@@ -131,8 +148,6 @@
     {% endif %}
 
 
-
-    <!-- Academic Position -->
     <p class="profile-description">
 
       <i
@@ -145,17 +160,15 @@
     </p>
 
 
-
-    <!-- Research Interests in Sidebar -->
     {% if site.research_interests %}
 
     <div class="research-focus">
 
       {% for interest in site.research_interests %}
 
-        <div>
-          {{ interest }}
-        </div>
+      <div>
+        {{ interest }}
+      </div>
 
       {% endfor %}
 
@@ -166,18 +179,16 @@
 
 
     <!-- =========================
-         ACADEMIC & SOCIAL LINKS
+         SOCIAL LINKS
     ========================== -->
 
     <div class="social-links">
 
 
-      <!-- Email -->
       <a
         href="mailto:FarhaadMehrabi@gmail.com"
         aria-label="Email"
-        title="Email"
-      >
+        title="Email">
 
         <i
           class="fa-solid fa-envelope"
@@ -187,15 +198,12 @@
       </a>
 
 
-
-      <!-- Google Scholar -->
       <a
         href="https://scholar.google.com/citations?user=sMO1fjQAAAAJ&hl=en"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Google Scholar"
-        title="Google Scholar"
-      >
+        title="Google Scholar">
 
         <i
           class="fa-brands fa-google-scholar"
@@ -205,15 +213,12 @@
       </a>
 
 
-
-      <!-- ResearchGate -->
       <a
         href="https://www.researchgate.net/profile/Farhad-Mehrabi-4"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="ResearchGate"
-        title="ResearchGate"
-      >
+        title="ResearchGate">
 
         <i
           class="fa-brands fa-researchgate"
@@ -223,15 +228,12 @@
       </a>
 
 
-
-      <!-- ORCID -->
       <a
         href="https://orcid.org/0009-0009-6995-3292"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="ORCID"
-        title="ORCID"
-      >
+        title="ORCID">
 
         <i
           class="fa-brands fa-orcid"
@@ -241,15 +243,12 @@
       </a>
 
 
-
-      <!-- LinkedIn -->
       <a
         href="https://www.linkedin.com/in/mehrabii/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        title="LinkedIn"
-      >
+        title="LinkedIn">
 
         <i
           class="fa-brands fa-linkedin"
@@ -259,15 +258,12 @@
       </a>
 
 
-
-      <!-- GitHub -->
       <a
         href="https://github.com/fmehrabi"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
-        title="GitHub"
-      >
+        title="GitHub">
 
         <i
           class="fa-brands fa-github"
@@ -285,25 +281,25 @@
 
 
   <!-- =========================
-       MAIN WEBSITE CONTENT
+       MAIN CONTENT
   ========================== -->
 
   <section class="main-content">
 
 
     <!-- =========================
-         THEME CONTROL
+         TOP TOOLBAR
     ========================== -->
 
     <div class="content-toolbar">
+
 
       <button
         id="theme-toggle"
         class="theme-toggle"
         type="button"
         aria-label="Switch theme"
-        title="Switch theme"
-      >
+        title="Switch theme">
 
         <i
           class="fa-solid fa-moon"
@@ -311,6 +307,7 @@
         </i>
 
       </button>
+
 
     </div>
 
@@ -322,57 +319,79 @@
 
     <nav
       class="site-nav"
-      aria-label="Primary navigation"
-    >
+      aria-label="Primary navigation">
+
 
       <div class="nav-links">
+
+
+        <!--
+          This is the moving active pill.
+
+          JavaScript automatically moves it
+          behind the selected navigation link.
+        -->
+
+        <span
+          class="nav-indicator"
+          aria-hidden="true">
+        </span>
+
 
 
         <a
           href="{{ '/' | relative_url }}"
           {% if page.url == '/' %}
-            class="active"
-            aria-current="page"
-          {% endif %}
-        >
+          class="active"
+          aria-current="page"
+          {% endif %}>
+
           About
+
         </a>
+
 
 
         <a
           href="{{ '/research/' | relative_url }}"
           {% if page.url == '/research/' %}
-            class="active"
-            aria-current="page"
-          {% endif %}
-        >
+          class="active"
+          aria-current="page"
+          {% endif %}>
+
           Research
+
         </a>
+
 
 
         <a
           href="{{ '/publications/' | relative_url }}"
           {% if page.url == '/publications/' %}
-            class="active"
-            aria-current="page"
-          {% endif %}
-        >
+          class="active"
+          aria-current="page"
+          {% endif %}>
+
           Publication
+
         </a>
+
 
 
         <a
           href="{{ '/experience/' | relative_url }}"
           {% if page.url == '/experience/' %}
-            class="active"
-            aria-current="page"
-          {% endif %}
-        >
+          class="active"
+          aria-current="page"
+          {% endif %}>
+
           Experience
+
         </a>
 
 
       </div>
+
 
     </nav>
 
@@ -404,17 +423,16 @@
       <small>
 
         Hosted on GitHub Pages
-
         &mdash;
-
         Theme by
 
         <a
           href="https://github.com/orderedlist"
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
+
           orderedlist
+
         </a>
 
       </small>
@@ -428,12 +446,18 @@
 
 
 
-<script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
+<!-- =========================
+     MINIMAL THEME FIX
+========================= -->
+
+<script
+  src="{{ '/assets/js/scale.fix.js' | relative_url }}">
+</script>
 
 
 
 <!-- =========================
-     LIGHT / DARK THEME SCRIPT
+     DARK / LIGHT MODE
 ========================= -->
 
 <script>
@@ -450,11 +474,15 @@
 
 
     const toggle =
-      document.getElementById("theme-toggle");
+      document.getElementById(
+        "theme-toggle"
+      );
 
 
     if (!toggle) {
+
       return;
+
     }
 
 
@@ -462,8 +490,10 @@
       toggle.querySelector("i");
 
 
-    const systemTheme =
-      window.matchMedia("(prefers-color-scheme: dark)");
+    const systemThemeQuery =
+      window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
 
 
 
@@ -471,18 +501,9 @@
 
       try {
 
-        const saved =
-          localStorage.getItem(storageKey);
-
-
-        if (
-          saved === "light" ||
-          saved === "dark"
-        ) {
-
-          return saved;
-
-        }
+        return localStorage.getItem(
+          storageKey
+        );
 
       } catch (error) {
 
@@ -490,14 +511,70 @@
 
       }
 
+    }
 
-      return null;
+
+
+    function getSystemTheme() {
+
+      return systemThemeQuery.matches
+        ? "dark"
+        : "light";
 
     }
 
 
 
-    function applyTheme(theme) {
+    function updateToggle(theme) {
+
+
+      if (!icon) {
+
+        return;
+
+      }
+
+
+      if (theme === "dark") {
+
+        icon.className =
+          "fa-solid fa-sun";
+
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to light mode"
+        );
+
+        toggle.setAttribute(
+          "title",
+          "Switch to light mode"
+        );
+
+      } else {
+
+        icon.className =
+          "fa-solid fa-moon";
+
+        toggle.setAttribute(
+          "aria-label",
+          "Switch to dark mode"
+        );
+
+        toggle.setAttribute(
+          "title",
+          "Switch to dark mode"
+        );
+
+      }
+
+    }
+
+
+
+    function applyTheme(
+      theme,
+      savePreference
+    ) {
 
 
       root.setAttribute(
@@ -510,43 +587,23 @@
         theme;
 
 
-      if (theme === "dark") {
+      updateToggle(theme);
 
 
-        icon.className =
-          "fa-solid fa-sun";
+      if (savePreference) {
 
+        try {
 
-        toggle.setAttribute(
-          "aria-label",
-          "Switch to light mode"
-        );
+          localStorage.setItem(
+            storageKey,
+            theme
+          );
 
+        } catch (error) {
 
-        toggle.setAttribute(
-          "title",
-          "Switch to light mode"
-        );
+          /* Ignore storage errors */
 
-
-      } else {
-
-
-        icon.className =
-          "fa-solid fa-moon";
-
-
-        toggle.setAttribute(
-          "aria-label",
-          "Switch to dark mode"
-        );
-
-
-        toggle.setAttribute(
-          "title",
-          "Switch to dark mode"
-        );
-
+        }
 
       }
 
@@ -555,10 +612,15 @@
 
 
     const currentTheme =
-      root.getAttribute("data-theme") || "light";
+      root.getAttribute("data-theme") ||
+      getSavedTheme() ||
+      getSystemTheme();
 
 
-    applyTheme(currentTheme);
+    applyTheme(
+      currentTheme,
+      false
+    );
 
 
 
@@ -567,73 +629,586 @@
       function () {
 
 
-        const current =
-          root.getAttribute("data-theme");
+        const activeTheme =
+          root.getAttribute(
+            "data-theme"
+          ) || "light";
 
 
         const nextTheme =
-          current === "dark"
+          activeTheme === "dark"
             ? "light"
             : "dark";
 
 
-        try {
-
-          localStorage.setItem(
-            storageKey,
-            nextTheme
-          );
-
-        } catch (error) {
-
-          /* Continue without persistence */
-
-        }
-
-
-        applyTheme(nextTheme);
+        applyTheme(
+          nextTheme,
+          true
+        );
 
       }
     );
 
 
 
-    function handleSystemThemeChange(event) {
+    function handleSystemThemeChange() {
 
 
-      if (getSavedTheme()) {
+      const savedTheme =
+        getSavedTheme();
+
+
+      if (
+        savedTheme !== "dark" &&
+        savedTheme !== "light"
+      ) {
+
+        applyTheme(
+          getSystemTheme(),
+          false
+        );
+
+      }
+
+    }
+
+
+
+    if (
+      systemThemeQuery.addEventListener
+    ) {
+
+      systemThemeQuery.addEventListener(
+        "change",
+        handleSystemThemeChange
+      );
+
+    } else if (
+      systemThemeQuery.addListener
+    ) {
+
+      systemThemeQuery.addListener(
+        handleSystemThemeChange
+      );
+
+    }
+
+
+  })();
+
+</script>
+
+
+
+<!-- =========================
+     SLIDING NAVIGATION PILL
+========================= -->
+
+<script>
+
+  (function () {
+
+
+    const nav =
+      document.querySelector(
+        ".nav-links"
+      );
+
+
+    if (!nav) {
+
+      return;
+
+    }
+
+
+    const indicator =
+      nav.querySelector(
+        ".nav-indicator"
+      );
+
+
+    const links =
+      Array.from(
+        nav.querySelectorAll("a")
+      );
+
+
+    if (
+      !indicator ||
+      !links.length
+    ) {
+
+      return;
+
+    }
+
+
+    const reduceMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+
+
+    let activeLink =
+      nav.querySelector(
+        "a.active"
+      );
+
+
+    let navigationPending =
+      false;
+
+
+
+    /* =========================
+       READ ANIMATION DURATION
+       FROM CSS
+    ========================== */
+
+    function getSlideDuration() {
+
+
+      const value =
+        getComputedStyle(nav)
+          .getPropertyValue(
+            "--nav-slide-duration"
+          )
+          .trim();
+
+
+      if (!value) {
+
+        return 560;
+
+      }
+
+
+      if (
+        value.endsWith("ms")
+      ) {
+
+        return parseFloat(value);
+
+      }
+
+
+      if (
+        value.endsWith("s")
+      ) {
+
+        return (
+          parseFloat(value) * 1000
+        );
+
+      }
+
+
+      return 560;
+
+    }
+
+
+
+    /* =========================
+       POSITION INDICATOR
+    ========================== */
+
+    function moveIndicatorTo(link) {
+
+
+      if (!link) {
 
         return;
 
       }
 
 
-      applyTheme(
-        event.matches
-          ? "dark"
-          : "light"
+      const navRect =
+        nav.getBoundingClientRect();
+
+
+      const linkRect =
+        link.getBoundingClientRect();
+
+
+      const x =
+        linkRect.left -
+        navRect.left;
+
+
+      const y =
+        linkRect.top -
+        navRect.top;
+
+
+      indicator.style.width =
+        linkRect.width + "px";
+
+
+      indicator.style.height =
+        linkRect.height + "px";
+
+
+      indicator.style.transform =
+        "translate3d(" +
+        x +
+        "px, " +
+        y +
+        "px, 0)";
+
+    }
+
+
+
+    /* =========================
+       INITIAL POSITION
+       WITHOUT ANIMATION
+    ========================== */
+
+    function positionImmediately(link) {
+
+
+      if (!link) {
+
+        return;
+
+      }
+
+
+      indicator.classList.add(
+        "no-transition"
+      );
+
+
+      moveIndicatorTo(link);
+
+
+      nav.classList.add(
+        "js-nav-ready"
+      );
+
+
+      requestAnimationFrame(
+        function () {
+
+          requestAnimationFrame(
+            function () {
+
+              indicator.classList.remove(
+                "no-transition"
+              );
+
+            }
+          );
+
+        }
       );
 
     }
 
 
 
-    if (systemTheme.addEventListener) {
+    /* =========================
+       FIRST LOAD
+    ========================== */
 
+    if (activeLink) {
 
-      systemTheme.addEventListener(
-        "change",
-        handleSystemThemeChange
+      positionImmediately(
+        activeLink
       );
 
+    }
 
-    } else if (systemTheme.addListener) {
 
 
-      systemTheme.addListener(
-        handleSystemThemeChange
+    /* =========================
+       CLICK NAVIGATION
+    ========================== */
+
+    links.forEach(
+      function (link) {
+
+
+        link.addEventListener(
+          "click",
+          function (event) {
+
+
+            /*
+              Preserve normal browser behavior
+              for Ctrl / Cmd / Shift / Alt clicks.
+            */
+
+            if (
+              event.ctrlKey ||
+              event.metaKey ||
+              event.shiftKey ||
+              event.altKey ||
+              event.button !== 0
+            ) {
+
+              return;
+
+            }
+
+
+
+            const destination =
+              new URL(
+                link.href,
+                window.location.href
+              );
+
+
+            const current =
+              new URL(
+                window.location.href
+              );
+
+
+
+            /*
+              Clicking the current tab
+              does not reload the page.
+            */
+
+            if (
+              destination.pathname ===
+              current.pathname
+            ) {
+
+              event.preventDefault();
+
+              return;
+
+            }
+
+
+
+            /*
+              Reduced motion:
+              navigate normally.
+            */
+
+            if (
+              reduceMotion.matches
+            ) {
+
+              return;
+
+            }
+
+
+
+            event.preventDefault();
+
+
+
+            if (
+              navigationPending
+            ) {
+
+              return;
+
+            }
+
+
+            navigationPending =
+              true;
+
+
+
+            links.forEach(
+              function (item) {
+
+                item.classList.remove(
+                  "is-transition-target"
+                );
+
+              }
+            );
+
+
+            link.classList.add(
+              "is-transition-target"
+            );
+
+
+
+            /*
+              Slide the active pill
+              from the current tab
+              to the destination tab.
+            */
+
+            moveIndicatorTo(
+              link
+            );
+
+
+
+            const duration =
+              getSlideDuration();
+
+
+
+            /*
+              Wait for the pill motion,
+              then navigate.
+            */
+
+            window.setTimeout(
+              function () {
+
+                window.location.href =
+                  link.href;
+
+              },
+
+              duration + 30
+            );
+
+
+          }
+        );
+
+
+      }
+    );
+
+
+
+    /* =========================
+       KEEP INDICATOR ALIGNED
+       AFTER WINDOW RESIZE
+    ========================== */
+
+    function handleResize() {
+
+
+      activeLink =
+        nav.querySelector(
+          "a.active"
+        );
+
+
+      if (activeLink) {
+
+        positionImmediately(
+          activeLink
+        );
+
+      }
+
+    }
+
+
+
+    window.addEventListener(
+      "resize",
+      handleResize
+    );
+
+
+
+    /* =========================
+       BACK/FORWARD CACHE
+    ========================== */
+
+    window.addEventListener(
+      "pageshow",
+      function () {
+
+
+        navigationPending =
+          false;
+
+
+        links.forEach(
+          function (item) {
+
+            item.classList.remove(
+              "is-transition-target"
+            );
+
+          }
+        );
+
+
+        activeLink =
+          nav.querySelector(
+            "a.active"
+          );
+
+
+        if (activeLink) {
+
+          positionImmediately(
+            activeLink
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================
+       FINAL POSITION AFTER
+       PAGE / FONT LOAD
+    ========================== */
+
+    window.addEventListener(
+      "load",
+      function () {
+
+
+        activeLink =
+          nav.querySelector(
+            "a.active"
+          );
+
+
+        if (activeLink) {
+
+          positionImmediately(
+            activeLink
+          );
+
+        }
+
+      }
+    );
+
+
+    if (
+      document.fonts &&
+      document.fonts.ready
+    ) {
+
+      document.fonts.ready.then(
+        function () {
+
+
+          activeLink =
+            nav.querySelector(
+              "a.active"
+            );
+
+
+          if (activeLink) {
+
+            positionImmediately(
+              activeLink
+            );
+
+          }
+
+        }
       );
-
 
     }
 
@@ -646,8 +1221,6 @@
 
 <!-- =========================
      SMOOTH EXPAND / COLLAPSE
-     RESEARCH / PUBLICATION /
-     EXPERIENCE
 ========================= -->
 
 <script>
@@ -656,11 +1229,17 @@
 
 
     const detailsElements =
-      document.querySelectorAll(".expandable-details");
+      document.querySelectorAll(
+        ".expandable-details"
+      );
 
 
-    if (!detailsElements.length) {
+    if (
+      !detailsElements.length
+    ) {
+
       return;
+
     }
 
 
@@ -679,242 +1258,488 @@
 
 
 
-    detailsElements.forEach(function (details) {
+    detailsElements.forEach(
+      function (details) {
 
 
-      const summary =
-        details.querySelector(".details-toggle");
+        const summary =
+          details.querySelector(
+            ".details-toggle"
+          );
 
 
-      const content =
-        details.querySelector(".details-content");
+        const content =
+          details.querySelector(
+            ".details-content"
+          );
 
 
-      if (!summary || !content) {
-        return;
-      }
+        if (
+          !summary ||
+          !content
+        ) {
 
-
-      let currentAnimation =
-        null;
-
-
-
-      function clearAnimationStyles() {
-
-        content.style.height = "";
-
-        content.style.opacity = "";
-
-        content.style.transform = "";
-
-        content.style.overflow = "";
-
-        content.style.willChange = "";
-
-      }
-
-
-
-      function finishAnimation() {
-
-        if (currentAnimation) {
-
-          currentAnimation.cancel();
-
-          currentAnimation = null;
+          return;
 
         }
 
-      }
+
+        let currentAnimation =
+          null;
+
+
+        let state =
+          details.open
+            ? "open"
+            : "closed";
 
 
 
-      function openDetails() {
+        function clearAnimationStyles() {
 
+          content.style.height =
+            "";
 
-        finishAnimation();
+          content.style.opacity =
+            "";
 
+          content.style.transform =
+            "";
 
-        details.classList.remove(
-          "is-closing"
-        );
+          content.style.overflow =
+            "";
 
+          content.style.willChange =
+            "";
 
-        details.open = true;
-
-
-        content.style.overflow =
-          "hidden";
-
-
-        content.style.willChange =
-          "height, opacity, transform";
-
-
-        const targetHeight =
-          content.scrollHeight;
-
-
-        currentAnimation =
-          content.animate(
-
-            [
-              {
-                height: "0px",
-                opacity: 0,
-                transform: "translateY(-6px)"
-              },
-
-              {
-                height: targetHeight + "px",
-                opacity: 1,
-                transform: "translateY(0)"
-              }
-            ],
-
-            {
-              duration: animationDuration,
-              easing: animationEasing,
-              fill: "both"
-            }
-
-          );
-
-
-        currentAnimation.onfinish =
-          function () {
-
-            clearAnimationStyles();
-
-            currentAnimation = null;
-
-          };
-
-
-        currentAnimation.oncancel =
-          function () {
-
-            currentAnimation = null;
-
-          };
-
-      }
+        }
 
 
 
-      function closeDetails() {
+        function getSnapshot() {
 
 
-        finishAnimation();
-
-
-        details.classList.add(
-          "is-closing"
-        );
-
-
-        const startHeight =
-          content.getBoundingClientRect().height;
-
-
-        content.style.overflow =
-          "hidden";
-
-
-        content.style.willChange =
-          "height, opacity, transform";
-
-
-        currentAnimation =
-          content.animate(
-
-            [
-              {
-                height: startHeight + "px",
-                opacity: 1,
-                transform: "translateY(0)"
-              },
-
-              {
-                height: "0px",
-                opacity: 0,
-                transform: "translateY(-6px)"
-              }
-            ],
-
-            {
-              duration: animationDuration,
-              easing: animationEasing,
-              fill: "both"
-            }
-
-          );
-
-
-        currentAnimation.onfinish =
-          function () {
-
-            details.open = false;
-
-
-            details.classList.remove(
-              "is-closing"
+          const computedStyle =
+            window.getComputedStyle(
+              content
             );
 
 
-            clearAnimationStyles();
+          const currentHeight =
+            content.getBoundingClientRect()
+              .height;
 
 
-            currentAnimation = null;
+          const currentOpacity =
+            parseFloat(
+              computedStyle.opacity
+            );
+
+
+          const currentTransform =
+            computedStyle.transform ===
+            "none"
+
+              ? "translateY(0)"
+
+              : computedStyle.transform;
+
+
+          return {
+
+            height:
+              currentHeight,
+
+            opacity:
+              Number.isFinite(
+                currentOpacity
+              )
+                ? currentOpacity
+                : 1,
+
+            transform:
+              currentTransform
 
           };
 
-
-        currentAnimation.oncancel =
-          function () {
-
-            currentAnimation = null;
-
-          };
-
-      }
+        }
 
 
 
-      summary.addEventListener(
-        "click",
-        function (event) {
+        function cancelCurrentAnimation() {
 
 
-          if (reduceMotion.matches) {
+          const snapshot =
+            getSnapshot();
+
+
+          if (
+            currentAnimation
+          ) {
+
+            const animationToCancel =
+              currentAnimation;
+
+
+            currentAnimation =
+              null;
+
+
+            animationToCancel.cancel();
+
+          }
+
+
+          content.style.height =
+            snapshot.height +
+            "px";
+
+
+          content.style.opacity =
+            String(
+              snapshot.opacity
+            );
+
+
+          content.style.transform =
+            snapshot.transform;
+
+
+          return snapshot;
+
+        }
+
+
+
+        function runAnimation(
+          keyframes,
+          onFinish
+        ) {
+
+
+          const animation =
+            content.animate(
+              keyframes,
+              {
+
+                duration:
+                  animationDuration,
+
+                easing:
+                  animationEasing,
+
+                fill:
+                  "both"
+
+              }
+            );
+
+
+          currentAnimation =
+            animation;
+
+
+
+          animation.onfinish =
+            function () {
+
+
+              if (
+                currentAnimation !==
+                animation
+              ) {
+
+                return;
+
+              }
+
+
+              currentAnimation =
+                null;
+
+
+              onFinish();
+
+            };
+
+
+
+          animation.oncancel =
+            function () {
+
+
+              if (
+                currentAnimation ===
+                animation
+              ) {
+
+                currentAnimation =
+                  null;
+
+              }
+
+            };
+
+        }
+
+
+
+        function openDetails() {
+
+
+          let start;
+
+
+          if (
+            details.open
+          ) {
+
+            start =
+              cancelCurrentAnimation();
+
+          } else {
+
+            details.open =
+              true;
+
+
+            start = {
+
+              height:
+                0,
+
+              opacity:
+                0,
+
+              transform:
+                "translateY(-6px)"
+
+            };
+
+          }
+
+
+          details.classList.remove(
+            "is-closing"
+          );
+
+
+          state =
+            "opening";
+
+
+          content.style.overflow =
+            "hidden";
+
+
+          content.style.willChange =
+            "height, opacity, transform";
+
+
+          const targetHeight =
+            content.scrollHeight;
+
+
+
+          runAnimation(
+
+            [
+
+              {
+
+                height:
+                  start.height +
+                  "px",
+
+                opacity:
+                  start.opacity,
+
+                transform:
+                  start.transform
+
+              },
+
+              {
+
+                height:
+                  targetHeight +
+                  "px",
+
+                opacity:
+                  1,
+
+                transform:
+                  "translateY(0)"
+
+              }
+
+            ],
+
+            function () {
+
+
+              state =
+                "open";
+
+
+              clearAnimationStyles();
+
+            }
+
+          );
+
+        }
+
+
+
+        function closeDetails() {
+
+
+          if (
+            !details.open
+          ) {
+
+            state =
+              "closed";
 
             return;
 
           }
 
 
-          event.preventDefault();
+          const start =
+            cancelCurrentAnimation();
 
 
-          if (
-            details.open &&
-            !details.classList.contains("is-closing")
-          ) {
+          details.classList.add(
+            "is-closing"
+          );
 
-            closeDetails();
 
-          } else {
+          state =
+            "closing";
 
-            openDetails();
 
-          }
+          content.style.overflow =
+            "hidden";
+
+
+          content.style.willChange =
+            "height, opacity, transform";
+
+
+
+          runAnimation(
+
+            [
+
+              {
+
+                height:
+                  start.height +
+                  "px",
+
+                opacity:
+                  start.opacity,
+
+                transform:
+                  start.transform
+
+              },
+
+              {
+
+                height:
+                  "0px",
+
+                opacity:
+                  0,
+
+                transform:
+                  "translateY(-6px)"
+
+              }
+
+            ],
+
+            function () {
+
+
+              details.open =
+                false;
+
+
+              details.classList.remove(
+                "is-closing"
+              );
+
+
+              state =
+                "closed";
+
+
+              clearAnimationStyles();
+
+            }
+
+          );
 
         }
-      );
 
 
-    });
+
+        summary.addEventListener(
+          "click",
+          function (event) {
+
+
+            if (
+              reduceMotion.matches
+            ) {
+
+
+              window.setTimeout(
+                function () {
+
+                  state =
+                    details.open
+                      ? "open"
+                      : "closed";
+
+                },
+                0
+              );
+
+
+              return;
+
+            }
+
+
+            event.preventDefault();
+
+
+
+            if (
+              state === "closed" ||
+              state === "closing"
+            ) {
+
+              openDetails();
+
+            } else {
+
+              closeDetails();
+
+            }
+
+
+          }
+        );
+
+
+      }
+    );
 
 
   })();
