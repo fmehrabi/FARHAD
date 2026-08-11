@@ -51,22 +51,22 @@
   */
 
   --spectrum-cyan:
-    rgba(39, 140, 168, 0.110);
+    rgba(39, 140, 168, 0.130);
 
   --spectrum-blue:
-    rgba(76, 112, 178, 0.090);
+    rgba(76, 112, 178, 0.115);
 
   --spectrum-teal:
-    rgba(47, 151, 127, 0.090);
+    rgba(47, 151, 127, 0.110);
 
   --spectrum-cyan-hover:
-    rgba(39, 140, 168, 0.180);
+    rgba(39, 140, 168, 0.215);
 
   --spectrum-blue-hover:
-    rgba(76, 112, 178, 0.155);
+    rgba(76, 112, 178, 0.190);
 
   --spectrum-teal-hover:
-    rgba(47, 151, 127, 0.155);
+    rgba(47, 151, 127, 0.180);
 
 }
 
@@ -112,22 +112,22 @@ html[data-theme="dark"] {
     rgba(69, 167, 194, 0.13);
 
   --spectrum-cyan:
-    rgba(69, 167, 194, 0.145);
+    rgba(69, 167, 194, 0.175);
 
   --spectrum-blue:
-    rgba(105, 132, 205, 0.125);
+    rgba(105, 132, 205, 0.155);
 
   --spectrum-teal:
-    rgba(75, 178, 150, 0.125);
+    rgba(75, 178, 150, 0.150);
 
   --spectrum-cyan-hover:
-    rgba(69, 167, 194, 0.225);
+    rgba(69, 167, 194, 0.270);
 
   --spectrum-blue-hover:
-    rgba(105, 132, 205, 0.195);
+    rgba(105, 132, 205, 0.235);
 
   --spectrum-teal-hover:
-    rgba(75, 178, 150, 0.195);
+    rgba(75, 178, 150, 0.225);
 
 }
 
@@ -1084,47 +1084,11 @@ html.stagger-preload
 .experience-section >
 .experience-item {
 
-  --card-spectrum:
-    var(--spectrum-cyan);
+  opacity:
+    0;
 
-  --card-spectrum-hover:
-    var(--spectrum-cyan-hover);
-
-  position:
-    relative;
-
-  margin-top:
-    14px;
-
-  margin-bottom:
-    22px;
-
-  padding:
-    22px 24px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--surface) 0%,
-      var(--surface) 38%,
-      var(--card-spectrum) 100%
-    );
-
-  border:
-    1px solid
-    var(--border);
-
-  border-radius:
-    10px;
-
-  box-shadow:
-    0 1px 3px
-    var(--card-shadow);
-
-  transition:
-    border-color 0.22s ease,
-    background 0.22s ease,
-    box-shadow 0.22s ease;
+  transform:
+    translateY(5px);
 
 }
 
@@ -1401,7 +1365,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface) 0%,
-      var(--surface) 40%,
+      var(--surface) 30%,
       var(--about-spectrum) 100%
     );
 
@@ -1436,7 +1400,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
-      var(--surface-hover) 34%,
+      var(--surface-hover) 22%,
       var(--about-spectrum-hover) 100%
     );
 
@@ -2038,7 +2002,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface) 0%,
-      var(--surface) 38%,
+      var(--surface) 30%,
       var(--card-spectrum) 100%
     );
 
@@ -2067,7 +2031,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
-      var(--surface-hover) 30%,
+      var(--surface-hover) 22%,
       var(--card-spectrum-hover) 100%
     );
 
@@ -2326,22 +2290,25 @@ html.stagger-preload
 
 /* =========================
    PROFESSIONAL CARD SPECTRUM
-   SMART GROUP DISTRIBUTION
+   ROBUST CARD-ORDER CYCLING
 
-   Every card keeps a visible,
-   low-saturation gradient.
-
-   The starting tint changes
-   by section so adjacent groups
-   do not all restart at cyan.
+   Every card receives a gradient.
+   The tint cycles by article order
+   inside each section:
+   cyan → blue → teal → repeat.
 ========================= */
 
 
-/* Default fallback */
+/* First card in each group */
 
-.research-project,
-.publication-item,
-.experience-item {
+.research-section >
+.research-project:nth-of-type(3n + 1),
+
+.publication-section >
+.publication-item:nth-of-type(3n + 1),
+
+.experience-section >
+.experience-item:nth-of-type(3n + 1) {
 
   --card-spectrum:
     var(--spectrum-cyan);
@@ -2352,28 +2319,16 @@ html.stagger-preload
 }
 
 
-/* =========================
-   RESEARCH SPECTRUM
-========================= */
+/* Second card in each group */
 
-/* Current Research */
+.research-section >
+.research-project:nth-of-type(3n + 2),
 
-.research-section:nth-of-type(1)
-.research-project:nth-of-type(1) {
+.publication-section >
+.publication-item:nth-of-type(3n + 2),
 
-  --card-spectrum:
-    var(--spectrum-cyan);
-
-  --card-spectrum-hover:
-    var(--spectrum-cyan-hover);
-
-}
-
-
-/* Selected Projects */
-
-.research-section:nth-of-type(2)
-.research-project:nth-of-type(1) {
+.experience-section >
+.experience-item:nth-of-type(3n + 2) {
 
   --card-spectrum:
     var(--spectrum-blue);
@@ -2384,118 +2339,16 @@ html.stagger-preload
 }
 
 
-.research-section:nth-of-type(2)
-.research-project:nth-of-type(2) {
+/* Third card in each group */
 
-  --card-spectrum:
-    var(--spectrum-teal);
+.research-section >
+.research-project:nth-of-type(3n),
 
-  --card-spectrum-hover:
-    var(--spectrum-teal-hover);
+.publication-section >
+.publication-item:nth-of-type(3n),
 
-}
-
-
-.research-section:nth-of-type(2)
-.research-project:nth-of-type(3) {
-
-  --card-spectrum:
-    var(--spectrum-cyan);
-
-  --card-spectrum-hover:
-    var(--spectrum-cyan-hover);
-
-}
-
-
-.research-section:nth-of-type(2)
-.research-project:nth-of-type(4) {
-
-  --card-spectrum:
-    var(--spectrum-blue);
-
-  --card-spectrum-hover:
-    var(--spectrum-blue-hover);
-
-}
-
-
-/* =========================
-   PUBLICATION SPECTRUM
-========================= */
-
-.publication-section
-.publication-item:nth-of-type(1) {
-
-  --card-spectrum:
-    var(--spectrum-teal);
-
-  --card-spectrum-hover:
-    var(--spectrum-teal-hover);
-
-}
-
-
-/* =========================
-   EXPERIENCE SPECTRUM
-========================= */
-
-/* Research Experience */
-
-.experience-section:nth-of-type(1)
-.experience-item:nth-of-type(1) {
-
-  --card-spectrum:
-    var(--spectrum-cyan);
-
-  --card-spectrum-hover:
-    var(--spectrum-cyan-hover);
-
-}
-
-
-.experience-section:nth-of-type(1)
-.experience-item:nth-of-type(2) {
-
-  --card-spectrum:
-    var(--spectrum-blue);
-
-  --card-spectrum-hover:
-    var(--spectrum-blue-hover);
-
-}
-
-
-/* Teaching Experience */
-
-.experience-section:nth-of-type(2)
-.experience-item:nth-of-type(1) {
-
-  --card-spectrum:
-    var(--spectrum-blue);
-
-  --card-spectrum-hover:
-    var(--spectrum-blue-hover);
-
-}
-
-
-.experience-section:nth-of-type(2)
-.experience-item:nth-of-type(2) {
-
-  --card-spectrum:
-    var(--spectrum-teal);
-
-  --card-spectrum-hover:
-    var(--spectrum-teal-hover);
-
-}
-
-
-/* Professional Experience */
-
-.experience-section:nth-of-type(3)
-.experience-item:nth-of-type(1) {
+.experience-section >
+.experience-item:nth-of-type(3n) {
 
   --card-spectrum:
     var(--spectrum-teal);
@@ -2545,7 +2398,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface) 0%,
-      var(--surface) 38%,
+      var(--surface) 30%,
       var(--card-spectrum) 100%
     );
 
@@ -2574,7 +2427,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
-      var(--surface-hover) 30%,
+      var(--surface-hover) 22%,
       var(--card-spectrum-hover) 100%
     );
 
@@ -2800,6 +2653,12 @@ html.stagger-preload
 
 .experience-item {
 
+  --card-spectrum:
+    var(--spectrum-cyan);
+
+  --card-spectrum-hover:
+    var(--spectrum-cyan-hover);
+
   position:
     relative;
 
@@ -2813,7 +2672,12 @@ html.stagger-preload
     22px 24px;
 
   background:
-    var(--surface);
+    linear-gradient(
+      135deg,
+      var(--surface) 0%,
+      var(--surface) 30%,
+      var(--card-spectrum) 100%
+    );
 
   border:
     1px solid
@@ -2827,9 +2691,9 @@ html.stagger-preload
     var(--card-shadow);
 
   transition:
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.25s ease;
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -2840,7 +2704,7 @@ html.stagger-preload
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
-      var(--surface-hover) 30%,
+      var(--surface-hover) 22%,
       var(--card-spectrum-hover) 100%
     );
 
