@@ -68,6 +68,9 @@
   --spectrum-teal-hover:
     rgba(47, 151, 127, 0.180);
 
+  --cursor-spotlight:
+    rgba(39, 140, 168, 0.18);
+
 }
 
 
@@ -128,6 +131,9 @@ html[data-theme="dark"] {
 
   --spectrum-teal-hover:
     rgba(75, 178, 150, 0.225);
+
+  --cursor-spotlight:
+    rgba(69, 167, 194, 0.22);
 
 }
 
@@ -1361,7 +1367,23 @@ html.stagger-preload
   padding:
     22px 24px;
 
+  --mouse-x:
+    50%;
+
+  --mouse-y:
+    50%;
+
+  --cursor-glow:
+    transparent;
+
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface) 0%,
@@ -1397,6 +1419,13 @@ html.stagger-preload
 .about-text:hover {
 
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
@@ -1998,7 +2027,23 @@ html.stagger-preload
   padding:
     22px 24px;
 
+  --mouse-x:
+    50%;
+
+  --mouse-y:
+    50%;
+
+  --cursor-glow:
+    transparent;
+
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface) 0%,
@@ -2028,6 +2073,13 @@ html.stagger-preload
 .research-project:hover {
 
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
@@ -2394,7 +2446,23 @@ html.stagger-preload
   padding:
     22px 24px;
 
+  --mouse-x:
+    50%;
+
+  --mouse-y:
+    50%;
+
+  --cursor-glow:
+    transparent;
+
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface) 0%,
@@ -2424,6 +2492,13 @@ html.stagger-preload
 .publication-item:hover {
 
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
@@ -2671,7 +2746,23 @@ html.stagger-preload
   padding:
     22px 24px;
 
+  --mouse-x:
+    50%;
+
+  --mouse-y:
+    50%;
+
+  --cursor-glow:
+    transparent;
+
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface) 0%,
@@ -2701,6 +2792,13 @@ html.stagger-preload
 .experience-item:hover {
 
   background:
+    radial-gradient(
+      circle 180px at
+      var(--mouse-x)
+      var(--mouse-y),
+      var(--cursor-glow) 0%,
+      transparent 72%
+    ),
     linear-gradient(
       135deg,
       var(--surface-hover) 0%,
@@ -2936,6 +3034,32 @@ html.stagger-preload
 
 
 /* =========================
+   CURSOR-FOLLOW SPOTLIGHT
+
+   Only active on devices with
+   a real hover-capable pointer.
+
+   JavaScript updates --mouse-x
+   and --mouse-y only while the
+   pointer is inside a card.
+========================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .about-text.cursor-spotlight-active,
+  .research-project.cursor-spotlight-active,
+  .publication-item.cursor-spotlight-active,
+  .experience-item.cursor-spotlight-active {
+
+    --cursor-glow:
+      var(--cursor-spotlight);
+
+  }
+
+}
+
+
+/* =========================
    REDUCED MOTION
 ========================= */
 
@@ -2943,6 +3067,18 @@ html.stagger-preload
   prefers-reduced-motion:
   reduce
 ) {
+
+  .about-text,
+  .research-project,
+  .publication-item,
+  .experience-item {
+
+    --cursor-glow:
+      transparent !important;
+
+  }
+
+
 
   .page-content {
 
