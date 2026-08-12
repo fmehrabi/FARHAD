@@ -1378,7 +1378,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -1420,7 +1420,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -1712,13 +1712,13 @@ html.stagger-preload
     absolute;
 
   left:
-    -28px;
+    -29.5px;
 
   top:
     50%;
 
   width:
-    6px;
+    8px;
 
   height:
     20px;
@@ -1794,16 +1794,16 @@ html.stagger-preload
     absolute;
 
   left:
-    -25.5px;
+    -26.25px;
 
   top:
-    8px;
+    4px;
 
   width:
-    25.5px;
+    26.25px;
 
   height:
-    19px;
+    23px;
 
   box-sizing:
     border-box;
@@ -1817,7 +1817,7 @@ html.stagger-preload
     var(--border);
 
   border-bottom-left-radius:
-    9px;
+    14px;
 
   background:
     transparent;
@@ -1861,7 +1861,7 @@ html.stagger-preload
 .experience-section:has(.experience-item:hover)::before {
 
   left:
-    3.375px;
+    3.75px;
 
   width:
     2.25px;
@@ -1881,7 +1881,7 @@ html.stagger-preload
 .experience-section:has(.experience-item:hover)::after {
 
   left:
-    3.375px;
+    3.75px;
 
   height:
     2.25px;
@@ -2011,7 +2011,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2047,7 +2047,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2430,7 +2430,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2466,7 +2466,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2730,7 +2730,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2766,7 +2766,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 180px at
+      circle 80px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -3411,10 +3411,10 @@ screen and (max-width: 720px) {
   .experience-section-title::before {
 
     left:
-      -20px;
+      -20.75px;
 
     width:
-      5px;
+      6px;
 
     height:
       17px;
@@ -3447,16 +3447,16 @@ screen and (max-width: 720px) {
   .experience-item::before {
 
     left:
-      -18px;
+      -18.5px;
 
     top:
-      8px;
+      4px;
 
     width:
-      18px;
+      18.5px;
 
     height:
-      15px;
+      19px;
 
     border-left-width:
       1.5px;
@@ -3465,7 +3465,7 @@ screen and (max-width: 720px) {
       1.5px;
 
     border-bottom-left-radius:
-      7px;
+      11px;
 
   }
 
@@ -3475,7 +3475,7 @@ screen and (max-width: 720px) {
   .experience-section:has(.experience-item:hover)::before {
 
     left:
-      3.25px;
+      3.5px;
 
     width:
       2px;
@@ -3488,7 +3488,7 @@ screen and (max-width: 720px) {
   .experience-section:has(.experience-item:hover)::after {
 
     left:
-      3.25px;
+      3.5px;
 
     height:
       2px;
