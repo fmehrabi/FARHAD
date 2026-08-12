@@ -1378,7 +1378,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -1420,7 +1420,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -1525,13 +1525,15 @@ html.stagger-preload
 
 
 /* =========================
-   CONNECTED SECTION GROUPS
-   RAIL 3.0
+   EDITORIAL SPINE 2.0
+   + SOFT BRANCH
 
-   Refined hierarchy:
-   slightly stronger default rail,
-   active tree-path emphasis on hover,
-   theme-tinted card border and shadow.
+   A calmer editorial hierarchy:
+   - slim vertical spine
+   - vertical accent marker
+   - short title rule
+   - rounded branch into each card
+   - stronger active path on hover
 ========================= */
 
 .research-section,
@@ -1542,7 +1544,7 @@ html.stagger-preload
     relative;
 
   padding-left:
-    28px;
+    30px;
 
   padding-bottom:
     12px;
@@ -1550,7 +1552,7 @@ html.stagger-preload
 }
 
 
-/* Main vertical rail */
+/* Main editorial spine */
 
 .research-section::before,
 .publication-section::before,
@@ -1566,7 +1568,7 @@ html.stagger-preload
     3.75px;
 
   top:
-    13px;
+    12px;
 
   bottom:
     8px;
@@ -1592,7 +1594,7 @@ html.stagger-preload
 }
 
 
-/* Small termination cap at the end of each group */
+/* Quiet terminal cap */
 
 .research-section::after,
 .publication-section::after,
@@ -1611,7 +1613,7 @@ html.stagger-preload
     8px;
 
   width:
-    11px;
+    10px;
 
   height:
     1.5px;
@@ -1620,7 +1622,7 @@ html.stagger-preload
     var(--border);
 
   border-radius:
-    999px;
+    0 999px 999px 0;
 
   pointer-events:
     none;
@@ -1634,7 +1636,7 @@ html.stagger-preload
 }
 
 
-/* Section titles */
+/* Section title */
 
 .research-section-title,
 .publication-section-title,
@@ -1662,7 +1664,7 @@ html.stagger-preload
     0;
 
   margin-bottom:
-    18px;
+    19px;
 
   padding:
     0;
@@ -1697,7 +1699,7 @@ html.stagger-preload
 }
 
 
-/* Ringed section node */
+/* Editorial vertical accent marker */
 
 .research-section-title::before,
 .publication-section-title::before,
@@ -1716,22 +1718,20 @@ html.stagger-preload
     50%;
 
   width:
-    8px;
+    5px;
 
   height:
-    8px;
+    20px;
 
   border-radius:
-    50%;
+    999px;
 
   background:
     var(--accent);
 
   box-shadow:
-    0 0 0 3px
-      var(--page-bg),
     0 0 0 4px
-      var(--accent);
+    var(--page-bg);
 
   transform:
     translateY(-50%);
@@ -1746,7 +1746,7 @@ html.stagger-preload
 }
 
 
-/* Subtle trailing divider */
+/* Short editorial rule after the heading */
 
 .research-section-title::after,
 .publication-section-title::after,
@@ -1756,10 +1756,10 @@ html.stagger-preload
     "";
 
   flex:
-    1 1 auto;
+    0 0 72px;
 
-  min-width:
-    24px;
+  width:
+    72px;
 
   height:
     1.25px;
@@ -1770,14 +1770,18 @@ html.stagger-preload
   border-radius:
     999px;
 
+  opacity:
+    0.95;
+
   transition:
+    width 0.22s ease,
     background-color 0.22s ease,
-    height 0.22s ease;
+    opacity 0.22s ease;
 
 }
 
 
-/* Child-card connector */
+/* Rounded soft branch from spine into each card */
 
 .research-project::before,
 .publication-item::before,
@@ -1790,91 +1794,66 @@ html.stagger-preload
     absolute;
 
   left:
-    -24px;
+    -25px;
 
   top:
-    26px;
+    8px;
 
   width:
-    24px;
+    25px;
 
   height:
-    1.5px;
+    19px;
 
-  background:
+  box-sizing:
+    border-box;
+
+  border-left:
+    1.5px solid
     var(--border);
 
-  border-radius:
-    999px;
+  border-bottom:
+    1.5px solid
+    var(--border);
+
+  border-bottom-left-radius:
+    9px;
+
+  background:
+    transparent;
 
   pointer-events:
     none;
 
   transition:
-    height 0.22s ease,
-    background-color 0.22s ease,
-    box-shadow 0.22s ease;
+    border-color 0.22s ease,
+    border-width 0.22s ease,
+    filter 0.22s ease;
 
 }
 
 
-/* Small child node on the rail */
+/* Rail 3.0 child dots are intentionally removed */
 
 .research-project::after,
 .publication-item::after,
 .experience-item::after {
 
   content:
-    "";
-
-  position:
-    absolute;
-
-  left:
-    -26px;
-
-  top:
-    24px;
-
-  width:
-    5px;
-
-  height:
-    5px;
-
-  border-radius:
-    50%;
-
-  background:
-    var(--border);
-
-  box-shadow:
-    0 0 0 2px
-    var(--page-bg);
-
-  pointer-events:
     none;
-
-  transition:
-    background-color 0.22s ease,
-    box-shadow 0.22s ease,
-    transform 0.22s ease;
 
 }
 
 
 /* =========================
-   ACTIVE TREE PATH
+   ACTIVE EDITORIAL PATH
    ON CARD HOVER
 ========================= */
 
 /*
-   :has() lets the entire parent rail
-   react when one of its child cards
-   is being hovered.
-
-   Browsers without :has() still keep
-   the card + connector hover effect.
+   When a card is hovered, the parent
+   spine and the relevant soft branch
+   become the active accent path.
 */
 
 .research-section:has(.research-project:hover)::before,
@@ -1882,10 +1861,10 @@ html.stagger-preload
 .experience-section:has(.experience-item:hover)::before {
 
   left:
-    3.5px;
+    3.375px;
 
   width:
-    2px;
+    2.25px;
 
   background:
     var(--accent);
@@ -1902,20 +1881,22 @@ html.stagger-preload
 .experience-section:has(.experience-item:hover)::after {
 
   left:
-    3.5px;
+    3.375px;
 
   height:
-    2px;
+    2.25px;
 
   background:
     var(--accent);
 
   box-shadow:
-    0 0 8px
+    0 0 7px
     var(--accent-shadow-soft);
 
 }
 
+
+/* Active section marker */
 
 .research-section:has(.research-project:hover)
 .research-section-title::before,
@@ -1925,19 +1906,18 @@ html.stagger-preload
 .experience-section-title::before {
 
   box-shadow:
-    0 0 0 3px
+    0 0 0 4px
       var(--page-bg),
-    0 0 0 5px
-      var(--accent),
-    0 0 12px
+    0 0 11px
       var(--accent-shadow);
 
   transform:
-    translateY(-50%)
-    scale(1.04);
+    translateY(-50%);
 
 }
 
+
+/* Active short editorial rule */
 
 .research-section:has(.research-project:hover)
 .research-section-title::after,
@@ -1946,48 +1926,41 @@ html.stagger-preload
 .experience-section:has(.experience-item:hover)
 .experience-section-title::after {
 
+  width:
+    82px;
+
   background:
     var(--accent);
+
+  opacity:
+    1;
 
 }
 
 
-/* Hovered branch connector */
+/* Active branch */
 
 .research-project:hover::before,
 .publication-item:hover::before,
 .experience-item:hover::before {
 
-  height:
-    2px;
+  border-left-width:
+    2.25px;
 
-  background:
+  border-bottom-width:
+    2.25px;
+
+  border-left-color:
     var(--accent);
 
-  box-shadow:
-    0 0 8px
-    var(--accent-shadow-soft);
-
-}
-
-
-/* Hovered child node */
-
-.research-project:hover::after,
-.publication-item:hover::after,
-.experience-item:hover::after {
-
-  background:
+  border-bottom-color:
     var(--accent);
 
-  box-shadow:
-    0 0 0 2px
-      var(--page-bg),
-    0 0 8px
-      var(--accent-shadow);
-
-  transform:
-    scale(1.08);
+  filter:
+    drop-shadow(
+      0 0 3px
+      var(--accent-shadow-soft)
+    );
 
 }
 
@@ -2038,7 +2011,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at 
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2074,7 +2047,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2457,7 +2430,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2493,7 +2466,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2757,7 +2730,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -2793,7 +2766,7 @@ html.stagger-preload
 
   background:
     radial-gradient(
-      circle 80px at
+      circle 180px at
       var(--mouse-x)
       var(--mouse-y),
       var(--cursor-glow) 0%,
@@ -3357,7 +3330,7 @@ screen and (max-width: 720px) {
 
 
   /* =========================
-     MOBILE CONNECTED GROUPS
+     MOBILE EDITORIAL SPINE
   ========================= */
 
   .research-section,
@@ -3365,7 +3338,7 @@ screen and (max-width: 720px) {
   .experience-section {
 
     padding-left:
-      20px;
+      22px;
 
     padding-bottom:
       10px;
@@ -3378,10 +3351,10 @@ screen and (max-width: 720px) {
   .experience-section::before {
 
     left:
-      3.25px;
+      3.5px;
 
     top:
-      11px;
+      10px;
 
     bottom:
       6px;
@@ -3397,7 +3370,7 @@ screen and (max-width: 720px) {
   .experience-section::after {
 
     left:
-      3.25px;
+      3.5px;
 
     bottom:
       6px;
@@ -3419,7 +3392,7 @@ screen and (max-width: 720px) {
       9px;
 
     margin-bottom:
-      15px;
+      16px;
 
     padding:
       0;
@@ -3441,16 +3414,17 @@ screen and (max-width: 720px) {
       -20px;
 
     width:
-      7px;
+      4.5px;
 
     height:
-      7px;
+      17px;
+
+    border-radius:
+      999px;
 
     box-shadow:
       0 0 0 3px
-        var(--page-bg),
-      0 0 0 4px
-        var(--accent);
+      var(--page-bg);
 
   }
 
@@ -3459,8 +3433,11 @@ screen and (max-width: 720px) {
   .publication-section-title::after,
   .experience-section-title::after {
 
-    min-width:
-      16px;
+    flex-basis:
+      48px;
+
+    width:
+      48px;
 
   }
 
@@ -3470,35 +3447,25 @@ screen and (max-width: 720px) {
   .experience-item::before {
 
     left:
-      -16.5px;
+      -17.75px;
 
     top:
-      23px;
+      8px;
 
     width:
-      16.5px;
+      17.75px;
 
     height:
+      15px;
+
+    border-left-width:
       1.5px;
 
-  }
+    border-bottom-width:
+      1.5px;
 
-
-  .research-project::after,
-  .publication-item::after,
-  .experience-item::after {
-
-    left:
-      -18.5px;
-
-    top:
-      21px;
-
-    width:
-      5px;
-
-    height:
-      5px;
+    border-bottom-left-radius:
+      7px;
 
   }
 
@@ -3508,7 +3475,7 @@ screen and (max-width: 720px) {
   .experience-section:has(.experience-item:hover)::before {
 
     left:
-      3px;
+      3.25px;
 
     width:
       2px;
@@ -3521,10 +3488,23 @@ screen and (max-width: 720px) {
   .experience-section:has(.experience-item:hover)::after {
 
     left:
-      3px;
+      3.25px;
 
     height:
       2px;
+
+  }
+
+
+  .research-section:has(.research-project:hover)
+  .research-section-title::after,
+  .publication-section:has(.publication-item:hover)
+  .publication-section-title::after,
+  .experience-section:has(.experience-item:hover)
+  .experience-section-title::after {
+
+    width:
+      56px;
 
   }
 
@@ -3533,7 +3513,10 @@ screen and (max-width: 720px) {
   .publication-item:hover::before,
   .experience-item:hover::before {
 
-    height:
+    border-left-width:
+      2px;
+
+    border-bottom-width:
       2px;
 
   }
