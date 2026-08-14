@@ -3,6 +3,10 @@ layout: default
 permalink: /publications/
 ---
 
+<!-- =========================
+     CONFERENCE PAPER
+========================= -->
+
 <div class="publication-section">
 
   <h3 class="publication-section-title">
@@ -39,13 +43,12 @@ permalink: /publications/
 
       <div class="details-content">
 
-
         <h4 class="publication-subheading">
-          Project Overview
+          Study Overview
         </h4>
 
         <p>
-          This study compares Efficient Frontier Exploration and RRT-based exploration for autonomous mobile robots in unknown environments using ROS, Gazebo, and TurtleBot3 experiments. Both methods were evaluated in terms of exploration time and travel distance. RRT-based exploration generally completed the task faster and with less travel, particularly as environmental complexity increased, highlighting the value of navigation-cost and information-gain-based target selection for efficient autonomous exploration.
+          This study compares Efficient Frontier Exploration and RRT-based exploration for autonomous mobile robots in unknown environments using ROS, Gazebo, and TurtleBot3 experiments. The methods were evaluated in terms of exploration time and travel distance, with RRT-based exploration generally completing the task faster and with less travel, particularly in more complex environments.
         </p>
 
 
@@ -72,11 +75,102 @@ permalink: /publications/
 
         </figure>
 
+      </div>
+
+    </details>
+
+  </article>
+
+</div>
+
+
+<!-- =========================
+     WORKING PAPERS
+========================= -->
+
+<div class="publication-section">
+
+  <h3 class="publication-section-title">
+    Working Papers
+  </h3>
+
+
+  <!-- =========================
+       WORKING PAPER 1
+  ========================== -->
+
+  <article class="publication-item">
+
+    <h4 class="publication-title">
+      An Analysis of Value Creation in the Digital Transformation Process of E-commerce using a System Dynamics Approach
+    </h4>
+
+
+    <p class="publication-venue">
+      Working Paper
+    </p>
+
+
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+
+      <div class="details-content">
+
+        <h4 class="publication-subheading">
+          Study Overview
+        </h4>
+
+        <p>
+          This study develops a System Dynamics model of value creation during e-commerce digital transformation. The findings suggest that technology investment alone is insufficient for sustained value creation; complementary organizational capabilities—particularly collaboration, responsiveness to customer demand, and entrepreneurial capability—play a central role in translating digital investment into long-term gains in efficiency, customer satisfaction, and profitability.
+        </p>
 
       </div>
 
     </details>
 
+  </article>
+
+
+  <!-- =========================
+       WORKING PAPER 2
+  ========================== -->
+
+  <article class="publication-item">
+
+    <h4 class="publication-title">
+      The Generation–Evaluation Asymmetry in Post-Adoption Generative AI: A System Dynamics Model of Organizational Capability and Innovation
+    </h4>
+
+
+    <p class="publication-venue">
+      Working Paper
+    </p>
+
+
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+
+      <div class="details-content">
+
+        <h4 class="publication-subheading">
+          Study Overview
+        </h4>
+
+        <p>
+          This study introduces the Generation–Evaluation Asymmetry to explain how GenAI-supported output can expand faster than an organization’s capacity to evaluate, integrate, and retain it as reliable knowledge. A System Dynamics model shows that rapid AI adoption may coexist with declining Human Cognitive Capital and Organizational Knowledge, eventually weakening innovation, while stronger Structural Governance combined with a high Organizational Cognitive Agency Regime supports more sustainable innovation outcomes.
+        </p>
+
+      </div>
+
+    </details>
 
   </article>
 
