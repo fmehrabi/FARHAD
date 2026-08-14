@@ -1781,7 +1781,7 @@ html.stagger-preload
 }
 
 
-/* Rounded soft branch from spine into each card */
+/* Straight branch from spine into each card */
 
 .research-project::before,
 .publication-item::before,
@@ -1797,38 +1797,30 @@ html.stagger-preload
     -26.25px;
 
   top:
-    4px;
+    26px;
 
   width:
     26.25px;
 
   height:
-    23px;
-
-  box-sizing:
-    border-box;
-
-  border-left:
-    1.5px solid
-    var(--border);
-
-  border-bottom:
-    1.5px solid
-    var(--border);
-
-  border-bottom-left-radius:
-    14px;
+    1.5px;
 
   background:
-    transparent;
+    var(--border);
+
+  border:
+    none;
+
+  border-radius:
+    0;
 
   pointer-events:
     none;
 
   transition:
-    border-color 0.22s ease,
-    border-width 0.22s ease,
-    filter 0.22s ease;
+    height 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
 
 }
 
@@ -1938,29 +1930,21 @@ html.stagger-preload
 }
 
 
-/* Active branch */
+/* Active straight branch */
 
 .research-project:hover::before,
 .publication-item:hover::before,
 .experience-item:hover::before {
 
-  border-left-width:
+  height:
     2.25px;
 
-  border-bottom-width:
-    2.25px;
-
-  border-left-color:
+  background:
     var(--accent);
 
-  border-bottom-color:
-    var(--accent);
-
-  filter:
-    drop-shadow(
-      0 0 3px
-      var(--accent-shadow-soft)
-    );
+  box-shadow:
+    0 0 6px
+    var(--accent-shadow-soft);
 
 }
 
@@ -2969,6 +2953,152 @@ html.stagger-preload
 }
 
 
+
+/* =========================
+   EXPERIENCE LINKS
+========================= */
+
+.experience-details a {
+
+  color:
+    var(--accent);
+
+  font-weight:
+    600;
+
+  text-decoration:
+    none;
+
+  text-decoration-color:
+    transparent;
+
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+
+}
+
+
+.experience-details a:hover {
+
+  color:
+    var(--accent-hover);
+
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    3px;
+
+}
+
+
+/* =========================
+   PROFESSIONAL EXPERIENCE
+   IMAGE PAIR
+========================= */
+
+.experience-gallery {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr);
+
+  align-items:
+    stretch;
+
+  column-gap:
+    16px;
+
+  width:
+    100%;
+
+  margin-top:
+    18px;
+
+  padding-top:
+    2px;
+
+}
+
+
+.experience-gallery-item {
+
+  min-width:
+    0;
+
+  margin:
+    0;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    8px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    0 1px 3px
+    var(--card-shadow);
+
+}
+
+
+.experience-gallery-item img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+
+  aspect-ratio:
+    2 / 3;
+
+  object-fit:
+    cover;
+
+  border-radius:
+    8px;
+
+}
+
+
+.experience-gallery-divider {
+
+  width:
+    1px;
+
+  height:
+    82%;
+
+  align-self:
+    center;
+
+  background:
+    var(--border);
+
+  border-radius:
+    999px;
+
+  opacity:
+    0.75;
+
+}
+
+
 .experience-details li::before {
 
   content:
@@ -3450,22 +3580,13 @@ screen and (max-width: 720px) {
       -18.5px;
 
     top:
-      4px;
+      23px;
 
     width:
       18.5px;
 
     height:
-      19px;
-
-    border-left-width:
       1.5px;
-
-    border-bottom-width:
-      1.5px;
-
-    border-bottom-left-radius:
-      11px;
 
   }
 
@@ -3513,10 +3634,7 @@ screen and (max-width: 720px) {
   .publication-item:hover::before,
   .experience-item:hover::before {
 
-    border-left-width:
-      2px;
-
-    border-bottom-width:
+    height:
       2px;
 
   }
@@ -3702,7 +3820,29 @@ screen and (max-width: 720px) {
   }
 
 
-    /* Experience */
+    /* Professional experience gallery */
+
+  .experience-gallery {
+
+    column-gap:
+      10px;
+
+    margin-top:
+      15px;
+
+  }
+
+
+  .experience-gallery-item,
+  .experience-gallery-item img {
+
+    border-radius:
+      7px;
+
+  }
+
+
+  /* Experience */
 
   .experience-section {
 
