@@ -54,21 +54,20 @@ permalink: /publications/
         </h4>
 
         <p>
-          In this project, we investigated autonomous exploration strategies for mobile robots operating in previously unknown environments. We implemented and compared Efficient Frontier Exploration and RRT-based exploration using ROS and Gazebo, and subsequently evaluated both approaches on a TurtleBot3 in physical environments of increasing complexity.
-        </p>
-
-        <p>
-          The two methods were evaluated primarily in terms of exploration time and total travel distance. Across both simulation and real-world experiments, RRT-based exploration generally required less travel distance and completed the exploration task faster than the Efficient Frontier approach. The performance difference became more noticeable as the environment became more complex, suggesting that intelligent target selection based on navigation cost and information gain can improve autonomous exploration efficiency.
+          In this project, we investigated autonomous exploration strategies for mobile robots operating in previously unknown environments by implementing and comparing Efficient Frontier Exploration and RRT-based exploration using ROS and Gazebo, followed by evaluation on a TurtleBot3 in physical environments of increasing complexity. The two methods were assessed primarily in terms of exploration time and total travel distance. Across both simulation and real-world experiments, RRT-based exploration generally required less travel distance and completed the exploration task faster than the Efficient Frontier approach, with the performance difference becoming more noticeable as environmental complexity increased. These findings suggest that intelligent target selection based on navigation cost and information gain can improve autonomous exploration efficiency. More broadly, the study provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions and highlights the practical value of reducing exploration time and traveled distance in applications where battery capacity, navigation time, and environmental complexity are important operational constraints.
         </p>
 
 
-        <h4 class="publication-subheading">
-          Research &amp; Practical Significance
-        </h4>
+        <figure class="publication-paper-preview">
 
-        <p>
-          This work provides a simulation-to-real comparison of two established autonomous exploration strategies under comparable conditions. From a practical perspective, reducing exploration time and traveled distance can improve the operational efficiency of autonomous mobile robots, particularly in applications where battery capacity, navigation time, and environmental complexity are important constraints.
-        </p>
+          <img
+            src="{{ '/assets/img/paper01.png' | relative_url }}"
+            alt="First page of the conference paper A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration"
+            loading="lazy"
+            decoding="async"
+          >
+
+        </figure>
 
 
       </div>
