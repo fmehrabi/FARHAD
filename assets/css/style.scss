@@ -2732,6 +2732,12 @@ html.stagger-preload
 
 /* =========================
    PUBLICATION PAPER PREVIEW
+
+   The figure reserves the full page
+   height before the PNG finishes
+   loading. This prevents the smooth
+   details animation from measuring a
+   too-small content height on first open.
 ========================= */
 
 .publication-paper-preview {
@@ -2739,11 +2745,26 @@ html.stagger-preload
   width:
     100%;
 
+  aspect-ratio:
+    210 / 297;
+
+  box-sizing:
+    border-box;
+
   margin:
     20px 0 0;
 
   padding:
     0;
+
+  overflow:
+    hidden;
+
+  border-radius:
+    8px;
+
+  background:
+    var(--surface);
 
 }
 
@@ -2760,10 +2781,16 @@ html.stagger-preload
     100%;
 
   height:
-    auto;
+    100%;
+
+  box-sizing:
+    border-box;
 
   margin:
     0;
+
+  object-fit:
+    contain;
 
   border:
     1px solid
