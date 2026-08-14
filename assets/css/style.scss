@@ -2669,6 +2669,68 @@ html.stagger-preload
 
 
 /* =========================
+   PUBLICATION PAPER LINK
+========================= */
+
+.publication-paper-link {
+
+  margin-top:
+    12px !important;
+
+  margin-bottom:
+    18px !important;
+
+  font-size:
+    13.5px !important;
+
+  line-height:
+    1.65 !important;
+
+  color:
+    var(--text-soft) !important;
+
+  text-align:
+    left !important;
+
+}
+
+
+.publication-paper-link a {
+
+  color:
+    var(--accent);
+
+  font-weight:
+    600;
+
+  text-decoration:
+    none;
+
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+
+}
+
+
+.publication-paper-link a:hover {
+
+  color:
+    var(--accent-hover);
+
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    3px;
+
+}
+
+
+/* =========================
    PUBLICATION PAPER PREVIEW
 ========================= */
 
