@@ -2669,6 +2669,58 @@ html.stagger-preload
 
 
 /* =========================
+   PUBLICATION PAPER PREVIEW
+========================= */
+
+.publication-paper-preview {
+
+  width:
+    100%;
+
+  margin:
+    20px 0 0;
+
+  padding:
+    0;
+
+}
+
+
+.publication-paper-preview img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  max-width:
+    100%;
+
+  height:
+    auto;
+
+  margin:
+    0;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    8px;
+
+  background:
+    var(--surface);
+
+  box-shadow:
+    0 4px 16px
+    var(--card-shadow);
+
+}
+
+
+/* =========================
    EXPERIENCE
 ========================= */
 
@@ -3020,8 +3072,8 @@ html.stagger-preload
   width:
     82%;
 
-  margin:
-    18px auto 0;
+  margin-top:
+    18px;
 
   padding-top:
     2px;
