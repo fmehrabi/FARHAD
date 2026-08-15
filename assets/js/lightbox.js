@@ -15,6 +15,7 @@
     window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const lightbox = document.createElement("div");
+
   lightbox.id = "image-lightbox";
   lightbox.className = "image-lightbox";
   lightbox.setAttribute("role", "dialog");
@@ -107,13 +108,13 @@
       </button>
 
       <button
-        id="image-lightbox-zoom-reset"
-        class="image-lightbox-zoom-button image-lightbox-zoom-reset"
+        id="image-lightbox-fit"
+        class="image-lightbox-zoom-button image-lightbox-fit-button"
         type="button"
-        aria-label="Reset zoom"
-        title="Reset zoom"
+        aria-label="Fit image to screen"
+        title="Fit to screen"
       >
-        <span aria-hidden="true">&#8634;</span>
+        <span aria-hidden="true">FIT</span>
       </button>
     </div>
   `;
@@ -147,11 +148,15 @@
   const zoomInButton =
     document.getElementById("image-lightbox-zoom-in");
 
-  const zoomResetButton =
-    document.getElementById("image-lightbox-zoom-reset");
+  const fitButton =
+    document.getElementById("image-lightbox-fit");
 
   const zoomValue =
     document.getElementById("image-lightbox-zoom-value");
+
+  const minZoom = 1;
+  const absoluteMaxZoom = 4;
+  const zoomStep = 0.25;
 
   let activeGroup = [];
   let activeIndex = 0;
@@ -159,12 +164,13 @@
   let switchTimer = null;
 
   let zoom = 1;
+  let maxZoom = 1;
+
+  let baseWidth = 0;
+  let baseHeight = 0;
+
   let panX = 0;
   let panY = 0;
-
-  const minZoom = 1;
-  const maxZoom = 4;
-  const zoomStep = 0.25;
 
   let isDragging = false;
   let dragPointerId = null;
@@ -205,13 +211,110 @@
     });
   }
 
+  function getStageAvailableSize() {
+    const style =
+      window.getComputedStyle(stage);
+
+    const paddingLeft =
+      parseFloat(style.paddingLeft) || 0;
+
+    const paddingRight =
+      parseFloat(style.paddingRight) || 0;
+
+    const paddingTop =
+      parseFloat(style.paddingTop) || 0;
+
+    const paddingBottom =
+      parseFloat(style.paddingBottom) || 0;
+
+    return {
+      width:
+        Math.max(
+          1,
+          stage.clientWidth -
+          paddingLeft -
+          paddingRight
+        ),
+
+      height:
+        Math.max(
+          1,
+          stage.clientHeight -
+          paddingTop -
+          paddingBottom
+        )
+    };
+  }
+
+  function calculateImageGeometry() {
+    const naturalWidth =
+      lightboxImage.naturalWidth;
+
+    const naturalHeight =
+      lightboxImage.naturalHeight;
+
+    if (!naturalWidth || !naturalHeight) {
+      return false;
+    }
+
+    const available =
+      getStageAvailableSize();
+
+    const fitScale =
+      Math.min(
+        available.width / naturalWidth,
+        available.height / naturalHeight,
+        1
+      );
+
+    baseWidth =
+      naturalWidth * fitScale;
+
+    baseHeight =
+      naturalHeight * fitScale;
+
+    /*
+      Zoom is capped at the image's native pixel dimensions.
+      This is the key difference from transform: scale(...).
+
+      At higher zoom levels we increase the actual CSS
+      width/height of the original PNG/JPG, so the browser
+      re-renders from the source image instead of enlarging
+      a previously downscaled GPU layer.
+    */
+    const nativeZoomLimit =
+      fitScale > 0
+        ? 1 / fitScale
+        : 1;
+
+    maxZoom =
+      Math.max(
+        1,
+        Math.min(
+          absoluteMaxZoom,
+          nativeZoomLimit
+        )
+      );
+
+    if (zoom > maxZoom) {
+      zoom = maxZoom;
+    }
+
+    return true;
+  }
+
   function updateNavigation() {
     const multipleImages =
       activeGroup.length > 1;
 
-    prevButton.hidden = !multipleImages;
-    nextButton.hidden = !multipleImages;
-    counter.hidden = !multipleImages;
+    prevButton.hidden =
+      !multipleImages;
+
+    nextButton.hidden =
+      !multipleImages;
+
+    counter.hidden =
+      !multipleImages;
 
     if (multipleImages) {
       counter.textContent =
@@ -234,38 +337,23 @@
     zoomInButton.disabled =
       zoom >= maxZoom - 0.001;
 
+    fitButton.disabled =
+      zoom <= minZoom + 0.001;
+
     lightbox.classList.toggle(
       "is-zoomed",
       zoom > 1.001
     );
-  }
 
-  function getStageAvailableSize() {
-    const style =
-      window.getComputedStyle(stage);
+    const maxPercentage =
+      Math.round(maxZoom * 100);
 
-    const paddingLeft =
-      parseFloat(style.paddingLeft) || 0;
-
-    const paddingRight =
-      parseFloat(style.paddingRight) || 0;
-
-    const paddingTop =
-      parseFloat(style.paddingTop) || 0;
-
-    const paddingBottom =
-      parseFloat(style.paddingBottom) || 0;
-
-    return {
-      width:
-        stage.clientWidth -
-        paddingLeft -
-        paddingRight,
-      height:
-        stage.clientHeight -
-        paddingTop -
-        paddingBottom
-    };
+    zoomInButton.setAttribute(
+      "title",
+      zoomInButton.disabled
+        ? `Maximum native-detail zoom: ${maxPercentage}%`
+        : "Zoom in"
+    );
   }
 
   function clampPan() {
@@ -275,31 +363,25 @@
       return;
     }
 
-    const baseWidth =
-      lightboxImage.offsetWidth;
-
-    const baseHeight =
-      lightboxImage.offsetHeight;
-
     const available =
       getStageAvailableSize();
 
-    const scaledWidth =
+    const renderedWidth =
       baseWidth * zoom;
 
-    const scaledHeight =
+    const renderedHeight =
       baseHeight * zoom;
 
     const maxX =
       Math.max(
         0,
-        (scaledWidth - available.width) / 2 + 24
+        (renderedWidth - available.width) / 2
       );
 
     const maxY =
       Math.max(
         0,
-        (scaledHeight - available.height) / 2 + 24
+        (renderedHeight - available.height) / 2
       );
 
     panX =
@@ -315,16 +397,41 @@
       );
   }
 
-  function renderTransform() {
+  function renderImage() {
+    if (!baseWidth || !baseHeight) {
+      return;
+    }
+
     clampPan();
 
+    const renderedWidth =
+      baseWidth * zoom;
+
+    const renderedHeight =
+      baseHeight * zoom;
+
+    /*
+      IMPORTANT:
+      The image is resized using real CSS dimensions.
+      There is intentionally NO scale() transform here.
+    */
+    lightboxImage.style.width =
+      `${renderedWidth}px`;
+
+    lightboxImage.style.height =
+      `${renderedHeight}px`;
+
     lightboxImage.style.transform =
-      `translate3d(${panX}px, ${panY}px, 0) scale(${zoom})`;
+      `translate3d(${panX}px, ${panY}px, 0)`;
 
     updateZoomControls();
   }
 
   function setZoom(nextZoom) {
+    if (!calculateImageGeometry()) {
+      return;
+    }
+
     zoom =
       Math.min(
         maxZoom,
@@ -337,14 +444,28 @@
       panY = 0;
     }
 
-    renderTransform();
+    renderImage();
   }
 
-  function resetZoom() {
+  function fitToScreen() {
     zoom = 1;
     panX = 0;
     panY = 0;
-    renderTransform();
+
+    calculateImageGeometry();
+    renderImage();
+  }
+
+  function configureLoadedImage() {
+    zoom = 1;
+    panX = 0;
+    panY = 0;
+
+    if (!calculateImageGeometry()) {
+      return;
+    }
+
+    renderImage();
   }
 
   function applyActiveImage() {
@@ -355,13 +476,34 @@
       return;
     }
 
-    resetZoom();
+    zoom = 1;
+    panX = 0;
+    panY = 0;
+    baseWidth = 0;
+    baseHeight = 0;
+    maxZoom = 1;
 
-    lightboxImage.src =
+    updateZoomControls();
+
+    const source =
       getImageSource(activeImage);
 
     lightboxImage.alt =
-      activeImage.alt || "Expanded image";
+      activeImage.alt ||
+      "Expanded image";
+
+    if (
+      lightboxImage.src !== source
+    ) {
+      lightboxImage.src = source;
+    } else if (
+      lightboxImage.complete &&
+      lightboxImage.naturalWidth
+    ) {
+      requestAnimationFrame(
+        configureLoadedImage
+      );
+    }
 
     updateNavigation();
   }
@@ -372,54 +514,74 @@
     }
 
     const normalizedIndex =
-      (nextIndex + activeGroup.length) %
+      (
+        nextIndex +
+        activeGroup.length
+      ) %
       activeGroup.length;
 
-    if (normalizedIndex === activeIndex) {
+    if (
+      normalizedIndex === activeIndex
+    ) {
       return;
     }
 
     if (switchTimer) {
-      window.clearTimeout(switchTimer);
+      window.clearTimeout(
+        switchTimer
+      );
+
       switchTimer = null;
     }
 
     if (reduceMotion.matches) {
-      activeIndex = normalizedIndex;
+      activeIndex =
+        normalizedIndex;
+
       applyActiveImage();
       return;
     }
 
-    imageShell.classList.add("is-switching");
+    imageShell.classList.add(
+      "is-switching"
+    );
 
-    switchTimer = window.setTimeout(() => {
-      activeIndex = normalizedIndex;
-      applyActiveImage();
+    switchTimer =
+      window.setTimeout(() => {
+        activeIndex =
+          normalizedIndex;
 
-      requestAnimationFrame(() => {
-        imageShell.classList.remove(
-          "is-switching"
-        );
-      });
+        applyActiveImage();
 
-      switchTimer = null;
-    }, 110);
+        requestAnimationFrame(() => {
+          imageShell.classList.remove(
+            "is-switching"
+          );
+        });
+
+        switchTimer = null;
+      }, 110);
   }
 
   function openLightbox(trigger) {
-    activeGroup = getImageGroup(trigger);
+    activeGroup =
+      getImageGroup(trigger);
 
-    activeIndex = Math.max(
-      0,
-      activeGroup.indexOf(trigger)
-    );
+    activeIndex =
+      Math.max(
+        0,
+        activeGroup.indexOf(trigger)
+      );
 
-    lastTrigger = trigger;
+    lastTrigger =
+      trigger;
 
     preloadGroup(activeGroup);
     applyActiveImage();
 
-    document.body.classList.add("lightbox-open");
+    document.body.classList.add(
+      "lightbox-open"
+    );
 
     lightbox.setAttribute(
       "aria-hidden",
@@ -427,7 +589,22 @@
     );
 
     requestAnimationFrame(() => {
-      lightbox.classList.add("is-open");
+      lightbox.classList.add(
+        "is-open"
+      );
+
+      /*
+        Recalculate after opening because
+        viewport geometry is now final.
+      */
+      requestAnimationFrame(() => {
+        if (
+          lightboxImage.complete &&
+          lightboxImage.naturalWidth
+        ) {
+          configureLoadedImage();
+        }
+      });
 
       window.setTimeout(() => {
         closeButton.focus({
@@ -438,20 +615,30 @@
   }
 
   function closeLightbox() {
-    if (!lightbox.classList.contains("is-open")) {
+    if (
+      !lightbox.classList.contains(
+        "is-open"
+      )
+    ) {
       return;
     }
 
     if (switchTimer) {
-      window.clearTimeout(switchTimer);
+      window.clearTimeout(
+        switchTimer
+      );
+
       switchTimer = null;
     }
 
     isDragging = false;
     dragPointerId = null;
 
-    lightbox.classList.remove("is-open");
-    lightbox.classList.remove("is-dragging");
+    lightbox.classList.remove(
+      "is-open",
+      "is-dragging",
+      "is-zoomed"
+    );
 
     document.body.classList.remove(
       "lightbox-open"
@@ -462,7 +649,9 @@
       "true"
     );
 
-    resetZoom();
+    zoom = 1;
+    panX = 0;
+    panY = 0;
 
     if (lastTrigger) {
       lastTrigger.focus({
@@ -478,7 +667,8 @@
 
     panX += deltaX;
     panY += deltaY;
-    renderTransform();
+
+    renderImage();
   }
 
   function getFocusableControls() {
@@ -488,9 +678,12 @@
       nextButton,
       zoomOutButton,
       zoomInButton,
-      zoomResetButton
+      fitButton
     ].filter((button) => {
-      return !button.hidden && !button.disabled;
+      return (
+        !button.hidden &&
+        !button.disabled
+      );
     });
   }
 
@@ -499,8 +692,16 @@
       "js-lightbox-trigger"
     );
 
-    trigger.setAttribute("role", "button");
-    trigger.setAttribute("tabindex", "0");
+    trigger.setAttribute(
+      "role",
+      "button"
+    );
+
+    trigger.setAttribute(
+      "tabindex",
+      "0"
+    );
+
     trigger.setAttribute(
       "aria-haspopup",
       "dialog"
@@ -509,7 +710,8 @@
     trigger.setAttribute(
       "aria-label",
       `Open larger image: ${
-        trigger.alt || "image preview"
+        trigger.alt ||
+        "image preview"
       }`
     );
 
@@ -532,6 +734,15 @@
     );
   });
 
+  lightboxImage.addEventListener(
+    "load",
+    () => {
+      requestAnimationFrame(
+        configureLoadedImage
+      );
+    }
+  );
+
   closeButton.addEventListener(
     "click",
     closeLightbox
@@ -539,48 +750,61 @@
 
   prevButton.addEventListener(
     "click",
-    () => switchImage(activeIndex - 1)
+    () => {
+      switchImage(
+        activeIndex - 1
+      );
+    }
   );
 
   nextButton.addEventListener(
     "click",
-    () => switchImage(activeIndex + 1)
+    () => {
+      switchImage(
+        activeIndex + 1
+      );
+    }
   );
 
   zoomOutButton.addEventListener(
     "click",
-    () => setZoom(zoom - zoomStep)
+    () => {
+      setZoom(
+        zoom - zoomStep
+      );
+    }
   );
 
   zoomInButton.addEventListener(
     "click",
-    () => setZoom(zoom + zoomStep)
-  );
-
-  zoomResetButton.addEventListener(
-    "click",
-    resetZoom
-  );
-
-  lightboxImage.addEventListener(
-    "load",
     () => {
-      requestAnimationFrame(() => {
-        renderTransform();
-      });
+      setZoom(
+        zoom + zoomStep
+      );
     }
   );
 
-  imageShell.addEventListener(
+  fitButton.addEventListener(
+    "click",
+    fitToScreen
+  );
+
+  lightboxImage.addEventListener(
     "dblclick",
     (event) => {
       event.preventDefault();
 
       if (zoom > 1.001) {
-        resetZoom();
-      } else {
-        setZoom(2);
+        fitToScreen();
+        return;
       }
+
+      setZoom(
+        Math.min(
+          2,
+          maxZoom
+        )
+      );
     }
   );
 
@@ -588,7 +812,9 @@
     "wheel",
     (event) => {
       if (
-        !lightbox.classList.contains("is-open")
+        !lightbox.classList.contains(
+          "is-open"
+        )
       ) {
         return;
       }
@@ -596,16 +822,21 @@
       event.preventDefault();
 
       const direction =
-        event.deltaY < 0 ? 1 : -1;
+        event.deltaY < 0
+          ? 1
+          : -1;
 
       setZoom(
-        zoom + direction * zoomStep
+        zoom +
+        direction * zoomStep
       );
     },
-    { passive: false }
+    {
+      passive: false
+    }
   );
 
-  imageShell.addEventListener(
+  lightboxImage.addEventListener(
     "pointerdown",
     (event) => {
       if (zoom <= 1.001) {
@@ -620,15 +851,23 @@
       }
 
       isDragging = true;
-      dragPointerId = event.pointerId;
 
-      dragStartX = event.clientX;
-      dragStartY = event.clientY;
+      dragPointerId =
+        event.pointerId;
 
-      dragOriginX = panX;
-      dragOriginY = panY;
+      dragStartX =
+        event.clientX;
 
-      imageShell.setPointerCapture(
+      dragStartY =
+        event.clientY;
+
+      dragOriginX =
+        panX;
+
+      dragOriginY =
+        panY;
+
+      lightboxImage.setPointerCapture(
         event.pointerId
       );
 
@@ -640,32 +879,40 @@
     }
   );
 
-  imageShell.addEventListener(
+  lightboxImage.addEventListener(
     "pointermove",
     (event) => {
       if (
         !isDragging ||
-        event.pointerId !== dragPointerId
+        event.pointerId !==
+          dragPointerId
       ) {
         return;
       }
 
       panX =
         dragOriginX +
-        (event.clientX - dragStartX);
+        (
+          event.clientX -
+          dragStartX
+        );
 
       panY =
         dragOriginY +
-        (event.clientY - dragStartY);
+        (
+          event.clientY -
+          dragStartY
+        );
 
-      renderTransform();
+      renderImage();
     }
   );
 
   function finishDrag(event) {
     if (
       !isDragging ||
-      event.pointerId !== dragPointerId
+      event.pointerId !==
+        dragPointerId
     ) {
       return;
     }
@@ -678,22 +925,22 @@
     );
 
     if (
-      imageShell.hasPointerCapture(
+      lightboxImage.hasPointerCapture(
         event.pointerId
       )
     ) {
-      imageShell.releasePointerCapture(
+      lightboxImage.releasePointerCapture(
         event.pointerId
       );
     }
   }
 
-  imageShell.addEventListener(
+  lightboxImage.addEventListener(
     "pointerup",
     finishDrag
   );
 
-  imageShell.addEventListener(
+  lightboxImage.addEventListener(
     "pointercancel",
     finishDrag
   );
@@ -711,9 +958,26 @@
     "resize",
     () => {
       if (
-        lightbox.classList.contains("is-open")
+        !lightbox.classList.contains(
+          "is-open"
+        )
       ) {
-        renderTransform();
+        return;
+      }
+
+      const previousZoom =
+        zoom;
+
+      if (
+        calculateImageGeometry()
+      ) {
+        zoom =
+          Math.min(
+            previousZoom,
+            maxZoom
+          );
+
+        renderImage();
       }
     }
   );
@@ -722,7 +986,9 @@
     "keydown",
     (event) => {
       if (
-        !lightbox.classList.contains("is-open")
+        !lightbox.classList.contains(
+          "is-open"
+        )
       ) {
         return;
       }
@@ -738,19 +1004,28 @@
         event.key === "="
       ) {
         event.preventDefault();
-        setZoom(zoom + zoomStep);
+
+        setZoom(
+          zoom + zoomStep
+        );
+
         return;
       }
 
       if (event.key === "-") {
         event.preventDefault();
-        setZoom(zoom - zoomStep);
+
+        setZoom(
+          zoom - zoomStep
+        );
+
         return;
       }
 
       if (event.key === "0") {
         event.preventDefault();
-        resetZoom();
+
+        fitToScreen();
         return;
       }
 
@@ -759,25 +1034,45 @@
 
         if (event.key === "ArrowUp") {
           event.preventDefault();
-          panBy(0, keyboardPan);
+
+          panBy(
+            0,
+            keyboardPan
+          );
+
           return;
         }
 
         if (event.key === "ArrowDown") {
           event.preventDefault();
-          panBy(0, -keyboardPan);
+
+          panBy(
+            0,
+            -keyboardPan
+          );
+
           return;
         }
 
         if (event.key === "ArrowLeft") {
           event.preventDefault();
-          panBy(keyboardPan, 0);
+
+          panBy(
+            keyboardPan,
+            0
+          );
+
           return;
         }
 
         if (event.key === "ArrowRight") {
           event.preventDefault();
-          panBy(-keyboardPan, 0);
+
+          panBy(
+            -keyboardPan,
+            0
+          );
+
           return;
         }
       }
@@ -787,7 +1082,11 @@
         activeGroup.length > 1
       ) {
         event.preventDefault();
-        switchImage(activeIndex - 1);
+
+        switchImage(
+          activeIndex - 1
+        );
+
         return;
       }
 
@@ -796,7 +1095,11 @@
         activeGroup.length > 1
       ) {
         event.preventDefault();
-        switchImage(activeIndex + 1);
+
+        switchImage(
+          activeIndex + 1
+        );
+
         return;
       }
 
@@ -804,7 +1107,9 @@
         const focusableControls =
           getFocusableControls();
 
-        if (!focusableControls.length) {
+        if (
+          !focusableControls.length
+        ) {
           event.preventDefault();
           return;
         }
@@ -819,13 +1124,15 @@
 
         if (
           event.shiftKey &&
-          document.activeElement === firstControl
+          document.activeElement ===
+            firstControl
         ) {
           event.preventDefault();
           lastControl.focus();
         } else if (
           !event.shiftKey &&
-          document.activeElement === lastControl
+          document.activeElement ===
+            lastControl
         ) {
           event.preventDefault();
           firstControl.focus();
