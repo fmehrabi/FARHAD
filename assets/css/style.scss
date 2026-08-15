@@ -3475,7 +3475,7 @@ html.stagger-preload
 
 /* =========================
    MINIMAL ACADEMIC LIGHTBOX
-   ZOOM + PAN
+   NATIVE-RESOLUTION ZOOM
 ========================= */
 
 body.lightbox-open {
@@ -3566,7 +3566,7 @@ body.lightbox-open {
 }
 
 
-/* Large image viewport */
+/* Image viewport */
 
 .image-lightbox-stage {
 
@@ -3591,7 +3591,7 @@ body.lightbox-open {
   padding:
     clamp(58px, 6vw, 76px)
     clamp(66px, 8vw, 112px)
-    clamp(78px, 8vw, 98px);
+    clamp(82px, 8vw, 102px);
 
   overflow:
     hidden;
@@ -3604,6 +3604,9 @@ body.lightbox-open {
 
 .image-lightbox-image-shell {
 
+  position:
+    relative;
+
   display:
     flex;
 
@@ -3613,10 +3616,10 @@ body.lightbox-open {
   justify-content:
     center;
 
-  max-width:
+  width:
     100%;
 
-  max-height:
+  height:
     100%;
 
   opacity:
@@ -3624,6 +3627,9 @@ body.lightbox-open {
 
   transform:
     scale(0.972);
+
+  pointer-events:
+    none;
 
   transition:
     opacity
@@ -3642,9 +3648,6 @@ body.lightbox-open {
         0.36,
         1
       );
-
-  touch-action:
-    none;
 
 }
 
@@ -3677,17 +3680,20 @@ body.lightbox-open {
   display:
     block;
 
+  flex:
+    0 0 auto;
+
   width:
     auto;
 
   max-width:
-    min(90vw, 1180px);
+    none;
 
   height:
     auto;
 
   max-height:
-    84vh;
+    none;
 
   object-fit:
     contain;
@@ -3708,8 +3714,19 @@ body.lightbox-open {
     0 0 0 1px
       rgba(255, 255, 255, 0.04);
 
+  /*
+    Translation is used only for panning.
+    Zoom itself is performed by changing
+    the real rendered width/height in JS.
+  */
+  transform:
+    translate3d(0, 0, 0);
+
   transform-origin:
     center center;
+
+  pointer-events:
+    auto;
 
   user-select:
     none;
@@ -3717,27 +3734,40 @@ body.lightbox-open {
   -webkit-user-drag:
     none;
 
+  touch-action:
+    none;
+
   cursor:
     default;
 
   will-change:
+    width,
+    height,
     transform;
 
   transition:
-    transform
-      140ms
+    width 150ms
       cubic-bezier(
         0.22,
         1,
         0.36,
         1
-      );
+      ),
+    height 150ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform 110ms
+      ease-out;
 
 }
 
 
 .image-lightbox.is-zoomed
-.image-lightbox-image-shell {
+.image-lightbox-image {
 
   cursor:
     grab;
@@ -3746,16 +3776,10 @@ body.lightbox-open {
 
 
 .image-lightbox.is-dragging
-.image-lightbox-image-shell {
+.image-lightbox-image {
 
   cursor:
     grabbing;
-
-}
-
-
-.image-lightbox.is-dragging
-.image-lightbox-image {
 
   transition:
     none;
@@ -3957,7 +3981,7 @@ body.lightbox-open {
     50%;
 
   bottom:
-    73px;
+    74px;
 
   z-index:
     4;
@@ -4073,7 +4097,7 @@ body.lightbox-open {
   justify-content:
     center;
 
-  width:
+  min-width:
     34px;
 
   height:
@@ -4083,13 +4107,13 @@ body.lightbox-open {
     0;
 
   padding:
-    0;
+    0 9px;
 
   border:
     0;
 
   border-radius:
-    50%;
+    999px;
 
   background:
     transparent;
@@ -4101,7 +4125,7 @@ body.lightbox-open {
     inherit;
 
   font-size:
-    19px;
+    18px;
 
   line-height:
     1;
@@ -4145,7 +4169,7 @@ body.lightbox-open {
     56px;
 
   padding:
-    0 6px;
+    0 5px;
 
   color:
     rgba(255, 255, 255, 0.82);
@@ -4171,17 +4195,34 @@ body.lightbox-open {
 }
 
 
-.image-lightbox-zoom-reset {
+.image-lightbox-fit-button {
 
   margin-left:
     2px;
+
+  padding:
+    0 10px;
 
   border-left:
     1px solid
     rgba(255, 255, 255, 0.10);
 
   border-radius:
-    0 50% 50% 0;
+    0 999px 999px 0;
+
+}
+
+
+.image-lightbox-fit-button span {
+
+  font-size:
+    9px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.06em;
 
 }
 
@@ -4204,18 +4245,12 @@ body.lightbox-open {
 
     padding:
       62px 12px
-      92px;
+      94px;
 
   }
 
 
   .image-lightbox-image {
-
-    max-width:
-      94vw;
-
-    max-height:
-      78vh;
 
     border-radius:
       8px;
@@ -4288,7 +4323,7 @@ body.lightbox-open {
   .image-lightbox-counter {
 
     bottom:
-      74px;
+      76px;
 
   }
 
@@ -4303,11 +4338,14 @@ body.lightbox-open {
 
   .image-lightbox-zoom-button {
 
-    width:
+    min-width:
       32px;
 
     height:
       32px;
+
+    padding:
+      0 8px;
 
   }
 
