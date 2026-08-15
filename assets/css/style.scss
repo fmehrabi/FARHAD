@@ -3305,23 +3305,115 @@ html.stagger-preload
 
 
 /* =========================
-   MINIMAL ACADEMIC LIGHTBOX
+   IMAGE HOVER / OPEN CUE
 ========================= */
 
-body.lightbox-open {
+.experience-gallery-item,
+.publication-paper-preview {
 
-  overflow:
-    hidden;
+  position:
+    relative;
+
+  transform:
+    translateY(0);
+
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
 
 }
 
 
-/* Clickable preview images */
+.experience-gallery-item::after,
+.publication-paper-preview::after {
+
+  content:
+    "\f065";
+
+  position:
+    absolute;
+
+  top:
+    10px;
+
+  right:
+    10px;
+
+  z-index:
+    3;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    31px;
+
+  height:
+    31px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.20);
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(10, 15, 18, 0.58);
+
+  color:
+    rgba(255, 255, 255, 0.94);
+
+  -webkit-backdrop-filter:
+    blur(7px);
+
+  backdrop-filter:
+    blur(7px);
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.18);
+
+  font-family:
+    "Font Awesome 6 Free";
+
+  font-size:
+    12px;
+
+  font-weight:
+    900;
+
+  line-height:
+    1;
+
+  opacity:
+    0;
+
+  transform:
+    translateY(3px)
+    scale(0.94);
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+
+}
+
 
 .js-lightbox-trigger {
 
   cursor:
-    zoom-in;
+    pointer;
 
   -webkit-tap-highlight-color:
     transparent;
@@ -3343,25 +3435,56 @@ body.lightbox-open {
 
 @media (hover: hover) and (pointer: fine) {
 
-  .js-lightbox-trigger {
+  .experience-gallery-item:hover,
+  .publication-paper-preview:hover {
 
-    transition:
-      filter 0.22s ease;
+    transform:
+      translateY(-3px);
+
+    box-shadow:
+      0 12px 30px
+      var(--accent-shadow);
 
   }
 
 
-  .js-lightbox-trigger:hover {
+  .experience-gallery-item:hover::after,
+  .publication-paper-preview:hover::after {
+
+    opacity:
+      1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+  }
+
+
+  .experience-gallery-item:hover img,
+  .publication-paper-preview:hover img {
 
     filter:
-      brightness(0.975);
+      brightness(1.015)
+      contrast(1.01);
 
   }
 
 }
 
 
-/* Full-screen modal layer */
+/* =========================
+   MINIMAL ACADEMIC LIGHTBOX
+   ZOOM + PAN
+========================= */
+
+body.lightbox-open {
+
+  overflow:
+    hidden;
+
+}
+
 
 .image-lightbox {
 
@@ -3389,19 +3512,16 @@ body.lightbox-open {
   height:
     100%;
 
-  padding:
-    clamp(18px, 3vw, 42px);
-
   background:
-    rgba(7, 10, 12, 0.68);
+    rgba(7, 10, 12, 0.70);
 
   -webkit-backdrop-filter:
-    blur(8px)
-    saturate(110%);
+    blur(9px)
+    saturate(108%);
 
   backdrop-filter:
-    blur(8px)
-    saturate(110%);
+    blur(9px)
+    saturate(108%);
 
   opacity:
     0;
@@ -3446,7 +3566,7 @@ body.lightbox-open {
 }
 
 
-/* Large image stage */
+/* Large image viewport */
 
 .image-lightbox-stage {
 
@@ -3470,10 +3590,84 @@ body.lightbox-open {
 
   padding:
     clamp(58px, 6vw, 76px)
-    clamp(66px, 8vw, 112px);
+    clamp(66px, 8vw, 112px)
+    clamp(78px, 8vw, 98px);
+
+  overflow:
+    hidden;
 
   cursor:
-    zoom-out;
+    default;
+
+}
+
+
+.image-lightbox-image-shell {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  max-width:
+    100%;
+
+  max-height:
+    100%;
+
+  opacity:
+    0;
+
+  transform:
+    scale(0.972);
+
+  transition:
+    opacity
+      260ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    transform
+      260ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+
+  touch-action:
+    none;
+
+}
+
+
+.image-lightbox.is-open
+.image-lightbox-image-shell {
+
+  opacity:
+    1;
+
+  transform:
+    scale(1);
+
+}
+
+
+.image-lightbox-image-shell.is-switching {
+
+  opacity:
+    0;
+
+  transform:
+    scale(0.985);
 
 }
 
@@ -3493,7 +3687,7 @@ body.lightbox-open {
     auto;
 
   max-height:
-    88vh;
+    84vh;
 
   object-fit:
     contain;
@@ -3514,14 +3708,8 @@ body.lightbox-open {
     0 0 0 1px
       rgba(255, 255, 255, 0.04);
 
-  opacity:
-    0;
-
-  transform:
-    scale(0.972);
-
   transform-origin:
-    center;
+    center center;
 
   user-select:
     none;
@@ -3532,17 +3720,12 @@ body.lightbox-open {
   cursor:
     default;
 
+  will-change:
+    transform;
+
   transition:
-    opacity
-      260ms
-      cubic-bezier(
-        0.22,
-        1,
-        0.36,
-        1
-      ),
     transform
-      260ms
+      140ms
       cubic-bezier(
         0.22,
         1,
@@ -3553,25 +3736,29 @@ body.lightbox-open {
 }
 
 
-.image-lightbox.is-open
-.image-lightbox-image {
+.image-lightbox.is-zoomed
+.image-lightbox-image-shell {
 
-  opacity:
-    1;
-
-  transform:
-    scale(1);
+  cursor:
+    grab;
 
 }
 
 
-.image-lightbox-image.is-switching {
+.image-lightbox.is-dragging
+.image-lightbox-image-shell {
 
-  opacity:
-    0;
+  cursor:
+    grabbing;
 
-  transform:
-    scale(0.985);
+}
+
+
+.image-lightbox.is-dragging
+.image-lightbox-image {
+
+  transition:
+    none;
 
 }
 
@@ -3584,7 +3771,7 @@ body.lightbox-open {
     absolute;
 
   z-index:
-    3;
+    4;
 
   display:
     inline-flex;
@@ -3650,7 +3837,7 @@ body.lightbox-open {
 .image-lightbox-control:hover {
 
   background:
-    rgba(24, 33, 38, 0.78);
+    rgba(24, 33, 38, 0.80);
 
   border-color:
     rgba(255, 255, 255, 0.30);
@@ -3658,7 +3845,8 @@ body.lightbox-open {
 }
 
 
-.image-lightbox-control:focus-visible {
+.image-lightbox-control:focus-visible,
+.image-lightbox-zoom-button:focus-visible {
 
   outline:
     2px solid
@@ -3758,7 +3946,7 @@ body.lightbox-open {
 }
 
 
-/* Tiny counter for multi-image galleries */
+/* Gallery counter */
 
 .image-lightbox-counter {
 
@@ -3769,29 +3957,29 @@ body.lightbox-open {
     50%;
 
   bottom:
-    clamp(18px, 2.5vw, 30px);
+    73px;
 
   z-index:
-    3;
+    4;
 
   min-width:
     44px;
 
   padding:
-    6px 11px;
+    5px 10px;
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.15);
+    rgba(255, 255, 255, 0.14);
 
   border-radius:
     999px;
 
   background:
-    rgba(13, 18, 21, 0.50);
+    rgba(13, 18, 21, 0.44);
 
   color:
-    rgba(255, 255, 255, 0.82);
+    rgba(255, 255, 255, 0.76);
 
   -webkit-backdrop-filter:
     blur(7px);
@@ -3800,7 +3988,7 @@ body.lightbox-open {
     blur(7px);
 
   font-size:
-    12px;
+    11px;
 
   font-weight:
     600;
@@ -3820,7 +4008,185 @@ body.lightbox-open {
 }
 
 
-/* Respect the native hidden attribute */
+/* Zoom toolbar */
+
+.image-lightbox-zoom-controls {
+
+  position:
+    absolute;
+
+  left:
+    50%;
+
+  bottom:
+    clamp(18px, 2.4vw, 28px);
+
+  z-index:
+    5;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    3px;
+
+  padding:
+    5px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+
+  border-radius:
+    999px;
+
+  background:
+    rgba(13, 18, 21, 0.60);
+
+  -webkit-backdrop-filter:
+    blur(9px);
+
+  backdrop-filter:
+    blur(9px);
+
+  box-shadow:
+    0 8px 26px
+    rgba(0, 0, 0, 0.20);
+
+  transform:
+    translateX(-50%);
+
+}
+
+
+.image-lightbox-zoom-button {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    34px;
+
+  height:
+    34px;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    transparent;
+
+  color:
+    rgba(255, 255, 255, 0.90);
+
+  font-family:
+    inherit;
+
+  font-size:
+    19px;
+
+  line-height:
+    1;
+
+  cursor:
+    pointer;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    opacity 0.18s ease;
+
+}
+
+
+.image-lightbox-zoom-button:hover {
+
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  color:
+    #fff;
+
+}
+
+
+.image-lightbox-zoom-button:disabled {
+
+  opacity:
+    0.34;
+
+  cursor:
+    default;
+
+}
+
+
+.image-lightbox-zoom-value {
+
+  min-width:
+    56px;
+
+  padding:
+    0 6px;
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  font-size:
+    12px;
+
+  font-weight:
+    600;
+
+  line-height:
+    34px;
+
+  text-align:
+    center;
+
+  font-variant-numeric:
+    tabular-nums;
+
+  user-select:
+    none;
+
+}
+
+
+.image-lightbox-zoom-reset {
+
+  margin-left:
+    2px;
+
+  border-left:
+    1px solid
+    rgba(255, 255, 255, 0.10);
+
+  border-radius:
+    0 50% 50% 0;
+
+}
+
+
+/* Respect native hidden */
 
 .image-lightbox [hidden] {
 
@@ -3830,23 +4196,15 @@ body.lightbox-open {
 }
 
 
-/* Mobile lightbox */
+/* Mobile */
 
 @media screen and (max-width: 720px) {
-
-  .image-lightbox {
-
-    padding:
-      12px;
-
-  }
-
 
   .image-lightbox-stage {
 
     padding:
-      64px 14px
-      72px;
+      62px 12px
+      92px;
 
   }
 
@@ -3857,7 +4215,7 @@ body.lightbox-open {
       94vw;
 
     max-height:
-      82vh;
+      78vh;
 
     border-radius:
       8px;
@@ -3887,6 +4245,21 @@ body.lightbox-open {
   }
 
 
+  .image-lightbox-prev,
+  .image-lightbox-next {
+
+    top:
+      auto;
+
+    bottom:
+      18px;
+
+    transform:
+      none;
+
+  }
+
+
   .image-lightbox-prev {
 
     left:
@@ -3903,21 +4276,6 @@ body.lightbox-open {
   }
 
 
-  .image-lightbox-prev,
-  .image-lightbox-next {
-
-    top:
-      auto;
-
-    bottom:
-      14px;
-
-    transform:
-      none;
-
-  }
-
-
   .image-lightbox-prev:hover,
   .image-lightbox-next:hover {
 
@@ -3930,14 +4288,44 @@ body.lightbox-open {
   .image-lightbox-counter {
 
     bottom:
-      19px;
+      74px;
+
+  }
+
+
+  .image-lightbox-zoom-controls {
+
+    bottom:
+      16px;
+
+  }
+
+
+  .image-lightbox-zoom-button {
+
+    width:
+      32px;
+
+    height:
+      32px;
+
+  }
+
+
+  .image-lightbox-zoom-value {
+
+    min-width:
+      50px;
+
+    line-height:
+      32px;
 
   }
 
 }
 
 
-/* Lightbox reduced-motion fallback */
+/* Reduced motion for lightbox */
 
 @media (
   prefers-reduced-motion:
@@ -3945,9 +4333,14 @@ body.lightbox-open {
 ) {
 
   .image-lightbox,
+  .image-lightbox-image-shell,
   .image-lightbox-image,
   .image-lightbox-control,
-  .js-lightbox-trigger {
+  .image-lightbox-zoom-button,
+  .experience-gallery-item,
+  .publication-paper-preview,
+  .experience-gallery-item::after,
+  .publication-paper-preview::after {
 
     transition:
       none !important;
@@ -3955,7 +4348,7 @@ body.lightbox-open {
   }
 
 
-  .image-lightbox-image {
+  .image-lightbox-image-shell {
 
     transform:
       none !important;
