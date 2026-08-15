@@ -158,6 +158,70 @@
 
 </div>
 
+<!-- =========================
+     MINIMAL IMAGE LIGHTBOX
+========================= -->
+<div
+  id="image-lightbox"
+  class="image-lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image preview"
+  aria-hidden="true"
+>
+  <div
+    class="image-lightbox-stage"
+    data-lightbox-close-area
+  >
+    <img
+      id="image-lightbox-image"
+      class="image-lightbox-image"
+      src=""
+      alt=""
+      draggable="false"
+    >
+  </div>
+
+  <button
+    id="image-lightbox-close"
+    class="image-lightbox-control image-lightbox-close"
+    type="button"
+    aria-label="Close image preview"
+    title="Close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <button
+    id="image-lightbox-prev"
+    class="image-lightbox-control image-lightbox-prev"
+    type="button"
+    aria-label="Previous image"
+    title="Previous image"
+    hidden
+  >
+    <span aria-hidden="true">&lsaquo;</span>
+  </button>
+
+  <button
+    id="image-lightbox-next"
+    class="image-lightbox-control image-lightbox-next"
+    type="button"
+    aria-label="Next image"
+    title="Next image"
+    hidden
+  >
+    <span aria-hidden="true">&rsaquo;</span>
+  </button>
+
+  <div
+    id="image-lightbox-counter"
+    class="image-lightbox-counter"
+    aria-live="polite"
+    hidden
+  ></div>
+</div>
+
 <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
 <!-- =========================
@@ -563,6 +627,413 @@
         card.classList.remove("cursor-spotlight-active");
       });
     });
+  })();
+</script>
+
+
+<!-- =========================
+     MINIMAL IMAGE LIGHTBOX
+     + EXPERIENCE GALLERY NAV
+========================= -->
+<script>
+  (function () {
+    const triggerSelector =
+      ".experience-gallery-item img, " +
+      ".publication-paper-preview img";
+
+    const triggers =
+      Array.from(document.querySelectorAll(triggerSelector));
+
+    const lightbox =
+      document.getElementById("image-lightbox");
+
+    const lightboxImage =
+      document.getElementById("image-lightbox-image");
+
+    const closeButton =
+      document.getElementById("image-lightbox-close");
+
+    const prevButton =
+      document.getElementById("image-lightbox-prev");
+
+    const nextButton =
+      document.getElementById("image-lightbox-next");
+
+    const counter =
+      document.getElementById("image-lightbox-counter");
+
+    const stage =
+      lightbox
+        ? lightbox.querySelector(".image-lightbox-stage")
+        : null;
+
+    if (
+      !triggers.length ||
+      !lightbox ||
+      !lightboxImage ||
+      !closeButton ||
+      !prevButton ||
+      !nextButton ||
+      !counter ||
+      !stage
+    ) {
+      return;
+    }
+
+    const reduceMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let activeGroup = [];
+    let activeIndex = 0;
+    let lastTrigger = null;
+    let switchTimer = null;
+
+    function getImageSource(image) {
+      return image.currentSrc || image.src;
+    }
+
+    function getImageGroup(trigger) {
+      const experienceGallery =
+        trigger.closest(".experience-gallery");
+
+      if (experienceGallery) {
+        return Array.from(
+          experienceGallery.querySelectorAll(
+            ".experience-gallery-item img"
+          )
+        );
+      }
+
+      return [trigger];
+    }
+
+    function preloadGroup(group) {
+      group.forEach(function (item) {
+        const source = getImageSource(item);
+
+        if (!source) {
+          return;
+        }
+
+        const preload = new Image();
+        preload.src = source;
+      });
+    }
+
+    function updateNavigation() {
+      const multipleImages =
+        activeGroup.length > 1;
+
+      prevButton.hidden =
+        !multipleImages;
+
+      nextButton.hidden =
+        !multipleImages;
+
+      counter.hidden =
+        !multipleImages;
+
+      if (multipleImages) {
+        counter.textContent =
+          (activeIndex + 1) +
+          " / " +
+          activeGroup.length;
+      } else {
+        counter.textContent = "";
+      }
+    }
+
+    function applyActiveImage() {
+      const activeImage =
+        activeGroup[activeIndex];
+
+      if (!activeImage) {
+        return;
+      }
+
+      lightboxImage.src =
+        getImageSource(activeImage);
+
+      lightboxImage.alt =
+        activeImage.alt || "Expanded image";
+
+      updateNavigation();
+    }
+
+    function switchImage(nextIndex) {
+      if (activeGroup.length <= 1) {
+        return;
+      }
+
+      const normalizedIndex =
+        (
+          nextIndex +
+          activeGroup.length
+        ) %
+        activeGroup.length;
+
+      if (normalizedIndex === activeIndex) {
+        return;
+      }
+
+      if (switchTimer) {
+        window.clearTimeout(switchTimer);
+        switchTimer = null;
+      }
+
+      if (reduceMotion.matches) {
+        activeIndex = normalizedIndex;
+        applyActiveImage();
+        return;
+      }
+
+      lightboxImage.classList.add(
+        "is-switching"
+      );
+
+      switchTimer =
+        window.setTimeout(function () {
+          activeIndex = normalizedIndex;
+          applyActiveImage();
+
+          requestAnimationFrame(function () {
+            lightboxImage.classList.remove(
+              "is-switching"
+            );
+          });
+
+          switchTimer = null;
+        }, 110);
+    }
+
+    function openLightbox(trigger) {
+      activeGroup =
+        getImageGroup(trigger);
+
+      activeIndex =
+        Math.max(
+          0,
+          activeGroup.indexOf(trigger)
+        );
+
+      lastTrigger = trigger;
+
+      preloadGroup(activeGroup);
+      applyActiveImage();
+
+      document.body.classList.add(
+        "lightbox-open"
+      );
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      requestAnimationFrame(function () {
+        lightbox.classList.add("is-open");
+
+        window.setTimeout(function () {
+          closeButton.focus({
+            preventScroll: true
+          });
+        }, reduceMotion.matches ? 0 : 80);
+      });
+    }
+
+    function closeLightbox() {
+      if (!lightbox.classList.contains("is-open")) {
+        return;
+      }
+
+      if (switchTimer) {
+        window.clearTimeout(switchTimer);
+        switchTimer = null;
+      }
+
+      lightbox.classList.remove("is-open");
+
+      document.body.classList.remove(
+        "lightbox-open"
+      );
+
+      if (lastTrigger) {
+        lastTrigger.focus({
+          preventScroll: true
+        });
+      }
+
+      lightbox.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+    }
+
+    function getFocusableControls() {
+      return [
+        closeButton,
+        prevButton,
+        nextButton
+      ].filter(function (button) {
+        return !button.hidden;
+      });
+    }
+
+    triggers.forEach(function (trigger) {
+      trigger.classList.add(
+        "js-lightbox-trigger"
+      );
+
+      trigger.setAttribute(
+        "role",
+        "button"
+      );
+
+      trigger.setAttribute(
+        "tabindex",
+        "0"
+      );
+
+      trigger.setAttribute(
+        "aria-haspopup",
+        "dialog"
+      );
+
+      trigger.setAttribute(
+        "aria-label",
+        "Open larger image: " +
+        (
+          trigger.alt ||
+          "image preview"
+        )
+      );
+
+      trigger.addEventListener(
+        "click",
+        function () {
+          openLightbox(trigger);
+        }
+      );
+
+      trigger.addEventListener(
+        "keydown",
+        function (event) {
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+            event.preventDefault();
+            openLightbox(trigger);
+          }
+        }
+      );
+    });
+
+    closeButton.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+    prevButton.addEventListener(
+      "click",
+      function () {
+        switchImage(activeIndex - 1);
+      }
+    );
+
+    nextButton.addEventListener(
+      "click",
+      function () {
+        switchImage(activeIndex + 1);
+      }
+    );
+
+    stage.addEventListener(
+      "click",
+      function (event) {
+        if (event.target === stage) {
+          closeLightbox();
+        }
+      }
+    );
+
+    lightbox.addEventListener(
+      "click",
+      function (event) {
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (
+          !lightbox.classList.contains(
+            "is-open"
+          )
+        ) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeLightbox();
+          return;
+        }
+
+        if (
+          event.key === "ArrowLeft" &&
+          activeGroup.length > 1
+        ) {
+          event.preventDefault();
+          switchImage(activeIndex - 1);
+          return;
+        }
+
+        if (
+          event.key === "ArrowRight" &&
+          activeGroup.length > 1
+        ) {
+          event.preventDefault();
+          switchImage(activeIndex + 1);
+          return;
+        }
+
+        if (event.key === "Tab") {
+          const focusableControls =
+            getFocusableControls();
+
+          if (!focusableControls.length) {
+            event.preventDefault();
+            return;
+          }
+
+          const firstControl =
+            focusableControls[0];
+
+          const lastControl =
+            focusableControls[
+              focusableControls.length - 1
+            ];
+
+          if (
+            event.shiftKey &&
+            document.activeElement === firstControl
+          ) {
+            event.preventDefault();
+            lastControl.focus();
+          } else if (
+            !event.shiftKey &&
+            document.activeElement === lastControl
+          ) {
+            event.preventDefault();
+            firstControl.focus();
+          }
+        }
+      }
+    );
   })();
 </script>
 
