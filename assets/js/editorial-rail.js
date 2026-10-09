@@ -58,8 +58,15 @@
     const {section, segment} = group;
     const sectionRect = section.getBoundingClientRect();
     const cardRect = card.getBoundingClientRect();
-    const topOfBranch = parseFloat(getComputedStyle(card, "::before").top) || 26;
-    const center = cardRect.top - sectionRect.top + topOfBranch;
+    const beforeStyle = getComputedStyle(card, "::before");
+    const afterStyle = getComputedStyle(card, "::after");
+    const branchTop = parseFloat(beforeStyle.top);
+    const nodeTop = parseFloat(afterStyle.top);
+    const nodeHeight = parseFloat(afterStyle.height);
+    const centerOffset = Number.isFinite(nodeTop) && Number.isFinite(nodeHeight)
+      ? nodeTop + (nodeHeight / 2)
+      : (Number.isFinite(branchTop) ? branchTop : 26);
+    const center = cardRect.top - sectionRect.top + centerOffset;
     const length = Math.min(54, Math.max(35, Math.min(cardRect.height * 0.38, 54)));
     const minTop = 10;
     const maxTop = Math.max(minTop, section.offsetHeight - length - 8);
