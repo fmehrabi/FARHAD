@@ -141,7 +141,8 @@
     });
   }
 
-  let dialogBackdrop, dialogPanel, dialogTitle, dialogBody, tickerTrack, priorFocus;
+  let dialogBackdrop, dialogPanel, dialogTitle, dialogBody, priorFocus;
+  let tickerController = null;
 
   function modalItem(record) {
     const item = document.createElement("li");
@@ -193,6 +194,7 @@
     }
     dialogBackdrop.hidden = false;
     document.body.classList.add("skill-overlay-open");
+    if (tickerController) tickerController.setDialogOpen(true);
     dialogPanel.querySelector(".skill-dialog-close").focus({ preventScroll: true });
   }
 
@@ -200,6 +202,7 @@
     if (!dialogBackdrop || dialogBackdrop.hidden) return;
     dialogBackdrop.hidden = true;
     document.body.classList.remove("skill-overlay-open");
+    if (tickerController) tickerController.setDialogOpen(false);
     if (priorFocus && priorFocus.isConnected && typeof priorFocus.focus === "function") {
       priorFocus.focus({ preventScroll: true });
     }
@@ -242,18 +245,27 @@
     });
   }
 
+  /*
+   * A lightweight time-based marquee rather than a CSS animation.
+   * A normalized position is saved on pagehide, then advanced by elapsed wall
+   * time on the next page so its movement does not restart at the first chip.
+   * 232 seconds per full cycle = half the previous 116-second speed.
+   */
   function buildTicker() {
+    const LOOP_MS = 232000;
+    const STORAGE_KEY = "farhad-skill-marquee-position-v4";
+    const DRAG_THRESHOLD_PX = 6;
+
     const ticker = document.createElement("aside");
     ticker.id = "skill-marquee";
     ticker.className = "skill-marquee";
-    ticker.setAttribute("aria-label", "Explore skills and related work");
-    const name = document.createElement("div");
-    name.className = "skill-marquee-label";
-    name.innerHTML = '<span class="skill-diamond" aria-hidden="true"></span><span>Explore skills</span>';
+    ticker.setAttribute("aria-label", "Browse skills; drag horizontally or choose a skill");
     const viewport = document.createElement("div");
     viewport.className = "skill-marquee-viewport";
+    viewport.setAttribute("aria-label", "Skills; drag left or right to browse");
     const track = document.createElement("div");
     track.className = "skill-marquee-track";
+
     for (let iteration = 0; iteration < 2; iteration++) {
       const group = document.createElement("div");
       group.className = "skill-marquee-group";
@@ -266,13 +278,222 @@
       track.appendChild(group);
     }
     viewport.appendChild(track);
-    ticker.append(name, viewport);
+    ticker.appendChild(viewport);
     document.body.appendChild(ticker);
-    tickerTrack = track;
-    ticker.addEventListener("focusin", () => ticker.classList.add("skill-marquee-focused"));
-    ticker.addEventListener("focusout", event => {
-      if (!ticker.contains(event.relatedTarget)) ticker.classList.remove("skill-marquee-focused");
+
+    const firstGroup = track.firstElementChild;
+    let phase = 0;
+    let groupWidth = 0;
+    let lastFrameAt = null;
+    let frameId = 0;
+    let hover = false;
+    let keyboardFocus = false;
+    let dialogOpen = false;
+    let drag = null;
+    let suppressClicksUntil = 0;
+    let keyboardNavigation = false;
+
+    function wrap(value) {
+      return ((value % 1) + 1) % 1;
+    }
+
+    // Reading and writing storage is best-effort: disabled storage must not
+    // stop the rest of the portfolio from loading.
+    function readState() {
+      for (const storageName of ["localStorage", "sessionStorage"]) {
+        try {
+          const storage = window[storageName];
+          const saved = JSON.parse(storage.getItem(STORAGE_KEY) || "null");
+          if (saved && Number.isFinite(saved.phase) && Number.isFinite(saved.at)) {
+            return saved;
+          }
+        } catch (error) { /* Browsers can restrict storage. */ }
+      }
+      return null;
+    }
+
+    function saveState() {
+      const value = JSON.stringify({ phase: wrap(phase), at: Date.now() });
+      for (const storageName of ["localStorage", "sessionStorage"]) {
+        try { window[storageName].setItem(STORAGE_KEY, value); return; }
+        catch (error) { /* Continue gracefully if storage is unavailable. */ }
+      }
+    }
+
+    function restoreState() {
+      const saved = readState();
+      if (!saved) return;
+      const elapsed = Math.max(0, Date.now() - saved.at);
+      // With reduced motion, never advance autonomously.
+      phase = wrap(saved.phase + (motionPreference.matches ? 0 : elapsed / LOOP_MS));
+    }
+
+    function measure() {
+      groupWidth = firstGroup.getBoundingClientRect().width;
+      render();
+    }
+
+    function render() {
+      if (!groupWidth) return;
+      track.style.transform = "translate3d(" + (-phase * groupWidth).toFixed(3) + "px,0,0)";
+    }
+
+    function paused() {
+      return hover || keyboardFocus || dialogOpen || Boolean(drag) || motionPreference.matches;
+    }
+
+    function animate(time) {
+      frameId = 0;
+      if (paused() || document.hidden) {
+        lastFrameAt = null;
+        return;
+      }
+      if (lastFrameAt !== null) {
+        // Avoid a large jump when a browser tab is throttled or sleeping.
+        phase = wrap(phase + Math.min(time - lastFrameAt, 80) / LOOP_MS);
+        render();
+      }
+      lastFrameAt = time;
+      frameId = window.requestAnimationFrame(animate);
+    }
+
+    // Do not run a 60fps idle loop while the ribbon is paused or when a user
+    // requests reduced motion. Drag rendering is independent from this clock.
+    function refreshClock() {
+      if (paused() || document.hidden) {
+        if (frameId) window.cancelAnimationFrame(frameId);
+        frameId = 0;
+        lastFrameAt = null;
+      } else if (!frameId) {
+        lastFrameAt = null;
+        frameId = window.requestAnimationFrame(animate);
+      }
+    }
+
+    // Pause on mouse hover as in the original version; touch users retain
+    // ordinary vertical page scrolling and horizontal dragging.
+    ticker.addEventListener("pointerenter", event => {
+      if (event.pointerType === "mouse") { hover = true; refreshClock(); }
     });
+    ticker.addEventListener("pointerleave", event => {
+      if (event.pointerType === "mouse") { hover = false; refreshClock(); }
+    });
+
+    // Clicking with a mouse should not leave the ticker paused forever merely
+    // because the dialog restores focus to its originating chip.
+    document.addEventListener("keydown", event => {
+      if (["Tab", "ArrowLeft", "ArrowRight"].includes(event.key)) keyboardNavigation = true;
+    }, true);
+    document.addEventListener("pointerdown", () => { keyboardNavigation = false; }, true);
+    ticker.addEventListener("focusin", () => {
+      keyboardFocus = keyboardNavigation;
+      refreshClock();
+    });
+    ticker.addEventListener("focusout", event => {
+      if (!ticker.contains(event.relatedTarget)) { keyboardFocus = false; refreshClock(); }
+    });
+
+    ticker.addEventListener("click", event => {
+      // Native button clicks are cancelled only after an actual drag, not after
+      // an ordinary click/tap on a capsule.
+      if (window.performance.now() < suppressClicksUntil) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    }, true);
+
+    viewport.addEventListener("pointerdown", event => {
+      if (event.button !== 0 && event.pointerType === "mouse") return;
+      drag = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startPhase: phase,
+        moved: false
+      };
+      refreshClock();
+    });
+
+    viewport.addEventListener("pointermove", event => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      const distance = event.clientX - drag.startX;
+      if (!drag.moved && Math.abs(distance) < DRAG_THRESHOLD_PX) return;
+      if (!drag.moved) {
+        drag.moved = true;
+        viewport.classList.add("is-dragging");
+        try { viewport.setPointerCapture(event.pointerId); } catch (error) { /* benign */ }
+      }
+      if (groupWidth > 0) phase = wrap(drag.startPhase - distance / groupWidth);
+      render();
+      event.preventDefault();
+    });
+
+    function stopDragging(event) {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      if (drag.moved) {
+        suppressClicksUntil = window.performance.now() + 250;
+        saveState();
+      }
+      drag = null;
+      viewport.classList.remove("is-dragging");
+      if (viewport.hasPointerCapture(event.pointerId)) {
+        viewport.releasePointerCapture(event.pointerId);
+      }
+      refreshClock();
+    }
+    viewport.addEventListener("pointerup", stopDragging);
+    viewport.addEventListener("pointercancel", stopDragging);
+    // Covers release outside the ribbon before pointer capture begins.
+    window.addEventListener("pointerup", stopDragging);
+    window.addEventListener("pointercancel", stopDragging);
+    viewport.addEventListener("lostpointercapture", event => {
+      if (drag && drag.pointerId === event.pointerId) stopDragging(event);
+    });
+
+    // Horizontal trackpad scroll works, while a vertical wheel still scrolls
+    // the page naturally.
+    viewport.addEventListener("wheel", event => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY) || !groupWidth) return;
+      event.preventDefault();
+      phase = wrap(phase + event.deltaX / groupWidth);
+      render();
+      saveState();
+      refreshClock();
+    }, { passive: false });
+
+    function onPageHide() { saveState(); }
+    window.addEventListener("pagehide", onPageHide);
+    window.addEventListener("pageshow", event => {
+      if (event.persisted) {
+        restoreState();
+        measure();
+        refreshClock();
+      }
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) { saveState(); refreshClock(); }
+      else { restoreState(); refreshClock(); render(); }
+    });
+
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(measure).observe(firstGroup);
+    } else {
+      window.addEventListener("resize", measure, { passive: true });
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    if (motionPreference.addEventListener) {
+      motionPreference.addEventListener("change", () => { saveState(); refreshClock(); });
+    }
+
+    restoreState();
+    measure();
+    refreshClock();
+    tickerController = {
+      setDialogOpen(value) {
+        dialogOpen = Boolean(value);
+        if (dialogOpen) saveState();
+        refreshClock();
+      }
+    };
   }
 
   function locateHashTarget() {
