@@ -5483,7 +5483,7 @@ html[data-theme="dark"] .about-hero h2 {
 
 /* A fixed bottom bar must never obscure the last card/footer. */
 body {
-  padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
 .skill-record-card {
@@ -5625,31 +5625,35 @@ html[data-theme="dark"] .skill-chip {
   color: var(--accent);
 }
 
-/* Edge-to-edge skill ribbon: no plate, no border, only individual glass chips.
-   The layout is transparent so the site's existing animated background shows. */
+/* V5 · Compact floating glass ribbon: no title, soft border, minimal height.
+   A small centered plate preserves readability without dominating the page. */
 .skill-marquee {
   position: fixed;
-  bottom: 0;
-  left: 0;
+  left: 12px;
+  right: 12px;
+  bottom: calc(9px + env(safe-area-inset-bottom, 0px));
   z-index: 40;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  width: 100%;
-  height: calc(56px + env(safe-area-inset-bottom, 0px));
-  padding: 0 0 env(safe-area-inset-bottom, 0px);
+  width: auto;
+  height: 44px;
+  padding: 0 5px;
   overflow: hidden;
-  border: 0;
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  box-shadow: none;
+  border: 1px solid rgba(39, 140, 168, 0.16);
+  border-radius: 15px;
+  background: rgba(251, 253, 254, 0.68);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow: 0 3px 17px rgba(31, 85, 105, 0.075);
 }
 html[data-theme="dark"] .skill-marquee {
-  border: 0;
-  background: transparent;
-  box-shadow: none;
+  border-color: rgba(69, 167, 194, 0.23);
+  background: rgba(20, 26, 31, 0.72);
+  box-shadow: 0 3px 17px rgba(0, 0, 0, 0.15);
 }
+/* Prevent an old visible header surviving a mixed V3/V5 deployment. */
+.skill-marquee-label { display: none !important; }
 .skill-marquee-viewport {
   flex: 1 1 auto;
   width: 100%;
@@ -5662,47 +5666,41 @@ html[data-theme="dark"] .skill-marquee {
   touch-action: pan-y;
   -webkit-user-select: none;
   user-select: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 2%, #000 98%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0, #000 2%, #000 98%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
 }
-.skill-marquee-viewport.is-dragging {
-  cursor: grabbing;
-}
+.skill-marquee-viewport.is-dragging { cursor: grabbing; }
 .skill-marquee-track {
   display: flex;
   flex: 0 0 auto;
   width: max-content;
   will-change: transform;
-  /* The animation runs in JS to persist phase across full-page navigation. */
   animation: none !important;
 }
 .skill-marquee-group {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
-  gap: 10px;
-  padding: 9px 10px 9px 0;
+  gap: 9px;
+  padding: 5px 9px 5px 0;
   box-sizing: border-box;
 }
 .skill-marquee-chip {
   flex: 0 0 auto;
-  padding: 6px 13px;
-  background: rgba(247, 252, 254, 0.74);
-  border-color: rgba(39, 140, 168, 0.25);
-  box-shadow: 0 1px 7px rgba(31, 85, 105, 0.045);
-  font-size: 11.5px;
+  padding: 5px 11px;
+  background: rgba(247, 252, 254, 0.72);
+  border-color: rgba(39, 140, 168, 0.23);
+  box-shadow: 0 1px 5px rgba(31, 85, 105, 0.04);
+  font-size: 11.3px;
   line-height: 1.45;
   white-space: nowrap;
   cursor: pointer;
 }
 html[data-theme="dark"] .skill-marquee-chip {
-  background: rgba(20, 31, 38, 0.74);
-  border-color: rgba(69, 167, 194, 0.34);
-  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.14);
+  background: rgba(24, 40, 47, 0.70);
+  border-color: rgba(69, 167, 194, 0.32);
 }
-.skill-marquee-viewport.is-dragging .skill-marquee-chip {
-  cursor: grabbing;
-}
+.skill-marquee-viewport.is-dragging .skill-marquee-chip { cursor: grabbing; }
 
 /* The dialog deliberately floats above the page without becoming a new page. */
 .skill-dialog-backdrop[hidden] { display: none !important; }
@@ -5861,7 +5859,7 @@ html[data-theme="dark"] .skill-dialog {
 body.skill-overlay-open { overflow: hidden; }
 
 @media screen and (max-width: 720px) {
-  .skill-marquee { height: calc(51px + env(safe-area-inset-bottom, 0px)); }
+  .skill-marquee { height: 42px; left: 8px; right: 8px; bottom: calc(7px + env(safe-area-inset-bottom, 0px)); border-radius: 13px; }
   .skill-marquee-chip { font-size: 10.5px; }
   .skill-card-tags { margin-top: 13px; padding-top: 11px; }
   .learning-intro h2 { font-size: 21px; }
