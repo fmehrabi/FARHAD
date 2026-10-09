@@ -228,7 +228,8 @@ footer a:hover {
   .wrapper {
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: clamp(250px, 21vw, 280px) minmax(0, 1fr);
+    /* ~2 cm (76px) moved from the content column to the profile. */
+    grid-template-columns: clamp(326px, calc(21vw + 76px), 356px) minmax(0, 1fr);
     column-gap: clamp(30px, 3.4vw, 48px);
     align-items: start;
     width: 100% !important;
@@ -5229,6 +5230,104 @@ screen and (max-width: 720px) {
 }
 
 /* =========================
+   ENLARGED PROFILE COLUMN
+   Typography scales with the wider column; the background remains unchanged.
+========================= */
+
+.wrapper > header h1 {
+  margin-bottom: 20px;
+  font-size: clamp(31px, 2.35vw, 36px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.026em;
+}
+
+.wrapper > header h1 a {
+  /* Restrained cyan-blue tint, not a high-contrast rainbow. */
+  color: var(--accent);
+  background: linear-gradient(108deg, #246d8d 0%, #278ca8 53%, #49b6bd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1.1px rgba(30, 112, 142, 0.13));
+}
+
+html[data-theme="dark"] .wrapper > header h1 a {
+  background-image: linear-gradient(108deg, #64bdd4 0%, #45a7c2 55%, #9bded4 100%);
+  filter: drop-shadow(0 1px 1.1px rgba(68, 167, 194, 0.16));
+}
+
+.wrapper > header h1 a:hover {
+  filter: drop-shadow(0 2px 2px rgba(39, 140, 168, 0.22));
+}
+
+.wrapper > header img {
+  width: 216px;
+  height: 216px;
+}
+
+.wrapper > header .profile-description {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.wrapper > header .profile-icon {
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.wrapper > header .research-focus {
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.wrapper > header .research-focus > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+.wrapper > header .research-focus > div::before {
+  content: "";
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  margin-top: 0.65em;
+  border-radius: 1px;
+  background: linear-gradient(135deg, #278ca8 15%, #50c5c7 90%);
+  transform: rotate(45deg);
+  box-shadow: 0 1px 3px rgba(39, 140, 168, 0.18),
+              0 0 5px rgba(39, 140, 168, 0.08);
+}
+
+html[data-theme="dark"] .wrapper > header .research-focus > div::before {
+  background: linear-gradient(135deg, #45a7c2 10%, #89ddd4 95%);
+  box-shadow: 0 1px 3px rgba(69, 167, 194, 0.21);
+}
+
+.wrapper > header .social-links {
+  gap: 15px;
+}
+
+.wrapper > header .social-links a {
+  font-size: 32px;
+}
+
+.wrapper > footer {
+  font-size: 13px;
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper > header h1 { font-size: 31px; }
+  .wrapper > header img { width: 200px; height: 200px; }
+  .wrapper > header .profile-description { font-size: 16px; }
+  .wrapper > header .research-focus { font-size: 14px; }
+  .wrapper > header .social-links a { font-size: 30px; }
+}
+
+/* =========================
    SITE-WIDE PARTICLE NETWORK
    Works in every page, independent of content.
 ========================= */
@@ -5293,8 +5392,8 @@ screen and (max-width: 720px) {
 }
 
 /* =========================
-   ABOUT HERO
-   In the right column only, with no sidebar duplication.
+   ABOUT HERO — free-standing editorial typography
+   No card, border, shadow, or duplicate sidebar labels.
 ========================= */
 
 .about-hero {
@@ -5302,49 +5401,50 @@ screen and (max-width: 720px) {
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  margin: 8px 0 28px;
-  padding: 27px clamp(21px, 3.2vw, 40px) 28px;
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px;
-  box-shadow: 0 2px 10px var(--card-shadow);
+  margin: 7px 0 27px;
+  padding: 14px 0 4px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   text-align: left;
-}
-
-html[data-theme="dark"] .about-hero {
-  background: rgba(24, 28, 31, 0.88);
-}
-
-.about-hero-eyebrow {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 10.5px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.15em;
-  color: var(--accent);
 }
 
 .about-hero h2 {
-  margin: 0 0 13px;
-  color: var(--heading-strong);
-  font-size: clamp(22px, 2.5vw, 33px);
+  display: inline-block; /* Gradient follows the lettering, not an empty full-width block. */
+  margin: 0 0 17px;
+  font-size: clamp(21px, 2.05vw, 28px);
   font-weight: 650;
-  line-height: 1.25;
-  letter-spacing: -0.022em;
+  line-height: 1.32;
+  letter-spacing: -0.024em;
+  color: var(--accent);
+  background: linear-gradient(105deg, #1e708e 0%, #278ca8 45%, #49b3c1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html[data-theme="dark"] .about-hero h2 {
+  background-image: linear-gradient(105deg, #69c8e0 0%, #45a7c2 56%, #9bded4 100%);
 }
 
 .about-hero p {
-  max-width: 68ch;
+  width: 100%;
+  max-width: none;
   margin: 0;
   color: var(--text-soft);
   font-size: 14px;
-  line-height: 1.75;
+  line-height: 1.65;
   text-align: left;
+  white-space: normal;
 }
 
-/* Preserve all biography paragraphs inside the existing About card. */
+/* A single-line descriptor wherever it can fit without clipping. */
+@media screen and (min-width: 1260px) {
+  .about-hero p { white-space: nowrap; }
+}
+
+/* Preserve the unchanged biography paragraphs inside their existing card. */
 .about-hero + .about-text {
   margin-top: 0;
 }
@@ -5360,16 +5460,16 @@ html[data-theme="dark"] .about-hero {
   .about-hero {
     margin-top: 6px;
     margin-bottom: 22px;
-    padding: 21px 18px 22px;
-    border-radius: 8px;
+    padding: 8px 0 0;
   }
-  .about-hero h2 { font-size: clamp(21px, 5vw, 27px); }
-  .about-hero p { font-size: 13px; }
+  .about-hero h2 { font-size: clamp(20px, 5vw, 25px); }
+  .about-hero p { font-size: 13px; white-space: normal; }
 }
 
 @media print {
   .particle-network-canvas { display: none; }
-  .about-hero { background: #fff; box-shadow: none; }
+  .about-hero { background: transparent; border: 0; box-shadow: none; }
+  .about-hero h2 { color: #278ca8; background: none; -webkit-text-fill-color: currentColor; }
 }
 
 @media (prefers-reduced-motion: reduce) {
