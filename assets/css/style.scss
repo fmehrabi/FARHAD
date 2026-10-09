@@ -1823,6 +1823,17 @@ html.stagger-preload
 
 /* Straight branch from spine into each card */
 
+
+.research-project,
+.publication-item,
+.experience-item {
+  --rail-node-size: 8px;
+  --rail-node-top: 22px;
+  --rail-node-left: -29.5px;
+  --rail-branch-width: 26.25px;
+  --rail-branch-left: -26.25px;
+}
+
 .research-project::before,
 .publication-item::before,
 .experience-item::before {
@@ -1834,13 +1845,16 @@ html.stagger-preload
     absolute;
 
   left:
-    -26.25px;
+    var(--rail-branch-left);
 
   top:
-    26px;
+    calc(var(--rail-node-top) + (var(--rail-node-size) / 2));
+
+  transform:
+    translateY(-50%);
 
   width:
-    26.25px;
+    var(--rail-branch-width);
 
   height:
     1.5px;
@@ -1926,10 +1940,10 @@ html.stagger-preload
 .experience-item::after {
   content: "";
   position: absolute;
-  left: -29.5px;
-  top: 22px;
-  width: 8px;
-  height: 8px;
+  left: var(--rail-node-left);
+  top: var(--rail-node-top);
+  width: var(--rail-node-size);
+  height: var(--rail-node-size);
   border: 1.5px solid var(--text-muted);
   border-radius: 50%;
   box-sizing: border-box;
@@ -1952,9 +1966,14 @@ html.stagger-preload
 .research-project.is-rail-active::before,
 .publication-item.is-rail-active::before,
 .experience-item.is-rail-active::before {
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent) 68%, white 32%);
   height: 2px;
-  box-shadow: 0 0 6px var(--accent-shadow-soft);
+  box-shadow: 0 0 7px var(--accent-shadow-soft);
+}
+html[data-theme="dark"] .research-project.is-rail-active::before,
+html[data-theme="dark"] .publication-item.is-rail-active::before,
+html[data-theme="dark"] .experience-item.is-rail-active::before {
+  background: color-mix(in srgb, var(--accent) 72%, white 28%);
 }
 .research-project.is-rail-active,
 .publication-item.is-rail-active,
