@@ -252,6 +252,8 @@
    * 232 seconds per full cycle = half the previous 116-second speed.
    */
   function buildTicker() {
+    const previousTicker = document.getElementById("skill-marquee");
+    if (previousTicker) previousTicker.remove();
     const LOOP_MS = 232000;
     const STORAGE_KEY = "farhad-skill-marquee-position-v4";
     const DRAG_THRESHOLD_PX = 6;
@@ -259,6 +261,7 @@
     const ticker = document.createElement("aside");
     ticker.id = "skill-marquee";
     ticker.className = "skill-marquee";
+    ticker.dataset.version = "5";
     ticker.setAttribute("aria-label", "Browse skills; drag horizontally or choose a skill");
     const viewport = document.createElement("div");
     viewport.className = "skill-marquee-viewport";
@@ -286,7 +289,6 @@
     let groupWidth = 0;
     let lastFrameAt = null;
     let frameId = 0;
-    let hover = false;
     let keyboardFocus = false;
     let dialogOpen = false;
     let drag = null;
@@ -339,7 +341,7 @@
     }
 
     function paused() {
-      return hover || keyboardFocus || dialogOpen || Boolean(drag) || motionPreference.matches;
+      return keyboardFocus || dialogOpen || Boolean(drag) || motionPreference.matches;
     }
 
     function animate(time) {
@@ -370,14 +372,9 @@
       }
     }
 
-    // Pause on mouse hover as in the original version; touch users retain
-    // ordinary vertical page scrolling and horizontal dragging.
-    ticker.addEventListener("pointerenter", event => {
-      if (event.pointerType === "mouse") { hover = true; refreshClock(); }
-    });
-    ticker.addEventListener("pointerleave", event => {
-      if (event.pointerType === "mouse") { hover = false; refreshClock(); }
-    });
+    // No pause on pointer hover: a cursor parked over the footer should not
+    // freeze the marquee indefinitely. Actual drag and the glass dialog pause it.
+    // Keyboard focus retains a motion pause for accessibility.
 
     // Clicking with a mouse should not leave the ticker paused forever merely
     // because the dialog restores focus to its originating chip.
