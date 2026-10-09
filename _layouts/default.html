@@ -139,6 +139,9 @@
 
         <a href="{{ '/experience/' | relative_url }}"
            {% if page.url == '/experience/' %} class="active" aria-current="page" {% endif %}>Experience</a>
+
+        <a href="{{ '/learning/' | relative_url }}"
+           {% if page.url == '/learning/' %} class="active" aria-current="page" {% endif %}>Learning</a>
       </div>
     </nav>
 
@@ -768,6 +771,10 @@
 
 <!-- Site-wide interactive particle background (shared by every page). -->
 <script src="{{ '/assets/js/particle-network.js' | relative_url }}" defer></script>
+
+<!-- Evidence-based skill chips, bottom ticker, and compact glass-panel explorer. -->
+<script src="{{ '/assets/js/skill-explorer.js' | relative_url }}"
+        data-site-root="{{ '/' | relative_url }}" defer></script>
 
 </body>
 </html>
