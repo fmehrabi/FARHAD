@@ -1865,129 +1865,114 @@ html.stagger-preload
 }
 
 
-/* Rail 3.0 child dots are intentionally removed */
+/* =========================
+   INTERACTIVE EDITORIAL RAIL
+   One active card, not a fully illuminated category.
+   JS sets the position of the slender rail segment.
+========================= */
+.research-section > .editorial-rail-indicator,
+.publication-section > .editorial-rail-indicator,
+.experience-section > .editorial-rail-indicator {
+  position: absolute;
+  left: 3.75px;
+  top: 0;
+  height: 0;
+  width: 2.5px;
+  z-index: 1;
+  opacity: 0;
+  border-radius: 999px;
+  pointer-events: none;
+  background: linear-gradient(180deg, #55b9cb, var(--accent) 52%, #65cbbd);
+  box-shadow: 0 0 5px var(--accent-shadow-soft);
+  transition: top 340ms cubic-bezier(0.22, 1, 0.36, 1),
+              height 340ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 240ms ease;
+}
+.research-section.is-rail-engaged > .editorial-rail-indicator,
+.publication-section.is-rail-engaged > .editorial-rail-indicator,
+.experience-section.is-rail-engaged > .editorial-rail-indicator {
+  opacity: 1;
+}
+
+/* A diamond represents a category root. Small circles represent its entries. */
+.research-section-title::before,
+.publication-section-title::before,
+.experience-section-title::before {
+  left: -31.5px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--page-bg);
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--accent), #5fc6b9);
+  transform: translateY(-50%) rotate(45deg);
+  box-shadow: 0 0 0 2px var(--accent-shadow-soft), 0 1px 5px var(--accent-shadow-soft);
+  transition: box-shadow 240ms ease, filter 240ms ease;
+}
+.research-section.is-rail-engaged > .research-section-title::before,
+.publication-section.is-rail-engaged > .publication-section-title::before,
+.experience-section.is-rail-engaged > .experience-section-title::before {
+  filter: brightness(1.06);
+  box-shadow: 0 0 0 2px var(--accent-shadow-soft), 0 0 9px var(--accent-shadow);
+}
+.research-section.is-rail-engaged > .research-section-title::after,
+.publication-section.is-rail-engaged > .publication-section-title::after,
+.experience-section.is-rail-engaged > .experience-section-title::after {
+  background: var(--accent);
+  opacity: .75;
+}
 
 .research-project::after,
 .publication-item::after,
 .experience-item::after {
-
-  content:
-    none;
-
+  content: "";
+  position: absolute;
+  left: -29.5px;
+  top: 22px;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 50%;
+  box-sizing: border-box;
+  z-index: 2;
+  background: var(--page-bg);
+  box-shadow: 0 0 0 3px var(--page-bg);
+  pointer-events: none;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 250ms ease, border-color 250ms ease,
+              box-shadow 250ms ease;
 }
-
-
-/* =========================
-   ACTIVE EDITORIAL PATH
-   ON CARD HOVER
-========================= */
-
-/*
-   When a card is hovered, the parent
-   spine and the relevant soft branch
-   become the active accent path.
-*/
-
-.research-section:has(.research-project:hover)::before,
-.publication-section:has(.publication-item:hover)::before,
-.experience-section:has(.experience-item:hover)::before {
-
-  left:
-    3.75px;
-
-  width:
-    2.25px;
-
-  background:
-    var(--accent);
-
-  box-shadow:
-    0 0 8px
-    var(--accent-shadow-soft);
-
+.research-project.is-rail-active::after,
+.publication-item.is-rail-active::after,
+.experience-item.is-rail-active::after {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.32);
+  box-shadow: 0 0 0 3px var(--page-bg), 0 0 7px var(--accent-shadow);
 }
-
-
-.research-section:has(.research-project:hover)::after,
-.publication-section:has(.publication-item:hover)::after,
-.experience-section:has(.experience-item:hover)::after {
-
-  left:
-    3.75px;
-
-  height:
-    2.25px;
-
-  background:
-    var(--accent);
-
-  box-shadow:
-    0 0 7px
-    var(--accent-shadow-soft);
-
+.research-project.is-rail-active::before,
+.publication-item.is-rail-active::before,
+.experience-item.is-rail-active::before {
+  background: var(--accent);
+  height: 2px;
+  box-shadow: 0 0 6px var(--accent-shadow-soft);
 }
-
-
-/* Active section marker */
-
-.research-section:has(.research-project:hover)
-.research-section-title::before,
-.publication-section:has(.publication-item:hover)
-.publication-section-title::before,
-.experience-section:has(.experience-item:hover)
-.experience-section-title::before {
-
-  box-shadow:
-    0 0 0 4px
-      var(--page-bg),
-    0 0 11px
-      var(--accent-shadow);
-
-  transform:
-    translateY(-50%);
-
+.research-project.is-rail-active,
+.publication-item.is-rail-active,
+.experience-item.is-rail-active {
+  border-color: rgba(39, 140, 168, .52);
+  box-shadow: 0 3px 13px var(--accent-shadow-soft);
 }
-
-
-/* Active short editorial rule */
-
-.research-section:has(.research-project:hover)
-.research-section-title::after,
-.publication-section:has(.publication-item:hover)
-.publication-section-title::after,
-.experience-section:has(.experience-item:hover)
-.experience-section-title::after {
-
-  width:
-    82px;
-
-  background:
-    var(--accent);
-
-  opacity:
-    1;
-
+html[data-theme="dark"] .research-project.is-rail-active,
+html[data-theme="dark"] .publication-item.is-rail-active,
+html[data-theme="dark"] .experience-item.is-rail-active {
+  border-color: rgba(69, 167, 194, .55);
 }
-
-
-/* Active straight branch */
-
-.research-project:hover::before,
-.publication-item:hover::before,
-.experience-item:hover::before {
-
-  height:
-    2.25px;
-
-  background:
-    var(--accent);
-
-  box-shadow:
-    0 0 6px
-    var(--accent-shadow-soft);
-
+@media (prefers-reduced-motion: reduce) {
+  .editorial-rail-indicator,
+  .research-project::after, .publication-item::after, .experience-item::after,
+  .research-section-title::before, .publication-section-title::before,
+  .experience-section-title::before { transition: none !important; }
 }
-
 
 /* =========================
    RESEARCH
@@ -4869,54 +4854,30 @@ screen and (max-width: 720px) {
   }
 
 
-  .research-section:has(.research-project:hover)::before,
-  .publication-section:has(.publication-item:hover)::before,
-  .experience-section:has(.experience-item:hover)::before {
-
-    left:
-      3.5px;
-
-    width:
-      2px;
-
+  /* Mobile: keep the rail aligned with the narrower left gutter. */
+  .research-section > .editorial-rail-indicator,
+  .publication-section > .editorial-rail-indicator,
+  .experience-section > .editorial-rail-indicator {
+    left: 3.5px;
+    width: 2px;
   }
-
-
-  .research-section:has(.research-project:hover)::after,
-  .publication-section:has(.publication-item:hover)::after,
-  .experience-section:has(.experience-item:hover)::after {
-
-    left:
-      3.5px;
-
-    height:
-      2px;
-
+  .research-section-title::before,
+  .publication-section-title::before,
+  .experience-section-title::before {
+    left: -23px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2.5px;
+    transform: translateY(-50%) rotate(45deg);
   }
-
-
-  .research-section:has(.research-project:hover)
-  .research-section-title::after,
-  .publication-section:has(.publication-item:hover)
-  .publication-section-title::after,
-  .experience-section:has(.experience-item:hover)
-  .experience-section-title::after {
-
-    width:
-      56px;
-
+  .research-project::after,
+  .publication-item::after,
+  .experience-item::after {
+    left: -21.5px;
+    top: 19px;
+    width: 7px;
+    height: 7px;
   }
-
-
-  .research-project:hover::before,
-  .publication-item:hover::before,
-  .experience-item:hover::before {
-
-    height:
-      2px;
-
-  }
-
 
   /* Research */
 
