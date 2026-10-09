@@ -16,8 +16,8 @@
   const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
   const MAX_DPR = 2;
   const FRAME_INTERVAL = 1000 / 30; // Deliberately gentle, battery-conscious motion.
-  const LINK_DISTANCE = 132;
-  const POINTER_RADIUS = 148;
+  const LINK_DISTANCE = 145;
+  const POINTER_RADIUS = 158;
 
   let width = 0;
   let height = 0;
@@ -46,7 +46,7 @@
       vy: random(-0.22, 0.22),
       driftX: random(-0.18, 0.18),
       driftY: random(-0.18, 0.18),
-      radius: random(0.8, 1.65),
+      radius: random(1.25, 2.2),
       tint: index % 9 === 0 ? 1 : 0
     }));
   }
@@ -119,7 +119,7 @@
         const alpha = (dark ? 0.26 : 0.22) * proximity;
         ctx.beginPath();
         ctx.strokeStyle = `rgba(${(i + j) % 7 === 0 ? secondary : primary},${alpha})`;
-        ctx.lineWidth = 0.75;
+        ctx.lineWidth = 0.85;
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.stroke();
@@ -129,7 +129,7 @@
     for (const p of particles) {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.tint ? secondary : primary},${dark ? 0.55 : 0.52})`;
+      ctx.fillStyle = `rgba(${p.tint ? secondary : primary},${dark ? 0.61 : 0.58})`;
       ctx.fill();
     }
   }
