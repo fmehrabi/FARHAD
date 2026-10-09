@@ -48,6 +48,7 @@
 </head>
 
 <body>
+<canvas id="particle-network" class="particle-network-canvas" aria-hidden="true"></canvas>
 <div class="wrapper">
 
   <header>
@@ -169,6 +170,7 @@
     const pageContent = document.querySelector(".page-content");
 
     const staggerSelector = [
+      ".about-hero",
       ".about-text",
       ".research-section > .research-section-title",
       ".research-section > .research-project",
@@ -763,6 +765,9 @@
 </script>
 
 <script src="{{ '/assets/js/lightbox.js' | relative_url }}"></script>
+
+<!-- Site-wide interactive particle background (shared by every page). -->
+<script src="{{ '/assets/js/particle-network.js' | relative_url }}" defer></script>
 
 </body>
 </html>
