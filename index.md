@@ -2,10 +2,9 @@
 layout: default
 ---
 
-<!-- About-only editorial hero; profile information remains in the sidebar. -->
+<!-- Editorial introduction: sidebar identity is intentionally not duplicated. -->
 <section class="about-hero" aria-labelledby="about-hero-title">
-  <span class="about-hero-eyebrow">RESEARCH PERSPECTIVE</span>
-  <h2 id="about-hero-title">Understanding Complex Systems.<br>Informing Strategic Decisions.</h2>
+  <h2 id="about-hero-title">Understanding Complex Systems<br>Informing Strategic Decisions</h2>
   <p>Connecting technical and managerial perspectives to understand how organizational change unfolds.</p>
 </section>
 
