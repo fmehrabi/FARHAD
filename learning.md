@@ -67,7 +67,7 @@ permalink: /learning/
        aria-label="View Statement of Participation for Business models in strategic management (PDF, opens in a new tab)">Statement of Participation <span aria-hidden="true">↗</span></a>
     <p class="research-project-summary">Studied the theory and practice of business models in strategic management, including different business model types, e-commerce models, and business model design using the Business Model Canvas. The course also explored applications to professional development and career planning.</p>
     <details class="expandable-details">
-      <summary class="details-toggle">View learning details</summary>
+      <summary class="details-toggle">View details</summary>
       <div class="details-content">
         <p>The course examined the emergence of the business model concept in strategy literature, classifications of business models, e-commerce business models, and methods for designing business models. It also introduced the use of business model thinking beyond organizations, particularly for professional development and career growth.</p>
         <p><strong>Learning outcomes:</strong></p>
