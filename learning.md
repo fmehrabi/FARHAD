@@ -1,3 +1,4 @@
+
 ---
 layout: default
 permalink: /learning/
@@ -6,12 +7,12 @@ permalink: /learning/
 <!-- Learning is intentionally separated by credential type. Skill chips are
      populated by assets/js/skill-explorer.js from its shared evidence registry. -->
 <div class="learning-intro">
-  <h2>Learning &amp; Professional Development</h2>
+  <h2>Learning & Professional Development</h2>
   <p>Selected courses, workshops, and independent learning that complement my research and professional work. Completion records and audited or self-directed learning are identified separately.</p>
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Certifications &amp; Courses</h3>
+  <h3 class="research-section-title">Certifications & Courses</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-business-models">
     <h4 class="research-project-title">Business models in strategic management</h4>
@@ -30,7 +31,7 @@ permalink: /learning/
 
   <article class="research-project learning-item" data-skill-record="learning-business-analysis">
     <h4 class="research-project-title">Career Essentials in Business Analysis</h4>
-    <p class="research-project-meta">Microsoft &amp; LinkedIn Learning · 2025</p>
+    <p class="research-project-meta">Microsoft & LinkedIn Learning · 2025</p>
     <div class="learning-credential">Certificate</div>
     <p class="research-project-summary">Training in business analysis, requirements engineering, process modeling, project management, and data fundamentals.</p>
   </article>
@@ -58,7 +59,7 @@ permalink: /learning/
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Workshops &amp; Training</h3>
+  <h3 class="research-section-title">Workshops & Training</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-visual-paradigm">
     <h4 class="research-project-title">Visual Paradigm for BPMN 2.0 and Process Design</h4>
@@ -76,7 +77,7 @@ permalink: /learning/
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Audited &amp; Independent Learning</h3>
+  <h3 class="research-section-title">Audited & Independent Learning</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-research-design">
     <h4 class="research-project-title">Advanced Research Design and Methodological Alignment</h4>
@@ -100,7 +101,7 @@ permalink: /learning/
   </article>
 
   <article class="research-project learning-item" data-skill-record="learning-tableau-powerbi">
-    <h4 class="research-project-title">Data Visualization and Dashboarding with Tableau &amp; Power BI</h4>
+    <h4 class="research-project-title">Data Visualization and Dashboarding with Tableau & Power BI</h4>
     <p class="research-project-meta">2026</p>
     <div class="learning-credential">Self-directed learning</div>
     <p class="research-project-summary">Independent learning in interactive data visualization and business intelligence dashboards.</p>
@@ -112,4 +113,4 @@ permalink: /learning/
     <div class="learning-credential">Self-directed learning</div>
     <p class="research-project-summary">Independent foundational study in data science.</p>
   </article>
-</div>
+</div>\
