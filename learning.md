@@ -58,7 +58,7 @@ permalink: /learning/
   <h3 class="research-section-title">Certifications &amp; Courses</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-business-models">
-    <h4 class="research-project-title">Business models in strategic management</h4>
+    <h4 class="research-project-title">Business Models in Strategic Management</h4>
     <p class="research-project-meta">The Open University · OpenLearn · 2026</p>
     <a class="learning-credential learning-credential--gold"
        href="{{ '/assets/certificates/Business_models_in_strategic_management_statement_Farhad%20Mehrabi.pdf' | relative_url }}"
