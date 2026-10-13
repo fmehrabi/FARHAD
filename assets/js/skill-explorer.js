@@ -1,3 +1,8 @@
+# FARHAD — Skill Explorer (Updated)
+
+This is the full JavaScript source with six learning areas for **Business models in strategic management**. To deploy, copy the code below into your existing Skill Explorer JavaScript file.
+
+```javascript
 /*
  * FARHAD · Skill Explorer
  * A single, editable evidence registry powers:
@@ -37,7 +42,7 @@
     { id: "experience-teaching-sd", page: "experience", type: "Experience", title: "Graduate Teaching Assistant — System Dynamics", meta: "2024–Present", summary: "Mentored students in Vensim, feedback modeling, and system dynamics simulation projects.", skills: ["System Dynamics", "Vensim", "Simulation Modeling", "Academic Mentoring"] },
     { id: "experience-syntech", page: "experience", type: "Experience", title: "Manufacturing & Mechanical Design Engineer", meta: "2015–2018", summary: "Contributed to mechanical design, production process improvement, and manufacturing problem-solving.", skills: ["Mechanical Design", "Production Process Improvement", "Engineering Design"] },
 
-    { id: "learning-business-models", page: "learning", type: "Learning", title: "Business models in strategic management", meta: "The Open University · OpenLearn · 2026", summary: "Covered business model classifications, value creation and capture, and the nine blocks of the Business Model Canvas.", skills: ["Business Model Analysis", "Business Model Canvas", "Business Model Design", "Value Proposition Analysis"] },
+    { id: "learning-business-models", page: "learning", type: "Learning", title: "Business models in strategic management", meta: "The Open University · OpenLearn · 2026", summary: "Covered business model classifications, value creation and capture, and the nine blocks of the Business Model Canvas.", skills: ["Business Model Types", "E-commerce Business Models", "Business Model Canvas", "Business Model Design", "Professional Development Planning", "Business Model Analysis"] },
     { id: "learning-business-analysis", page: "learning", type: "Learning", title: "Career Essentials in Business Analysis", meta: "Microsoft & LinkedIn Learning · 2025", summary: "Studied business analysis, requirements engineering, process modeling, and project and data fundamentals.", skills: ["Business Analysis", "Requirements Engineering", "Business Process Management"] },
     { id: "learning-visual-paradigm", page: "learning", type: "Learning", title: "Visual Paradigm for BPMN 2.0 and Process Design", meta: "Workshop · 2025", summary: "Completed training in process modeling and design with Visual Paradigm.", skills: ["BPMN 2.0", "Process Modeling"] },
     { id: "learning-camunda", page: "learning", type: "Learning", title: "BPMN and Camunda Workshop", meta: "Sharif University of Technology · 2023", summary: "Participated in a workshop on business process notation and Camunda workflows.", skills: ["BPMN 2.0", "Camunda", "Process Modeling"] },
@@ -517,3 +522,4 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })();
+```
