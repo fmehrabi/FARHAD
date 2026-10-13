@@ -76,7 +76,7 @@ permalink: /learning/
           <li>Use the Business Model Canvas to structure and design a business model.</li>
           <li>Apply the Business Model Canvas to professional development and career planning.</li>
         </ul>
-        <p class="learning-note">Completed the course and its mandatory tests. The Statement of Participation confirms completion but does not award academic credit or a university qualification.</p>
+
         <p><a href="https://www.open.edu/openlearn/money-business/business-models-strategic-management/content-section-0?active-tab=description-tab" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(course information; the linked statement above is my completion record)</span></p>
       </div>
     </details>
