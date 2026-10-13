@@ -1,8 +1,3 @@
-# FARHAD — Skill Explorer (Updated)
-
-This is the full JavaScript source with six learning areas for **Business models in strategic management**. To deploy, copy the code below into your existing Skill Explorer JavaScript file.
-
-```javascript
 /*
  * FARHAD · Skill Explorer
  * A single, editable evidence registry powers:
@@ -522,4 +517,3 @@ This is the full JavaScript source with six learning areas for **Business models
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
   else init();
 })();
-```
