@@ -1,4 +1,3 @@
-
 ---
 layout: default
 permalink: /learning/
@@ -6,32 +5,86 @@ permalink: /learning/
 
 <!-- Learning is intentionally separated by credential type. Skill chips are
      populated by assets/js/skill-explorer.js from its shared evidence registry. -->
+
+<style>
+  /* Subtle gold treatment for the linked OpenLearn completion record. */
+  .learning-item a.learning-credential--gold,
+  .learning-item a.learning-credential--gold:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border: 1px solid rgba(164, 129, 54, 0.28);
+    border-radius: 999px;
+    background: rgba(205, 163, 70, 0.10);
+    color: #8b7137;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  }
+
+  .learning-item a.learning-credential--gold:hover {
+    background: rgba(205, 163, 70, 0.17);
+    border-color: rgba(164, 129, 54, 0.45);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+
+  .learning-item a.learning-credential--gold:focus-visible {
+    outline: 2px solid #b4944a;
+    outline-offset: 3px;
+  }
+
+  html[data-theme="dark"] .learning-item a.learning-credential--gold,
+  html[data-theme="dark"] .learning-item a.learning-credential--gold:visited {
+    background: rgba(208, 171, 94, 0.12);
+    border-color: rgba(208, 171, 94, 0.35);
+    color: #dec38b;
+  }
+
+  html[data-theme="dark"] .learning-item a.learning-credential--gold:hover {
+    background: rgba(208, 171, 94, 0.20);
+  }
+</style>
+
 <div class="learning-intro">
-  <h2>Learning & Professional Development</h2>
+  <h2>Learning &amp; Professional Development</h2>
   <p>Selected courses, workshops, and independent learning that complement my research and professional work. Completion records and audited or self-directed learning are identified separately.</p>
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Certifications & Courses</h3>
+  <h3 class="research-section-title">Certifications &amp; Courses</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-business-models">
     <h4 class="research-project-title">Business models in strategic management</h4>
     <p class="research-project-meta">The Open University · OpenLearn · 2026</p>
-    <div class="learning-credential">Statement of Participation <span aria-hidden="true">·</span> 10 hours <span aria-hidden="true">·</span> Intermediate</div>
-    <p class="research-project-summary">Explored the logic of value creation and capture, business model types, and the Business Model Canvas as a practical approach to business model analysis and design.</p>
+    <a class="learning-credential learning-credential--gold"
+       href="{{ '/assets/certificates/Business_models_in_strategic_management_statement_Farhad%20Mehrabi.pdf' | relative_url }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="View Statement of Participation for Business models in strategic management (PDF, opens in a new tab)">Statement of Participation <span aria-hidden="true">↗</span></a>
+    <p class="research-project-summary">Studied the theory and practice of business models in strategic management, including different business model types, e-commerce models, and business model design using the Business Model Canvas. The course also explored applications to professional development and career planning.</p>
     <details class="expandable-details">
       <summary class="details-toggle">View learning details</summary>
       <div class="details-content">
-        <p>Topics included the nine blocks of the Business Model Canvas, e-commerce business models, and the use of business model thinking in strategic and professional development.</p>
-        <p class="learning-note">The Statement of Participation documents course completion; it is not a degree or professional license.</p>
-        <p><a href="https://www.open.edu/openlearn/money-business/business-models-strategic-management/content-section-0?active-tab=description-tab" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(not a personal credential verification link)</span></p>
+        <p>The course examined the emergence of the business model concept in strategy literature, classifications of business models, e-commerce business models, and methods for designing business models. It also introduced the use of business model thinking beyond organizations, particularly for professional development and career growth.</p>
+        <p><strong>Learning outcomes:</strong></p>
+        <ul>
+          <li>Distinguish among different types of business models and understand their applications.</li>
+          <li>Use the Business Model Canvas to structure and design a business model.</li>
+          <li>Apply the Business Model Canvas to professional development and career planning.</li>
+        </ul>
+        <p class="learning-note">Completed the course and its mandatory tests. The Statement of Participation confirms completion but does not award academic credit or a university qualification.</p>
+        <p><a href="https://www.open.edu/openlearn/money-business/business-models-strategic-management/content-section-0?active-tab=description-tab" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(course information; the linked statement above is my completion record)</span></p>
       </div>
     </details>
   </article>
 
   <article class="research-project learning-item" data-skill-record="learning-business-analysis">
     <h4 class="research-project-title">Career Essentials in Business Analysis</h4>
-    <p class="research-project-meta">Microsoft & LinkedIn Learning · 2025</p>
+    <p class="research-project-meta">Microsoft &amp; LinkedIn Learning · 2025</p>
     <div class="learning-credential">Certificate</div>
     <p class="research-project-summary">Training in business analysis, requirements engineering, process modeling, project management, and data fundamentals.</p>
   </article>
@@ -59,7 +112,7 @@ permalink: /learning/
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Workshops & Training</h3>
+  <h3 class="research-section-title">Workshops &amp; Training</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-visual-paradigm">
     <h4 class="research-project-title">Visual Paradigm for BPMN 2.0 and Process Design</h4>
@@ -77,7 +130,7 @@ permalink: /learning/
 </div>
 
 <div class="research-section learning-section">
-  <h3 class="research-section-title">Audited & Independent Learning</h3>
+  <h3 class="research-section-title">Audited &amp; Independent Learning</h3>
 
   <article class="research-project learning-item" data-skill-record="learning-research-design">
     <h4 class="research-project-title">Advanced Research Design and Methodological Alignment</h4>
@@ -101,7 +154,7 @@ permalink: /learning/
   </article>
 
   <article class="research-project learning-item" data-skill-record="learning-tableau-powerbi">
-    <h4 class="research-project-title">Data Visualization and Dashboarding with Tableau & Power BI</h4>
+    <h4 class="research-project-title">Data Visualization and Dashboarding with Tableau &amp; Power BI</h4>
     <p class="research-project-meta">2026</p>
     <div class="learning-credential">Self-directed learning</div>
     <p class="research-project-summary">Independent learning in interactive data visualization and business intelligence dashboards.</p>
@@ -113,4 +166,4 @@ permalink: /learning/
     <div class="learning-credential">Self-directed learning</div>
     <p class="research-project-summary">Independent foundational study in data science.</p>
   </article>
-</div>\
+</div>
