@@ -7,7 +7,7 @@ permalink: /learning/
      populated by assets/js/skill-explorer.js from its shared evidence registry. -->
 
 <style>
-  /* Subtle gold treatment for the linked OpenLearn completion record. */
+  /* Subtle gold treatment for linked course completion records. */
   .learning-item a.learning-credential--gold,
   .learning-item a.learning-credential--gold:visited {
     display: inline-flex;
@@ -56,6 +56,30 @@ permalink: /learning/
 
 <div class="research-section learning-section">
   <h3 class="research-section-title">Certifications &amp; Courses</h3>
+
+  <article class="research-project learning-item" data-skill-record="learning-peer-review">
+    <h4 class="research-project-title">Certified Peer Reviewer Course</h4>
+    <p class="research-project-meta">Elsevier Researcher Academy · 2026</p>
+    <a class="learning-credential learning-credential--gold"
+       href="{{ '/assets/certificates/certified-peer-reviewer-course-certificate.pdf' | relative_url }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="View Certified Peer Reviewer Course certificate (PDF, opens in a new tab)">Certificate <span aria-hidden="true">↗</span></a>
+    <p class="research-project-summary">Completed training in scholarly peer review, including manuscript evaluation, research integrity and ethics, and the preparation of constructive reviewer reports.</p>
+    <details class="expandable-details">
+      <summary class="details-toggle">View details</summary>
+      <div class="details-content">
+        <p>The course covered peer-review models, editorial screening, reviewer responsibilities, conflicts of interest, confidentiality, and evidence-based recommendations for manuscript revision and publication.</p>
+        <p><strong>Learning outcomes:</strong></p>
+        <ul>
+          <li>Assess manuscripts for scientific quality, methodological rigor, and consistency between findings and conclusions.</li>
+          <li>Prepare clear, constructive peer-review reports, distinguishing major concerns from minor comments.</li>
+          <li>Apply ethical peer-review principles, including confidentiality, conflict-of-interest disclosure, and professional communication with editors.</li>
+        </ul>
+        <p><a href="https://researcheracademy.elsevier.com/navigating-peer-review/certified-peer-reviewer-course" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(course information; the linked certificate above is my completion record)</span></p>
+      </div>
+    </details>
+  </article>
 
   <article class="research-project learning-item" data-skill-record="learning-business-models">
     <h4 class="research-project-title">Business Models in Strategic Management</h4>
