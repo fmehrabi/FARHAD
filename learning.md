@@ -81,6 +81,54 @@ permalink: /learning/
     </details>
   </article>
 
+  <article class="research-project learning-item" data-skill-record="learning-going-peer-review">
+    <h4 class="research-project-title">Going through peer review</h4>
+    <p class="research-project-meta">Elsevier Researcher Academy · 2026</p>
+    <a class="learning-credential learning-credential--gold"
+       href="{{ '/assets/certificates/going-peer-review-certificate_FarhadMehrabi.pdf' | relative_url }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="View Going through peer review certificate (PDF, opens in a new tab)">Certificate <span aria-hidden="true">↗</span></a>
+    <p class="research-project-summary">Completed training on navigating the peer-review and editorial process, including manuscript preparation, editorial assessment, and responding effectively to reviewers’ comments.</p>
+    <details class="expandable-details">
+      <summary class="details-toggle">View details</summary>
+      <div class="details-content">
+        <p>The course covered how editors evaluate submitted manuscripts, what reviewers assess, and how authors can prepare effective responses to reviewer comments throughout the publication process.</p>
+        <p><strong>Learning outcomes:</strong></p>
+        <ul>
+          <li>Evaluate a manuscript from an editor’s and reviewer’s perspective, considering journal scope, completeness, accuracy, and scientific quality.</li>
+          <li>Prepare structured, evidence-based, and professional responses to reviewers’ comments.</li>
+          <li>Address reviewer feedback systematically, including disagreements, revisions, and communication with journal editors.</li>
+        </ul>
+        <p><a href="https://researcheracademy.elsevier.com/navigating-peer-review/going-peer-review" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(course information; the linked certificate above is my completion record)</span></p>
+      </div>
+    </details>
+  </article>
+
+  <article class="research-project learning-item" data-skill-record="learning-becoming-peer-reviewer">
+    <h4 class="research-project-title">Becoming a peer reviewer</h4>
+    <p class="research-project-meta">Elsevier Researcher Academy · 2026</p>
+    <a class="learning-credential learning-credential--gold"
+       href="{{ '/assets/certificates/becoming-peer-reviewer-certificate_FarhadMehrabi.pdf' | relative_url }}"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="View Becoming a peer reviewer certificate (PDF, opens in a new tab)">Certificate <span aria-hidden="true">↗</span></a>
+    <p class="research-project-summary">Completed training in scholarly peer review, including systematic manuscript evaluation, research integrity and ethics, and the preparation of constructive reviewer reports.</p>
+    <details class="expandable-details">
+      <summary class="details-toggle">View details</summary>
+      <div class="details-content">
+        <p>The course covered peer-review models, editorial screening, reviewer responsibilities, conflicts of interest, confidentiality, and evidence-based recommendations for manuscript revision and publication.</p>
+        <p><strong>Learning outcomes:</strong></p>
+        <ul>
+          <li>Assess manuscripts for scientific quality, methodological rigor, originality, and consistency between findings and conclusions.</li>
+          <li>Prepare clear, constructive, and evidence-based peer-review reports, distinguishing major concerns from minor comments.</li>
+          <li>Apply ethical principles in peer review, including confidentiality, conflict-of-interest disclosure, and professional communication with editors.</li>
+        </ul>
+        <p><a href="https://researcheracademy.elsevier.com/navigating-peer-review/becoming-peer-reviewer" target="_blank" rel="noopener noreferrer">Official course overview ↗</a> <span class="learning-note">(course information; the linked certificate above is my completion record)</span></p>
+      </div>
+    </details>
+  </article>
+
   <article class="research-project learning-item" data-skill-record="learning-business-models">
     <h4 class="research-project-title">Business Models in Strategic Management</h4>
     <p class="research-project-meta">The Open University · OpenLearn · 2026</p>
