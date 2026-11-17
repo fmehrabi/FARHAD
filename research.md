@@ -3,53 +3,64 @@ layout: default
 permalink: /research/
 ---
 
-
 <!-- =========================
-     CURRENT RESEARCH
+     RESEARCH THEMES
 ========================= -->
 
 <div class="research-section">
 
   <h3 class="research-section-title">
-    Current Research
+    Research Themes
   </h3>
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Artificial Intelligence in Organizations
+    </h4>
+
+    <p class="research-project-summary">
+      Examining how artificial intelligence, including Generative AI and agentic systems, influences organizational capabilities, learning, decision-making, and innovation processes.
+    </p>
+
+  </article>
 
 
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Generative AI, Organizational Decision-Making, and Strategic Transformation
+      Human–AI Interaction and Decision-Making
     </h4>
 
-    <p class="research-project-meta">
-      Ongoing Research
+    <p class="research-project-summary">
+      Exploring how humans and AI systems interact, complement one another, and allocate decision-making responsibilities across organizational and operational contexts.
     </p>
+
+  </article>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Digital Transformation and Innovation
+    </h4>
 
     <p class="research-project-summary">
-      This research examines how generative AI is reshaping organizational decision-making, strategic capabilities, and managerial processes, with particular attention to AI governance, organizational adaptation, and value creation.
+      Investigating how digital technologies reshape organizational processes, innovation capabilities, business models, and value creation.
     </p>
 
-
-    <details class="expandable-details">
-
-      <summary class="details-toggle">
-        View details
-      </summary>
+  </article>
 
 
-      <div class="details-content">
+  <article class="research-project">
 
-        <h5 class="research-project-subheading">
-          Research Focus
-        </h5>
+    <h4 class="research-project-title">
+      Technology, Operations, and Strategy
+    </h4>
 
-        <p>
-          The broader objective is to understand the organizational and strategic mechanisms through which AI adoption influences decision-making, organizational capabilities, and long-term transformation.
-        </p>
-
-      </div>
-
-    </details>
+    <p class="research-project-summary">
+      Examining the strategic and operational implications of emerging technologies, including resource allocation, adaptive decision-making, platform ecosystems, and organizational performance.
+    </p>
 
   </article>
 
@@ -58,35 +69,34 @@ permalink: /research/
 
 
 <!-- =========================
-     SELECTED PROJECTS
+     SELECTED RESEARCH PROJECTS
 ========================= -->
 
 <div class="research-section">
 
   <h3 class="research-section-title">
-    Selected Projects
+    Selected Research Projects
   </h3>
 
 
   <!-- =========================
        PROJECT 1
-       DIGITAL TRANSFORMATION
+       GENERATIVE AI
   ========================== -->
 
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Value Creation of Digital Transformation in Digikala: A System Dynamics Approach
+      Managing Generative AI–Enabled Innovation: Evaluation Capacity, Organizational Learning, and Implementation Dynamics
     </h4>
 
     <p class="research-project-meta">
-      M.A. Thesis · Allameh Tabataba’i University · 2025
+      Research Manuscript · Technological Forecasting and Social Change · Under Review
     </p>
 
     <p class="research-project-summary">
-      This project investigated how digital transformation policies influence organizational performance and value creation at Digikala, a major Iranian e-commerce company.
+      This research examines how organizations manage Generative AI-enabled innovation when AI-generated outputs expand faster than their capacity to evaluate, integrate, and retain them as reliable organizational knowledge.
     </p>
-
 
     <details class="expandable-details">
 
@@ -94,21 +104,28 @@ permalink: /research/
         View details
       </summary>
 
-
       <div class="details-content">
+
+        <h5 class="research-project-subheading">
+          Research Focus and Approach
+        </h5>
 
         <ul class="research-project-details">
 
           <li>
-            Developed a mixed-method system dynamics model to evaluate the effects of digital transformation policies on organizational performance.
+            Developed a theory-driven System Dynamics model to examine the relationships between AI-generated outputs, human cognitive evaluation capability, organizational knowledge, and innovation implementation.
           </li>
 
           <li>
-            Modeled five interrelated value-creation subsystems, captured nonlinear feedback structures, and conducted sensitivity analyses of key organizational drivers.
+            Compared alternative managerial interventions, including adaptive admission control, protected evaluation, and additional training time.
           </li>
 
           <li>
-            Derived theoretical and managerial implications for digital transformation strategy, organizational capability development, and value creation from the simulation results.
+            Conducted policy simulation, global sensitivity analysis, and robustness assessment to investigate the effects of organizational interventions under uncertainty.
+          </li>
+
+          <li>
+            Applied simulation-based interpretable machine learning, including Linear Regression and Regression Trees, to identify conditions associated with different policy outcomes.
           </li>
 
         </ul>
@@ -123,6 +140,128 @@ permalink: /research/
 
   <!-- =========================
        PROJECT 2
+       AGENT-INSPIRED ADAPTIVE ALLOCATION
+  ========================== -->
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Agent-Inspired Adaptive Capacity Allocation and Circular Resource Productivity
+    </h4>
+
+    <p class="research-project-meta">
+      Research Manuscript · International Journal of Productivity and Performance Management · Under Review
+    </p>
+
+    <p class="research-project-summary">
+      This research investigates when adaptive capacity allocation can improve circular resource productivity and under what conditions adaptive policies outperform alternative allocation strategies.
+    </p>
+
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+      <div class="details-content">
+
+        <h5 class="research-project-subheading">
+          Research Focus and Approach
+        </h5>
+
+        <ul class="research-project-details">
+
+          <li>
+            Developed a System Dynamics model to represent circular production, use, repair, recovery, and capacity-allocation mechanisms.
+          </li>
+
+          <li>
+            Compared alternative allocation policies, including fixed routing, rule-based allocation, adaptive allocation, and fixed labor transfer.
+          </li>
+
+          <li>
+            Combined Latin Hypercube Sampling, Partial Rank Correlation Coefficients (PRCC), and sensitivity analysis to examine policy performance under uncertainty.
+          </li>
+
+          <li>
+            Applied Scenario Discovery using Classification and Regression Trees (CART) and Random Forest Regression to identify conditions associated with adaptive policy advantages.
+          </li>
+
+          <li>
+            Used bootstrap resampling, cross-validation, and mechanism ablation to examine the robustness and underlying mechanisms of the results.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
+
+  </article>
+
+
+
+  <!-- =========================
+       PROJECT 3
+       E-COMMERCE DIGITAL TRANSFORMATION
+  ========================== -->
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Value Creation in the Digital Transformation Process of E-commerce
+    </h4>
+
+    <p class="research-project-meta">
+      M.A. Thesis · Allameh Tabataba’i University · 2025
+    </p>
+
+    <p class="research-project-summary">
+      This research investigated how digital transformation creates value in e-commerce organizations, focusing on the interaction between technological investment, organizational capabilities, and business performance.
+    </p>
+
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+      <div class="details-content">
+
+        <h5 class="research-project-subheading">
+          Research Focus and Approach
+        </h5>
+
+        <ul class="research-project-details">
+
+          <li>
+            Developed a System Dynamics model to examine the dynamic relationships influencing value creation during e-commerce digital transformation.
+          </li>
+
+          <li>
+            Identified key factors and causal relationships through literature and industry evidence, supported by consultation with six domain experts.
+          </li>
+
+          <li>
+            Developed Causal Loop Diagrams (CLDs) and Stock-and-Flow Diagrams (SFDs) to represent the system structure and its feedback mechanisms.
+          </li>
+
+          <li>
+            Conducted simulation, scenario analysis, model validation, and sensitivity analysis to investigate the effects of key organizational and environmental factors.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </details>
+
+  </article>
+
+
+
+  <!-- =========================
+       PROJECT 4
        SODA / STARTUP SUCCESS
   ========================== -->
 
@@ -140,13 +279,11 @@ permalink: /research/
       This project examined the complex and interconnected factors that shape startup success by combining expert perspectives with cognitive mapping.
     </p>
 
-
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
@@ -175,7 +312,7 @@ permalink: /research/
 
 
   <!-- =========================
-       PROJECT 3
+       PROJECT 5
        MULTI-SIDED PLATFORMS
   ========================== -->
 
@@ -193,13 +330,11 @@ permalink: /research/
       This project analyzed the strategic evolution of Snapp as a multi-sided digital platform and examined its expansion from ride-hailing into adjacent markets.
     </p>
 
-
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
@@ -228,7 +363,7 @@ permalink: /research/
 
 
   <!-- =========================
-       PROJECT 4
+       PROJECT 6
        BUSINESS PROCESS REENGINEERING
   ========================== -->
 
@@ -246,13 +381,11 @@ permalink: /research/
       This project examined how technology-enabled process redesign could improve warehouse operations at Digikala through automation and organizational adaptation.
     </p>
 
-
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
@@ -275,6 +408,85 @@ permalink: /research/
       </div>
 
     </details>
+
+  </article>
+
+</div>
+
+
+
+<!-- =========================
+     RESEARCH METHODS & APPROACHES
+========================= -->
+
+<div class="research-section">
+
+  <h3 class="research-section-title">
+    Research Methods & Approaches
+  </h3>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Computational Modeling and Simulation
+    </h4>
+
+    <p class="research-project-summary">
+      System Dynamics modeling, Causal Loop Diagrams (CLD), Stock-and-Flow Diagrams (SFD), dynamic simulation, and policy experimentation.
+    </p>
+
+  </article>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Machine Learning and Data Analytics
+    </h4>
+
+    <p class="research-project-summary">
+      Interpretable Machine Learning, Linear Regression, Regression Trees, Random Forest Regression, model evaluation, cross-validation, and simulation-based predictive analysis.
+    </p>
+
+  </article>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Scenario, Sensitivity, and Uncertainty Analysis
+    </h4>
+
+    <p class="research-project-summary">
+      Scenario Discovery, Robust Decision Making, Latin Hypercube Sampling, Partial Rank Correlation Coefficients (PRCC), global sensitivity analysis, and bootstrap resampling.
+    </p>
+
+  </article>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Qualitative and Strategic Research Approaches
+    </h4>
+
+    <p class="research-project-summary">
+      Expert Consultation, Semi-Structured Interviews, Cognitive Mapping, Strategic Options Development and Analysis (SODA), and theory-driven model development.
+    </p>
+
+  </article>
+
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
+      Research Design and Model Assessment
+    </h4>
+
+    <p class="research-project-summary">
+      Quantitative and Mixed-Methods Research Design, model validation, robustness assessment, and methodological alignment between research questions and analytical approaches.
+    </p>
 
   </article>
 
