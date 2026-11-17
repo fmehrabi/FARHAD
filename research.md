@@ -13,9 +13,11 @@ permalink: /research/
     Research Themes & Methods
   </h3>
 
-  <div class="research-project">
+  <!-- RESEARCH THEMES: CELL 1 -->
 
-    <h4 class="research-project-subheading">
+  <article class="research-project">
+
+    <h4 class="research-project-title">
       Research Themes
     </h4>
 
@@ -28,39 +30,52 @@ permalink: /research/
       <li>Organizational Learning and Adaptive Capabilities</li>
     </ul>
 
-    <h4 class="research-project-subheading">
+  </article>
+
+
+  <!-- RESEARCH METHODS: CELL 2 -->
+
+  <article class="research-project">
+
+    <h4 class="research-project-title">
       Research Methods & Approaches
     </h4>
 
     <ul class="research-project-details">
+
       <li>
         <strong>Computational Modeling and Simulation:</strong>
         System Dynamics, causal loop diagrams, stock-and-flow modeling,
         and policy experimentation.
       </li>
+
       <li>
         <strong>Machine Learning and Data Analytics:</strong>
         Python, Scikit-learn, interpretable machine learning,
         regression models, and model evaluation.
       </li>
+
       <li>
         <strong>Scenario and Uncertainty Analysis:</strong>
         Robust Decision Making, sensitivity analysis,
         scenario discovery, and robustness assessment.
       </li>
+
       <li>
         <strong>Qualitative and Strategic Research:</strong>
         Expert consultation, semi-structured interviews,
         cognitive mapping, and strategic analysis.
       </li>
+
       <li>
-        <strong>Research Design and Assessment:</strong>
+        <strong>Research Design and Model Assessment:</strong>
         Theory-driven model development, methodological alignment,
         model validation, and quantitative and qualitative analysis.
       </li>
+
     </ul>
 
-  </div>
+  </article>
 
 </div>
 
@@ -98,8 +113,8 @@ permalink: /research/
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
-      Generative AI · Organizational Learning · AI-Enabled Innovation ·
+      <strong>Keywords:</strong>
+      Generative AI · AI-Enabled Innovation · Organizational Learning ·
       Evaluation Capacity · Organizational Decision-Making
     </p>
 
@@ -112,6 +127,7 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Developed a theory-driven System Dynamics model to examine
             the relationships between AI-generated candidate ideas,
@@ -135,6 +151,7 @@ permalink: /research/
             Used Python and Scikit-learn for data preparation,
             model implementation, cross-validation, and evaluation.
           </li>
+
         </ul>
 
       </div>
@@ -167,9 +184,9 @@ permalink: /research/
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
-      Adaptive Decision-Making · Circular Economy · Resource Productivity ·
-      Capacity Allocation · Operational Strategy
+      <strong>Keywords:</strong>
+      Agent-Inspired Adaptive Decision-Making · Circular Economy ·
+      Resource Productivity · Capacity Allocation · Operational Strategy
     </p>
 
     <details class="expandable-details">
@@ -181,6 +198,7 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Developed an agent-inspired adaptive decision model to
             investigate alternative capacity allocation policies
@@ -203,6 +221,7 @@ permalink: /research/
             Implemented the analytical and machine learning procedures
             using Python and Scikit-learn.
           </li>
+
         </ul>
 
       </div>
@@ -220,23 +239,24 @@ permalink: /research/
   <article class="research-project">
 
     <h4 class="research-project-title">
-      Value Creation in the Digital Transformation Process of E-commerce
+      An Analysis of Value Creation in the Digital Transformation Process of E-commerce using a System Dynamics Approach
     </h4>
 
     <p class="research-project-meta">
-      M.A. Thesis · Allameh Tabataba’i University · 2025
+      Manuscript Under Review · Journal of Information Technology Management
     </p>
 
     <p class="research-project-summary">
-      This research investigated how digital transformation initiatives
-      influence organizational performance and value creation in
-      Digikala, a major Iranian e-commerce company.
+      This research investigates how digital transformation factors
+      influence value creation in an e-commerce context, examining
+      the relationships between organizational capabilities,
+      ecosystem conditions, and digital transformation outcomes.
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
+      <strong>Keywords:</strong>
       Digital Transformation · E-commerce · Value Creation ·
-      Organizational Capabilities · Technology Strategy
+      Organizational Capabilities · Digital Strategy
     </p>
 
     <details class="expandable-details">
@@ -248,10 +268,11 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Developed a System Dynamics model informed by operational
             reports and expert consultation to examine the effects
-            of digital transformation policies on organizational performance.
+            of digital transformation factors on value creation.
           </li>
 
           <li>
@@ -271,6 +292,7 @@ permalink: /research/
             model assessment, and sensitivity analysis to explore
             the implications of alternative transformation conditions.
           </li>
+
         </ul>
 
       </div>
@@ -302,7 +324,7 @@ permalink: /research/
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
+      <strong>Keywords:</strong>
       Startup Strategy · Strategic Decision-Making · Cognitive Mapping ·
       SODA · Entrepreneurship
     </p>
@@ -316,6 +338,7 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Conducted semi-structured interviews with entrepreneurs
             and industry experts to elicit and structure perspectives
@@ -333,6 +356,7 @@ permalink: /research/
             strategic themes, leverage points, and key drivers
             of startup growth.
           </li>
+
         </ul>
 
       </div>
@@ -364,7 +388,7 @@ permalink: /research/
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
+      <strong>Keywords:</strong>
       Digital Platforms · Ecosystem Strategy · Platform Envelopment ·
       Network Effects · Multi-Sided Markets
     </p>
@@ -378,6 +402,7 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Applied the Platform Envelopment framework to analyze
             how Snapp leveraged its existing ride-hailing user base
@@ -396,6 +421,7 @@ permalink: /research/
             including mechanisms for increasing switching costs
             and strengthening platform retention.
           </li>
+
         </ul>
 
       </div>
@@ -427,7 +453,7 @@ permalink: /research/
     </p>
 
     <p class="research-project-meta">
-      <strong>Research Areas / Keywords:</strong>
+      <strong>Keywords:</strong>
       Business Process Reengineering · Warehouse Operations ·
       Autonomous Mobile Robots · Process Automation · Operational Improvement
     </p>
@@ -441,6 +467,7 @@ permalink: /research/
       <div class="details-content">
 
         <ul class="research-project-details">
+
           <li>
             Analyzed Digikala’s as-is warehouse processes and identified
             operational bottlenecks, including delays in order allocation
@@ -458,6 +485,7 @@ permalink: /research/
             process redesign, emphasizing workforce reskilling and
             organizational adaptation to automation.
           </li>
+
         </ul>
 
       </div>
