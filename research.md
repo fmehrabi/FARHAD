@@ -112,11 +112,13 @@ permalink: /research/
       organizational learning, and managing the dynamics of implementation.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Generative AI · AI-Enabled Innovation · Organizational Learning ·
-      Evaluation Capacity · Organizational Decision-Making
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Generative AI</span>
+      <span class="keyword-tag">AI-Enabled Innovation</span>
+      <span class="keyword-tag">Organizational Learning</span>
+      <span class="keyword-tag">Evaluation Capacity</span>
+      <span class="keyword-tag">Organizational Decision-Making</span>
+    </div>
 
     <details class="expandable-details">
 
@@ -183,11 +185,13 @@ permalink: /research/
       and operational trade-offs.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Agent-Inspired Adaptive Decision-Making · Circular Economy ·
-      Resource Productivity · Capacity Allocation · Operational Strategy
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Agent-Inspired Adaptive Decision-Making</span>
+      <span class="keyword-tag">Circular Economy</span>
+      <span class="keyword-tag">Resource Productivity</span>
+      <span class="keyword-tag">Capacity Allocation</span>
+      <span class="keyword-tag">Operational Strategy</span>
+    </div>
 
     <details class="expandable-details">
 
@@ -253,11 +257,13 @@ permalink: /research/
       ecosystem conditions, and digital transformation outcomes.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Digital Transformation · E-commerce · Value Creation ·
-      Organizational Capabilities · Digital Strategy
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Digital Transformation</span>
+      <span class="keyword-tag">E-commerce</span>
+      <span class="keyword-tag">Value Creation</span>
+      <span class="keyword-tag">Organizational Capabilities</span>
+      <span class="keyword-tag">Digital Strategy</span>
+    </div>
 
     <details class="expandable-details">
 
@@ -323,11 +329,13 @@ permalink: /research/
       with cognitive mapping.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Startup Strategy · Strategic Decision-Making · Cognitive Mapping ·
-      SODA · Entrepreneurship
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Startup Strategy</span>
+      <span class="keyword-tag">Strategic Decision-Making</span>
+      <span class="keyword-tag">Cognitive Mapping</span>
+      <span class="keyword-tag">SODA</span>
+      <span class="keyword-tag">Entrepreneurship</span>
+    </div>
 
     <details class="expandable-details">
 
@@ -387,11 +395,13 @@ permalink: /research/
       from ride-hailing into adjacent markets.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Digital Platforms · Ecosystem Strategy · Platform Envelopment ·
-      Network Effects · Multi-Sided Markets
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Digital Platforms</span>
+      <span class="keyword-tag">Ecosystem Strategy</span>
+      <span class="keyword-tag">Platform Envelopment</span>
+      <span class="keyword-tag">Network Effects</span>
+      <span class="keyword-tag">Multi-Sided Markets</span>
+    </div>
 
     <details class="expandable-details">
 
@@ -452,11 +462,13 @@ permalink: /research/
       automation and organizational adaptation.
     </p>
 
-    <p class="research-project-meta">
-      <strong>Keywords:</strong>
-      Business Process Reengineering · Warehouse Operations ·
-      Autonomous Mobile Robots · Process Automation · Operational Improvement
-    </p>
+    <div class="research-keywords" aria-label="Keywords">
+      <span class="keyword-tag">Business Process Reengineering</span>
+      <span class="keyword-tag">Warehouse Operations</span>
+      <span class="keyword-tag">Autonomous Mobile Robots</span>
+      <span class="keyword-tag">Process Automation</span>
+      <span class="keyword-tag">Operational Improvement</span>
+    </div>
 
     <details class="expandable-details">
 
