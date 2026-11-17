@@ -5864,3 +5864,49 @@ body.skill-overlay-open { overflow: hidden; }
   .skill-marquee, .skill-dialog-backdrop { display: none !important; }
   body { padding-bottom: 0 !important; }
 }
+
+/* =========================
+   RESEARCH KEYWORD TAGS
+========================= */
+
+.research-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0 18px;
+}
+
+.keyword-tag {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-accent);
+  color: var(--text-soft);
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.keyword-tag:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--accent);
+}
+
+@media screen and (max-width: 720px) {
+  .research-keywords {
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .keyword-tag {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+}
