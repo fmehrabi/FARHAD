@@ -1,21 +1,22 @@
+
 ---
 layout: default
 permalink: /publications/
 ---
 
 <!-- =========================
-     WORKING PAPERS
+     MANUSCRIPTS UNDER REVIEW
 ========================= -->
 
 <div class="publication-section">
 
   <h3 class="publication-section-title">
-    Working Papers
+    Manuscripts Under Review
   </h3>
 
 
   <!-- =========================
-       WORKING PAPER 1
+       MANUSCRIPT 1
   ========================== -->
 
   <article class="publication-item">
@@ -24,18 +25,21 @@ permalink: /publications/
       An Analysis of Value Creation in the Digital Transformation Process of E-commerce using a System Dynamics Approach
     </h4>
 
-
-    <p class="publication-venue">
-      Working Paper
+    <p class="publication-authors">
+      <strong>Farhad Mehrabi</strong>,
+      Mojtaba Hajian Heidary,
+      and Payam Hanafizadeh
     </p>
 
+    <p class="publication-venue">
+      Journal of Information Technology Management — Under Review
+    </p>
 
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
@@ -44,7 +48,7 @@ permalink: /publications/
         </h4>
 
         <p>
-          This study develops a System Dynamics model of value creation during e-commerce digital transformation. The findings suggest that technology investment alone is insufficient for sustained value creation; complementary organizational capabilities—particularly collaboration, responsiveness to customer demand, and entrepreneurial capability—play a central role in translating digital investment into long-term gains in efficiency, customer satisfaction, and profitability.
+          This study investigates value creation in e-commerce digital transformation through a System Dynamics approach. It examines how technological investment and complementary organizational capabilities interact over time to shape value creation. Particular attention is given to collaboration, customer demand, entrepreneurship, and other organizational and environmental factors influencing operational efficiency, customer satisfaction, and profitability.
         </p>
 
       </div>
@@ -55,27 +59,29 @@ permalink: /publications/
 
 
   <!-- =========================
-       WORKING PAPER 2
+       MANUSCRIPT 2
   ========================== -->
 
   <article class="publication-item">
 
     <h4 class="publication-title">
-      The Generation–Evaluation Asymmetry in Post-Adoption Generative AI: A System Dynamics Model of Organizational Capability and Innovation
+      Managing Generative AI–Enabled Innovation: Evaluation Capacity, Organizational Learning, and Implementation Dynamics
     </h4>
 
-
-    <p class="publication-venue">
-      Working Paper
+    <p class="publication-authors">
+      <strong>Farhad Mehrabi</strong>
+      and Mojtaba Hajian Heidary
     </p>
 
+    <p class="publication-venue">
+      Technological Forecasting and Social Change — Under Review
+    </p>
 
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
@@ -84,7 +90,49 @@ permalink: /publications/
         </h4>
 
         <p>
-          This study introduces the Generation–Evaluation Asymmetry to explain how GenAI-supported output can expand faster than an organization’s capacity to evaluate, integrate, and retain it as reliable knowledge. A System Dynamics model shows that rapid AI adoption may coexist with declining Human Cognitive Capital and Organizational Knowledge, eventually weakening innovation, while stronger Structural Governance combined with a high Organizational Cognitive Agency Regime supports more sustainable innovation outcomes.
+          This study examines the organizational dynamics of Generative AI–enabled innovation, focusing on the relationship between AI-generated outputs, human evaluation capacity, organizational learning, and innovation implementation. Using a System Dynamics model, policy simulations, robustness analysis, and simulation-based interpretable machine learning, it investigates how managerial interventions can help organizations evaluate, integrate, and retain AI-generated knowledge while sustaining innovation outcomes.
+        </p>
+
+      </div>
+
+    </details>
+
+  </article>
+
+
+  <!-- =========================
+       MANUSCRIPT 3
+  ========================== -->
+
+  <article class="publication-item">
+
+    <h4 class="publication-title">
+      When Does Agent-Inspired Adaptive Capacity Allocation Improve Circular Resource Productivity?
+    </h4>
+
+    <p class="publication-authors">
+      <strong>Farhad Mehrabi</strong>
+      and Mojtaba Hajian Heidary
+    </p>
+
+    <p class="publication-venue">
+      International Journal of Productivity and Performance Management — Under Review
+    </p>
+
+    <details class="expandable-details">
+
+      <summary class="details-toggle">
+        View details
+      </summary>
+
+      <div class="details-content">
+
+        <h4 class="publication-subheading">
+          Study Overview
+        </h4>
+
+        <p>
+          This study investigates when agent-inspired adaptive capacity allocation can improve circular resource productivity. It develops a dynamic decision model to compare alternative capacity-allocation policies under uncertainty. Combining simulation experiments, Robust Decision Making, Scenario Discovery, and machine learning techniques, the study identifies the conditions under which adaptive allocation outperforms alternative policies and examines the robustness of these findings.
         </p>
 
       </div>
@@ -113,7 +161,6 @@ permalink: /publications/
       A Comparison between Rapidly Randomized Tree and Efficient Frontier Methods for Autonomous Mobile Robot Exploration
     </h4>
 
-
     <p class="publication-authors">
       Nima Payandeh,
       <strong>Farhad Mehrabi</strong>,
@@ -121,18 +168,15 @@ permalink: /publications/
       and Younes AlizadehVaghasloo
     </p>
 
-
     <p class="publication-venue">
       2022 10th RSI International Conference on Robotics and Mechatronics (ICRoM), IEEE, pp. 466–471.
     </p>
-
 
     <details class="expandable-details">
 
       <summary class="details-toggle">
         View details
       </summary>
-
 
       <div class="details-content">
 
